@@ -1,0 +1,2447 @@
+/* Container styling for quotes and quote callouts */
+.markdown-rendered blockquote,
+.callout[data-callout="quote"] {
+    position: relative;
+    padding: 0.75em 1.5em;  /* Reduced top/bottom padding to 0.75em */
+    border-left: none;      /* Removes the default vertical line */
+    display: flex;
+    flex-direction: column;  /* Keeps content stacked vertically */
+    align-items: center;     /* Centers horizontally */
+    justify-content: center; /* Centers vertically */
+    text-align: center;      /* Ensures text wraps and centers correctly */
+}
+
+/* Top Left Bracket */
+.markdown-rendered blockquote::before,
+.callout[data-callout="quote"]::before {
+    content: "「";
+    position: absolute;
+    top: 5px;
+    left: 5px;
+    font-size: 1.5em;
+    line-height: 1;
+    font-weight: bold;
+    color: var(--text-muted); /* Adapts automatically to light/dark themes */
+}
+
+/* Bottom Right Bracket */
+.markdown-rendered blockquote::after,
+.callout[data-callout="quote"]::after {
+    content: "」";
+    position: absolute;
+    bottom: 5px;
+    right: 5px;
+    font-size: 1.5em;
+    line-height: 1;
+    font-weight: bold;
+    color: var(--text-muted);
+}
+
+/* Container styling for quotes and quote callouts */
+.markdown-rendered a,
+.callout[data-callout="a"] {
+    position: relative;
+    padding: 0.75em 1.5em;  /* Reduced top/bottom padding to 0.75em */
+    border-left: none;      /* Removes the default vertical line */
+    display: flex;
+    flex-direction: column;  /* Keeps content stacked vertically */
+    align-items: center;     /* Centers horizontally */
+    justify-content: center; /* Centers vertically */
+    text-align: center;      /* Ensures text wraps and centers correctly */
+}
+
+/* Top Left Bracket */
+.markdown-rendered a::before,
+.callout[data-callout="a"]::before {
+    content: "「";
+    position: absolute;
+    top: 5px;
+    left: 5px;
+    font-size: 1.5em;
+    line-height: 1;
+    font-weight: bold;
+    color: var(--text-muted); /* Adapts automatically to light/dark themes */
+}
+
+/* Bottom Right Bracket */
+.markdown-rendered a::after,
+.callout[data-callout="a"]::after {
+    content: "」";
+    position: absolute;
+    bottom: 5px;
+    right: 5px;
+    font-size: 1.5em;
+    line-height: 1;
+    font-weight: bold;
+    color: var(--text-muted);
+}
+
+/* Ornate 4-Corner Callout
+   Usage: > [!ornate] 
+*/
+.callout[data-callout="ornate"] {
+    /* --- CUSTOMIZATION VARIABLES --- */
+    --bracket-color: var(--text-accent); /* Color of the brackets */
+    --bracket-thick: 3px;                /* Thickness of the bracket lines */
+    --bracket-length: 30px;              /* Length of the bracket arms */
+    
+    position: relative;
+    border: none;
+    background-color: var(--background-primary-alt);
+    padding: 2em; /* Extra padding to keep text inside the frame */
+    
+    /* Draws 8 distinct gradients to form 4 corners 
+       (2 intersecting lines per corner)
+    */
+    background-image: 
+        /* Top Left */
+        linear-gradient(var(--bracket-color), var(--bracket-color)),
+        linear-gradient(var(--bracket-color), var(--bracket-color)),
+        /* Top Right */
+        linear-gradient(var(--bracket-color), var(--bracket-color)),
+        linear-gradient(var(--bracket-color), var(--bracket-color)),
+        /* Bottom Left */
+        linear-gradient(var(--bracket-color), var(--bracket-color)),
+        linear-gradient(var(--bracket-color), var(--bracket-color)),
+        /* Bottom Right */
+        linear-gradient(var(--bracket-color), var(--bracket-color)),
+        linear-gradient(var(--bracket-color), var(--bracket-color));
+    
+    background-repeat: no-repeat;
+    
+    background-size: 
+        /* Top Left */
+        var(--bracket-length) var(--bracket-thick), 
+        var(--bracket-thick) var(--bracket-length),
+        /* Top Right */
+        var(--bracket-length) var(--bracket-thick), 
+        var(--bracket-thick) var(--bracket-length),
+        /* Bottom Left */
+        var(--bracket-length) var(--bracket-thick), 
+        var(--bracket-thick) var(--bracket-length),
+        /* Bottom Right */
+        var(--bracket-length) var(--bracket-thick), 
+        var(--bracket-thick) var(--bracket-length);
+        
+    background-position: 
+        /* Top Left */
+        0 0, 0 0,
+        /* Top Right */
+        100% 0, 100% 0,
+        /* Bottom Left */
+        0 100%, 0 100%,
+        /* Bottom Right */
+        100% 100%, 100% 100%;
+}
+
+/* Ensure the title background doesn't cover the top brackets */
+.callout[data-callout="ornate"] .callout-title {
+    background: transparent;
+}
+
+/* Core Callout Reset */
+.callout[data-callout="retro-3d"] {
+    --callout-color: var(--text-normal);
+    --callout-icon: none;
+    background: transparent;
+    border: 1px solid var(--text-normal);
+    position: relative;
+    padding: 20px 25px;
+    margin: 15px 15px 25px 0; /* Space for the shadow */
+    border-radius: 0;
+    /* The magic hard-shadow that replaces the ███ blocks */
+    box-shadow: 12px 12px 0px 0px var(--text-normal);
+}
+
+/* ASCII Top-Left Corner */
+.callout[data-callout="retro-3d"]::before {
+    content: "┌";
+    position: absolute;
+    top: -9px;
+    left: -4px;
+    background: var(--background-primary);
+    padding: 0 2px;
+    font-size: 1.2em;
+    line-height: 1;
+}
+
+/* ASCII Bottom-Right Corner */
+.callout[data-callout="retro-3d"]::after {
+    content: "┘";
+    position: absolute;
+    bottom: -9px;
+    right: -4px;
+    background: var(--background-primary);
+    padding: 0 2px;
+    font-size: 1.2em;
+    line-height: 1;
+}
+
+/* Title formatting */
+.callout[data-callout="retro-3d"] .callout-title {
+    font-family: monospace;
+    text-transform: uppercase;
+    border-bottom: 1px dashed var(--text-muted);
+    padding-bottom: 10px;
+    margin-bottom: 10px;
+}
+
+.callout[data-callout="void-gazer"] {
+    --callout-color: var(--text-normal);
+    --callout-icon: none;
+    background: transparent;
+    /* Creates the | sides and bottom automatically */
+    border-left: 2px solid var(--text-normal);
+    border-right: 2px solid var(--text-normal);
+    border-bottom: 2px solid var(--text-normal);
+    border-top: none;
+    border-radius: 0;
+    position: relative;
+    padding: 15px 20px;
+    margin-top: 30px;
+    font-family: monospace;
+}
+
+/* The Top Horizontal Line */
+.callout[data-callout="void-gazer"]::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 2px;
+    background: var(--text-normal);
+}
+
+/* The Entity Title Header */
+.callout[data-callout="void-gazer"] .callout-title {
+    position: absolute;
+    top: -25px;
+    left: -2px;
+    background: var(--background-primary);
+    padding: 0 10px 0 0;
+    font-weight: normal;
+}
+
+.callout[data-callout="void-gazer"] .callout-title-inner::before {
+    content: "⟦ LOG_FILE: ⟨ ";
+}
+
+.callout[data-callout="void-gazer"] .callout-title-inner::after {
+    content: " ⟩ ⟧";
+}
+
+.callout[data-callout="magi-tekk"] {
+    --callout-color: var(--text-normal);
+    --callout-icon: none;
+    background: transparent;
+    border: none;
+    position: relative;
+    padding: 25px 40px;
+    overflow: hidden; /* This makes the overflow hack work */
+}
+
+/* Left Vertical Pillar with Arcane Blocks */
+.callout[data-callout="magi-tekk"]::before {
+    content: "║\A║  ▞▞\A║\A║\A║\A║  ▞▞\A║";
+    white-space: pre;
+    position: absolute;
+    left: 0;
+    top: 25px;
+    bottom: 25px;
+    line-height: 1.2;
+    overflow: hidden;
+}
+
+/* Right Vertical Pillar with Arcane Blocks */
+.callout[data-callout="magi-tekk"]::after {
+    content: "║\A▞▞  ║\A║\A║\A║\A▞▞  ║\A║";
+    white-space: pre;
+    position: absolute;
+    right: 0;
+    top: 25px;
+    bottom: 25px;
+    line-height: 1.2;
+    text-align: right;
+    overflow: hidden;
+}
+
+/* The Stretching Top Border */
+.callout[data-callout="magi-tekk"] .callout-title {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    justify-content: center;
+    white-space: nowrap;
+}
+
+.callout[data-callout="magi-tekk"] .callout-title-inner::before {
+    /* The massive string that gets clipped */
+    content: "╔═════════════════════════════════════════════════════[ ✧ ";
+}
+
+.callout[data-callout="magi-tekk"] .callout-title-inner::after {
+    content: " ✧ ]═════════════════════════════════════════════════════╗";
+}
+
+/* The Stretching Bottom Border */
+.callout[data-callout="magi-tekk"] .callout-content::after {
+    content: "╚══════════════════════════════════════════════════════════════════════════════════════════════════════════╝";
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    white-space: nowrap;
+}
+
+/* Core setup: Monospace is non-negotiable for ASCII alignment */
+.callout[data-callout="ascii-double"] {
+    --callout-color: var(--text-normal);
+    --callout-icon: none;
+    background: transparent;
+    border: none;
+    padding: 1.5em 3ch; /* Creates the safe zone inside the text box */
+    font-family: monospace; 
+    position: relative;
+    overflow: hidden; /* This hides the excess vertical and horizontal text */
+}
+
+/* 1. Left Vertical Wall (50 lines deep) */
+.callout[data-callout="ascii-double"]::before {
+    content: "║\A║\A║\A║\A║\A║\A║\A║\A║\A║\A║\A║\A║\A║\A║\A║\A║\A║\A║\A║\A║\A║\A║\A║\A║\A║\A║\A║\A║\A║\A║\A║\A║\A║\A║\A║\A║\A║\A║\A║\A║\A║\A║\A║\A║\A║\A║\A║\A║\A║\A";
+    white-space: pre;
+    position: absolute;
+    top: 1em; /* Starts just below the top corner */
+    left: 0;
+    line-height: 1.2;
+}
+
+/* 2. Right Vertical Wall (50 lines deep) */
+.callout[data-callout="ascii-double"]::after {
+    content: "║\A║\A║\A║\A║\A║\A║\A║\A║\A║\A║\A║\A║\A║\A║\A║\A║\A║\A║\A║\A║\A║\A║\A║\A║\A║\A║\A║\A║\A║\A║\A║\A║\A║\A║\A║\A║\A║\A║\A║\A║\A║\A║\A║\A║\A║\A║\A║\A║\A║\A";
+    white-space: pre;
+    position: absolute;
+    top: 1em;
+    right: 0;
+    line-height: 1.2;
+}
+
+/* 3. Top Horizontal Wall + Top Left Corner */
+.callout[data-callout="ascii-double"] .callout-title::before {
+    /* 200 characters long to ensure it reaches across the widest monitors */
+    content: "╔══════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════";
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 1ch; /* Leaves exactly 1 character of space for the right corner */
+    white-space: nowrap;
+    overflow: hidden; /* Clips the massive string perfectly */
+}
+
+/* 4. Top Right Corner */
+.callout[data-callout="ascii-double"] .callout-title::after {
+    content: "╗";
+    position: absolute;
+    top: 0;
+    right: 0;
+}
+
+/* 5. Bottom Horizontal Wall + Bottom Left Corner */
+.callout[data-callout="ascii-double"] .callout-content::before {
+    content: "╚══════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════";
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 1ch;
+    white-space: nowrap;
+    overflow: hidden;
+}
+
+/* 6. Bottom Right Corner */
+.callout[data-callout="ascii-double"] .callout-content::after {
+    content: "╝";
+    position: absolute;
+    bottom: 0;
+    right: 0;
+}
+
+.callout[data-callout="ascii-alchemical"] {
+    --callout-color: var(--text-normal);
+    --callout-icon: none;
+    background: transparent;
+    border: none;
+    padding: 2em 4ch;
+    font-family: monospace; 
+    position: relative;
+    overflow: hidden;
+}
+
+/* Left Alchemical Wall (Alternating) */
+.callout[data-callout="ascii-alchemical"]::before {
+    content: "🜂\A🜃\A🜄\A🜁\A🜂\A🜃\A🜄\A🜁\A🜂\A🜃\A🜄\A🜁\A🜂\A🜃\A🜄\A🜁\A🜂\A🜃\A🜄\A🜁\A🜂\A🜃\A🜄\A🜁\A🜂\A🜃\A🜄\A🜁\A🜂\A🜃\A🜄\A🜁\A🜂\A🜃\A🜄\A🜁\A🜂\A🜃\A🜄\A🜁";
+    white-space: pre;
+    position: absolute;
+    top: 1.5em; 
+    left: 0;
+    line-height: 1.2;
+}
+
+/* Right Alchemical Wall (Alternating) */
+.callout[data-callout="ascii-alchemical"]::after {
+    content: "🜂\A🜃\A🜄\A🜁\A🜂\A🜃\A🜄\A🜁\A🜂\A🜃\A🜄\A🜁\A🜂\A🜃\A🜄\A🜁\A🜂\A🜃\A🜄\A🜁\A🜂\A🜃\A🜄\A🜁\A🜂\A🜃\A🜄\A🜁\A🜂\A🜃\A🜄\A🜁\A🜂\A🜃\A🜄\A🜁\A🜂\A🜃\A🜄\A🜁";
+    white-space: pre;
+    position: absolute;
+    top: 1.5em;
+    right: 0;
+    line-height: 1.2;
+}
+
+/* Top Sequence */
+.callout[data-callout="ascii-alchemical"] .callout-title::before {
+    content: "🜁══🜂══🜃══🜄════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════";
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 8ch; /* Leaves space for the specific right sequence */
+    white-space: nowrap;
+    overflow: hidden;
+}
+
+/* Top Right Cap */
+.callout[data-callout="ascii-alchemical"] .callout-title::after {
+    content: "🜄══🜃══🜂══🜁";
+    position: absolute;
+    top: 0;
+    right: 0;
+    background: var(--background-primary); /* Prevents line overlap */
+}
+
+/* Bottom Sequence */
+.callout[data-callout="ascii-alchemical"] .callout-content::before {
+    content: "🜁══🜂══🜃══🜄════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════";
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 8ch;
+    white-space: nowrap;
+    overflow: hidden;
+}
+
+/* Bottom Right Cap */
+.callout[data-callout="ascii-alchemical"] .callout-content::after {
+    content: "🜄══🜃══🜂══🜁";
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    background: var(--background-primary);
+}
+
+/* Core Setup */
+.callout[data-callout="ascii-3d"] {
+    --callout-color: var(--text-normal);
+    --callout-icon: none;
+    background: transparent;
+    border: none;
+    padding: 1.5em 3.5ch 2em 2ch; /* Leaves room for the right/bottom text shadow */
+    font-family: monospace; 
+    position: relative;
+    overflow: hidden;
+}
+
+/* Left Wall */
+.callout[data-callout="ascii-3d"]::before {
+    content: "│\A│\A│\A│\A│\A│\A│\A│\A│\A│\A│\A│\A│\A│\A│\A│\A│\A│\A│\A│\A│\A│\A│\A│\A│\A│\A│\A│\A│\A│\A│\A│\A│\A│\A│\A│\A│\A│\A│\A│\A";
+    white-space: pre; 
+    position: absolute; 
+    top: 1em; 
+    left: 0; 
+    line-height: 1.2;
+}
+
+/* Right Wall (With Text Shadow) */
+.callout[data-callout="ascii-3d"]::after {
+    content: "│█\A│█\A│█\A│█\A│█\A│█\A│█\A│█\A│█\A│█\A│█\A│█\A│█\A│█\A│█\A│█\A│█\A│█\A│█\A│█\A│█\A│█\A│█\A│█\A│█\A│█\A│█\A│█\A│█\A│█\A│█\A│█\A│█\A│█\A│█\A│█\A│█\A│█\A│█\A│█";
+    white-space: pre; 
+    position: absolute; 
+    top: 1em; 
+    right: 0; 
+    line-height: 1.2;
+    background: var(--background-primary);
+}
+
+/* Top Wall (Stretches) */
+.callout[data-callout="ascii-3d"] .callout-title::before {
+    content: "┌────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────";
+    position: absolute; 
+    top: 0; 
+    left: 0; 
+    right: 2ch; 
+    white-space: nowrap; 
+    overflow: hidden;
+}
+
+/* Top Right Corner */
+.callout[data-callout="ascii-3d"] .callout-title::after {
+    content: "┐"; 
+    position: absolute; 
+    top: 0; 
+    right: 2ch;
+}
+
+/* Bottom Wall (Stretches) */
+.callout[data-callout="ascii-3d"] .callout-content::before {
+    content: "└────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────";
+    position: absolute; 
+    bottom: 1.1em; 
+    left: 0; 
+    right: 2ch; 
+    white-space: nowrap; 
+    overflow: hidden; 
+    background: var(--background-primary);
+}
+
+/* Bottom Right Corner */
+.callout[data-callout="ascii-3d"] .callout-title-inner::after {
+    content: "┘█"; 
+    position: absolute; 
+    bottom: 1.1em; 
+    right: 0; 
+    z-index: 2;
+}
+
+/* Bottom Drop-Shadow Block (Stretches) */
+.callout[data-callout="ascii-3d"] .callout-content::after {
+    content: "  █████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████";
+    position: absolute; 
+    bottom: 0; 
+    left: 0; 
+    right: 0; 
+    white-space: nowrap; 
+    overflow: hidden; 
+    line-height: 1.2;
+}
+
+.callout[data-callout="ascii-void"] {
+    --callout-color: var(--text-normal); 
+    --callout-icon: none;
+    background: transparent; 
+    border: none; 
+    font-family: monospace;
+    padding: 2.5em 2ch 1.5em 2ch; 
+    position: relative; 
+    overflow: hidden;
+}
+
+/* Left & Right Walls */
+.callout[data-callout="ascii-void"]::before {
+    content: "|\A|\A|\A|\A|\A|\A|\A|\A|\A|\A|\A|\A|\A|\A|\A|\A|\A|\A|\A|\A|\A|\A|\A|\A|\A|\A|\A|\A|\A|\A|\A|\A|\A|\A|\A|\A|\A|\A|\A|\A";
+    white-space: pre; 
+    position: absolute; 
+    top: 1.5em; 
+    left: 0; 
+    line-height: 1.2;
+}
+
+.callout[data-callout="ascii-void"]::after {
+    content: "|\A|\A|\A|\A|\A|\A|\A|\A|\A|\A|\A|\A|\A|\A|\A|\A|\A|\A|\A|\A|\A|\A|\A|\A|\A|\A|\A|\A|\A|\A|\A|\A|\A|\A|\A|\A|\A|\A|\A|\A";
+    white-space: pre; 
+    position: absolute; 
+    top: 1.5em; 
+    right: 0; 
+    line-height: 1.2;
+}
+
+/* Top Wall (Stretching Underscores) */
+.callout[data-callout="ascii-void"] .callout-title::before {
+    content: " ____________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________";
+    position: absolute; 
+    top: 1em; 
+    left: 0; 
+    right: 0; 
+    white-space: nowrap; 
+    overflow: hidden;
+}
+
+/* Bottom Wall (Stretching Underscores with pipes) */
+.callout[data-callout="ascii-void"] .callout-content::after {
+    content: "|____________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________";
+    position: absolute; 
+    bottom: 0; 
+    left: 0; 
+    right: 1ch; 
+    white-space: nowrap; 
+    overflow: hidden;
+}
+
+.callout[data-callout="ascii-void"] .callout-title-inner::after {
+    content: "|"; 
+    position: absolute; 
+    bottom: 0; 
+    right: 0;
+}
+
+/* The Entity Title Header */
+.callout[data-callout="ascii-void"] .callout-title { 
+    position: absolute; 
+    top: 0; 
+    left: 0; 
+}
+
+.callout[data-callout="ascii-void"] .callout-title-inner::before { 
+    content: "⟦ LOG_FILE: ⟨ "; 
+}
+
+.callout[data-callout="ascii-void"] .callout-title-inner { 
+    content: " ⟩ ⟧"; /* Appends to the actual title text */
+} 
+
+.callout[data-callout="ascii-shinra"] {
+    --callout-color: var(--text-normal); 
+    --callout-icon: none;
+    background: transparent; 
+    border: none; 
+    font-family: monospace;
+    padding: 2.5em 3ch 2.5em 3ch; 
+    position: relative; 
+    overflow: hidden;
+}
+
+/* Left & Right Walls */
+.callout[data-callout="ascii-shinra"]::before {
+    content: "█▓\A█▓\A█▓\A█▓\A█▓\A█▓\A█▓\A█▓\A█▓\A█▓\A█▓\A█▓\A█▓\A█▓\A█▓\A█▓\A█▓\A█▓\A█▓\A█▓\A█▓\A█▓\A█▓\A█▓\A█▓\A█▓\A█▓\A█▓\A█▓\A█▓\A█▓\A█▓\A█▓\A█▓\A█▓\A█▓\A█▓\A█▓\A█▓\A█▓";
+    white-space: pre; 
+    position: absolute; 
+    top: 1em; 
+    left: 0; 
+    line-height: 1.2;
+}
+
+.callout[data-callout="ascii-shinra"]::after {
+    content: "▓█\A▓█\A▓█\A▓█\A▓█\A▓█\A▓█\A▓█\A▓█\A▓█\A▓█\A▓█\A▓█\A▓█\A▓█\A▓█\A▓█\A▓█\A▓█\A▓█\A▓█\A▓█\A▓█\A▓█\A▓█\A▓█\A▓█\A▓█\A▓█\A▓█\A▓█\A▓█\A▓█\A▓█\A▓█\A▓█\A▓█\A▓█\A▓█\A▓█";
+    white-space: pre; 
+    position: absolute; 
+    top: 1em; 
+    right: 0; 
+    line-height: 1.2;
+}
+
+/* Top Heavy Bar */
+.callout[data-callout="ascii-shinra"] .callout-title::before {
+    content: "████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████";
+    position: absolute; 
+    top: 0; 
+    left: 0; 
+    right: 0; 
+    white-space: nowrap; 
+    overflow: hidden; 
+    line-height: 1;
+}
+
+/* Title Line Formatting */
+.callout[data-callout="ascii-shinra"] .callout-title { 
+    margin-bottom: 15px; 
+    position: center; 
+}
+
+.callout[data-callout="ascii-shinra"] .callout-title-inner::before { 
+    content: "█▓▒░ [ "; 
+}
+
+.callout[data-callout="ascii-shinra"] .callout-title-inner::after { 
+    content: " ] ░▒▓█"; 
+    position: absolute; 
+    right: 0; 
+    background: var(--background-primary); 
+}
+
+/* Bottom Graphic Bar */
+.callout[data-callout="ascii-shinra"] .callout-content::before {
+    content: "█▓▒░ ───────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────── ░▒▓█";
+    position: absolute; 
+    bottom: 1em; 
+    left: 0; 
+    right: 0; 
+    white-space: nowrap; 
+    overflow: hidden;
+}
+
+/* Bottom Heavy Bar */
+.callout[data-callout="ascii-shinra"] .callout-content::after {
+    content: "████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████";
+    position: absolute; 
+    bottom: 0; 
+    left: 0; 
+    right: 0; 
+    white-space: nowrap; 
+    overflow: hidden; 
+    line-height: 1;
+}
+
+.callout[data-callout="ascii-aviator"] {
+    --callout-color: var(--text-normal); 
+    --callout-icon: none;
+    background: transparent; 
+    border: none; 
+    font-family: monospace;
+    padding: 1.5em 2ch; 
+    position: relative; 
+    overflow: hidden;
+}
+
+/* Walls */
+.callout[data-callout="ascii-aviator"]::before {
+    content: "│\A│\A│\A│\A│\A│\A│\A│\A│\A│\A│\A│\A│\A│\A│\A│\A│\A│\A│\A│\A│\A│\A│\A│\A│\A│\A│\A│\A│\A│\A│\A│\A│\A│\A│\A│\A│\A│\A│\A│\A";
+    white-space: pre; 
+    position: absolute; 
+    top: 1em; 
+    left: 0; 
+    line-height: 1.2;
+}
+
+.callout[data-callout="ascii-aviator"]::after {
+    content: "│\A│\A│\A│\A│\A│\A│\A│\A│\A│\A│\A│\A│\A│\A│\A│\A│\A│\A│\A│\A│\A│\A│\A│\A│\A│\A│\A│\A│\A│\A│\A│\A│\A│\A│\A│\A│\A│\A│\A│\A";
+    white-space: pre; 
+    position: absolute; 
+    top: 1em; 
+    right: 0; 
+    line-height: 1.2;
+}
+
+/* Top Sequence */
+.callout[data-callout="ascii-aviator"] .callout-title-inner::before { 
+    content: "╭─◖[ "; 
+}
+
+.callout[data-callout="ascii-aviator"] .callout-title-inner::after { 
+    content: " ]◗─────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────╮";
+    white-space: nowrap; 
+    overflow: hidden; 
+    display: inline-block; 
+    vertical-align: bottom; 
+    max-width: 100%;
+}
+
+.callout[data-callout="ascii-aviator"] .callout-title::after { 
+    content: "╮"; 
+    position: absolute; 
+    top: 0; 
+    right: 0; 
+    background: var(--background-primary); 
+}
+
+/* Bottom Sequence */
+.callout[data-callout="ascii-aviator"] .callout-content::before {
+    content: "╰─────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────";
+    position: absolute; 
+    bottom: 0; 
+    left: 0; 
+    right: 12ch; 
+    white-space: nowrap; 
+    overflow: hidden;
+}
+
+.callout[data-callout="ascii-aviator"] .callout-content::after {
+    content: "◖[VOL.11]◗─╯"; 
+    position: absolute; 
+    bottom: 0; 
+    right: 0; 
+    background: var(--background-primary);
+}
+
+.callout[data-callout="ascii-arrow-brackets"] {
+    --callout-color: var(--text-normal);
+    --callout-icon: none;
+    background: transparent;
+    border: none;
+    padding: 1em 1.5em;
+    font-family: monospace;
+}
+
+.callout[data-callout="ascii-arrow-brackets"] .callout-title {
+    font-weight: bold;
+    margin-bottom: 0.5em;
+}
+
+.callout[data-callout="ascii-arrow-brackets"] .callout-title-inner::before {
+    content: "ࡔ><>→ [ ";
+    opacity: 0.8;
+}
+
+.callout[data-callout="ascii-arrow-brackets"] .callout-title-inner::after {
+    content: " ] ←<><ࡔ";
+    opacity: 0.8;
+}
+
+.callout[data-callout="ascii-monolith"] {
+    --callout-color: var(--text-normal); 
+    --callout-icon: none;
+    background: transparent; 
+    border: none; 
+    font-family: monospace;
+    padding: 2em 4.5ch 3.5em 2ch; 
+    position: relative; 
+    overflow: hidden; 
+    line-height: 1.2;
+}
+
+/* Left Wall */
+.callout[data-callout="ascii-monolith"]::before {
+    content: "█\A█\A█\A█\A█\A█\A█\A█\A█\A█\A█\A█\A█\A█\A█\A█\A█\A█\A█\A█\A█\A█\A█\A█\A█\A█\A█\A█\A█\A█\A█\A█\A█\A█\A█\A█\A█\A█\A█\A█\A█\A█\A█\A█\A█\A█\A█\A█\A█\A█";
+    white-space: pre; 
+    position: absolute; 
+    top: 1em; 
+    left: 0;
+}
+
+/* Right Wall */
+.callout[data-callout="ascii-monolith"]::after {
+    content: "█  █\A█  █\A█  █\A█  █\A█  █\A█  █\A█  █\A█  █\A█  █\A█  █\A█  █\A█  █\A█  █\A█  █\A█  █\A█  █\A█  █\A█  █\A█  █\A█  █\A█  █\A█  █\A█  █\A█  █\A█  █\A█  █\A█  █\A█  █\A█  █\A█  █\A█  █\A█  █\A█  █\A█  █\A█  █\A█  █\A█  █\A█  █\A█  █\A█  █\A█  █";
+    white-space: pre; 
+    position: absolute; 
+    top: 1em; 
+    right: 0;
+}
+
+/* Top Wall */
+.callout[data-callout="ascii-monolith"] .callout-title::before {
+    content: "  ▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄";
+    position: absolute; 
+    top: 0; 
+    left: 0; 
+    right: 4ch; 
+    white-space: nowrap; 
+    overflow: hidden;
+}
+
+/* Top Right Corner */
+.callout[data-callout="ascii-monolith"] .callout-title::after {
+    content: "█▄▄"; 
+    position: absolute; 
+    top: 0; 
+    right: 0; 
+    background: var(--background-primary);
+}
+
+/* 3-Tiered Bottom Shadow Structure */
+.callout[data-callout="ascii-monolith"] .callout-content::before {
+    content: "█▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄\A  ▀▀████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████\A     ▀▀████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████";
+    position: absolute; 
+    bottom: 0; 
+    left: 0; 
+    right: 4ch; 
+    white-space: pre; 
+    overflow: hidden; 
+    line-height: 1;
+}
+
+/* Bottom Right Shadow Corner */
+.callout[data-callout="ascii-monolith"] .callout-content::after {
+    content: "█  █\A██  █\A██████"; 
+    position: absolute; 
+    bottom: 0; 
+    right: 0; 
+    white-space: pre; 
+    text-align: right; 
+    line-height: 1; 
+    background: var(--background-primary);
+}
+
+.callout[data-callout="ascii-fade"] {
+    --callout-color: var(--text-normal); 
+    --callout-icon: none;
+    background: transparent; 
+    border: none; 
+    font-family: monospace;
+    padding: 2em 5ch; 
+    position: relative; 
+    overflow: hidden; 
+    line-height: 1.2;
+}
+
+/* Fade Walls */
+.callout[data-callout="ascii-fade"]::before {
+    content: "██▓▒░\A██▓▒░\A██▓▒░\A██▓▒░\A██▓▒░\A██▓▒░\A██▓▒░\A██▓▒░\A██▓▒░\A██▓▒░\A██▓▒░\A██▓▒░\A██▓▒░\A██▓▒░\A██▓▒░\A██▓▒░\A██▓▒░\A██▓▒░\A██▓▒░\A██▓▒░\A██▓▒░\A██▓▒░\A██▓▒░\A██▓▒░\A██▓▒░\A██▓▒░\A██▓▒░\A██▓▒░\A██▓▒░\A██▓▒░";
+    white-space: pre; 
+    position: absolute; 
+    top: 1em; 
+    left: 0;
+}
+
+.callout[data-callout="ascii-fade"]::after {
+    content: "░▒▓██\A░▒▓██\A░▒▓██\A░▒▓██\A░▒▓██\A░▒▓██\A░▒▓██\A░▒▓██\A░▒▓██\A░▒▓██\A░▒▓██\A░▒▓██\A░▒▓██\A░▒▓██\A░▒▓██\A░▒▓██\A░▒▓██\A░▒▓██\A░▒▓██\A░▒▓██\A░▒▓██\A░▒▓██\A░▒▓██\A░▒▓██\A░▒▓██\A░▒▓██\A░▒▓██\A░▒▓██\A░▒▓██\A░▒▓██";
+    white-space: pre; 
+    position: absolute; 
+    top: 1em; 
+    right: 0;
+}
+
+/* Top Border */
+.callout[data-callout="ascii-fade"] .callout-title::before {
+    content: "██▓▓▒▒░░─────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────";
+    position: absolute; 
+    top: 0; 
+    left: 0; 
+    right: 10ch; 
+    white-space: nowrap; 
+    overflow: hidden;
+}
+
+.callout[data-callout="ascii-fade"] .callout-title::after {
+    content: "░░▒▒▓▓██"; 
+    position: absolute; 
+    top: 0; 
+    right: 0; 
+    background: var(--background-primary);
+}
+
+/* Bottom Border */
+.callout[data-callout="ascii-fade"] .callout-content::before {
+    content: "██▓▓▒▒░░─────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────";
+    position: absolute; 
+    bottom: 0; 
+    left: 0; 
+    right: 10ch; 
+    white-space: nowrap; 
+    overflow: hidden;
+}
+
+.callout[data-callout="ascii-fade"] .callout-content::after {
+    content: "░░▒▒▓▓██"; 
+    position: absolute; 
+    bottom: 0; 
+    right: 0; 
+    background: var(--background-primary);
+}
+
+.callout[data-callout="ascii-monument"] {
+    --callout-color: var(--text-normal); 
+    --callout-icon: none;
+    background: transparent; 
+    border: none; 
+    font-family: monospace;
+    padding: 3.5em 3.5ch; 
+    position: relative; 
+    overflow: hidden; 
+    line-height: 1.1;
+}
+
+/* Heavy Walls */
+.callout[data-callout="ascii-monument"]::before {
+    content: "┃┃\A┃┃\A┃┃\A┃┃\A┃┃\A┃┃\A┃┃\A┃┃\A┃┃\A┃┃\A┃┃\A┃┃\A┃┃\A┃┃\A┃┃\A┃┃\A┃┃\A┃┃\A┃┃\A┃┃\A┃┃\A┃┃\A┃┃\A┃┃\A┃┃\A┃┃\A┃┃\A┃┃\A┃┃\A┃┃\A┃┃\A┃┃\A┃┃\A┃┃\A┃┃\A┃┃\A┃┃\A┃┃\A┃┃\A┃┃\A┃┃\A┃┃\A┃┃\A┃┃\A┃┃\A┃┃\A┃┃\A┃┃\A┃┃\A┃┃\A┃┃\A┃┃\A┃┃\A┃┃\A┃┃\A┃┃";
+    white-space: pre; 
+    position: absolute; 
+    top: 3em; 
+    left: 0;
+}
+
+.callout[data-callout="ascii-monument"]::after {
+    content: "┃┃\A┃┃\A┃┃\A┃┃\A┃┃\A┃┃\A┃┃\A┃┃\A┃┃\A┃┃\A┃┃\A┃┃\A┃┃\A┃┃\A┃┃\A┃┃\A┃┃\A┃┃\A┃┃\A┃┃\A┃┃\A┃┃\A┃┃\A┃┃\A┃┃\A┃┃\A┃┃\A┃┃\A┃┃\A┃┃\A┃┃\A┃┃\A┃┃\A┃┃\A┃┃\A┃┃\A┃┃\A┃┃\A┃┃\A┃┃\A┃┃\A┃┃\A┃┃\A┃┃\A┃┃\A┃┃\A┃┃\A┃┃\A┃┃\A┃┃\A┃┃\A┃┃\A┃┃\A┃┃\A┃┃\A┃┃";
+    white-space: pre; 
+    position: absolute; 
+    top: 3em; 
+    right: 0;
+}
+
+/* Multi-line Top Left + Stretcher */
+.callout[data-callout="ascii-monument"] .callout-title::before {
+    content: "┏━┳━┳━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\A┣━┻━┛\A┣┓";
+    position: absolute; 
+    top: 0; 
+    left: 0; 
+    right: 6ch; 
+    white-space: pre; 
+    overflow: hidden;
+}
+
+/* Multi-line Top Right Corner */
+.callout[data-callout="ascii-monument"] .callout-title::after {
+    content: "━┳━┳━┓\A┗━┻━┫\A    ┏┫";
+    position: absolute; 
+    top: 0; 
+    right: 0; 
+    white-space: pre; 
+    text-align: right; 
+    background: var(--background-primary);
+}
+
+/* Multi-line Bottom Left + Stretcher */
+.callout[data-callout="ascii-monument"] .callout-content::before {
+    content: "┣┛\A┣━┳━┓\A┗━┻━┻━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━";
+    position: absolute; 
+    bottom: 0; 
+    left: 0; 
+    right: 7ch; 
+    white-space: pre; 
+    overflow: hidden;
+}
+
+/* Multi-line Bottom Right Corner */
+.callout[data-callout="ascii-monument"] .callout-content::after {
+    content: "    ┗┫\A┏━┳━┫\A━┻━┻━┛";
+    position: absolute; 
+    bottom: 0; 
+    right: 0; 
+    white-space: pre; 
+    text-align: right; 
+    background: var(--background-primary);
+}
+
+.callout[data-callout="ascii-dashed"] {
+    --callout-color: var(--text-normal); 
+    --callout-icon: none;
+    background: transparent; 
+    border: none; 
+    font-family: monospace;
+    padding: 1.5em 2ch; 
+    position: relative; 
+    overflow: hidden; 
+    line-height: 1.2;
+}
+
+.callout[data-callout="ascii-dashed"]::before {
+    content: "┆\A┆\A┆\A┆\A┆\A┆\A┆\A┆\A┆\A┆\A┆\A┆\A┆\A┆\A┆\A┆\A┆\A┆\A┆\A┆\A┆\A┆\A┆\A┆\A┆\A┆\A┆\A┆\A┆\A┆\A┆\A┆\A┆\A┆\A┆\A┆\A┆\A┆\A┆\A┆\A┆\A┆\A┆\A┆\A┆\A┆\A┆\A┆\A┆\A┆";
+    white-space: pre; 
+    position: absolute; 
+    top: 1em; 
+    left: 0;
+}
+
+.callout[data-callout="ascii-dashed"]::after {
+    content: "┆\A┆\A┆\A┆\A┆\A┆\A┆\A┆\A┆\A┆\A┆\A┆\A┆\A┆\A┆\A┆\A┆\A┆\A┆\A┆\A┆\A┆\A┆\A┆\A┆\A┆\A┆\A┆\A┆\A┆\A┆\A┆\A┆\A┆\A┆\A┆\A┆\A┆\A┆\A┆\A┆\A┆\A┆\A┆\A┆\A┆\A┆\A┆\A┆\A┆";
+    white-space: pre; 
+    position: absolute; 
+    top: 1em; 
+    right: 0;
+}
+
+.callout[data-callout="ascii-dashed"] .callout-title::before {
+    content: "╭╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌";
+    position: absolute; 
+    top: 0; 
+    left: 0; 
+    right: 1ch; 
+    white-space: nowrap; 
+    overflow: hidden;
+}
+
+.callout[data-callout="ascii-dashed"] .callout-title::after {
+    content: "╮"; 
+    position: absolute; 
+    top: 0; 
+    right: 0; 
+    background: var(--background-primary);
+}
+
+.callout[data-callout="ascii-dashed"] .callout-content::before {
+    content: "╰╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌";
+    position: absolute; 
+    bottom: 0; 
+    left: 0; 
+    right: 1ch; 
+    white-space: nowrap; 
+    overflow: hidden;
+}
+
+.callout[data-callout="ascii-dashed"] .callout-content::after {
+    content: "╯"; 
+    position: absolute; 
+    bottom: 0; 
+    right: 0; 
+    background: var(--background-primary);
+}
+
+.callout[data-callout="ascii-hollow"] {
+    --callout-color: var(--text-normal); 
+    --callout-icon: none;
+    background: transparent; 
+    border: none; 
+    font-family: monospace;
+    padding: 1.5em 4ch; 
+    position: relative; 
+    overflow: hidden; 
+    line-height: 1.2;
+}
+
+.callout[data-callout="ascii-hollow"]::before {
+    content: "░▒│\A░▒│\A░▒│\A░▒│\A░▒│\A░▒│\A░▒│\A░▒│\A░▒│\A░▒│\A░▒│\A░▒│\A░▒│\A░▒│\A░▒│\A░▒│\A░▒│\A░▒│\A░▒│\A░▒│\A░▒│\A░▒│\A░▒│\A░▒│\A░▒│\A░▒│\A░▒│\A░▒│\A░▒│\A░▒│\A░▒│\A░▒│\A░▒│\A░▒│\A░▒│\A░▒│\A░▒│\A░▒│\A░▒│\A░▒│\A░▒│\A░▒│\A░▒│\A░▒│\A░▒│\A░▒│\A░▒│\A░▒│\A░▒│\A░▒│";
+    white-space: pre; 
+    position: absolute; 
+    top: 1em; 
+    left: 0;
+}
+
+.callout[data-callout="ascii-hollow"]::after {
+    content: "│▒░\A│▒░\A│▒░\A│▒░\A│▒░\A│▒░\A│▒░\A│▒░\A│▒░\A│▒░\A│▒░\A│▒░\A│▒░\A│▒░\A│▒░\A│▒░\A│▒░\A│▒░\A│▒░\A│▒░\A│▒░\A│▒░\A│▒░\A│▒░\A│▒░\A│▒░\A│▒░\A│▒░\A│▒░\A│▒░\A│▒░\A│▒░\A│▒░\A│▒░\A│▒░\A│▒░\A│▒░\A│▒░\A│▒░\A│▒░\A│▒░\A│▒░\A│▒░\A│▒░\A│▒░\A│▒░\A│▒░\A│▒░\A│▒░\A│▒░";
+    white-space: pre; 
+    position: absolute; 
+    top: 1em; 
+    right: 0;
+}
+
+.callout[data-callout="ascii-hollow"] .callout-title::before {
+    content: "░▒▓──────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────";
+    position: absolute; 
+    top: 0; 
+    left: 0; 
+    right: 3ch; 
+    white-space: nowrap; 
+    overflow: hidden;
+}
+
+.callout[data-callout="ascii-hollow"] .callout-title::after {
+    content: "▓▒░"; 
+    position: absolute; 
+    top: 0; 
+    right: 0; 
+    background: var(--background-primary);
+}
+
+.callout[data-callout="ascii-hollow"] .callout-content::before {
+    content: "░▒▓──────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────";
+    position: absolute; 
+    bottom: 0; 
+    left: 0; 
+    right: 3ch; 
+    white-space: nowrap; 
+    overflow: hidden;
+}
+
+.callout[data-callout="ascii-hollow"] .callout-content::after {
+    content: "▓▒░"; 
+    position: absolute; 
+    bottom: 0; 
+    right: 0; 
+    background: var(--background-primary);
+}
+
+.callout[data-callout="ascii-blueprint"] {
+    --callout-color: var(--text-normal); 
+    --callout-icon: none;
+    background: transparent; 
+    border: none; 
+    font-family: monospace;
+    padding: 3.5em 5ch; 
+    position: relative; 
+    overflow: hidden; 
+    line-height: 1.2;
+}
+
+/* Left & Right Double Walls */
+.callout[data-callout="ascii-blueprint"]::before {
+    content: " ┃ ┃\A ┃ ┃\A ┃ ┃\A ┃ ┃\A ┃ ┃\A ┃ ┃\A ┃ ┃\A ┃ ┃\A ┃ ┃\A ┃ ┃\A ┃ ┃\A ┃ ┃\A ┃ ┃\A ┃ ┃\A ┃ ┃\A ┃ ┃\A ┃ ┃\A ┃ ┃\A ┃ ┃\A ┃ ┃\A ┃ ┃\A ┃ ┃\A ┃ ┃\A ┃ ┃\A ┃ ┃\A ┃ ┃\A ┃ ┃\A ┃ ┃\A ┃ ┃\A ┃ ┃\A ┃ ┃\A ┃ ┃\A ┃ ┃\A ┃ ┃\A ┃ ┃\A ┃ ┃";
+    white-space: pre; 
+    position: absolute; 
+    top: 2em; 
+    left: 0;
+}
+
+.callout[data-callout="ascii-blueprint"]::after {
+    content: "┃ ┃ \A┃ ┃ \A┃ ┃ \A┃ ┃ \A┃ ┃ \A┃ ┃ \A┃ ┃ \A┃ ┃ \A┃ ┃ \A┃ ┃ \A┃ ┃ \A┃ ┃ \A┃ ┃ \A┃ ┃ \A┃ ┃ \A┃ ┃ \A┃ ┃ \A┃ ┃ \A┃ ┃ \A┃ ┃ \A┃ ┃ \A┃ ┃ \A┃ ┃ \A┃ ┃ \A┃ ┃ \A┃ ┃ \A┃ ┃ \A┃ ┃ \A┃ ┃ \A┃ ┃ \A┃ ┃ \A┃ ┃ \A┃ ┃ \A┃ ┃ \A┃ ┃ \A┃ ┃ ";
+    white-space: pre; 
+    position: absolute; 
+    top: 2em; 
+    right: 0;
+}
+
+/* Overlapping Top Stretcher */
+.callout[data-callout="ascii-blueprint"] .callout-title::before {
+    content: "   ┏━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\A ┏━╋━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━";
+    position: absolute; 
+    top: 0; 
+    left: 0; 
+    right: 8ch; 
+    white-space: pre; 
+    overflow: hidden;
+}
+
+.callout[data-callout="ascii-blueprint"] .callout-title::after {
+    content: "━━━━┓   \A━━━━╋━┓ ";
+    position: absolute; 
+    top: 0; 
+    right: 0; 
+    white-space: pre; 
+    text-align: right; 
+    background: var(--background-primary);
+}
+
+/* Overlapping Bottom Stretcher */
+.callout[data-callout="ascii-blueprint"] .callout-content::before {
+    content: " ┗━╋━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\A   ┗━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━";
+    position: absolute; 
+    bottom: 0; 
+    left: 0; 
+    right: 8ch; 
+    white-space: pre; 
+    overflow: hidden;
+}
+
+.callout[data-callout="ascii-blueprint"] .callout-content::after {
+    content: "━━━━╋━┛ \A━━━━┛   ";
+    position: absolute; 
+    bottom: 0; 
+    right: 0; 
+    white-space: pre; 
+    text-align: right; 
+    background: var(--background-primary);
+}
+
+.callout[data-callout="ascii-singularity"] {
+    --callout-color: var(--text-normal); 
+    --callout-icon: none;
+    background: transparent; 
+    border: none; 
+    font-family: monospace;
+    padding: 3.5em 5ch; 
+    position: relative; 
+    overflow: hidden; 
+    line-height: 1.2;
+}
+
+/* Alternating Vector Walls */
+.callout[data-callout="ascii-singularity"]::before {
+    content: " ◆  ▲\A ◆  ▼\A ◆  ▲\A ◆  ▼\A ◆  ▲\A ◆  ▼\A ◆  ▲\A ◆  ▼\A ◆  ▲\A ◆  ▼\A ◆  ▲\A ◆  ▼\A ◆  ▲\A ◆  ▼\A ◆  ▲\A ◆  ▼\A ◆  ▲\A ◆  ▼\A ◆  ▲\A ◆  ▼\A ◆  ▲\A ◆  ▼\A ◆  ▲\A ◆  ▼\A ◆  ▲\A ◆  ▼\A ◆  ▲\A ◆  ▼\A ◆  ▲\A ◆  ▼\A ◆  ▲\A ◆  ▼";
+    white-space: pre; 
+    position: absolute; 
+    top: 3em; 
+    left: 0;
+}
+
+.callout[data-callout="ascii-singularity"]::after {
+    content: "◆ \A◆ \A◆ \A◆ \A◆ \A◆ \A◆ \A◆ \A◆ \A◆ \A◆ \A◆ \A◆ \A◆ \A◆ \A◆ \A◆ \A◆ \A◆ \A◆ \A◆ \A◆ \A◆ \A◆ \A◆ \A◆ \A◆ \A◆ \A◆ \A◆ \A◆ \A◆ \A◆ \A◆ \A◆ \A◆ \A◆ \A◆ \A◆ \A◆ \A◆ \A◆ \A◆ \A◆ ";
+    white-space: pre; 
+    position: absolute; 
+    top: 3em; 
+    right: 0;
+}
+
+/* Triple-Stretched Top Diamonds */
+.callout[data-callout="ascii-singularity"] .callout-title::before {
+    content: "       ◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆\A    ◆◆◆ [ ";
+    position: absolute; 
+    top: 0; 
+    left: 0; 
+    right: 8ch; 
+    white-space: pre; 
+    overflow: hidden;
+}
+
+.callout[data-callout="ascii-singularity"] .callout-title::after {
+    content: " ◆◆◆       \A ] ◆◆◆    ";
+    position: absolute; 
+    top: 0; 
+    right: 0; 
+    white-space: pre; 
+    text-align: right; 
+    background: var(--background-primary);
+}
+
+/* The third line of diamonds acts as a hard separator */
+.callout[data-callout="ascii-singularity"] .callout-title { 
+    margin-bottom: 2em; 
+}
+
+.callout[data-callout="ascii-singularity"] .callout-title-inner::after {
+    content: " ◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆";
+    position: absolute; 
+    top: 2.3em; 
+    left: 0; 
+    right: 0; 
+    white-space: nowrap; 
+    overflow: hidden;
+}
+
+/* Triple-Stretched Bottom Diamonds */
+.callout[data-callout="ascii-singularity"] .callout-content::before {
+    content: " ◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆\A    ◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆";
+    position: absolute; 
+    bottom: 0; 
+    left: 0; 
+    right: 0; 
+    white-space: pre; 
+    overflow: hidden;
+}
+
+.callout[data-callout="ascii-corrupted"] {
+    --callout-color: var(--text-normal); 
+    --callout-icon: none;
+    background: transparent; 
+    border: none; 
+    font-family: monospace;
+    padding: 2em 3ch; 
+    position: relative; 
+    overflow: hidden; 
+    line-height: 1.2;
+}
+
+/* Hexadecimal Glitch Wall */
+.callout[data-callout="ascii-corrupted"]::before {
+    content: "║ ╟─[0x00A] >>\A║ ╟─[0x08F] >>\A║ ╟─[0x01A] >>\A║ ╟─[DATA_ERR]\A║ \A║ \A║ \A║ \A║ \A║ \A║ \A║ \A║ \A║ \A║ \A║ \A║ \A║ \A║ \A║ \A║ \A║ \A║ \A║ \A║ \A║ \A║ \A║ \A║ \A║ \A║ \A║ \A║ \A║ \A║ \A║ ";
+    white-space: pre; 
+    position: absolute; 
+    top: 1em; 
+    left: 0;
+}
+
+.callout[data-callout="ascii-corrupted"]::after {
+    content: "║\A║\A║\A║\A║\A║\A║\A║\A║\A║\A║\A║\A║\A║\A║\A║\A║\A║\A║\A║\A║\A║\A║\A║\A║\A║\A║\A║\A║\A║\A║\A║\A║\A║\A║\A║\A║\A║\A║\A║\A║\A║\A║\A║\A║\A║\A║\A║\A║\A║\A║\A║\A║\A║\A║\A║\A║\A║\A║\A║\A║\A║\A║\A║\A║\A║\A║\A║\A║\A║\A║\A║\A║\A║\A║\A║\A║\A║\A║";
+    white-space: pre; 
+    position: absolute; 
+    top: 1em; 
+    right: 0;
+}
+
+.callout[data-callout="ascii-corrupted"] .callout-title::before {
+    content: "╔══════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════";
+    position: absolute; 
+    top: 0; 
+    left: 0; 
+    right: 1ch; 
+    white-space: nowrap; 
+    overflow: hidden;
+}
+
+.callout[data-callout="ascii-corrupted"] .callout-title::after {
+    content: "╗"; 
+    position: absolute; 
+    top: 0; 
+    right: 0; 
+    background: var(--background-primary);
+}
+
+/* Static Encoded Title */
+.callout[data-callout="ascii-corrupted"] .callout-title-inner::before { 
+    content: "[ ▒▒▒ "; 
+    opacity: 0.8; 
+}
+
+.callout[data-callout="ascii-corrupted"] .callout-title-inner::after { 
+    content: " ▒▒▒ ]"; 
+    opacity: 0.8; 
+}
+
+.callout[data-callout="ascii-corrupted"] .callout-content::before {
+    content: "╚══════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════";
+    position: absolute; 
+    bottom: 0; 
+    left: 0; 
+    right: 1ch; 
+    white-space: nowrap; 
+    overflow: hidden;
+}
+
+.callout[data-callout="ascii-corrupted"] .callout-content::after {
+    content: "╝"; 
+    position: absolute; 
+    bottom: 0; 
+    right: 0; 
+    background: var(--background-primary);
+}
+
+.callout[data-callout="ascii-wireframe"] {
+    --callout-color: var(--text-normal); 
+    --callout-icon: none;
+    background: transparent; 
+    border: none; 
+    font-family: monospace;
+    padding: 3.5em 5ch; 
+    position: relative; 
+    overflow: hidden; 
+    line-height: 1.2;
+}
+
+.callout[data-callout="ascii-wireframe"]::before {
+    content: " │ │\A │ │\A │ │\A │ │\A │ │\A │ │\A │ │\A │ │\A │ │\A │ │\A │ │\A │ │\A │ │\A │ │\A │ │\A │ │\A │ │\A │ │\A │ │\A │ │\A │ │\A │ │\A │ │\A │ │\A │ │\A │ │\A │ │\A │ │\A │ │\A │ │\A │ │\A │ │\A │ │\A │ │\A │ │\A │ │";
+    white-space: pre; 
+    position: absolute; 
+    top: 2em; 
+    left: 0;
+}
+
+.callout[data-callout="ascii-wireframe"]::after {
+    content: "│ │ \A│ │ \A│ │ \A│ │ \A│ │ \A│ │ \A│ │ \A│ │ \A│ │ \A│ │ \A│ │ \A│ │ \A│ │ \A│ │ \A│ │ \A│ │ \A│ │ \A│ │ \A│ │ \A│ │ \A│ │ \A│ │ \A│ │ \A│ │ \A│ │ \A│ │ \A│ │ \A│ │ \A│ │ \A│ │ \A│ │ \A│ │ \A│ │ \A│ │ \A│ │ \A│ │ ";
+    white-space: pre; 
+    position: absolute; 
+    top: 2em; 
+    right: 0;
+}
+
+.callout[data-callout="ascii-wireframe"] .callout-title::before {
+    content: "   ┌──────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────\A ┌─┼──────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────";
+    position: absolute; 
+    top: 0; 
+    left: 0; 
+    right: 8ch; 
+    white-space: pre; 
+    overflow: hidden;
+}
+
+.callout[data-callout="ascii-wireframe"] .callout-title::after {
+    content: "──────┐  \A────┐ │  ";
+    position: absolute; 
+    top: 0; 
+    right: 0; 
+    white-space: pre; 
+    text-align: right; 
+    background: var(--background-primary);
+}
+
+.callout[data-callout="ascii-wireframe"] .callout-content::before {
+    content: " │ └──────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────\A └──────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────";
+    position: absolute; 
+    bottom: 0; 
+    left: 0; 
+    right: 8ch; 
+    white-space: pre; 
+    overflow: hidden;
+}
+
+.callout[data-callout="ascii-wireframe"] .callout-content::after {
+    content: "──────┼─┘\A────────┘";
+    position: absolute; 
+    bottom: 0; 
+    right: 0; 
+    white-space: pre; 
+    text-align: right; 
+    background: var(--background-primary);
+}
+
+.callout[data-callout="ascii-hologram"] {
+    --callout-color: var(--text-normal); 
+    --callout-icon: none;
+    background: transparent; 
+    border: none; 
+    font-family: monospace;
+    padding: 2.5em 3ch 4em 3ch; 
+    position: relative; 
+    overflow: hidden; 
+    line-height: 1.2;
+}
+
+.callout[data-callout="ascii-hologram"]::before {
+    content: " ░▒▓\A ░▒▓\A ░▒▓\A ░▒▓\A ░▒▓\A ░▒▓\A ░▒▓\A ░▒▓\A ░▒▓\A ░▒▓\A ░▒▓\A ░▒▓\A ░▒▓\A ░▒▓\A ░▒▓\A ░▒▓\A ░▒▓\A ░▒▓\A ░▒▓\A ░▒▓\A ░▒▓\A ░▒▓\A ░▒▓\A ░▒▓\A ░▒▓\A ░▒▓\A ░▒▓\A ░▒▓\A ░▒▓\A ░▒▓\A ░▒▓\A ░▒▓\A ░▒▓\A ░▒▓\A ░▒▓\A ░▒▓\A ░▒▓\A ░▒▓";
+    white-space: pre; 
+    position: absolute; 
+    top: 1em; 
+    left: 0;
+}
+
+.callout[data-callout="ascii-hologram"]::after {
+    content: "▓▒░\A▓▒░\A▓▒░\A▓▒░\A▓▒░\A▓▒░\A▓▒░\A▓▒░\A▓▒░\A▓▒░\A▓▒░\A▓▒░\A▓▒░\A▓▒░\A▓▒░\A▓▒░\A▓▒░\A▓▒░\A▓▒░\A▓▒░\A▓▒░\A▓▒░\A▓▒░\A▓▒░\A▓▒░\A▓▒░\A▓▒░\A▓▒░\A▓▒░\A▓▒░\A▓▒░\A▓▒░\A▓▒░\A▓▒░\A▓▒░\A▓▒░\A▓▒░\A▓▒░\A▓▒░\A▓▒░\A▓▒░\A▓▒░\A▓▒░\A▓▒░\A▓▒░";
+    white-space: pre; 
+    position: absolute; 
+    top: 1em; 
+    right: 0;
+}
+
+.callout[data-callout="ascii-hologram"] .callout-title::before {
+    content: " ░▒▓██████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████";
+    position: absolute; 
+    top: 0; 
+    left: 0; 
+    right: 5ch; 
+    white-space: nowrap; 
+    overflow: hidden;
+}
+
+.callout[data-callout="ascii-hologram"] .callout-title::after {
+    content: "████▓▒░"; 
+    position: absolute; 
+    top: 0; 
+    right: 0; 
+    background: var(--background-primary);
+}
+
+/* 4-Line Volumetric Projection */
+.callout[data-callout="ascii-hologram"] .callout-content::before {
+    content: " ░▒▓██████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████\A    ╲ ▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒\A     ╲ ░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░\A      ▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀";
+    position: absolute; 
+    bottom: 0; 
+    left: 0; 
+    right: 9ch; 
+    white-space: pre; 
+    overflow: hidden;
+}
+
+.callout[data-callout="ascii-hologram"] .callout-content::after {
+    content: "████▓▒░\A▒▒▒▒ ╱ \A░░░░ ╱  \A▀▀▀▀▀▀   ";
+    position: absolute; 
+    bottom: 0; 
+    right: 0; 
+    white-space: pre; 
+    text-align: right; 
+    background: var(--background-primary);
+}
+
+.callout[data-callout="ascii-cascade"] {
+    --callout-color: var(--text-normal); 
+    --callout-icon: none;
+    background: transparent; 
+    border: none; 
+    font-family: monospace;
+    padding: 2em 12ch; 
+    position: relative; 
+    overflow: hidden; 
+    line-height: 1.2;
+}
+
+/* Cascading Left Matrix */
+.callout[data-callout="ascii-cascade"]::before {
+    content: "║ ╎ ┊ ╎ \A║ ╎ ┊ ╎ \A║ ╎ ┊ ╎ \A║ ╎ ┊ ╎ \A║ ╎ ┊ ╎ \A║ ╎ ┊ ╎ \A║ ╎ ┊ ╎ \A║ ╎ ┊ ╎ \A║ ╎ ┊ ╎ \A║ ╎ ┊ ╎ \A║ ╎ ┊ ╎ \A║ ╎ ┊ ╎ \A║ ╎ ┊ ╎ \A║ ╎ ┊ ╎ \A║ ╎ ┊ ╎ \A║ ╎ ┊ ╎ \A║ ╎ ┊ ╎ \A║ ╎ ┊ ╎ \A║ ╎ ┊ ╎ \A║ ╎ ┊ ╎ \A║ ╎ ┊ ╎ \A║ ╎ ┊ ╎ \A║ ╎ ┊ ╎ \A║ ╎ ┊ ╎ \A║ ╎ ┊ ╎ \A║ ╎ ┊ ╎ \A║ ╎ ┊ ╎ \A║ ╎ ┊ ╎ \A║ ╎ ┊ ╎ \A║ ╎ ┊ ╎ \A║ ╎ ┊ ╎ \A║ ╎ ┊ ╎ ";
+    white-space: pre; 
+    position: absolute; 
+    top: 0; 
+    left: 0; 
+    opacity: 0.7;
+}
+
+/* Cascading Right Matrix */
+.callout[data-callout="ascii-cascade"]::after {
+    content: " ╎ ┊ ╎ ║\A ╎ ┊ ╎ ║\A ╎ ┊ ╎ ║\A ╎ ┊ ╎ ║\A ╎ ┊ ╎ ║\A ╎ ┊ ╎ ║\A ╎ ┊ ╎ ║\A ╎ ┊ ╎ ║\A ╎ ┊ ╎ ║\A ╎ ┊ ╎ ║\A ╎ ┊ ╎ ║\A ╎ ┊ ╎ ║\A ╎ ┊ ╎ ║\A ╎ ┊ ╎ ║\A ╎ ┊ ╎ ║\A ╎ ┊ ╎ ║\A ╎ ┊ ╎ ║\A ╎ ┊ ╎ ║\A ╎ ┊ ╎ ║\A ╎ ┊ ╎ ║\A ╎ ┊ ╎ ║\A ╎ ┊ ╎ ║\A ╎ ┊ ╎ ║\A ╎ ┊ ╎ ║\A ╎ ┊ ╎ ║\A ╎ ┊ ╎ ║\A ╎ ┊ ╎ ║\A ╎ ┊ ╎ ║\A ╎ ┊ ╎ ║\A ╎ ┊ ╎ ║\A ╎ ┊ ╎ ║\A ╎ ┊ ╎ ║";
+    white-space: pre; 
+    position: absolute; 
+    top: 0; 
+    right: 0; 
+    opacity: 0.7;
+}
+
+.callout[data-callout="ascii-overhang"] {
+    --callout-color: var(--text-normal); 
+    --callout-icon: none;
+    background: transparent; 
+    border: none; 
+    font-family: monospace;
+    padding: 4.5em 4ch 2em 4ch; 
+    position: relative; 
+    overflow: hidden; 
+    line-height: 1.2;
+}
+
+/* Left & Right Shadow Pillars */
+.callout[data-callout="ascii-overhang"]::before {
+    content: "░░\A░░\A░░\A░░\A░░\A░░\A░░\A░░\A░░\A░░\A░░\A░░\A░░\A░░\A░░\A░░\A░░\A░░\A░░\A░░\A░░\A░░\A░░\A░░\A░░\A░░\A░░\A░░\A░░\A░░\A░░\A░░\A░░\A░░\A░░\A░░\A░░\A░░\A░░\A░░";
+    white-space: pre; 
+    position: absolute; 
+    top: 3em; 
+    left: 0;
+}
+
+.callout[data-callout="ascii-overhang"]::after {
+    content: "░░\A░░\A░░\A░░\A░░\A░░\A░░\A░░\A░░\A░░\A░░\A░░\A░░\A░░\A░░\A░░\A░░\A░░\A░░\A░░\A░░\A░░\A░░\A░░\A░░\A░░\A░░\A░░\A░░\A░░\A░░\A░░\A░░\A░░\A░░\A░░\A░░\A░░\A░░\A░░";
+    white-space: pre; 
+    position: absolute; 
+    top: 3em; 
+    right: 0;
+}
+
+/* 3-Tiered Overhanging Plate */
+.callout[data-callout="ascii-overhang"] .callout-title::before {
+    content: "██████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████\A▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓\A▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒";
+    position: absolute; 
+    top: 0; 
+    left: 0; 
+    right: 0; 
+    white-space: pre; 
+    overflow: hidden; 
+    line-height: 1.1;
+}
+
+/* Floor Boundary */
+.callout[data-callout="ascii-overhang"] .callout-content::before {
+    content: "╰╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌";
+    position: absolute; 
+    bottom: 0; 
+    left: 0; 
+    right: 1ch; 
+    white-space: nowrap; 
+    overflow: hidden;
+}
+
+.callout[data-callout="ascii-overhang"] .callout-content::after {
+    content: "╯"; 
+    position: absolute; 
+    bottom: 0; 
+    right: 0; 
+    background: var(--background-primary);
+}
+
+.callout[data-callout="ascii-makocore"] {
+    --callout-color: var(--text-normal); 
+    --callout-icon: none;
+    background: transparent; 
+    border: none; 
+    font-family: monospace;
+    padding: 3.5em 5ch 2em 5ch; 
+    position: relative; 
+    overflow: hidden; 
+    line-height: 1.2;
+}
+
+/* Pipe Walls */
+.callout[data-callout="ascii-makocore"]::before {
+    content: "│ ║\A│ ║\A│ ║\A│ ║\A│ ║\A│ ║\A│ ║\A│ ║\A│ ║\A│ ║\A│ ║\A│ ║\A│ ║\A│ ║\A│ ║\A│ ║\A│ ║\A│ ║\A│ ║\A│ ║\A│ ║\A│ ║\A│ ║\A│ ║\A│ ║\A│ ║\A│ ║\A│ ║\A│ ║\A│ ║\A│ ║\A│ ║\A│ ║\A│ ║\A│ ║\A│ ║\A│ ║\A│ ║\A│ ║\A│ ║";
+    white-space: pre; 
+    position: absolute; 
+    top: 2em; 
+    left: 0;
+}
+
+.callout[data-callout="ascii-makocore"]::after {
+    content: "║ │\A║ │\A║ │\A║ │\A║ │\A║ │\A║ │\A║ │\A║ │\A║ │\A║ │\A║ │\A║ │\A║ │\A║ │\A║ │\A║ │\A║ │\A║ │\A║ │\A║ │\A║ │\A║ │\A║ │\A║ │\A║ │\A║ │\A║ │\A║ │\A║ │\A║ │\A║ │\A║ │\A║ │\A║ │\A║ │\A║ │\A║ │\A║ │\A║ │";
+    white-space: pre; 
+    position: absolute; 
+    top: 2em; 
+    right: 0;
+}
+
+/* Heavy Containment Top */
+.callout[data-callout="ascii-makocore"] .callout-title::before {
+    content: "╒══════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════\A╞═╦══════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════";
+    position: absolute; 
+    top: 0; 
+    left: 0; 
+    right: 4ch; 
+    white-space: pre; 
+    overflow: hidden;
+}
+
+.callout[data-callout="ascii-makocore"] .callout-title::after {
+    content: "╕\A╦═╡"; 
+    position: absolute; 
+    top: 0; 
+    right: 0; 
+    white-space: pre; 
+    text-align: right; 
+    background: var(--background-primary);
+}
+
+.callout[data-callout="ascii-makocore"] .callout-title-inner::before { 
+    content: "╒══[ ⚠ "; 
+    position: absolute; 
+    top: 0; 
+    left: 0; 
+    background: var(--background-primary); 
+    padding-right: 1ch;
+}
+
+.callout[data-callout="ascii-makocore"] .callout-title-inner::after { 
+    content: " ]"; 
+    background: var(--background-primary); 
+}
+
+/* Sector Bottom Boundary */
+.callout[data-callout="ascii-makocore"] .callout-content::before {
+    content: "╞═╩══════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════\A╘══════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════";
+    position: absolute; 
+    bottom: 0; 
+    left: 0; 
+    right: 29ch; 
+    white-space: pre; 
+    overflow: hidden;
+}
+
+.callout[data-callout="ascii-makocore"] .callout-content::after {
+    content: "╩═╡\A[ SECTOR_1_MAKO_PLANT ]═══╛"; 
+    position: absolute; 
+    bottom: 0; 
+    right: 0; 
+    white-space: pre; 
+    text-align: right; 
+    background: var(--background-primary);
+}
+
+.callout[data-callout="ascii-gilded"] {
+    --callout-color: var(--text-normal); 
+    --callout-icon: none;
+    background: transparent; 
+    border: none; 
+    font-family: monospace;
+    padding: 2em 4ch; 
+    position: relative; 
+    overflow: hidden; 
+    line-height: 1.2;
+}
+
+/* Decaying Walls */
+.callout[data-callout="ascii-gilded"]::before {
+    content: "┃▓┃\A┃▒┃\A┃░┃\A┣━┫\A┃ ┃\A┃ ┃\A┃ ┃\A┃ ┃\A┃ ┃\A┃ ┃\A┃ ┃\A┃ ┃\A┃ ┃\A┃ ┃\A┃ ┃\A┃ ┃\A┃ ┃\A┃ ┃\A┃ ┃\A┃ ┃\A┃ ┃\A┃ ┃\A┃ ┃\A┃ ┃\A┃ ┃\A┃ ┃\A┃ ┃\A┃ ┃\A┃ ┃\A┃ ┃\A┃ ┃\A┃ ┃\A┃ ┃\A┃ ┃\A┃ ┃\A┃ ┃\A┃ ┃\A┃ ┃\A┃ ┃\A┃ ┃";
+    white-space: pre; 
+    position: absolute; 
+    top: 1em; 
+    left: 0;
+}
+
+.callout[data-callout="ascii-gilded"]::after {
+    content: "┃▓┃\A┃▒┃\A┃░┃\A┣━┫\A┃ ┃\A┃ ┃\A┃ ┃\A┃ ┃\A┃ ┃\A┃ ┃\A┃ ┃\A┃ ┃\A┃ ┃\A┃ ┃\A┃ ┃\A┃ ┃\A┃ ┃\A┃ ┃\A┃ ┃\A┃ ┃\A┃ ┃\A┃ ┃\A┃ ┃\A┃ ┃\A┃ ┃\A┃ ┃\A┃ ┃\A┃ ┃\A┃ ┃\A┃ ┃\A┃ ┃\A┃ ┃\A┃ ┃\A┃ ┃\A┃ ┃\A┃ ┃\A┃ ┃\A┃ ┃\A┃ ┃\A┃ ┃";
+    white-space: pre; 
+    position: absolute; 
+    top: 1em; 
+    right: 0;
+}
+
+.callout[data-callout="ascii-gilded"] .callout-title::before {
+    content: "┏━┳━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━";
+    position: absolute; 
+    top: 0; 
+    left: 0; 
+    right: 3ch; 
+    white-space: nowrap; 
+    overflow: hidden;
+}
+
+.callout[data-callout="ascii-gilded"] .callout-title::after {
+    content: "┳━┓"; 
+    position: absolute; 
+    top: 0; 
+    right: 0; 
+    background: var(--background-primary);
+}
+
+.callout[data-callout="ascii-gilded"] .callout-content::before {
+    content: "┗━┻━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━";
+    position: absolute; 
+    bottom: 0; 
+    left: 0; 
+    right: 3ch; 
+    white-space: nowrap; 
+    overflow: hidden;
+}
+
+.callout[data-callout="ascii-gilded"] .callout-content::after {
+    content: "┻━┛"; 
+    position: absolute; 
+    bottom: 0; 
+    right: 0; 
+    background: var(--background-primary);
+}
+
+.callout[data-callout="ascii-arasaka"] {
+    --callout-color: var(--text-normal); 
+    --callout-icon: none;
+    background: transparent; 
+    border: none; 
+    font-family: monospace;
+    padding: 1.5em 3ch; 
+    position: relative; 
+    overflow: hidden; 
+    line-height: 1.2;
+}
+
+/* Bleeding Data Sectors */
+.callout[data-callout="ascii-arasaka"]::before {
+    content: "⡇\A⡇\A⡇\A⡇\A⡇\A⡇\A⡇\A⡇\A⡇\A⡇\A⡇\A⡇\A⡇\A⡇\A⡇\A⡇\A⡇\A⡇\A⡇\A⡇\A⡇\A⡇\A⡇\A⡇\A⡇\A⡇\A⡇\A⡇\A⡇\A⡇\A⡇\A⡇\A⡇\A⡇\A⡇\A⡇\A⡇\A⡇\A⡇\A⡇";
+    white-space: pre; 
+    position: absolute; 
+    top: 1em; 
+    left: 0;
+}
+
+.callout[data-callout="ascii-arasaka"]::after {
+    content: "⡇\A⡇\A⡇\A⡇\A⡇\A⡇\A⡇\A⡇\A⡇\A⡇\A⡇\A⡇\A⡇\A⡇\A⡇\A⡇\A⡇\A⡇\A⡇\A⡇\A⡇\A⡇\A⡇\A⡇\A⡇\A⡇\A⡇\A⡇\A⡇\A⡇\A⡇\A⡇\A⡇\A⡇\A⡇\A⡇\A⡇\A⡇\A⡇\A⡇";
+    white-space: pre; 
+    position: absolute; 
+    top: 1em; 
+    right: 0;
+}
+
+.callout[data-callout="ascii-arasaka"] .callout-title::before {
+    content: "█▓▒░ ARASAKA_DB_ERR ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━";
+    position: absolute; 
+    top: 0; 
+    left: 0; 
+    right: 5ch; 
+    white-space: nowrap; 
+    overflow: hidden;
+}
+
+.callout[data-callout="ascii-arasaka"] .callout-title::after {
+    content: " ░▒▓█"; 
+    position: absolute; 
+    top: 0; 
+    right: 0; 
+    background: var(--background-primary);
+}
+
+.callout[data-callout="ascii-arasaka"] .callout-content::before {
+    content: "█▓▒░ ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━";
+    position: absolute; 
+    bottom: 0; 
+    left: 0; 
+    right: 16ch; 
+    white-space: nowrap; 
+    overflow: hidden;
+}
+
+.callout[data-callout="ascii-arasaka"] .callout-content::after {
+    content: " REBOOTING_ ░▒▓█"; 
+    position: absolute; 
+    bottom: 0; 
+    right: 0; 
+    background: var(--background-primary);
+}
+
+.callout[data-callout="ascii-override"] {
+    --callout-color: var(--text-normal); 
+    --callout-icon: none;
+    background: transparent; 
+    border: none; 
+    font-family: monospace;
+    padding: 1.5em 3ch; 
+    position: relative; 
+    overflow: hidden; 
+    line-height: 1.2;
+}
+
+.callout[data-callout="ascii-override"]::before {
+    content: "▌\A▌\A▌\A▌\A▌\A▌\A▌\A▌\A▌\A▌\A▌\A▌\A▌\A▌\A▌\A▌\A▌\A▌\A▌\A▌\A▌\A▌\A▌\A▌\A▌\A▌\A▌\A▌\A▌\A▌\A▌\A▌\A▌\A▌\A▌\A▌\A▌\A▌\A▌\A▌";
+    white-space: pre; 
+    position: absolute; 
+    top: 1em; 
+    left: 0;
+}
+
+.callout[data-callout="ascii-override"]::after {
+    content: "▐\A▐\A▐\A▐\A▐\A▐\A▐\A▐\A▐\A▐\A▐\A▐\A▐\A▐\A▐\A▐\A▐\A▐\A▐\A▐\A▐\A▐\A▐\A▐\A▐\A▐\A▐\A▐\A▐\A▐\A▐\A▐\A▐\A▐\A▐\A▐\A▐\A▐\A▐\A▐";
+    white-space: pre; 
+    position: absolute; 
+    top: 1em; 
+    right: 0;
+}
+
+.callout[data-callout="ascii-override"] .callout-title::before {
+    content: "▶_ SYSTEM.OVERRIDE_ ▰▰▰▰▰▰▰▰▰▰▰▰▰▰▰▰▰▰▰▰▰▰▰▰▰▰▰▰▰▰▰▰▰▰▰▰▰▰▰▰▰▰▰▰▰▰▰▰▰▰▰▰▰▰▰▰▰▰▰▰▰▰▰▰▰▰▰▰▰▰▰▰▰▰▰▰▰▰▰▰▰▰▰▰▰▰▰▰▰▰▰▰▰▰▰▰▰▰▰▰▰▰▰▰▰▰▰▰▰▰▰▰▰▰▰▰▰▰▰▰▰▰▰▰▰▰▰▰▰▰▰▰▰▰▰▰▰▰▰▰▰▰▰▰▰▰▰▰▰▰▰▰▰▰▰▰▰▰▰▰▰▰▰▰▰▰▰▰▰▰▰▰▰▰▰▰▰▰▰▰▰▰▰▰▰▰▰▰▰▰";
+    position: absolute; 
+    top: 0; 
+    left: 0; 
+    right: 0; 
+    white-space: nowrap; 
+    overflow: hidden;
+}
+
+.callout[data-callout="ascii-override"] .callout-content::before {
+    content: "▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀";
+    position: absolute; 
+    bottom: 0; 
+    left: 0; 
+    right: 6ch; 
+    white-space: nowrap; 
+    overflow: hidden;
+}
+
+.callout[data-callout="ascii-override"] .callout-content::after {
+    content: " ▗▄▄▄▖"; 
+    position: absolute; 
+    bottom: 0; 
+    right: 0; 
+    background: var(--background-primary);
+}
+
+.callout[data-callout="ascii-cyberscan"] {
+    --callout-color: var(--text-normal); 
+    --callout-icon: none;
+    background: transparent; 
+    border: none; 
+    font-family: monospace;
+    padding: 1.5em 3ch; 
+    position: relative; 
+    overflow: hidden; 
+    line-height: 1.2;
+}
+
+.callout[data-callout="ascii-cyberscan"]::before {
+    content: "█\A█\A█\A█\A█\A█\A█\A█\A█\A█\A█\A█\A█\A█\A█\A█\A█\A█\A█\A█\A█\A█\A█\A█\A█\A█\A█\A█\A█\A█\A█\A█\A█\A█\A█\A█\A█\A█\A█\A█";
+    white-space: pre; 
+    position: absolute; 
+    top: 1em; 
+    left: 0;
+}
+
+.callout[data-callout="ascii-cyberscan"]::after {
+    content: "█\A█\A█\A█\A█\A█\A█\A█\A█\A█\A█\A█\A█\A█\A█\A█\A█\A█\A█\A█\A█\A█\A█\A█\A█\A█\A█\A█\A█\A█\A█\A█\A█\A█\A█\A█\A█\A█\A█\A█";
+    white-space: pre; 
+    position: absolute; 
+    top: 1em; 
+    right: 0;
+}
+
+/* Barcode Bounds */
+.callout[data-callout="ascii-cyberscan"] .callout-title::before {
+    content: "▐▍▎▏▎▍▌▋▊▉████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████";
+    position: absolute; 
+    top: 0; 
+    left: 0; 
+    right: 12ch; 
+    white-space: nowrap; 
+    overflow: hidden;
+}
+
+.callout[data-callout="ascii-cyberscan"] .callout-title::after {
+    content: "██▉▊▋▌▍▎▏▎▍▐"; 
+    position: absolute; 
+    top: 0; 
+    right: 0; 
+    background: var(--background-primary);
+}
+
+.callout[data-callout="ascii-cyberscan"] .callout-content::before {
+    content: "▐▍▎▏▎▍▌▋▊▉████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████";
+    position: absolute; 
+    bottom: 0; 
+    left: 0; 
+    right: 12ch; 
+    white-space: nowrap; 
+    overflow: hidden;
+}
+
+.callout[data-callout="ascii-cyberscan"] .callout-content::after {
+    content: "██▉▊▋▌▍▎▏▎▍▐"; 
+    position: absolute; 
+    bottom: 0; 
+    right: 0; 
+    background: var(--background-primary);
+}
+
+.callout[data-callout="ascii-calligraph"] {
+    --callout-color: var(--text-normal); 
+    --callout-icon: none;
+    background: transparent; 
+    border: none; 
+    font-family: monospace;
+    padding: 2.5em 5ch; 
+    position: relative; 
+    overflow: hidden; 
+    line-height: 1.2;
+}
+
+/* Interwoven Pillars */
+.callout[data-callout="ascii-calligraph"]::before {
+    content: " ⹜⎧\A﴾¢\A ⹚⎩\A ⹜⎧\A﴾¢\A ⹚⎩\A ⹜⎧\A﴾¢\A ⹚⎩\A ⹜⎧\A﴾¢\A ⹚⎩\A ⹜⎧\A﴾¢\A ⹚⎩\A ⹜⎧\A﴾¢\A ⹚⎩\A ⹜⎧\A﴾¢\A ⹚⎩\A ⹜⎧\A﴾¢\A ⹚⎩";
+    white-space: pre; 
+    position: absolute; 
+    top: 1.5em; 
+    left: 0;
+}
+
+.callout[data-callout="ascii-calligraph"]::after {
+    content: "⎫⹛ \A ¢﴿\A⎭⹙ \A⎫⹛ \A ¢﴿\A⎭⹙ \A⎫⹛ \A ¢﴿\A⎭⹙ \A⎫⹛ \A ¢﴿\A⎭⹙ \A⎫⹛ \A ¢﴿\A⎭⹙ \A⎫⹛ \A ¢﴿\A⎭⹙ \A⎫⹛ \A ¢﴿\A⎭⹙ \A⎫⹛ \A ¢﴿\A⎭⹙ ";
+    white-space: pre; 
+    position: absolute; 
+    top: 1.5em; 
+    right: 0; 
+    text-align: right;
+}
+
+/* Floating Corner Caps */
+.callout[data-callout="ascii-calligraph"] .callout-title::before {
+    content: "      ⎰"; 
+    position: absolute; 
+    top: 0; 
+    left: 0;
+}
+
+.callout[data-callout="ascii-calligraph"] .callout-title::after {
+    content: "⎱      "; 
+    position: absolute; 
+    top: 0; 
+    right: 0;
+}
+
+.callout[data-callout="ascii-calligraph"] .callout-content::before {
+    content: "      ⎱"; 
+    position: absolute; 
+    bottom: 0; 
+    left: 0;
+}
+
+.callout[data-callout="ascii-calligraph"] .callout-content::after {
+    content: "⎰      "; 
+    position: absolute; 
+    bottom: 0; 
+    right: 0;
+}
+
+.callout[data-callout="ascii-resonance"] {
+    --callout-color: var(--text-normal); 
+    --callout-icon: none;
+    background: transparent; 
+    border: none; 
+    font-family: monospace;
+    padding: 2em 3ch; 
+    position: relative; 
+    overflow: hidden; 
+    line-height: 1.2;
+}
+
+.callout[data-callout="ascii-resonance"]::before {
+    content: "║\A╟\A║\A║\A║\A║\A║\A║\A║\A║\A║\A║\A║\A║\A║\A║\A║\A║\A║\A║\A║\A║\A║\A║\A║\A║\A║\A║\A║\A║";
+    white-space: pre; 
+    position: absolute; 
+    top: 1em; 
+    left: 0;
+}
+
+.callout[data-callout="ascii-resonance"]::after {
+    content: "║\A╢\A║\A║\A║\A║\A║\A║\A║\A║\A║\A║\A║\A║\A║\A║\A║\A║\A║\A║\A║\A║\A║\A║\A║\A║\A║\A║\A║\A║";
+    white-space: pre; 
+    position: absolute; 
+    top: 1em; 
+    right: 0;
+}
+
+.callout[data-callout="ascii-resonance"] .callout-title::before {
+    content: "╔══════════════════[ ⌠ R E S O N A N C E ⌡ ]═════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════";
+    position: absolute; 
+    top: 0; 
+    left: 0; 
+    right: 1ch; 
+    white-space: nowrap; 
+    overflow: hidden;
+}
+
+.callout[data-callout="ascii-resonance"] .callout-title::after {
+    content: "╗"; 
+    position: absolute; 
+    top: 0; 
+    right: 0; 
+    background: var(--background-primary);
+}
+
+.callout[data-callout="ascii-resonance"] .callout-content::before {
+    content: "╚════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════";
+    position: absolute; 
+    bottom: 0; 
+    left: 0; 
+    right: 1ch; 
+    white-space: nowrap; 
+    overflow: hidden;
+}
+
+.callout[data-callout="ascii-resonance"] .callout-content::after {
+    content: "╝"; 
+    position: absolute; 
+    bottom: 0; 
+    right: 0; 
+    background: var(--background-primary);
+}
+
+.callout[data-callout="ascii-siphon"] {
+    --callout-color: var(--text-normal); 
+    --callout-icon: none;
+    background: transparent; 
+    border: none; 
+    font-family: monospace;
+    padding: 2em 3ch 4em 3ch; 
+    position: relative; 
+    overflow: hidden; 
+    line-height: 1.2;
+}
+
+.callout[data-callout="ascii-siphon"]::before {
+    content: "║\A║\A║\A║\A║\A║\A║\A║\A║\A║\A║\A║\A║\A║\A║\A║\A║\A║\A║\A║\A║\A║\A║\A║\A║\A║\A║\A║\A║\A║\A║\A║";
+    white-space: pre; 
+    position: absolute; 
+    top: 1em; 
+    left: 0;
+}
+
+.callout[data-callout="ascii-siphon"]::after {
+    content: "║\A║\A║\A║\A║\A║\A║\A║\A║\A║\A║\A║\A║\A║\A║\A║\A║\A║\A║\A║\A║\A║\A║\A║\A║\A║\A║\A║\A║\A║\A║\A║";
+    white-space: pre; 
+    position: absolute; 
+    top: 1em; 
+    right: 0;
+}
+
+.callout[data-callout="ascii-siphon"] .callout-title::before {
+    content: "╓──────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────";
+    position: absolute; 
+    top: 0; 
+    left: 0; 
+    right: 1ch; 
+    white-space: nowrap; 
+    overflow: hidden;
+}
+
+.callout[data-callout="ascii-siphon"] .callout-title::after {
+    content: "╖"; 
+    position: absolute; 
+    top: 0; 
+    right: 0; 
+    background: var(--background-primary);
+}
+
+/* 3-Line Siphon Exhaust */
+.callout[data-callout="ascii-siphon"] .callout-content::before {
+    content: "╙──╖─────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────\A   ║ ▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒\A   ╚═══════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════";
+    position: absolute; 
+    bottom: 0; 
+    left: 0; 
+    right: 4ch; 
+    white-space: pre; 
+    overflow: hidden;
+}
+
+.callout[data-callout="ascii-siphon"] .callout-content::after {
+    content: "╖──╜\A▒▒ ║\A═══╝"; 
+    position: absolute; 
+    bottom: 0; 
+    right: 0; 
+    white-space: pre; 
+    text-align: right; 
+    background: var(--background-primary);
+}
+
+.callout[data-callout="ascii-magitekk"] {
+    --callout-color: var(--text-normal); 
+    --callout-icon: none;
+    background: transparent; 
+    border: none; 
+    font-family: monospace;
+    padding: 2em 5ch; 
+    position: relative; 
+    overflow: hidden; 
+    line-height: 1.2;
+}
+
+.callout[data-callout="ascii-magitekk"]::before {
+    content: "║\A║  ▞▞\A║\A║\A║\A║  ▞▞\A║\A║\A║\A║  ▞▞\A║\A║\A║\A║  ▞▞\A║\A║\A║\A║  ▞▞\A║\A║\A║\A║  ▞▞\A║\A║\A║\A║  ▞▞\A║\A║\A║\A║  ▞▞\A║";
+    white-space: pre; 
+    position: absolute; 
+    top: 1em; 
+    left: 0;
+}
+
+.callout[data-callout="ascii-magitekk"]::after {
+    content: "║\A▞▞  ║\A║\A║\A║\A▞▞  ║\A║\A║\A║\A▞▞  ║\A║\A║\A║\A▞▞  ║\A║\A║\A║\A▞▞  ║\A║\A║\A║\A▞▞  ║\A║\A║\A║\A▞▞  ║\A║\A║\A║\A▞▞  ║\A║";
+    white-space: pre; 
+    position: absolute; 
+    top: 1em; 
+    right: 0; 
+    text-align: right;
+}
+
+.callout[data-callout="ascii-magitekk"] .callout-title::before {
+    content: "╔════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════";
+    position: absolute; 
+    top: 0; 
+    left: 0; 
+    right: 1ch; 
+    white-space: nowrap; 
+    overflow: hidden;
+}
+
+.callout[data-callout="ascii-magitekk"] .callout-title::after {
+    content: "╗"; 
+    position: absolute; 
+    top: 0; 
+    right: 0; 
+    background: var(--background-primary);
+}
+
+.callout[data-callout="ascii-magitekk"] .callout-title-inner::before { 
+    content: "[ ✧ MAGI-TEKK ✧ ]"; 
+    position: absolute; 
+    top: 0; 
+    left: 10ch; 
+    background: var(--background-primary); 
+    padding: 0 1ch; 
+}
+
+.callout[data-callout="ascii-magitekk"] .callout-content::before {
+    content: "╚════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════";
+    position: absolute; 
+    bottom: 0; 
+    left: 0; 
+    right: 1ch; 
+    white-space: nowrap; 
+    overflow: hidden;
+}
+
+.callout[data-callout="ascii-magitekk"] .callout-content::after {
+    content: "╝"; 
+    position: absolute; 
+    bottom: 0; 
+    right: 0; 
+    background: var(--background-primary);
+}
+
+.callout[data-callout="ascii-stardust"] {
+    --callout-color: var(--text-normal); 
+    --callout-icon: none;
+    background: transparent; 
+    border: none; 
+    font-family: monospace;
+    padding: 2em 3ch; 
+    position: relative; 
+    overflow: hidden; 
+    line-height: 1.2;
+}
+
+.callout[data-callout="ascii-stardust"]::before {
+    content: "╏\A╏\A╏\A╏\A╏\A╏\A╏\A╏\A╏\A╏\A╏\A╏\A╏\A╏\A╏\A╏\A╏\A╏\A╏\A╏\A╏\A╏\A╏\A╏\A╏\A╏\A╏\A╏\A╏\A╏\A╏\A╏";
+    white-space: pre; 
+    position: absolute; 
+    top: 1em; 
+    left: 0;
+}
+
+.callout[data-callout="ascii-stardust"]::after {
+    content: "╏\A╏\A╏\A╏\A╏\A╏\A╏\A╏\A╏\A╏\A╏\A╏\A╏\A╏\A╏\A╏\A╏\A╏\A╏\A╏\A╏\A╏\A╏\A╏\A╏\A╏\A╏\A╏\A╏\A╏\A╏\A╏";
+    white-space: pre; 
+    position: absolute; 
+    top: 1em; 
+    right: 0;
+}
+
+.callout[data-callout="ascii-stardust"] .callout-title::before {
+    content: "⌖ ━━╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍";
+    position: absolute; 
+    top: 0; 
+    left: 0; 
+    right: 6ch; 
+    white-space: nowrap; 
+    overflow: hidden;
+}
+
+.callout[data-callout="ascii-stardust"] .callout-title::after {
+    content: "╍╍━━ ⌖"; 
+    position: absolute; 
+    top: 0; 
+    right: 0; 
+    background: var(--background-primary);
+}
+
+.callout[data-callout="ascii-stardust"] .callout-content::before {
+    content: "⌖ ━━╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍";
+    position: absolute; 
+    bottom: 0; 
+    left: 0; 
+    right: 6ch; 
+    white-space: nowrap; 
+    overflow: hidden;
+}
+
+.callout[data-callout="ascii-stardust"] .callout-content::after {
+    content: "╍╍━━ ⌖"; 
+    position: absolute; 
+    bottom: 0; 
+    right: 0; 
+    background: var(--background-primary);
+}
+
+.callout[data-callout="ascii-fantasy"] {
+    --callout-color: var(--text-normal); 
+    --callout-icon: none;
+    background: transparent; 
+    border: none; 
+    font-family: monospace;
+    padding: 2em 3ch; 
+    position: relative; 
+    overflow: hidden; 
+    line-height: 1.2;
+}
+
+.callout[data-callout="ascii-fantasy"]::before {
+    content: "│\A│\A│\A│\A│\A│\A│\A│\A│\A│\A│\A│\A│\A│\A│\A│\A│\A│\A│\A│\A│\A│\A│\A│\A│\A│\A│\A│\A│\A│\A│\A│";
+    white-space: pre; 
+    position: absolute; 
+    top: 1em; 
+    left: 0;
+}
+
+.callout[data-callout="ascii-fantasy"]::after {
+    content: "│\A│\A│\A│\A│\A│\A│\A│\A│\A│\A│\A│\A│\A│\A│\A│\A│\A│\A│\A│\A│\A│\A│\A│\A│\A│\A│\A│\A│\A│\A│\A│";
+    white-space: pre; 
+    position: absolute; 
+    top: 1em; 
+    right: 0;
+}
+
+.callout[data-callout="ascii-fantasy"] .callout-title::before {
+    content: "꧁༺ ──────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────";
+    position: absolute; 
+    top: 0; 
+    left: 0; 
+    right: 4ch; 
+    white-space: nowrap; 
+    overflow: hidden;
+}
+
+.callout[data-callout="ascii-fantasy"] .callout-title::after {
+    content: " ༻꧂"; 
+    position: absolute; 
+    top: 0; 
+    right: 0; 
+    background: var(--background-primary);
+}
+
+.callout[data-callout="ascii-fantasy"] .callout-content::before {
+    content: "꧁༺ ──────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────";
+    position: absolute; 
+    bottom: 0; 
+    left: 0; 
+    right: 4ch; 
+    white-space: nowrap; 
+    overflow: hidden;
+}
+
+.callout[data-callout="ascii-fantasy"] .callout-content::after {
+    content: " ༻꧂"; 
+    position: absolute; 
+    bottom: 0; 
+    right: 0; 
+    background: var(--background-primary);
+}
+
+.callout[data-callout="ascii-poetry"] {
+    --callout-color: var(--text-normal); 
+    --callout-icon: none;
+    background: transparent; 
+    border: none; 
+    font-family: monospace;
+    padding: 2em 3ch; 
+    position: relative; 
+    overflow: hidden; 
+    line-height: 1.2;
+}
+
+.callout[data-callout="ascii-poetry"]::before {
+    content: "│\A│\A│\A│\A│\A│\A│\A│\A│\A│\A│\A│\A│\A│\A│\A│\A│\A│\A│\A│\A│\A│\A│\A│\A│\A│\A│\A│\A│\A│\A│\A│";
+    white-space: pre; 
+    position: absolute; 
+    top: 1em; 
+    left: 0;
+}
+
+.callout[data-callout="ascii-poetry"]::after {
+    content: "│\A│\A│\A│\A│\A│\A│\A│\A│\A│\A│\A│\A│\A│\A│\A│\A│\A│\A│\A│\A│\A│\A│\A│\A│\A│\A│\A│\A│\A│\A│\A│";
+    white-space: pre; 
+    position: absolute; 
+    top: 1em; 
+    right: 0;
+}
+
+.callout[data-callout="ascii-poetry"] .callout-title::before {
+    content: "╭⋟──────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────";
+    position: absolute; 
+    top: 0; 
+    left: 0; 
+    right: 1ch; 
+    white-space: nowrap; 
+    overflow: hidden;
+}
+
+.callout[data-callout="ascii-poetry"] .callout-title::after {
+    content: "╮"; 
+    position: absolute; 
+    top: 0; 
+    right: 0; 
+    background: var(--background-primary);
+}
+
+.callout[data-callout="ascii-poetry"] .callout-content::before {
+    content: "╰──────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────";
+    position: absolute; 
+    bottom: 0; 
+    left: 0; 
+    right: 2ch; 
+    white-space: nowrap; 
+    overflow: hidden;
+}
+
+.callout[data-callout="ascii-poetry"] .callout-content::after {
+    content: "⋞╯"; 
+    position: absolute; 
+    bottom: 0; 
+    right: 0; 
+    background: var(--background-primary);
+}
+
+.callout[data-callout="ascii-mythology"] {
+    --callout-color: var(--text-normal); 
+    --callout-icon: none;
+    background: transparent; 
+    border: none; 
+    font-family: monospace;
+    padding: 2em 3ch; 
+    position: relative; 
+    overflow: hidden; 
+    line-height: 1.2;
+}
+
+.callout[data-callout="ascii-mythology"]::before {
+    content: "║\A║\A║\A║\A║\A║\A║\A║\A║\A║\A║\A║\A║\A║\A║\A║\A║\A║\A║\A║\A║\A║\A║\A║\A║\A║\A║\A║\A║\A║\A║\A║";
+    white-space: pre; 
+    position: absolute; 
+    top: 1em; 
+    left: 0;
+}
+
+.callout[data-callout="ascii-mythology"]::after {
+    content: "║\A║\A║\A║\A║\A║\A║\A║\A║\A║\A║\A║\A║\A║\A║\A║\A║\A║\A║\A║\A║\A║\A║\A║\A║\A║\A║\A║\A║\A║\A║\A║";
+    white-space: pre; 
+    position: absolute; 
+    top: 1em; 
+    right: 0;
+}
+
+.callout[data-callout="ascii-mythology"] .callout-title::before {
+    content: "╔═══*.·:·.☽✧    ✦    ✧☾.·:·.*════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════";
+    position: absolute; 
+    top: 0; 
+    left: 0; 
+    right: 1ch; 
+    white-space: nowrap; 
+    overflow: hidden;
+}
+
+.callout[data-callout="ascii-mythology"] .callout-title::after {
+    content: "╗"; 
+    position: absolute; 
+    top: 0; 
+    right: 0; 
+    background: var(--background-primary);
+}
+
+.callout[data-callout="ascii-mythology"] .callout-content::before {
+    content: "╚═══*.·:·.☽✧    ✦    ✧☾.·:·.*════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════";
+    position: absolute; 
+    bottom: 0; 
+    left: 0; 
+    right: 1ch; 
+    white-space: nowrap; 
+    overflow: hidden;
+}
+
+.callout[data-callout="ascii-mythology"] .callout-content::after {
+    content: "╝"; 
+    position: absolute; 
+    bottom: 0; 
+    right: 0; 
+    background: var(--background-primary);
+}
+
+
+
+/* ======================================================== */
+/* FIX: COLLAPSED CALLOUT BOTTOM BORDERS                    */
+/* ======================================================== */
+
+/* 1. Force the content block to stay rendered but take up zero space */
+.callout.is-collapsed[data-callout^="ascii-"] .callout-content,
+.callout.is-collapsed[data-callout="magi-tekk"] .callout-content {
+    display: block !important;
+    height: 0px;
+    margin: 0;
+    padding: 0;
+    visibility: hidden; /* Hides internal text nodes without breaking the layout */
+    overflow: visible;  /* Ensures the absolute-positioned borders aren't clipped */
+}
+
+/* 2. Command the ASCII borders to remain visible despite the hidden parent */
+.callout.is-collapsed[data-callout^="ascii-"] .callout-content::before,
+.callout.is-collapsed[data-callout^="ascii-"] .callout-content::after,
+.callout.is-collapsed[data-callout="magi-tekk"] .callout-content::before,
+.callout.is-collapsed[data-callout="magi-tekk"] .callout-content::after {
+    visibility: visible;
+}

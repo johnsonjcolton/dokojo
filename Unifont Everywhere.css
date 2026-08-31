@@ -1,0 +1,21 @@
+/* =========================================
+   GLOBAL FONT OVERRIDE: GNU UNIFONT
+   Forces GNU Unifont in Source, Live Preview, and Reading View
+========================================= */
+
+/* 1. Hijack Obsidian's core font variables */
+body {
+    --font-text: "GNU Unifont", "Unifont", monospace !important;
+    --font-editor: "GNU Unifont", "Unifont", monospace !important;
+    --font-monospace: "GNU Unifont", "Unifont", monospace !important;
+}
+
+/* 2. Brute-force backup for stubborn themes */
+.markdown-rendered,
+.markdown-source-view,
+.markdown-preview-view,
+.cm-scroller,
+.cm-editor,
+.cm-content {
+    font-family: "GNU Unifont", "Unifont", monospace !important;
+}

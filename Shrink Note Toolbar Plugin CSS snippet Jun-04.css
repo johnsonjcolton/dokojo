@@ -1,0 +1,67 @@
+/* @settings
+name: Custom Note Toolbar Size
+id: custom-note-toolbar-size
+settings:
+  - 
+    id: nt-font-size
+    title: Text Size
+    type: variable-number-slider
+    default: 12
+    min: 8
+    max: 20
+    format: px
+  - 
+    id: nt-min-height
+    title: Button Minimum Height
+    type: variable-number-slider
+    default: 24
+    min: 0
+    max: 40
+    format: px
+  - 
+    id: nt-icon-size
+    title: Icon Size
+    type: variable-number-slider
+    default: 14
+    min: 0
+    max: 24
+    format: px
+  - 
+    id: nt-pad-v
+    title: Vertical Padding
+    type: variable-number-slider
+    default: 2
+    min: 0
+    max: 10
+    format: px
+  - 
+    id: nt-pad-h
+    title: Horizontal Padding
+    type: variable-number-slider
+    default: 8
+    min: 0
+    max: 20
+    format: px
+*/
+
+body {
+    --nt-font-size: 12px;
+    --nt-min-height: 24px;
+    --nt-icon-size: 14px;
+    --nt-pad-v: 2px;
+    --nt-pad-h: 8px;
+}
+
+/* Apply variables to Note Toolbar buttons */
+.cg-note-toolbar-item,
+.cg-note-toolbar-item a {
+    padding: var(--nt-pad-v) var(--nt-pad-h) !important;
+    font-size: var(--nt-font-size) !important;
+    min-height: var(--nt-min-height) !important;
+}
+
+/* Apply variables to Note Toolbar icons */
+.cg-note-toolbar-item svg {
+    width: var(--nt-icon-size) !important;
+    height: var(--nt-icon-size) !important;
+}

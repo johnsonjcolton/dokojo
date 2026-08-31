@@ -1,0 +1,140 @@
+/* ========================================================
+   COMPASS MAP DASHBOARD
+   Turns standard nested HTML into a radial dashboard
+   ======================================================== */
+
+/* The Deep Space Canvas */
+.compass-map-container {
+    display: grid;
+    grid-template-columns: 1fr auto 1fr;
+    grid-template-rows: 1fr auto 1fr;
+    gap: 2rem;
+    background-color: #0b0f19; /* Midnight blue */
+    border-radius: 16px;
+    padding: 3rem;
+    color: #a9b7c6;
+    min-height: 80vh;
+    overflow: auto;
+    font-family: var(--font-interface);
+}
+
+/* Remove default list styles & add glowing connection lines */
+.compass-map-container ul {
+    list-style-type: none;
+    padding-inline-start: 1.5rem;
+    margin-top: 0.5rem;
+    border-left: 1px dashed rgba(88, 166, 255, 0.3); /* Cyan dashed lines */
+}
+
+/* -----------------------------
+   THE CENTER NODE
+   ----------------------------- */
+.compass-center {
+    grid-column: 2;
+    grid-row: 2;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 10;
+}
+
+.compass-center h1 {
+    background: #161b22;
+    border: 2px solid #bc8cff; /* Violet glow */
+    box-shadow: 0 0 20px rgba(188, 140, 255, 0.3);
+    padding: 1.5rem 2.5rem;
+    border-radius: 12px;
+    margin: 0;
+    color: #bc8cff;
+    text-transform: uppercase;
+    letter-spacing: 3px;
+    white-space: nowrap;
+}
+
+/* -----------------------------
+   THE BRANCHES (N, E, S, W)
+   ----------------------------- */
+.compass-branch {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.compass-branch h2 {
+    color: #58a6ff; /* Cyan */
+    border-bottom: 2px solid rgba(88, 166, 255, 0.4);
+    padding-bottom: 0.5rem;
+    margin-top: 0;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+/* Mapping to the Compass Rose */
+.compass-north {
+    grid-column: 2;
+    grid-row: 1;
+    align-items: center;
+    text-align: center;
+}
+
+.compass-south {
+    grid-column: 2;
+    grid-row: 3;
+    align-items: center;
+    text-align: center;
+}
+
+.compass-east {
+    grid-column: 3;
+    grid-row: 2;
+    align-items: flex-start;
+    text-align: left;
+}
+
+.compass-west {
+    grid-column: 1;
+    grid-row: 2;
+    align-items: flex-end;
+    text-align: right;
+}
+
+/* Reverse the line direction for the West branch so it points toward the center */
+.compass-west ul {
+    padding-inline-start: 0;
+    padding-inline-end: 1.5rem;
+    border-left: none;
+    border-right: 1px dashed rgba(88, 166, 255, 0.3);
+}
+
+/* -----------------------------
+   INTERACTIVE NODES (Expander Tags)
+   ----------------------------- */
+.compass-map-container details > summary {
+    cursor: pointer;
+    padding: 0.5rem 1rem;
+    border-radius: 8px;
+    background: rgba(88, 166, 255, 0.08);
+    border: 1px solid transparent;
+    transition: all 0.2s ease;
+    margin: 0.3rem 0;
+    user-select: none;
+    font-weight: 500;
+}
+
+.compass-map-container details > summary:hover {
+    background: rgba(88, 166, 255, 0.15);
+    border: 1px solid rgba(88, 166, 255, 0.3);
+    color: #ffffff;
+    box-shadow: 0 0 10px rgba(88, 166, 255, 0.1);
+}
+
+.compass-text {
+    display: inline-block;
+    padding: 0.4rem 1rem;
+    color: #8b949e;
+    transition: color 0.2s ease;
+}
+
+.compass-text:hover {
+    color: #c9d1d9;
+}

@@ -1,0 +1,55 @@
+/* === Reading Mode H1 Styles === */
+.markdown-preview-view h1 {
+  text-align: center;
+  margin-top: 0em;
+  padding-top: 0em; }
+.markdown-preview-view h1::before {
+  content: "";
+  display: block;
+  border-top: 1px 
+    solid rgba(128, 128, 128, 0.3);
+  margin-top: 0em;
+  margin-bottom: 0em; }
+.markdown-preview-view h1::after {
+  content: "";
+  display: block;
+  border-bottom: 1px solid rgba(128, 128, 128, 0.3);
+  width: 40%;
+  margin: 0em auto 0em auto; }
+
+/* Remove spacing from first visible H1 in Reading Mode */
+.markdown-preview-view h1:first-of-type {
+  margin-top: 0 !important;
+  padding-top: 0 !important; }
+.markdown-preview-view h1:first-of-type::before,
+.markdown-preview-view h1:first-of-type::after{
+  display: none !important; }
+
+/* === Live Preview H1 Styles === */
+.markdown-source-view.mod-cm6 .cm-line.HyperMD-header-1 {
+  text-align: center;
+  margin-top: 0em;
+  padding-top: 0em;}
+.markdown-source-view.mod-cm6 .cm-line.HyperMD-header-1::before {
+  content: "";
+  display: block;
+  border-top: 1px 
+    solid rgba(15, 10, 30, 0.3);
+  width: 50%;
+  margin-top: 0em auto;
+  margin-bottom: 0em auto;
+  margin: 0em auto 0em auto; }
+.markdown-source-view.mod-cm6 .cm-line.HyperMD-header-1::after {
+  content: "";
+  display: block;
+  border-bottom: 1px solid 
+    rgba(128, 128, 128, 0.3);
+  width: 40%;
+  margin: 0em auto 0em auto; }
+/* Remove spacing from first visible H1 in Live Preview */
+.markdown-source-view.mod-cm6 .cm-content > .cm-line.HyperMD-header-1:first-of-type {
+  margin-top: 0 !important;
+  padding-top: 0 !important;}
+.markdown-source-view.mod-cm6 .cm-content > .cm-line.HyperMD-header-1:first-of-type::before,
+.markdown-source-view.mod-cm6 .cm-content > .cm-line.HyperMD-header-1:first-of-type::after {
+  display: none !important;}

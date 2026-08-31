@@ -1,0 +1,30 @@
+/* Refined styling for moc-btn */
+.moc-btn .internal-link,
+.moc-btn > button,
+.moc-btn a {
+    position: relative !important; /* Required for z-index to work */
+    z-index: 20 !important;        /* Pops the button ABOVE the invisible folding blanket (which is 10) */
+    
+    display: inline-block !important; /* Prevents stretching to 100% width */
+    padding: 4px 6px !important;      /* Reduced padding for a smaller profile */
+    margin: 4px !important;           /* Keeps a nice gap between buttons */
+    background-color: #a8e5d3 !important;
+    border: 2px double #363b4a !important; 
+    border-radius: 0px !important;    
+    color: #000000 !important;
+    text-align: justify; 
+    height: 2em;
+    font-variant: small-caps;
+    font-family: unifont !important;
+    font-size: 0.9em !important;      /* Smaller font for a compact look */
+    line-height: 1 !important;
+    text-decoration: none !important; /* Removes underlines from markdown links */
+    cursor: pointer;
+}
+
+.moc-btn > button:hover,
+.moc-btn .internal-link:hover,
+.moc-btn a:hover {
+    background-color: #a8e5d3 !important;
+    color: #2b2f3a !important;
+}

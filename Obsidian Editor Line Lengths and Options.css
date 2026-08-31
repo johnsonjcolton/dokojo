@@ -1,0 +1,31 @@
+/* @settings
+name: Readable Line Length
+id: readable-line-width-config
+settings:
+  - 
+    id: file-line-width
+    title: Line Width Options
+    description: Choose a preset typographical width.
+    type: variable-select
+    default: 60ch
+    options:
+      - label: Multi Column Narrow (45 Characters)
+        value: 45ch
+      - label: Web "Optimal" Narrow (50 Characters)
+        value: 50ch
+      - label: Web "Optimal" (60 Characters)
+        value: 60ch
+      - label: All Types "Optimal"? (66 Characters)
+        value: 66ch
+      - label: Big Dense Fantasy Paperback start (70ch)
+        value: 70ch
+      - label: Bigger (75)
+        value: 75ch
+      - label: Maximum good (80ch), min 12pt TimesNewRoman
+        value: 80ch
+      - label: Max(ish) Fat Paperback (85ch)
+        value: 85ch
+      - label: Max Word Doc (90ch), 12pt TimesNewRoman
+        value: 90ch
+*/
+body { --file-line-width: 60ch; /* Exactly 66 characters wide */ }

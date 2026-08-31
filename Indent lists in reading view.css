@@ -1,0 +1,20 @@
+/* Custom hanging indent for all bullets in Reading View */
+.markdown-reading-view ul {
+  list-style: none;
+  padding-left: 0;
+  margin-left: 0;
+}
+
+.markdown-reading-view ul li {
+  position: relative;
+  padding-left: 1.5em;
+  text-indent: 0;
+}
+
+.markdown-reading-view ul li::before {
+  content: "•";
+  position: absolute;
+  left: 0;
+  top: 0;
+  color: var(--text-muted);
+}

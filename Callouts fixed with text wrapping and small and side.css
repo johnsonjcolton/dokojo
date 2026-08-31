@@ -1,0 +1,19 @@
+/* Reading View: Keeps your floating aesthetic */
+.markdown-reading-view .callout {
+    float: right;
+    width: 250px;
+    margin-left: 1em;
+    shape-outside: margin-box;
+    background-color: var(--background-secondary-alt);
+    border-left: 4px solid var(--interactive-accent);
+    padding: 10px;
+}
+
+/* Live Preview Editor: Forces callouts into normal text blocks */
+.markdown-source-view.mod-cm6 .cm-callout {
+    float: none !important;
+    width: 100% !important;
+    margin-left: 0 !important;
+    display: block !important;
+    position: relative !important;
+}

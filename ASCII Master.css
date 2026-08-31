@@ -1,0 +1,463 @@
+/* ===================================================================== */
+/* OBSIDIAN MASTER CALLOUTS & ASCII ENGINE                               */
+/* ===================================================================== */
+
+/* --- PART 1: CORE RESET ENGINE --- */
+.callout[data-callout="quote"],
+.callout[data-callout="ornate"],
+.callout[data-callout="retro-3d"],
+.callout[data-callout="void-gazer"],
+.callout[data-callout="magi-tekk"],
+.callout[data-callout="location"],
+.callout[data-callout^="ascii-"] {
+    --callout-color: var(--text-normal);
+    --callout-icon: none;
+    background: transparent;
+    border: none;
+}
+
+/* --- PART 2: ASCII & LOCATION STRUCTURAL SKELETON --- */
+.callout[data-callout="location"],
+.callout[data-callout^="ascii-"] {
+    font-family: "Unifont", monospace !important;
+    position: relative;
+    overflow: hidden;
+    line-height: 1.2;
+    padding: 1.5em 3ch; 
+}
+
+/* Base Positioning Hooks for ASCII Walls and Borders (Armored with white-space: pre) */
+.callout[data-callout="location"]::before, .callout[data-callout^="ascii-"]::before { position: absolute; left: 0; white-space: pre !important; top: 1em; z-index: 1; }
+.callout[data-callout="location"]::after, .callout[data-callout^="ascii-"]::after { position: absolute; right: 0; white-space: pre !important; top: 1em; z-index: 1; }
+.callout[data-callout="location"] .callout-title::before, .callout[data-callout^="ascii-"] .callout-title::before { position: absolute; top: 0; left: 0; white-space: pre !important; overflow: hidden; right: 0; z-index: 1; }
+.callout[data-callout="location"] .callout-title::after, .callout[data-callout^="ascii-"] .callout-title::after { position: absolute; top: 0; right: 0; white-space: pre !important; z-index: 1; }
+.callout[data-callout="location"] .callout-content::before, .callout[data-callout^="ascii-"] .callout-content::before { position: absolute; bottom: 0; left: 0; white-space: pre !important; overflow: hidden; right: 0; z-index: 1; }
+.callout[data-callout="location"] .callout-content::after, .callout[data-callout^="ascii-"] .callout-content::after { position: absolute; right: 0; bottom: 0; white-space: pre !important; z-index: 1; }
+
+/* Keep clicky fold arrow visible above ASCII art */
+.callout-fold { z-index: 5; position: relative; }
+
+
+/* --- PART 3: THE BULLETPROOF COLLAPSE FIX --- */
+
+/* 1. Keep the bottom of the ASCII frame open when collapsed */
+.callout.is-collapsed[data-callout^="ascii-"] .callout-content, 
+.callout.is-collapsed[data-callout="location"] .callout-content,
+.callout.is-collapsed[data-callout="magi-tekk"] .callout-content { 
+    display: block !important; 
+    height: 0px !important; 
+    margin: 0 !important; 
+    padding: 0 !important; 
+    visibility: hidden; 
+    overflow: visible; 
+}
+
+/* 2. Ensure borders stay visible when text hides */
+.callout.is-collapsed[data-callout^="ascii-"] .callout-content::before, 
+.callout.is-collapsed[data-callout^="ascii-"] .callout-content::after,
+.callout.is-collapsed[data-callout="location"] .callout-content::before, 
+.callout.is-collapsed[data-callout="location"] .callout-content::after,
+.callout.is-collapsed[data-callout="magi-tekk"] .callout-content::before, 
+.callout.is-collapsed[data-callout="magi-tekk"] .callout-content::after { 
+    visibility: visible !important; 
+}
+
+
+/* ===================================================================== */
+/* STANDARD CUSTOM CALLOUTS & QUOTES                                     */
+/* ===================================================================== */
+
+/* --- Fixed Bracket Quotes --- */
+.markdown-rendered blockquote, .callout[data-callout="quote"] {
+    position: relative; padding: 0.75em 1.5em; border-left: none; display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center;
+}
+.markdown-rendered blockquote::before, .callout[data-callout="quote"]::before { content: "「"; position: absolute; top: 5px; left: 5px; font-size: 1.5em; line-height: 1; font-weight: bold; color: var(--text-muted); }
+.markdown-rendered blockquote::after, .callout[data-callout="quote"]::after { content: "」"; position: absolute; bottom: 5px; right: 5px; font-size: 1.5em; line-height: 1; font-weight: bold; color: var(--text-muted); }
+
+/* --- Ornate --- */
+.callout[data-callout="ornate"] {
+    --bracket-color: var(--text-accent); --bracket-thick: 3px; --bracket-length: 30px;
+    background-color: var(--background-primary-alt); padding: 2em;
+    background-image: 
+        linear-gradient(var(--bracket-color), var(--bracket-color)), linear-gradient(var(--bracket-color), var(--bracket-color)),
+        linear-gradient(var(--bracket-color), var(--bracket-color)), linear-gradient(var(--bracket-color), var(--bracket-color)),
+        linear-gradient(var(--bracket-color), var(--bracket-color)), linear-gradient(var(--bracket-color), var(--bracket-color)),
+        linear-gradient(var(--bracket-color), var(--bracket-color)), linear-gradient(var(--bracket-color), var(--bracket-color));
+    background-repeat: no-repeat;
+    background-size: 
+        var(--bracket-length) var(--bracket-thick), var(--bracket-thick) var(--bracket-length),
+        var(--bracket-length) var(--bracket-thick), var(--bracket-thick) var(--bracket-length),
+        var(--bracket-length) var(--bracket-thick), var(--bracket-thick) var(--bracket-length),
+        var(--bracket-length) var(--bracket-thick), var(--bracket-thick) var(--bracket-length);
+    background-position: 0 0, 0 0, 100% 0, 100% 0, 0 100%, 0 100%, 100% 100%, 100% 100%;
+}
+.callout[data-callout="ornate"] .callout-title { background: transparent; }
+
+/* --- Retro 3D --- */
+.callout[data-callout="retro-3d"] { border: 1px solid var(--text-normal); padding: 20px 25px; margin: 15px 15px 25px 0; border-radius: 0; box-shadow: 12px 12px 0px 0px var(--text-normal); }
+.callout[data-callout="retro-3d"]::before { content: "┌"; position: absolute; top: -9px; left: -4px; background: var(--background-primary); padding: 0 2px; font-size: 1.2em; line-height: 1; }
+.callout[data-callout="retro-3d"]::after { content: "┘"; position: absolute; bottom: -9px; right: -4px; background: var(--background-primary); padding: 0 2px; font-size: 1.2em; line-height: 1; }
+.callout[data-callout="retro-3d"] .callout-title { font-family: monospace; text-transform: uppercase; border-bottom: 1px dashed var(--text-muted); padding-bottom: 10px; margin-bottom: 10px; }
+
+/* --- Void Gazer --- */
+.callout[data-callout="void-gazer"] { border-left: 2px solid var(--text-normal); border-right: 2px solid var(--text-normal); border-bottom: 2px solid var(--text-normal); border-top: none; border-radius: 0; padding: 15px 20px; margin-top: 30px; font-family: monospace; }
+.callout[data-callout="void-gazer"]::before { content: ""; position: absolute; top: 0; left: 0; right: 0; height: 2px; background: var(--text-normal); }
+.callout[data-callout="void-gazer"] .callout-title { position: absolute; top: -25px; left: -2px; background: var(--background-primary); padding: 0 10px 0 0; font-weight: normal; }
+.callout[data-callout="void-gazer"] .callout-title-inner::before { content: "⟦ LOG_FILE: ⟨ "; }
+.callout[data-callout="void-gazer"] .callout-title-inner::after { content: " ⟩ ⟧"; }
+
+/* --- Magi-Tekk (Original) --- */
+.callout[data-callout="magi-tekk"] { padding: 25px 40px; overflow: hidden; position: relative; }
+.callout[data-callout="magi-tekk"]::before { content: "║\A║  ▞▞\A║\A║\A║\A║  ▞▞\A║"; white-space: pre; position: absolute; left: 0; top: 25px; bottom: 25px; line-height: 1.2; overflow: hidden; }
+.callout[data-callout="magi-tekk"]::after { content: "║\A▞▞  ║\A║\A║\A║\A▞▞  ║\A║"; white-space: pre; position: absolute; right: 0; top: 25px; bottom: 25px; line-height: 1.2; text-align: right; overflow: hidden; }
+.callout[data-callout="magi-tekk"] .callout-title { position: absolute; top: 0; left: 0; right: 0; justify-content: center; white-space: nowrap; }
+.callout[data-callout="magi-tekk"] .callout-title-inner::before { content: "╔═════════════════════════════════════════════════════[ ✧ "; }
+.callout[data-callout="magi-tekk"] .callout-title-inner::after { content: " ✧ ]═════════════════════════════════════════════════════╗"; }
+.callout[data-callout="magi-tekk"] .callout-content::after { content: "╚══════════════════════════════════════════════════════════════════════════════════════════════════════════╝"; position: absolute; bottom: 0; left: 0; right: 0; white-space: nowrap; }
+
+/* --- Location (RPG Node) --- */
+.callout[data-callout="location"] { padding: 2.5em 4ch 2.5em 4ch; box-shadow: 10px 10px 0px rgba(128, 128, 128, 0.3) !important; margin-bottom: 25px; background-color: var(--background-primary) !important; background-image: repeating-linear-gradient(-45deg, rgba(128, 128, 128, 0.08), rgba(128, 128, 128, 0.08) 2px, transparent 2px, transparent 8px) !important; }
+.callout[data-callout="location"]::before { content: "^\A▲\A𒃯\A^\A▲\A𐄢\A^\A⛨\A^\A▲\A𒃯\A^\A▲\A𐄢\A^\A⛒\A^\A▲\A𒃯\A^\A▲\A𐄢\A^\A❌\A^\A▲\A𒃯\A^\A▲\A𐄢\A^\A⛨\A^\A▲\A𒃯\A^\A▲\A𐄢\A^\A⛒\A^\A▲\A𒃯\A^\A▲\A𐄢\A^\A❌\A^\A▲"; color: var(--text-muted); opacity: 0.6; font-size: 0.9em; }
+.callout[data-callout="location"]::after { content: "▲\A^\A𐄢\A^\A▲\A𒃯\A^\A⛒\A^\A▲\A𐄢\A^\A▲\A𒃯\A^\A❌\A^\A▲\A𐄢\A^\A▲\A𒃯\A^\A⛨\A^\A▲\A𐄢\A^\A▲\A𒃯\A^\A⛒\A^\A▲\A𐄢\A^\A▲\A𒃯\A^\A❌\A^\A▲\A𐄢\A^\A▲\A𒃯\A^\A⛨\A^\A▲\A^\A"; color: var(--text-muted); opacity: 0.6; font-size: 0.9em; }
+.callout[data-callout="location"] .callout-title::before { content: "~~^~~𒃯~~^~~~𐄢~~~~~^~⛨~^~~𒃯~~^~~~𐄢~~~~~^~⛒~^~~𒃯~~^~~~𐄢~~~~~^~❌~^~~𒃯~~^~~~𐄢~~~~~^~⛨~^~~𒃯~~^~~~𐄢~~~~~^~⛒~^~~𒃯~~^~~~𐄢~~~~~^~❌~^~~𒃯~~^~~~𐄢~~~~~^~⛨~^~~𒃯~~^~~~𐄢~~~~~^~⛒~^~~𒃯~~^~~~𐄢~~~~~^~❌~^~~𒃯~~^~~~𐄢~~~~~^~⛨~^~~"; color: var(--text-accent); opacity: 0.5; letter-spacing: -0.05em; right: 3ch; }
+.callout[data-callout="location"] .callout-content::before { content: "~~^~~𒃯~~^~~~𐄢~~~~~^~⛒~^~~𒃯~~^~~~𐄢~~~~~^~❌~^~~𒃯~~^~~~𐄢~~~~~^~⛨~^~~𒃯~~^~~~𐄢~~~~~^~⛒~^~~𒃯~~^~~~𐄢~~~~~^~❌~^~~𒃯~~^~~~𐄢~~~~~^~⛨~^~~𒃯~~^~~~𐄢~~~~~^~⛒~^~~𒃯~~^~~~𐄢~~~~~^~❌~^~~𒃯~~^~~~𐄢~~~~~^~⛨~^~~𒃯~~^~~~𐄢~~~~~^~⛒~^~~𒃯~~^~~~𐄢~~~~~^~❌~^~~𒃯~~^~~~𐄢~~~~~^~⛨~^~~𒃯~~^~~~𐄢~~~~~^~⛒~^~~"; color: var(--text-accent); opacity: 0.5; letter-spacing: -0.05em; right: 3ch; }
+.callout[data-callout="location"] .callout-title::after { content: "✪"; color: var(--text-accent); right: 0.5ch; background: var(--background-primary); padding: 0 4px; background-image: repeating-linear-gradient(-45deg, rgba(128, 128, 128, 0.08), rgba(128, 128, 128, 0.08) 2px, transparent 2px, transparent 8px); }
+.callout[data-callout="location"] .callout-content::after { content: "☠"; color: var(--text-accent); right: 0.5ch; background: var(--background-primary); padding: 0 4px; background-image: repeating-linear-gradient(-45deg, rgba(128, 128, 128, 0.08), rgba(128, 128, 128, 0.08) 2px, transparent 2px, transparent 8px); }
+.callout[data-callout="location"] .callout-title-inner::before { content: "⯏ ⌊ QUEST_LOG: "; color: var(--text-normal); font-weight: bold; }
+.callout[data-callout="location"] .callout-title-inner::after { content: " ⌋ ⯍"; position: absolute; right: 4ch; color: var(--text-normal); font-weight: bold; padding-left: 1ch; background: var(--background-primary); background-image: repeating-linear-gradient(-45deg, rgba(128, 128, 128, 0.08), rgba(128, 128, 128, 0.08) 2px, transparent 2px, transparent 8px); }
+
+
+/* ===================================================================== */
+/* REFACTORED ASCII CALLOUT DESIGNS                                      */
+/* ===================================================================== */
+
+/* --- ASCII Double --- */
+.callout[data-callout="ascii-double"]::before { content: "║\A║\A║\A║\A║\A║\A║\A║\A║\A║\A║\A║\A║\A║\A║\A║\A║\A║\A║\A║\A║\A║\A║\A║\A║\A║\A║\A║\A║\A║\A║\A║\A║\A║\A║\A║\A║\A║\A║\A║\A║\A║\A║\A║\A║\A║\A║\A║\A║\A"; }
+.callout[data-callout="ascii-double"]::after { content: "║\A║\A║\A║\A║\A║\A║\A║\A║\A║\A║\A║\A║\A║\A║\A║\A║\A║\A║\A║\A║\A║\A║\A║\A║\A║\A║\A║\A║\A║\A║\A║\A║\A║\A║\A║\A║\A║\A║\A║\A║\A║\A║\A║\A║\A║\A║\A║\A║\A"; }
+.callout[data-callout="ascii-double"] .callout-title::before { content: "╔══════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════"; right: 1ch; }
+.callout[data-callout="ascii-double"] .callout-title::after { content: "╗"; }
+.callout[data-callout="ascii-double"] .callout-content::before { content: "╚══════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════"; right: 1ch; }
+.callout[data-callout="ascii-double"] .callout-content::after { content: "╝"; }
+
+/* --- ASCII Alchemical --- */
+.callout[data-callout="ascii-alchemical"] { padding: 2em 4ch; }
+.callout[data-callout="ascii-alchemical"]::before { content: "🜂\A🜃\A🜄\A🜁\A🜂\A🜃\A🜄\A🜁\A🜂\A🜃\A🜄\A🜁\A🜂\A🜃\A🜄\A🜁\A🜂\A🜃\A🜄\A🜁\A🜂\A🜃\A🜄\A🜁\A🜂\A🜃\A🜄\A🜁\A🜂\A🜃\A🜄\A🜁\A🜂\A🜃\A🜄\A🜁\A🜂\A🜃\A🜄\A🜁"; top: 1.5em; }
+.callout[data-callout="ascii-alchemical"]::after { content: "🜂\A🜃\A🜄\A🜁\A🜂\A🜃\A🜄\A🜁\A🜂\A🜃\A🜄\A🜁\A🜂\A🜃\A🜄\A🜁\A🜂\A🜃\A🜄\A🜁\A🜂\A🜃\A🜄\A🜁\A🜂\A🜃\A🜄\A🜁\A🜂\A🜃\A🜄\A🜁\A🜂\A🜃\A🜄\A🜁\A🜂\A🜃\A🜄\A🜁"; top: 1.5em; }
+.callout[data-callout="ascii-alchemical"] .callout-title::before, .callout[data-callout="ascii-alchemical"] .callout-content::before { content: "🜁══🜂══🜃══🜄════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════"; right: 8ch; }
+.callout[data-callout="ascii-alchemical"] .callout-title::after, .callout[data-callout="ascii-alchemical"] .callout-content::after { content: "🜄══🜃══🜂══🜁"; background: var(--background-primary); }
+
+/* --- ASCII 3D --- */
+.callout[data-callout="ascii-3d"] { padding: 1.5em 3.5ch 2em 2ch; }
+.callout[data-callout="ascii-3d"]::before { content: "│\A│\A│\A│\A│\A│\A│\A│\A│\A│\A│\A│\A│\A│\A│\A│\A│\A│\A│\A│\A│\A│\A│\A│\A│\A│\A│\A│\A│\A│\A│\A│\A│\A│\A│\A│\A│\A│\A│\A│\A"; }
+.callout[data-callout="ascii-3d"]::after { content: "│█\A│█\A│█\A│█\A│█\A│█\A│█\A│█\A│█\A│█\A│█\A│█\A│█\A│█\A│█\A│█\A│█\A│█\A│█\A│█\A│█\A│█\A│█\A│█\A│█\A│█\A│█\A│█\A│█\A│█\A│█\A│█\A│█\A│█\A│█\A│█\A│█\A│█\A│█\A│█"; background: var(--background-primary); }
+.callout[data-callout="ascii-3d"] .callout-title::before { content: "┌────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────"; right: 2ch; }
+.callout[data-callout="ascii-3d"] .callout-title::after { content: "┐"; right: 2ch; }
+.callout[data-callout="ascii-3d"] .callout-content::before { content: "└────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────"; bottom: 1.1em; right: 2ch; background: var(--background-primary); }
+.callout[data-callout="ascii-3d"] .callout-title-inner::after { content: "┘█"; position: absolute; bottom: 1.1em; right: 0; z-index: 2; }
+.callout[data-callout="ascii-3d"] .callout-content::after { content: "  █████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████"; line-height: 1.2; }
+
+/* --- ASCII Void --- */
+.callout[data-callout="ascii-void"] { padding: 2.5em 2ch 1.5em 2ch; }
+.callout[data-callout="ascii-void"]::before { 
+  content: "|\A|\A|\A|\A|\A|\A|\A|\A|\A|\A|\A|\A|\A|\A|\A|\A|\A|\A|\A|\A|\A|\A|\A|\A|\A|\A|\A|\A|\A|\A|\A|\A|\A|\A|\A|\A|\A|\A|\A|\A"; top: 1.5em; }
+.callout[data-callout="ascii-void"]::after { 
+  content: "|\A|\A|\A|\A|\A|\A|\A|\A|\A|\A|\A|\A|\A|\A|\A|\A|\A|\A|\A|\A|\A|\A|\A|\A|\A|\A|\A|\A|\A|\A|\A|\A|\A|\A|\A|\A|\A|\A|\A|\A"; top: 1.5em; }
+.callout[data-callout="ascii-void"] .callout-title { position: absolute; top: 0; left: 0; }
+.callout[data-callout="ascii-void"] .callout-title::before { 
+  content: " ____________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________"; top: 1em; }
+.callout[data-callout="ascii-void"] .callout-content::after { 
+  content: "|____________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________"; right: 1ch; }
+.callout[data-callout="ascii-void"] .callout-title-inner::after { content: "|"; position: absolute; bottom: 0; right: 0; }
+.callout[data-callout="ascii-void"] .callout-title-inner::before { content: "⟦ LOG_FILE: ⟨ _"; }
+.callout[data-callout="ascii-void"] .callout-title-inner { content: " ⟩ ⟧"; }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* --- ASCII Shinra --- */
+.callout[data-callout="ascii-shinra"] { padding: 2.5em 3ch; }
+.callout[data-callout="ascii-shinra"]::before { content: "█▓\A█▓\A█▓\A█▓\A█▓\A█▓\A█▓\A█▓\A█▓\A█▓\A█▓\A█▓\A█▓\A█▓\A█▓\A█▓\A█▓\A█▓\A█▓\A█▓\A█▓\A█▓\A█▓\A█▓\A█▓\A█▓\A█▓\A█▓\A█▓\A█▓\A█▓\A█▓\A█▓\A█▓\A█▓\A█▓\A█▓\A█▓\A█▓\A█▓"; }
+.callout[data-callout="ascii-shinra"]::after { content: "▓█\A▓█\A▓█\A▓█\A▓█\A▓█\A▓█\A▓█\A▓█\A▓█\A▓█\A▓█\A▓█\A▓█\A▓█\A▓█\A▓█\A▓█\A▓█\A▓█\A▓█\A▓█\A▓█\A▓█\A▓█\A▓█\A▓█\A▓█\A▓█\A▓█\A▓█\A▓█\A▓█\A▓█\A▓█\A▓█\A▓█\A▓█\A▓█\A▓█"; }
+.callout[data-callout="ascii-shinra"] .callout-title::before { content: "████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████"; line-height: 1; }
+.callout[data-callout="ascii-shinra"] .callout-title { margin-bottom: 15px; text-align: center; }
+.callout[data-callout="ascii-shinra"] .callout-title-inner::before { content: "█▓▒░ [ "; }
+.callout[data-callout="ascii-shinra"] .callout-title-inner::after { content: " ] ░▒▓█"; position: absolute; right: 0; background: var(--background-primary); }
+.callout[data-callout="ascii-shinra"] .callout-content::before { content: "█▓▒░ ───────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────── ░▒▓█"; bottom: 1em; }
+.callout[data-callout="ascii-shinra"] .callout-content::after { content: "████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████"; line-height: 1; }
+
+/* --- ASCII Aviator --- */
+.callout[data-callout="ascii-aviator"] { padding: 1.5em 2ch; }
+.callout[data-callout="ascii-aviator"]::before { content: "│\A│\A│\A│\A│\A│\A│\A│\A│\A│\A│\A│\A│\A│\A│\A│\A│\A│\A│\A│\A│\A│\A│\A│\A│\A│\A│\A│\A│\A│\A│\A│\A│\A│\A│\A│\A│\A│\A│\A│\A"; }
+.callout[data-callout="ascii-aviator"]::after { content: "│\A│\A│\A│\A│\A│\A│\A│\A│\A│\A│\A│\A│\A│\A│\A│\A│\A│\A│\A│\A│\A│\A│\A│\A│\A│\A│\A│\A│\A│\A│\A│\A│\A│\A│\A│\A│\A│\A│\A│\A"; }
+.callout[data-callout="ascii-aviator"] .callout-title-inner::before { content: "╭─◖[ "; }
+.callout[data-callout="ascii-aviator"] .callout-title-inner::after { content: " ]◗─────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────╮"; display: inline-block; vertical-align: bottom; max-width: 100%; }
+.callout[data-callout="ascii-aviator"] .callout-title::after { content: "╮"; background: var(--background-primary); }
+.callout[data-callout="ascii-aviator"] .callout-content::before { content: "╰─────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────"; right: 12ch; }
+.callout[data-callout="ascii-aviator"] .callout-content::after { content: "◖[VOL.11]◗─╯"; background: var(--background-primary); }
+
+/* --- ASCII Arrow Brackets --- */
+.callout[data-callout="ascii-arrow-brackets"] { padding: 1em 1.5em; font-family: monospace; }
+.callout[data-callout="ascii-arrow-brackets"] .callout-title { font-weight: bold; margin-bottom: 0.5em; }
+.callout[data-callout="ascii-arrow-brackets"] .callout-title-inner::before { content: "ࡔ><>→ [ "; opacity: 0.8; }
+.callout[data-callout="ascii-arrow-brackets"] .callout-title-inner::after { content: " ] ←<><ࡔ"; opacity: 0.8; }
+
+
+/* ===================================================================== */
+/* ARMORED ASCII MONUMENT                                                */
+/* ===================================================================== */
+.callout[data-callout="ascii-monument"] { 
+    padding: 3.5em 3.5ch !important; 
+    line-height: 1.1 !important; 
+}
+.callout[data-callout="ascii-monument"]::before { 
+    content: "┃┃\A┃┃\A┃┃\A┃┃\A┃┃\A┃┃\A┃┃\A┃┃\A┃┃\A┃┃\A┃┃\A┃┃\A┃┃\A┃┃\A┃┃\A┃┃\A┃┃\A┃┃\A┃┃\A┃┃\A┃┃\A┃┃\A┃┃\A┃┃\A┃┃\A┃┃\A┃┃\A┃┃\A┃┃\A┃┃\A┃┃\A┃┃\A┃┃\A┃┃\A┃┃\A┃┃\A┃┃\A┃┃\A┃┃\A┃┃\A┃┃\A┃┃\A┃┃\A┃┃\A┃┃\A┃┃\A┃┃\A┃┃\A┃┃\A┃┃"; 
+    position: absolute !important; top: 3em !important; left: 0 !important; white-space: pre !important; 
+}
+.callout[data-callout="ascii-monument"]::after { 
+    content: "┃┃\A┃┃\A┃┃\A┃┃\A┃┃\A┃┃\A┃┃\A┃┃\A┃┃\A┃┃\A┃┃\A┃┃\A┃┃\A┃┃\A┃┃\A┃┃\A┃┃\A┃┃\A┃┃\A┃┃\A┃┃\A┃┃\A┃┃\A┃┃\A┃┃\A┃┃\A┃┃\A┃┃\A┃┃\A┃┃\A┃┃\A┃┃\A┃┃\A┃┃\A┃┃\A┃┃\A┃┃\A┃┃\A┃┃\A┃┃\A┃┃\A┃┃\A┃┃\A┃┃\A┃┃\A┃┃\A┃┃\A┃┃\A┃┃\A┃┃"; 
+    position: absolute !important; top: 3em !important; right: 0 !important; white-space: pre !important; 
+}
+.callout[data-callout="ascii-monument"] .callout-title::before { 
+    content: "┏━┳━┳━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\A┣━┻━┛\A┣┓"; 
+    position: absolute !important; top: 0 !important; left: 0 !important; right: 6ch !important; white-space: pre !important; overflow: hidden !important; 
+}
+.callout[data-callout="ascii-monument"] .callout-title::after { 
+    content: "━┳━┳━┓\A┗━┻━┫\A    ┏┫"; 
+    position: absolute !important; top: 0 !important; right: 0 !important; white-space: pre !important; text-align: right !important; background: var(--background-primary) !important; 
+}
+.callout[data-callout="ascii-monument"] .callout-content::before { 
+    content: "┣┛\A┣━┳━┓\A┗━┻━┻━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━"; 
+    position: absolute !important; bottom: 0 !important; left: 0 !important; right: 7ch !important; white-space: pre !important; overflow: hidden !important; 
+}
+.callout[data-callout="ascii-monument"] .callout-content::after { 
+    content: "    ┗┫\A┏━┳━┫\A━┻━┻━┛"; 
+    position: absolute !important; bottom: 0 !important; right: 0 !important; white-space: pre !important; text-align: right !important; background: var(--background-primary) !important; 
+}
+
+/* ===================================================================== */
+/* CONTINUING STANDARD ASCII CALLOUTS                                    */
+/* ===================================================================== */
+
+/* --- ASCII Fade --- */
+.callout[data-callout="ascii-fade"] { padding: 2em 5ch; }
+.callout[data-callout="ascii-fade"]::before { content: "██▓▒░\A██▓▒░\A██▓▒░\A██▓▒░\A██▓▒░\A██▓▒░\A██▓▒░\A██▓▒░\A██▓▒░\A██▓▒░\A██▓▒░\A██▓▒░\A██▓▒░\A██▓▒░\A██▓▒░\A██▓▒░\A██▓▒░\A██▓▒░\A██▓▒░\A██▓▒░\A██▓▒░\A██▓▒░\A██▓▒░\A██▓▒░\A██▓▒░\A██▓▒░\A██▓▒░\A██▓▒░\A██▓▒░\A██▓▒░"; }
+.callout[data-callout="ascii-fade"]::after { content: "░▒▓██\A░▒▓██\A░▒▓██\A░▒▓██\A░▒▓██\A░▒▓██\A░▒▓██\A░▒▓██\A░▒▓██\A░▒▓██\A░▒▓██\A░▒▓██\A░▒▓██\A░▒▓██\A░▒▓██\A░▒▓██\A░▒▓██\A░▒▓██\A░▒▓██\A░▒▓██\A░▒▓██\A░▒▓██\A░▒▓██\A░▒▓██\A░▒▓██\A░▒▓██\A░▒▓██\A░▒▓██\A░▒▓██\A░▒▓██"; }
+.callout[data-callout="ascii-fade"] .callout-title::before, .callout[data-callout="ascii-fade"] .callout-content::before { content: "██▓▓▒▒░░─────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────"; right: 10ch; }
+.callout[data-callout="ascii-fade"] .callout-title::after, .callout[data-callout="ascii-fade"] .callout-content::after { content: "░░▒▒▓▓██"; background: var(--background-primary); }
+
+/* --- ASCII Dashed --- */
+.callout[data-callout="ascii-dashed"] { padding: 1.5em 2ch; }
+.callout[data-callout="ascii-dashed"]::before { content: "┆\A┆\A┆\A┆\A┆\A┆\A┆\A┆\A┆\A┆\A┆\A┆\A┆\A┆\A┆\A┆\A┆\A┆\A┆\A┆\A┆\A┆\A┆\A┆\A┆\A┆\A┆\A┆\A┆\A┆\A┆\A┆\A┆\A┆\A┆\A┆\A┆\A┆\A┆\A┆\A┆\A┆\A┆\A┆\A┆\A┆\A┆\A┆\A┆\A┆"; }
+.callout[data-callout="ascii-dashed"]::after { content: "┆\A┆\A┆\A┆\A┆\A┆\A┆\A┆\A┆\A┆\A┆\A┆\A┆\A┆\A┆\A┆\A┆\A┆\A┆\A┆\A┆\A┆\A┆\A┆\A┆\A┆\A┆\A┆\A┆\A┆\A┆\A┆\A┆\A┆\A┆\A┆\A┆\A┆\A┆\A┆\A┆\A┆\A┆\A┆\A┆\A┆\A┆\A┆\A┆\A┆"; }
+.callout[data-callout="ascii-dashed"] .callout-title::before, .callout[data-callout="ascii-dashed"] .callout-content::before { content: "╭╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌"; right: 1ch; }
+.callout[data-callout="ascii-dashed"] .callout-title::after { content: "╮"; background: var(--background-primary); }
+.callout[data-callout="ascii-dashed"] .callout-content::after { content: "╯"; background: var(--background-primary); }
+
+/* --- ASCII Hollow --- */
+.callout[data-callout="ascii-hollow"] { padding: 1.5em 4ch; }
+.callout[data-callout="ascii-hollow"]::before { content: "░▒│\A░▒│\A░▒│\A░▒│\A░▒│\A░▒│\A░▒│\A░▒│\A░▒│\A░▒│\A░▒│\A░▒│\A░▒│\A░▒│\A░▒│\A░▒│\A░▒│\A░▒│\A░▒│\A░▒│\A░▒│\A░▒│\A░▒│\A░▒│\A░▒│\A░▒│\A░▒│\A░▒│\A░▒│\A░▒│\A░▒│\A░▒│\A░▒│\A░▒│\A░▒│\A░▒│\A░▒│\A░▒│\A░▒│\A░▒│\A░▒│\A░▒│\A░▒│\A░▒│\A░▒│\A░▒│\A░▒│\A░▒│\A░▒│\A░▒│"; }
+.callout[data-callout="ascii-hollow"]::after { content: "│▒░\A│▒░\A│▒░\A│▒░\A│▒░\A│▒░\A│▒░\A│▒░\A│▒░\A│▒░\A│▒░\A│▒░\A│▒░\A│▒░\A│▒░\A│▒░\A│▒░\A│▒░\A│▒░\A│▒░\A│▒░\A│▒░\A│▒░\A│▒░\A│▒░\A│▒░\A│▒░\A│▒░\A│▒░\A│▒░\A│▒░\A│▒░\A│▒░\A│▒░\A│▒░\A│▒░\A│▒░\A│▒░\A│▒░\A│▒░\A│▒░\A│▒░\A│▒░\A│▒░\A│▒░\A│▒░\A│▒░\A│▒░\A│▒░\A│▒░"; }
+.callout[data-callout="ascii-hollow"] .callout-title::before, .callout[data-callout="ascii-hollow"] .callout-content::before { content: "░▒▓──────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────"; right: 3ch; }
+.callout[data-callout="ascii-hollow"] .callout-title::after, .callout[data-callout="ascii-hollow"] .callout-content::after { content: "▓▒░"; background: var(--background-primary); }
+
+/* --- ASCII Blueprint --- */
+.callout[data-callout="ascii-blueprint"] { padding: 3.5em 5ch; }
+.callout[data-callout="ascii-blueprint"]::before { content: " ┃ ┃\A ┃ ┃\A ┃ ┃\A ┃ ┃\A ┃ ┃\A ┃ ┃\A ┃ ┃\A ┃ ┃\A ┃ ┃\A ┃ ┃\A ┃ ┃\A ┃ ┃\A ┃ ┃\A ┃ ┃\A ┃ ┃\A ┃ ┃\A ┃ ┃\A ┃ ┃\A ┃ ┃\A ┃ ┃\A ┃ ┃\A ┃ ┃\A ┃ ┃\A ┃ ┃\A ┃ ┃\A ┃ ┃\A ┃ ┃\A ┃ ┃\A ┃ ┃\A ┃ ┃\A ┃ ┃\A ┃ ┃\A ┃ ┃\A ┃ ┃\A ┃ ┃\A ┃ ┃"; top: 2em; }
+.callout[data-callout="ascii-blueprint"]::after { content: "┃ ┃ \A┃ ┃ \A┃ ┃ \A┃ ┃ \A┃ ┃ \A┃ ┃ \A┃ ┃ \A┃ ┃ \A┃ ┃ \A┃ ┃ \A┃ ┃ \A┃ ┃ \A┃ ┃ \A┃ ┃ \A┃ ┃ \A┃ ┃ \A┃ ┃ \A┃ ┃ \A┃ ┃ \A┃ ┃ \A┃ ┃ \A┃ ┃ \A┃ ┃ \A┃ ┃ \A┃ ┃ \A┃ ┃ \A┃ ┃ \A┃ ┃ \A┃ ┃ \A┃ ┃ \A┃ ┃ \A┃ ┃ \A┃ ┃ \A┃ ┃ \A┃ ┃ \A┃ ┃ "; top: 2em; }
+.callout[data-callout="ascii-blueprint"] .callout-title::before { content: "   ┏━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\A ┏━╋━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━"; right: 8ch; white-space: pre; }
+.callout[data-callout="ascii-blueprint"] .callout-title::after { content: "━━━━┓   \A━━━━╋━┓ "; white-space: pre; text-align: right; background: var(--background-primary); }
+.callout[data-callout="ascii-blueprint"] .callout-content::before { content: " ┗━╋━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\A   ┗━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━"; right: 8ch; white-space: pre; }
+.callout[data-callout="ascii-blueprint"] .callout-content::after { content: "━━━━╋━┛ \A━━━━┛   "; white-space: pre; text-align: right; background: var(--background-primary); }
+
+/* --- ASCII Singularity --- */
+.callout[data-callout="ascii-singularity"] { padding: 3.5em 5ch; }
+.callout[data-callout="ascii-singularity"]::before { content: " ◆  ▲\A ◆  ▼\A ◆  ▲\A ◆  ▼\A ◆  ▲\A ◆  ▼\A ◆  ▲\A ◆  ▼\A ◆  ▲\A ◆  ▼\A ◆  ▲\A ◆  ▼\A ◆  ▲\A ◆  ▼\A ◆  ▲\A ◆  ▼\A ◆  ▲\A ◆  ▼\A ◆  ▲\A ◆  ▼\A ◆  ▲\A ◆  ▼\A ◆  ▲\A ◆  ▼\A ◆  ▲\A ◆  ▼\A ◆  ▲\A ◆  ▼\A ◆  ▲\A ◆  ▼\A ◆  ▲\A ◆  ▼\A ◆  ▲\A ◆  ▼\A ◆  ▲\A ◆  ▼\A ◆  ▲\A ◆  ▼\A ◆  ▲\A ◆  ▼"; top: 3em; }
+.callout[data-callout="ascii-singularity"]::after { content: "◆ \A◆ \A◆ \A◆ \A◆ \A◆ \A◆ \A◆ \A◆ \A◆ \A◆ \A◆ \A◆ \A◆ \A◆ \A◆ \A◆ \A◆ \A◆ \A◆ \A◆ \A◆ \A◆ \A◆ \A◆ \A◆ \A◆ \A◆ \A◆ \A◆ \A◆ \A◆ \A◆ \A◆ \A◆ \A◆ \A◆ \A◆ \A◆ \A◆ \A◆ \A◆ \A◆ \A◆ "; top: 3em; }
+.callout[data-callout="ascii-singularity"] .callout-title { margin-bottom: 2em; }
+.callout[data-callout="ascii-singularity"] .callout-title::before { content: "       ◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆\A    ◆◆◆ [ "; right: 8ch; white-space: pre; }
+.callout[data-callout="ascii-singularity"] .callout-title::after { content: " ◆◆◆       \A ] ◆◆◆    "; white-space: pre; text-align: right; background: var(--background-primary); }
+.callout[data-callout="ascii-singularity"] .callout-title-inner::after { content: " ◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆"; position: absolute; top: 2.3em; left: 0; right: 0; white-space: nowrap; overflow: hidden; }
+.callout[data-callout="ascii-singularity"] .callout-content::before { content: " ◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆\A    ◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆"; right: 0; white-space: pre; }
+
+/* --- ASCII Corrupted --- */
+.callout[data-callout="ascii-corrupted"] { padding: 2em 3ch; }
+.callout[data-callout="ascii-corrupted"]::before { content: "║ ╟─[0x00A] >>\A║ ╟─[0x08F] >>\A║ ╟─[0x01A] >>\A║ ╟─[DATA_ERR]\A║ \A║ \A║ \A║ \A║ \A║ \A║ \A║ \A║ \A║ \A║ \A║ \A║ \A║ \A║ \A║ \A║ \A║ \A║ \A║ \A║ \A║ \A║ \A║ \A║ \A║ \A║ \A║ \A║ \A║ \A║ \A║ "; }
+.callout[data-callout="ascii-corrupted"]::after { content: "║\A║\A║\A║\A║\A║\A║\A║\A║\A║\A║\A║\A║\A║\A║\A║\A║\A║\A║\A║\A║\A║\A║\A║\A║\A║\A║\A║\A║\A║\A║\A║\A║\A║\A║\A║\A║\A║\A║\A║\A║\A║\A║\A║\A║\A║\A║\A║\A║\A║\A║\A║\A║\A║\A║\A║\A║\A║\A║\A║\A║\A║\A║\A║\A║\A║\A║\A║\A║\A║\A║\A║\A║\A║\A║\A║\A║\A║\A║"; }
+.callout[data-callout="ascii-corrupted"] .callout-title::before, .callout[data-callout="ascii-corrupted"] .callout-content::before { content: "╔══════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════"; right: 1ch; }
+.callout[data-callout="ascii-corrupted"] .callout-title::after { content: "╗"; background: var(--background-primary); }
+.callout[data-callout="ascii-corrupted"] .callout-title-inner::before { content: "[ ▒▒▒ "; opacity: 0.8; }
+.callout[data-callout="ascii-corrupted"] .callout-title-inner::after { content: " ▒▒▒ ]"; opacity: 0.8; }
+.callout[data-callout="ascii-corrupted"] .callout-content::after { content: "╝"; background: var(--background-primary); }
+
+/* --- ASCII Wireframe --- */
+.callout[data-callout="ascii-wireframe"] { padding: 3.5em 5ch; }
+.callout[data-callout="ascii-wireframe"]::before { content: " │ │\A │ │\A │ │\A │ │\A │ │\A │ │\A │ │\A │ │\A │ │\A │ │\A │ │\A │ │\A │ │\A │ │\A │ │\A │ │\A │ │\A │ │\A │ │\A │ │\A │ │\A │ │\A │ │\A │ │\A │ │\A │ │\A │ │\A │ │\A │ │\A │ │\A │ │\A │ │\A │ │\A │ │\A │ │\A │ │\A │ │\A │ │"; top: 2em; }
+.callout[data-callout="ascii-wireframe"]::after { content: "│ │ \A│ │ \A│ │ \A│ │ \A│ │ \A│ │ \A│ │ \A│ │ \A│ │ \A│ │ \A│ │ \A│ │ \A│ │ \A│ │ \A│ │ \A│ │ \A│ │ \A│ │ \A│ │ \A│ │ \A│ │ \A│ │ \A│ │ \A│ │ \A│ │ \A│ │ \A│ │ \A│ │ \A│ │ \A│ │ \A│ │ \A│ │ \A│ │ \A│ │ \A│ │ \A│ │ \A│ │ \A│ │ "; top: 2em; }
+.callout[data-callout="ascii-wireframe"] .callout-title::before { content: "   ┌──────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────\A ┌─┼──────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────"; right: 8ch; white-space: pre; }
+.callout[data-callout="ascii-wireframe"] .callout-title::after { content: "──────┐  \A────┐ │  "; white-space: pre; text-align: right; background: var(--background-primary); }
+.callout[data-callout="ascii-wireframe"] .callout-content::before { content: " │ └──────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────\A └──────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────"; right: 8ch; white-space: pre; }
+.callout[data-callout="ascii-wireframe"] .callout-content::after { content: "──────┼─┘\A────────┘"; white-space: pre; text-align: right; background: var(--background-primary); }
+
+/* --- ASCII Hologram --- */
+.callout[data-callout="ascii-hologram"] { padding: 2.5em 3ch 4em 3ch; }
+.callout[data-callout="ascii-hologram"]::before { content: " ░▒▓\A ░▒▓\A ░▒▓\A ░▒▓\A ░▒▓\A ░▒▓\A ░▒▓\A ░▒▓\A ░▒▓\A ░▒▓\A ░▒▓\A ░▒▓\A ░▒▓\A ░▒▓\A ░▒▓\A ░▒▓\A ░▒▓\A ░▒▓\A ░▒▓\A ░▒▓\A ░▒▓\A ░▒▓\A ░▒▓\A ░▒▓\A ░▒▓\A ░▒▓\A ░▒▓\A ░▒▓\A ░▒▓\A ░▒▓\A ░▒▓\A ░▒▓\A ░▒▓\A ░▒▓\A ░▒▓\A ░▒▓\A ░▒▓\A ░▒▓"; }
+.callout[data-callout="ascii-hologram"]::after { content: "▓▒░\A▓▒░\A▓▒░\A▓▒░\A▓▒░\A▓▒░\A▓▒░\A▓▒░\A▓▒░\A▓▒░\A▓▒░\A▓▒░\A▓▒░\A▓▒░\A▓▒░\A▓▒░\A▓▒░\A▓▒░\A▓▒░\A▓▒░\A▓▒░\A▓▒░\A▓▒░\A▓▒░\A▓▒░\A▓▒░\A▓▒░\A▓▒░\A▓▒░\A▓▒░\A▓▒░\A▓▒░\A▓▒░\A▓▒░\A▓▒░\A▓▒░\A▓▒░\A▓▒░\A▓▒░\A▓▒░\A▓▒░\A▓▒░\A▓▒░\A▓▒░\A▓▒░"; }
+.callout[data-callout="ascii-hologram"] .callout-title::before { content: " ░▒▓██████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████"; right: 5ch; }
+.callout[data-callout="ascii-hologram"] .callout-title::after { content: "████▓▒░"; background: var(--background-primary); }
+.callout[data-callout="ascii-hologram"] .callout-content::before { content: " ░▒▓██████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████\A    ╲ ▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒\A     ╲ ░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░\A      ▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀"; right: 9ch; white-space: pre; }
+.callout[data-callout="ascii-hologram"] .callout-content::after { content: "████▓▒░\A▒▒▒▒ ╱ \A░░░░ ╱  \A▀▀▀▀▀▀   "; white-space: pre; text-align: right; background: var(--background-primary); }
+
+/* --- ASCII Cascade --- */
+.callout[data-callout="ascii-cascade"] { padding: 2em 12ch; }
+.callout[data-callout="ascii-cascade"]::before { content: "║ ╎ ┊ ╎ \A║ ╎ ┊ ╎ \A║ ╎ ┊ ╎ \A║ ╎ ┊ ╎ \A║ ╎ ┊ ╎ \A║ ╎ ┊ ╎ \A║ ╎ ┊ ╎ \A║ ╎ ┊ ╎ \A║ ╎ ┊ ╎ \A║ ╎ ┊ ╎ \A║ ╎ ┊ ╎ \A║ ╎ ┊ ╎ \A║ ╎ ┊ ╎ \A║ ╎ ┊ ╎ \A║ ╎ ┊ ╎ \A║ ╎ ┊ ╎ \A║ ╎ ┊ ╎ \A║ ╎ ┊ ╎ \A║ ╎ ┊ ╎ \A║ ╎ ┊ ╎ \A║ ╎ ┊ ╎ \A║ ╎ ┊ ╎ \A║ ╎ ┊ ╎ \A║ ╎ ┊ ╎ \A║ ╎ ┊ ╎ \A║ ╎ ┊ ╎ \A║ ╎ ┊ ╎ \A║ ╎ ┊ ╎ \A║ ╎ ┊ ╎ \A║ ╎ ┊ ╎ \A║ ╎ ┊ ╎ \A║ ╎ ┊ ╎ "; top: 0; opacity: 0.7; }
+.callout[data-callout="ascii-cascade"]::after { content: " ╎ ┊ ╎ ║\A ╎ ┊ ╎ ║\A ╎ ┊ ╎ ║\A ╎ ┊ ╎ ║\A ╎ ┊ ╎ ║\A ╎ ┊ ╎ ║\A ╎ ┊ ╎ ║\A ╎ ┊ ╎ ║\A ╎ ┊ ╎ ║\A ╎ ┊ ╎ ║\A ╎ ┊ ╎ ║\A ╎ ┊ ╎ ║\A ╎ ┊ ╎ ║\A ╎ ┊ ╎ ║\A ╎ ┊ ╎ ║\A ╎ ┊ ╎ ║\A ╎ ┊ ╎ ║\A ╎ ┊ ╎ ║\A ╎ ┊ ╎ ║\A ╎ ┊ ╎ ║\A ╎ ┊ ╎ ║\A ╎ ┊ ╎ ║\A ╎ ┊ ╎ ║\A ╎ ┊ ╎ ║\A ╎ ┊ ╎ ║\A ╎ ┊ ╎ ║\A ╎ ┊ ╎ ║\A ╎ ┊ ╎ ║\A ╎ ┊ ╎ ║\A ╎ ┊ ╎ ║\A ╎ ┊ ╎ ║\A ╎ ┊ ╎ ║"; top: 0; opacity: 0.7; }
+
+/* --- ASCII Overhang --- */
+.callout[data-callout="ascii-overhang"] { padding: 4.5em 4ch 2em 4ch; }
+.callout[data-callout="ascii-overhang"]::before { content: "░░\A░░\A░░\A░░\A░░\A░░\A░░\A░░\A░░\A░░\A░░\A░░\A░░\A░░\A░░\A░░\A░░\A░░\A░░\A░░\A░░\A░░\A░░\A░░\A░░\A░░\A░░\A░░\A░░\A░░\A░░\A░░\A░░\A░░\A░░\A░░\A░░\A░░\A░░\A░░"; top: 3em; }
+.callout[data-callout="ascii-overhang"]::after { content: "░░\A░░\A░░\A░░\A░░\A░░\A░░\A░░\A░░\A░░\A░░\A░░\A░░\A░░\A░░\A░░\A░░\A░░\A░░\A░░\A░░\A░░\A░░\A░░\A░░\A░░\A░░\A░░\A░░\A░░\A░░\A░░\A░░\A░░\A░░\A░░\A░░\A░░\A░░\A░░"; top: 3em; }
+.callout[data-callout="ascii-overhang"] .callout-title::before { content: "██████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████\A▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓\A▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒"; white-space: pre; line-height: 1.1; }
+.callout[data-callout="ascii-overhang"] .callout-content::before { content: "╰╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌"; right: 1ch; }
+.callout[data-callout="ascii-overhang"] .callout-content::after { content: "╯"; background: var(--background-primary); }
+
+/* --- ASCII Mako Core --- */
+.callout[data-callout="ascii-makocore"] { padding: 3.5em 5ch 2em 5ch; }
+.callout[data-callout="ascii-makocore"]::before { content: "│ ║\A│ ║\A│ ║\A│ ║\A│ ║\A│ ║\A│ ║\A│ ║\A│ ║\A│ ║\A│ ║\A│ ║\A│ ║\A│ ║\A│ ║\A│ ║\A│ ║\A│ ║\A│ ║\A│ ║\A│ ║\A│ ║\A│ ║\A│ ║\A│ ║\A│ ║\A│ ║\A│ ║\A│ ║\A│ ║\A│ ║\A│ ║\A│ ║\A│ ║\A│ ║\A│ ║\A│ ║\A│ ║\A│ ║\A│ ║"; top: 2em; }
+.callout[data-callout="ascii-makocore"]::after { content: "║ │\A║ │\A║ │\A║ │\A║ │\A║ │\A║ │\A║ │\A║ │\A║ │\A║ │\A║ │\A║ │\A║ │\A║ │\A║ │\A║ │\A║ │\A║ │\A║ │\A║ │\A║ │\A║ │\A║ │\A║ │\A║ │\A║ │\A║ │\A║ │\A║ │\A║ │\A║ │\A║ │\A║ │\A║ │\A║ │\A║ │\A║ │\A║ │\A║ │"; top: 2em; }
+.callout[data-callout="ascii-makocore"] .callout-title::before { content: "╒══════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════\A╞═╦══════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════"; right: 4ch; white-space: pre; }
+.callout[data-callout="ascii-makocore"] .callout-title::after { content: "╕\A╦═╡"; white-space: pre; text-align: right; background: var(--background-primary); }
+.callout[data-callout="ascii-makocore"] .callout-title-inner::before { content: "╒══[ ⚠ "; position: absolute; top: 0; left: 0; background: var(--background-primary); padding-right: 1ch; }
+.callout[data-callout="ascii-makocore"] .callout-title-inner::after { content: " ]"; background: var(--background-primary); }
+.callout[data-callout="ascii-makocore"] .callout-content::before { content: "╞═╩══════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════\A╘══════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════"; right: 29ch; white-space: pre; }
+.callout[data-callout="ascii-makocore"] .callout-content::after { content: "╩═╡\A[ SECTOR_1_MAKO_PLANT ]═══╛"; white-space: pre; text-align: right; background: var(--background-primary); }
+
+/* --- ASCII Gilded --- */
+.callout[data-callout="ascii-gilded"] { padding: 2em 4ch; }
+.callout[data-callout="ascii-gilded"]::before { content: "┃▓┃\A┃▒┃\A┃░┃\A┣━┫\A┃ ┃\A┃ ┃\A┃ ┃\A┃ ┃\A┃ ┃\A┃ ┃\A┃ ┃\A┃ ┃\A┃ ┃\A┃ ┃\A┃ ┃\A┃ ┃\A┃ ┃\A┃ ┃\A┃ ┃\A┃ ┃\A┃ ┃\A┃ ┃\A┃ ┃\A┃ ┃\A┃ ┃\A┃ ┃\A┃ ┃\A┃ ┃\A┃ ┃\A┃ ┃\A┃ ┃\A┃ ┃\A┃ ┃\A┃ ┃\A┃ ┃\A┃ ┃\A┃ ┃\A┃ ┃\A┃ ┃\A┃ ┃"; }
+.callout[data-callout="ascii-gilded"]::after { content: "┃▓┃\A┃▒┃\A┃░┃\A┣━┫\A┃ ┃\A┃ ┃\A┃ ┃\A┃ ┃\A┃ ┃\A┃ ┃\A┃ ┃\A┃ ┃\A┃ ┃\A┃ ┃\A┃ ┃\A┃ ┃\A┃ ┃\A┃ ┃\A┃ ┃\A┃ ┃\A┃ ┃\A┃ ┃\A┃ ┃\A┃ ┃\A┃ ┃\A┃ ┃\A┃ ┃\A┃ ┃\A┃ ┃\A┃ ┃\A┃ ┃\A┃ ┃\A┃ ┃\A┃ ┃\A┃ ┃\A┃ ┃\A┃ ┃\A┃ ┃\A┃ ┃\A┃ ┃"; }
+.callout[data-callout="ascii-gilded"] .callout-title::before, .callout[data-callout="ascii-gilded"] .callout-content::before { content: "┏━┳━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━"; right: 3ch; }
+.callout[data-callout="ascii-gilded"] .callout-title::after { content: "┳━┓"; background: var(--background-primary); }
+.callout[data-callout="ascii-gilded"] .callout-content::before { content: "┗━┻━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━"; }
+.callout[data-callout="ascii-gilded"] .callout-content::after { content: "┻━┛"; background: var(--background-primary); }
+
+/* --- ASCII Arasaka --- */
+.callout[data-callout="ascii-arasaka"] { padding: 1.5em 3ch; }
+.callout[data-callout="ascii-arasaka"]::before { content: "⡇\A⡇\A⡇\A⡇\A⡇\A⡇\A⡇\A⡇\A⡇\A⡇\A⡇\A⡇\A⡇\A⡇\A⡇\A⡇\A⡇\A⡇\A⡇\A⡇\A⡇\A⡇\A⡇\A⡇\A⡇\A⡇\A⡇\A⡇\A⡇\A⡇\A⡇\A⡇\A⡇\A⡇\A⡇\A⡇\A⡇\A⡇\A⡇\A⡇"; }
+.callout[data-callout="ascii-arasaka"]::after { content: "⡇\A⡇\A⡇\A⡇\A⡇\A⡇\A⡇\A⡇\A⡇\A⡇\A⡇\A⡇\A⡇\A⡇\A⡇\A⡇\A⡇\A⡇\A⡇\A⡇\A⡇\A⡇\A⡇\A⡇\A⡇\A⡇\A⡇\A⡇\A⡇\A⡇\A⡇\A⡇\A⡇\A⡇\A⡇\A⡇\A⡇\A⡇\A⡇\A⡇"; }
+.callout[data-callout="ascii-arasaka"] .callout-title::before { content: "█▓▒░ ARASAKA_DB_ERR ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━"; right: 5ch; }
+.callout[data-callout="ascii-arasaka"] .callout-title::after { content: " ░▒▓█"; background: var(--background-primary); }
+.callout[data-callout="ascii-arasaka"] .callout-content::before { content: "█▓▒░ ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━"; right: 16ch; }
+.callout[data-callout="ascii-arasaka"] .callout-content::after { content: " REBOOTING_ ░▒▓█"; background: var(--background-primary); }
+
+/* --- ASCII Override --- */
+.callout[data-callout="ascii-override"] { padding: 1.5em 3ch; }
+.callout[data-callout="ascii-override"]::before { content: "▌\A▌\A▌\A▌\A▌\A▌\A▌\A▌\A▌\A▌\A▌\A▌\A▌\A▌\A▌\A▌\A▌\A▌\A▌\A▌\A▌\A▌\A▌\A▌\A▌\A▌\A▌\A▌\A▌\A▌\A▌\A▌\A▌\A▌\A▌\A▌\A▌\A▌\A▌\A▌"; }
+.callout[data-callout="ascii-override"]::after { content: "▐\A▐\A▐\A▐\A▐\A▐\A▐\A▐\A▐\A▐\A▐\A▐\A▐\A▐\A▐\A▐\A▐\A▐\A▐\A▐\A▐\A▐\A▐\A▐\A▐\A▐\A▐\A▐\A▐\A▐\A▐\A▐\A▐\A▐\A▐\A▐\A▐\A▐\A▐\A▐"; }
+.callout[data-callout="ascii-override"] .callout-title::before { content: "▶_ SYSTEM.OVERRIDE_ ▰▰▰▰▰▰▰▰▰▰▰▰▰▰▰▰▰▰▰▰▰▰▰▰▰▰▰▰▰▰▰▰▰▰▰▰▰▰▰▰▰▰▰▰▰▰▰▰▰▰▰▰▰▰▰▰▰▰▰▰▰▰▰▰▰▰▰▰▰▰▰▰▰▰▰▰▰▰▰▰▰▰▰▰▰▰▰▰▰▰▰▰▰▰▰▰▰▰▰▰▰▰▰▰▰▰▰▰▰▰▰▰▰▰▰▰▰▰▰▰▰▰▰▰▰▰▰▰▰▰▰▰▰▰▰▰▰▰▰▰▰▰▰▰▰▰▰▰▰▰▰▰▰▰▰▰▰▰▰▰▰▰▰▰▰▰▰▰▰▰▰▰▰▰▰▰▰▰▰▰▰▰▰▰▰▰▰▰▰▰"; }
+.callout[data-callout="ascii-override"] .callout-content::before { content: "▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀"; right: 6ch; }
+.callout[data-callout="ascii-override"] .callout-content::after { content: " ▗▄▄▄▖"; background: var(--background-primary); }
+
+/* --- ASCII Cyberscan --- */
+.callout[data-callout="ascii-cyberscan"] { padding: 1.5em 3ch; }
+.callout[data-callout="ascii-cyberscan"]::before { content: "█\A█\A█\A█\A█\A█\A█\A█\A█\A█\A█\A█\A█\A█\A█\A█\A█\A█\A█\A█\A█\A█\A█\A█\A█\A█\A█\A█\A█\A█\A█\A█\A█\A█\A█\A█\A█\A█\A█\A█"; }
+.callout[data-callout="ascii-cyberscan"]::after { content: "█\A█\A█\A█\A█\A█\A█\A█\A█\A█\A█\A█\A█\A█\A█\A█\A█\A█\A█\A█\A█\A█\A█\A█\A█\A█\A█\A█\A█\A█\A█\A█\A█\A█\A█\A█\A█\A█\A█\A█"; }
+.callout[data-callout="ascii-cyberscan"] .callout-title::before, .callout[data-callout="ascii-cyberscan"] .callout-content::before { content: "▐▍▎▏▎▍▌▋▊▉████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████"; right: 12ch; }
+.callout[data-callout="ascii-cyberscan"] .callout-title::after, .callout[data-callout="ascii-cyberscan"] .callout-content::after { content: "██▉▊▋▌▍▎▏▎▍▐"; background: var(--background-primary); }
+
+/* --- ASCII Calligraph --- */
+.callout[data-callout="ascii-calligraph"] { padding: 2.5em 5ch; }
+.callout[data-callout="ascii-calligraph"]::before { content: " ⹜⎧\A﴾¢\A ⹚⎩\A ⹜⎧\A﴾¢\A ⹚⎩\A ⹜⎧\A﴾¢\A ⹚⎩\A ⹜⎧\A﴾¢\A ⹚⎩\A ⹜⎧\A﴾¢\A ⹚⎩\A ⹜⎧\A﴾¢\A ⹚⎩\A ⹜⎧\A﴾¢\A ⹚⎩\A ⹜⎧\A﴾¢\A ⹚⎩"; top: 1.5em; }
+.callout[data-callout="ascii-calligraph"]::after { content: "⎫⹛ \A ¢﴿\A⎭⹙ \A⎫⹛ \A ¢﴿\A⎭⹙ \A⎫⹛ \A ¢﴿\A⎭⹙ \A⎫⹛ \A ¢﴿\A⎭⹙ \A⎫⹛ \A ¢﴿\A⎭⹙ \A⎫⹛ \A ¢﴿\A⎭⹙ \A⎫⹛ \A ¢﴿\A⎭⹙ \A⎫⹛ \A ¢﴿\A⎭⹙ "; top: 1.5em; text-align: right; }
+.callout[data-callout="ascii-calligraph"] .callout-title::before { content: "      ⎰"; }
+.callout[data-callout="ascii-calligraph"] .callout-title::after { content: "⎱      "; }
+.callout[data-callout="ascii-calligraph"] .callout-content::before { content: "      ⎱"; }
+.callout[data-callout="ascii-calligraph"] .callout-content::after { content: "⎰      "; }
+
+/* --- ASCII Resonance --- */
+.callout[data-callout="ascii-resonance"] { padding: 2em 3ch; }
+.callout[data-callout="ascii-resonance"]::before { content: "║\A╟\A║\A║\A║\A║\A║\A║\A║\A║\A║\A║\A║\A║\A║\A║\A║\A║\A║\A║\A║\A║\A║\A║\A║\A║\A║\A║\A║\A║"; }
+.callout[data-callout="ascii-resonance"]::after { content: "║\A╢\A║\A║\A║\A║\A║\A║\A║\A║\A║\A║\A║\A║\A║\A║\A║\A║\A║\A║\A║\A║\A║\A║\A║\A║\A║\A║\A║\A║"; }
+.callout[data-callout="ascii-resonance"] .callout-title::before { content: "╔══════════════════[ ⌠ R E S O N A N C E ⌡ ]═════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════"; right: 1ch; }
+.callout[data-callout="ascii-resonance"] .callout-title::after { content: "╗"; background: var(--background-primary); }
+.callout[data-callout="ascii-resonance"] .callout-content::before { content: "╚════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════"; right: 1ch; }
+.callout[data-callout="ascii-resonance"] .callout-content::after { content: "╝"; background: var(--background-primary); }
+
+/* --- ASCII Siphon --- */
+.callout[data-callout="ascii-siphon"] { padding: 2em 3ch 4em 3ch; }
+.callout[data-callout="ascii-siphon"]::before { content: "║\A║\A║\A║\A║\A║\A║\A║\A║\A║\A║\A║\A║\A║\A║\A║\A║\A║\A║\A║\A║\A║\A║\A║\A║\A║\A║\A║\A║\A║\A║\A║"; }
+.callout[data-callout="ascii-siphon"]::after { content: "║\A║\A║\A║\A║\A║\A║\A║\A║\A║\A║\A║\A║\A║\A║\A║\A║\A║\A║\A║\A║\A║\A║\A║\A║\A║\A║\A║\A║\A║\A║\A║"; }
+.callout[data-callout="ascii-siphon"] .callout-title::before { content: "╓──────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────"; right: 1ch; }
+.callout[data-callout="ascii-siphon"] .callout-title::after { content: "╖"; background: var(--background-primary); }
+.callout[data-callout="ascii-siphon"] .callout-content::before { content: "╙──╖─────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────\A   ║ ▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒\A   ╚═══════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════"; right: 4ch; white-space: pre; }
+.callout[data-callout="ascii-siphon"] .callout-content::after { content: "╖──╜\A▒▒ ║\A═══╝"; white-space: pre; text-align: right; background: var(--background-primary); }
+
+/* --- ASCII Stardust --- */
+.callout[data-callout="ascii-stardust"] { padding: 2em 3ch; }
+.callout[data-callout="ascii-stardust"]::before { content: "╏\A╏\A╏\A╏\A╏\A╏\A╏\A╏\A╏\A╏\A╏\A╏\A╏\A╏\A╏\A╏\A╏\A╏\A╏\A╏\A╏\A╏\A╏\A╏\A╏\A╏\A╏\A╏\A╏\A╏\A╏\A╏"; }
+.callout[data-callout="ascii-stardust"]::after { content: "╏\A╏\A╏\A╏\A╏\A╏\A╏\A╏\A╏\A╏\A╏\A╏\A╏\A╏\A╏\A╏\A╏\A╏\A╏\A╏\A╏\A╏\A╏\A╏\A╏\A╏\A╏\A╏\A╏\A╏\A╏\A╏"; }
+.callout[data-callout="ascii-stardust"] .callout-title::before, .callout[data-callout="ascii-stardust"] .callout-content::before { content: "⌖ ━━╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍"; right: 6ch; }
+.callout[data-callout="ascii-stardust"] .callout-title::after, .callout[data-callout="ascii-stardust"] .callout-content::after { content: "╍╍━━ ⌖"; background: var(--background-primary); }
+
+/* --- ASCII Fantasy --- */
+.callout[data-callout="ascii-fantasy"] { padding: 2em 3ch; }
+.callout[data-callout="ascii-fantasy"]::before { content: "│\A│\A│\A│\A│\A│\A│\A│\A│\A│\A│\A│\A│\A│\A│\A│\A│\A│\A│\A│\A│\A│\A│\A│\A│\A│\A│\A│\A│\A│\A│\A│"; }
+.callout[data-callout="ascii-fantasy"]::after { content: "│\A│\A│\A│\A│\A│\A│\A│\A│\A│\A│\A│\A│\A│\A│\A│\A│\A│\A│\A│\A│\A│\A│\A│\A│\A│\A│\A│\A│\A│\A│\A│"; }
+.callout[data-callout="ascii-fantasy"] .callout-title::before, .callout[data-callout="ascii-fantasy"] .callout-content::before { content: "꧁༺ ──────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────"; right: 4ch; }
+.callout[data-callout="ascii-fantasy"] .callout-title::after, .callout[data-callout="ascii-fantasy"] .callout-content::after { content: " ༻꧂"; background: var(--background-primary); }
+
+/* --- ASCII Poetry --- */
+.callout[data-callout="ascii-poetry"] { padding: 2em 3ch; }
+.callout[data-callout="ascii-poetry"]::before { content: "│\A│\A│\A│\A│\A│\A│\A│\A│\A│\A│\A│\A│\A│\A│\A│\A│\A│\A│\A│\A│\A│\A│\A│\A│\A│\A│\A│\A│\A│\A│\A│"; }
+.callout[data-callout="ascii-poetry"]::after { content: "│\A│\A│\A│\A│\A│\A│\A│\A│\A│\A│\A│\A│\A│\A│\A│\A│\A│\A│\A│\A│\A│\A│\A│\A│\A│\A│\A│\A│\A│\A│\A│"; }
+.callout[data-callout="ascii-poetry"] .callout-title::before { content: "╭⋟──────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────"; right: 1ch; }
+.callout[data-callout="ascii-poetry"] .callout-title::after { content: "╮"; background: var(--background-primary); }
+.callout[data-callout="ascii-poetry"] .callout-content::before { content: "╰──────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────"; right: 2ch; }
+.callout[data-callout="ascii-poetry"] .callout-content::after { content: "⋞╯"; background: var(--background-primary); }
+
+/* --- ASCII Mythology --- */
+.callout[data-callout="ascii-mythology"] { padding: 2em 3ch; }
+.callout[data-callout="ascii-mythology"]::before { content: "║\A║\A║\A║\A║\A║\A║\A║\A║\A║\A║\A║\A║\A║\A║\A║\A║\A║\A║\A║\A║\A║\A║\A║\A║\A║\A║\A║\A║\A║\A║\A║"; }
+.callout[data-callout="ascii-mythology"]::after { content: "║\A║\A║\A║\A║\A║\A║\A║\A║\A║\A║\A║\A║\A║\A║\A║\A║\A║\A║\A║\A║\A║\A║\A║\A║\A║\A║\A║\A║\A║\A║\A║"; }
+.callout[data-callout="ascii-mythology"] .callout-title::before, .callout[data-callout="ascii-mythology"] .callout-content::before { content: "╔═══*.·:·.☽✧    ✦    ✧☾.·:·.*════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════"; right: 1ch; }
+.callout[data-callout="ascii-mythology"] .callout-title::after { content: "╗"; background: var(--background-primary); }
+.callout[data-callout="ascii-mythology"] .callout-content::after { content: "╝"; background: var(--background-primary); }
+
+
+/* ===================================================================== */
+/* PART 5: MISC CLASSES (ASCII FRAME & MAP VIEW)                         */
+/* ===================================================================== */
+
+/* --- ASCII Art Frame Classes --- */
+.ascii-art-container {
+  white-space: pre; font-family: 'Courier New', 'Monaco', 'Consolas', monospace; width: 100%; overflow-x: auto;
+  font-size: clamp(0.5rem, 2vw, 1rem); line-height: 1.2; background: var(--background-primary); padding: 10px; border-radius: 5px;
+}
+.ascii-fit-container {
+  margin: 0 auto; white-space: pre; width: 100%; transform-origin: left center; --art-width: 800px; 
+  transform: scale(min(1, calc(100% / var(--art-width)))); display: block;
+}
+.ascii-auto-fit {
+  display: table; margin: 0 auto; white-space: pre; max-width: 100%; transform-origin: center;
+  transform: scale(min(1, calc(100vw / var(--art-width, 800px))));
+}
+
+/* --- Map View Fixes --- */
+.map-view-plugin-container, .map-view-pin-label, .map-view-sidebar-header, .map-view-search-input {
+    font-family: "Unifont", monospace !important;
+}
+.map-view-pin-label {
+    background-color: var(--background-primary) !important; border: 1px solid var(--text-accent) !important;
+    padding: 2px 4px !important; color: var(--text-normal) !important;
+}
+

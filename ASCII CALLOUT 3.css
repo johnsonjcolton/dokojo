@@ -1,0 +1,106 @@
+/* ===================================================================== */
+/* OBSIDIAN CUSTOM CALLOUTS: DRY REFACTOR + LO-FI RPG AESTHETIC          */
+/* ===================================================================== */
+
+/* --- PART 1: CORE RESET ENGINE --- */
+.callout[data-callout="quote"],
+.callout[data-callout="ornate"],
+.callout[data-callout="retro-3d"],
+.callout[data-callout="void-gazer"],
+.callout[data-callout="magi-tekk"],
+.callout[data-callout^="ascii-"],
+.callout[data-callout="location"] {
+    --callout-color: var(--text-normal);
+    --callout-icon: none;
+    background: transparent;
+    border: none;
+}
+
+/* --- PART 2 & 3: STRUCTURAL SKELETON & COLLAPSE FIX --- */
+.callout[data-callout^="ascii-"],
+.callout[data-callout="location"] {
+    font-family: "Unifont", monospace !important;
+    position: relative;
+    overflow: hidden;
+    line-height: var(--lh, 1.2);
+    padding: var(--pad, 1.5em 3ch);
+}
+
+.callout[data-callout^="ascii-"]::before, .callout[data-callout="location"]::before { position: absolute; left: 0; white-space: pre; top: var(--wall-top, 1em); }
+.callout[data-callout^="ascii-"]::after, .callout[data-callout="location"]::after { position: absolute; right: 0; white-space: pre; top: var(--wall-top, 1em); }
+.callout[data-callout^="ascii-"] .callout-title::before, .callout[data-callout="location"] .callout-title::before { position: absolute; top: 0; left: 0; white-space: nowrap; overflow: hidden; right: var(--corner-space-top, 2ch); }
+.callout[data-callout^="ascii-"] .callout-content::before, .callout[data-callout="location"] .callout-content::before { position: absolute; bottom: var(--bot-border-lift, 0); left: 0; white-space: nowrap; overflow: hidden; right: var(--corner-space-bot, 2ch); }
+.callout[data-callout^="ascii-"] .callout-title::after, .callout[data-callout="location"] .callout-title::after { position: absolute; top: 0; right: 0; }
+.callout[data-callout^="ascii-"] .callout-content::after, .callout[data-callout="location"] .callout-content::after { position: absolute; right: 0; bottom: var(--bot-corner-lift, 0); }
+
+.callout.is-collapsed[data-callout^="ascii-"] .callout-content, .callout.is-collapsed[data-callout="location"] .callout-content { display: block !important; height: 0px; margin: 0; padding: 0; visibility: hidden; overflow: visible; }
+.callout.is-collapsed[data-callout^="ascii-"] .callout-content::before, .callout.is-collapsed[data-callout="location"] .callout-content::before { visibility: visible; }
+
+/* --- PART 4: THE SWORDS & SORCERY LO-FI NODE --- */
+.callout[data-callout="location"] {
+    --pad: 2.5em 4ch 2.5em 4ch; 
+    --corner-space-top: 3ch; 
+    --corner-space-bot: 3ch;
+    box-shadow: 10px 10px 0px rgba(128, 128, 128, 0.3) !important;
+    margin-bottom: 25px;
+    background-color: var(--background-primary) !important;
+    background-image: repeating-linear-gradient(-45deg, rgba(128, 128, 128, 0.08), rgba(128, 128, 128, 0.08) 2px, transparent 2px, transparent 8px) !important;
+}
+
+.callout[data-callout="location"]::before { 
+    content: "^\A▲\A𒃯\A^\A▲\A𐄢\A^\A⛨\A^\A▲\A𒃯\A^\A▲\A𐄢\A^\A⛒\A^\A▲\A𒃯\A^\A▲\A𐄢\A^\A❌\A^\A▲\A𒃯\A^\A▲\A𐄢\A^\A⛨\A^\A▲\A𒃯\A^\A▲\A𐄢\A^\A⛒\A^\A▲\A𒃯\A^\A▲\A𐄢\A^\A❌\A^\A▲"; 
+    color: var(--text-muted); opacity: 0.6; font-size: 0.9em;
+}
+.callout[data-callout="location"]::after { 
+    content: "▲\A^\A𐄢\A^\A▲\A𒃯\A^\A⛒\A^\A▲\A𐄢\A^\A▲\A𒃯\A^\A❌\A^\A▲\A𐄢\A^\A▲\A𒃯\A^\A⛨\A^\A▲\A𐄢\A^\A▲\A𒃯\A^\A⛒\A^\A▲\A𐄢\A^\A▲\A𒃯\A^\A❌\A^\A▲\A𐄢\A^\A▲\A𒃯\A^\A⛨\A^\A▲\A^\A"; 
+    color: var(--text-muted); opacity: 0.6; font-size: 0.9em;
+}
+
+.callout[data-callout="location"] .callout-title::before { 
+    content: "~~^~~𒃯~~^~~~𐄢~~~~~^~⛨~^~~𒃯~~^~~~𐄢~~~~~^~⛒~^~~𒃯~~^~~~𐄢~~~~~^~❌~^~~𒃯~~^~~~𐄢~~~~~^~⛨~^~~𒃯~~^~~~𐄢~~~~~^~⛒~^~~𒃯~~^~~~𐄢~~~~~^~❌~^~~𒃯~~^~~~𐄢~~~~~^~⛨~^~~𒃯~~^~~~𐄢~~~~~^~⛒~^~~𒃯~~^~~~𐄢~~~~~^~❌~^~~𒃯~~^~~~𐄢~~~~~^~⛨~^~~𒃯~~^~~~𐄢~~~~~^~⛒~^~~𒃯~~^~~~𐄢~~~~~^~❌~^~~𒃯~~^~~~𐄢~~~~~^~⛨~^~~"; 
+    color: var(--text-accent); opacity: 0.5; letter-spacing: -0.05em;
+}
+.callout[data-callout="location"] .callout-content::before { 
+    content: "~~^~~𒃯~~^~~~𐄢~~~~~^~⛒~^~~𒃯~~^~~~𐄢~~~~~^~❌~^~~𒃯~~^~~~𐄢~~~~~^~⛨~^~~𒃯~~^~~~𐄢~~~~~^~⛒~^~~𒃯~~^~~~𐄢~~~~~^~❌~^~~𒃯~~^~~~𐄢~~~~~^~⛨~^~~𒃯~~^~~~𐄢~~~~~^~⛒~^~~𒃯~~^~~~𐄢~~~~~^~❌~^~~𒃯~~^~~~𐄢~~~~~^~⛨~^~~𒃯~~^~~~𐄢~~~~~^~⛒~^~~𒃯~~^~~~𐄢~~~~~^~❌~^~~𒃯~~^~~~𐄢~~~~~^~⛨~^~~𒃯~~^~~~𐄢~~~~~^~⛒~^~~"; 
+    color: var(--text-accent); opacity: 0.5; letter-spacing: -0.05em;
+}
+
+.callout[data-callout="location"] .callout-title::after { 
+    content: "✪"; color: var(--text-accent); right: 0.5ch; background: var(--background-primary); padding: 0 4px;
+    background-image: repeating-linear-gradient(-45deg, rgba(128, 128, 128, 0.08), rgba(128, 128, 128, 0.08) 2px, transparent 2px, transparent 8px);
+}
+.callout[data-callout="location"] .callout-content::after { 
+    content: "☠"; color: var(--text-accent); right: 0.5ch; background: var(--background-primary); padding: 0 4px;
+    background-image: repeating-linear-gradient(-45deg, rgba(128, 128, 128, 0.08), rgba(128, 128, 128, 0.08) 2px, transparent 2px, transparent 8px);
+}
+
+.callout[data-callout="location"] .callout-title-inner::before { content: "⯏ ⌊ QUEST_LOG: "; color: var(--text-normal); font-weight: bold; }
+.callout[data-callout="location"] .callout-title-inner::after { 
+    content: " ⌋ ⯍"; position: absolute; right: 4ch; color: var(--text-normal); font-weight: bold; padding-left: 1ch;
+    background: var(--background-primary);
+    background-image: repeating-linear-gradient(-45deg, rgba(128, 128, 128, 0.08), rgba(128, 128, 128, 0.08) 2px, transparent 2px, transparent 8px);
+}
+
+/* --- PART 5: OTHER CUSTOM CALLOUTS --- */
+.markdown-rendered blockquote, .callout[data-callout="quote"] { position: relative; padding: 1.5em; border-left: none; display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center; }
+.markdown-rendered blockquote::before, .callout[data-callout="quote"]::before { content: "「"; position: absolute; top: 5px; left: 5px; font-size: 1.5em; font-weight: bold; line-height: 1; color: var(--text-muted); }
+.markdown-rendered blockquote::after, .callout[data-callout="quote"]::after { content: "」"; position: absolute; bottom: 5px; right: 5px; font-size: 1.5em; font-weight: bold; line-height: 1; color: var(--text-muted); }
+
+
+
+
+/* Force Unifont on Map View Labels and UI Elements */
+.map-view-plugin-container,
+.map-view-pin-label,
+.map-view-sidebar-header,
+.map-view-search-input {
+    font-family: "Unifont", monospace !important;
+}
+
+/* Optional: Make the pin labels pop with the same lo-fi aesthetic */
+.map-view-pin-label {
+    background-color: var(--background-primary) !important;
+    border: 1px solid var(--text-accent) !important;
+    padding: 2px 4px !important;
+    color: var(--text-normal) !important;
+}

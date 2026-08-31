@@ -1,0 +1,36 @@
+/* --- LIVE PREVIEW EMBED CLEANUP (WITH TOGGLE) --- */
+
+/* 1. Hide the embed title and link icon UNLESS 'show-title' is in the alt text */
+.internal-embed:not([alt*="show-title"]) .markdown-embed-title,
+.internal-embed:not([alt*="show-title"]) .markdown-embed-link {
+    display: none !important;
+}
+
+/* 2. Hide the "Inline Title" UNLESS 'show-title' is in the alt text */
+.internal-embed:not([alt*="show-title"]) .inline-title {
+    display: none !important;
+}
+
+/* 3. Hide actual headings (H1-H6) UNLESS 'show-title' is in the alt text */
+.internal-embed:not([alt*="show-title"]) .markdown-embed-content :is(h1, h2, h3, h4, h5, h6) {
+    display: none !important;
+}
+
+/* 4. Kill the left accent bar and remove padding permanently */
+body {
+    --embed-border-start: none !important;
+    --embed-border-left: none !important;
+    --embed-padding: 0 !important;
+}
+
+/* 5. Force the Live Preview container to drop its borders permanently */
+.markdown-source-view.mod-cm6 .cm-embed-block,
+.markdown-source-view.mod-cm6 .internal-embed,
+.internal-embed {
+    border: none !important;
+    border-left: none !important;
+    padding: 0 !important;
+    padding-left: 0 !important;
+    margin: 0 !important;
+    box-shadow: none !important;
+}

@@ -1,0 +1,47 @@
+/* @settings
+name: Bold & Underscore Tweaks
+id: bold-underscore-tweaks
+settings:
+    - id: toggle-bold-underline
+      title: Underline Bold Text
+      description: Turn on to automatically underline all bold words and letters.
+      type: class-toggle
+      add-to-body: true
+      default: true
+    - id: underscore-opacity
+      title: Underscore Visibility
+      description: Adjust how visible or invisible formatting punctuation is.
+      type: variable-number-slider
+      default: 0.2
+      min: 0
+      max: 10
+      step: 0.1
+      format: "0.0"
+*/
+
+/* --- 1. Underline Bold Text --- */
+/* This triggers only if the toggle is turned ON in Style Settings */
+body.toggle-bold-underline .cm-strong, 
+body.toggle-bold-underline strong {
+    text-decoration: underline;
+    text-underline-offset: 3px; 
+}
+
+/* --- 2. Slidable Underscore Visibility --- */
+/* Maps your Style Settings slider variable so the rest of the CSS can use it */
+body {
+    --underscore-alpha: var(--underscore-opacity, 0.2);
+}
+
+/* Dim Markdown formatting characters using your slider's variable */
+.cm-s-obsidian span.cm-formatting-em,
+.cm-s-obsidian span.cm-formatting-strong {
+    opacity: var(--underscore-alpha); 
+    transition: opacity 0.2s ease-in-out; 
+}
+
+/* Make them fully visible again when your cursor is actively on that line */
+.cm-active span.cm-formatting-em,
+.cm-active span.cm-formatting-strong {
+    opacity: 1.0; 
+}

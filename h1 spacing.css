@@ -1,0 +1,70 @@
+:root {
+  --h1-spacing: 0em;
+  --h1-line-spacing-top: 0em;
+  --h1-border-color: 128, 128, 128;
+  --h1-border-opacity: 0.3;
+  --h1-border-width-top: 1px;
+}
+
+/* === H1 SPACING & LINES === */
+
+/* Reading Mode */
+.markdown-preview-view h1:not(:first-of-type) {
+  margin-top: var(--h1-spacing);
+}
+
+/* Live Preview Mode */
+.markdown-source-view.mod-cm6
+  .cm-line.HyperMD-header-1:not(:first-of-type) {
+  padding-top: var(--h1-spacing);
+}
+
+/* Decorative line ABOVE H1 only (Reading Mode) */
+.markdown-preview-view h1:not(:first-of-type)::before {
+  content: "";
+  display: block;
+  border-top: var(--h1-border-width-top)
+    solid rgba(var(--h1-border-color), var(--h1-border-opacity));
+  margin-top: var(--h1-line-spacing-top);
+}
+
+/* Decorative line ABOVE H1 only (Live Preview) */
+.markdown-source-view.mod-cm6
+  .cm-line.HyperMD-header-1:not(:first-of-type)::before {
+  content: "";
+  display: block;
+  border-top: var(--h1-border-width-top)
+    solid rgba(var(--h1-border-color), var(--h1-border-opacity));
+  margin-top: var(--h1-line-spacing-top);
+}
+
+/* === H2 STYLING === */
+
+.markdown-preview-view h2 {
+  margin-top: 0em;
+  margin-left: 0em; }
+
+.markdown-source-view.mod-cm6 .cm-line.HyperMD-header-2 {
+  padding-top: 0em;
+  padding-left: 0em;
+}
+
+/* === Center inline title (filename) === */
+
+.inline-title,
+.markdown-source-view.mod-cm6 .cm-inline-title,
+.markdown-preview-view .inline-title {
+  display: block;
+  text-align: center !important;
+  width: 100%;
+  margin: 0 auto !important;
+}
+
+/* === Force Status Bar Visible === */
+
+.status-bar {
+  display: flex !important;
+  height: auto !important;
+  visibility: visible !important;
+  opacity: 1 !important;
+}

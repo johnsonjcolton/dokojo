@@ -1,0 +1,63 @@
+/* === Margin-style: Note to Self === */
+.callout[data-callout="note-to-self"],
+.cm-callout[data-callout="note-to-self"] {
+  float: right;
+  width: 250px;
+  margin-left: 1.5em;
+  margin-right: -280px;
+  background-color: #fff8e1;
+  border-left: 4px solid #ffa000;
+  padding: 10px;
+  font-size: 0.85em;
+  box-shadow: 2px 2px 5px rgba(0,0,0,0.1);
+  shape-outside: margin-box;
+  display: block;
+}
+
+/* === Margin-style: Sidenote === */
+.callout[data-callout="sidenote"],
+.cm-callout[data-callout="sidenote"] {
+  float: right;
+  width: 250px;
+  margin-left: 1.5em;
+  margin-right: -280px;
+  background-color: #e1f5fe;
+  border-left: 4px solid #039be5;
+  padding: 10px;
+  font-size: 0.85em;
+  box-shadow: 2px 2px 5px rgba(0,0,0,0.1);
+  shape-outside: margin-box;
+  display: block;
+}
+
+/* === Margin-style: Comment === */
+.callout[data-callout="comment"],
+.cm-callout[data-callout="comment"] {
+  float: right;
+  width: 250px;
+  margin-left: 1.5em;
+  margin-right: -280px;
+  background-color: #f3e5f5;
+  border-left: 4px solid #8e24aa;
+  padding: 10px;
+  font-size: 0.85em;
+  box-shadow: 2px 2px 5px rgba(0,0,0,0.1);
+  shape-outside: margin-box;
+  display: block;
+}
+
+/* === Shared styling for all margin callout titles === */
+.callout-title {
+  font-size: 0.7em;
+  font-weight: bold;
+  text-align: center;
+  text-transform: uppercase;
+  margin-bottom: 0.3em;
+  padding-left: 0;
+  cursor: default;
+}
+
+/* Hide icons for all custom margin callouts */
+.callout-icon {
+  display: none;
+}

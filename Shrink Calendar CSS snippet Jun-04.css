@@ -1,0 +1,94 @@
+/* @settings
+name: Custom Calendar Size
+id: custom-calendar-size
+settings:
+  - 
+    id: cal-width
+    title: Column Width
+    type: variable-number-slider
+    default: 24
+    min: 1
+    max: 40
+    format: px
+  - 
+    id: cal-height
+    title: Row Height
+    type: variable-number-slider
+    default: 24
+    min: 1
+    max: 40
+    format: px
+  - 
+    id: cal-text
+    title: Calendar Text Size
+    type: variable-number-slider
+    default: 11
+    min: 8
+    max: 20
+    format: px
+*/
+
+body {
+    --cal-width: 24px;
+    --cal-height: 24px;
+    --cal-text: 11px;
+}
+
+/* Controls the individual day boxes */
+#calendar-container .calendar .day {
+    width: var(--cal-width) !important;
+    height: var(--cal-height) !important;
+    font-size: var(--cal-text) !important;
+    line-height: var(--cal-height) !important;
+}
+
+/* Controls the day names at the top to keep columns aligned */
+#calendar-container .calendar .day-name {
+    width: var(--cal-width) !important;
+    font-size: var(--cal-text) !important;
+}
+/* Shrink the entire header row's spacing */
+#calendar-container .nav {
+    margin-top: 2px !important;
+    margin-bottom: 4px !important;
+    padding-top: 0px !important;
+    min-height: unset !important;
+}
+
+/* Shrink the Month and Year text */
+#calendar-container .title {
+    font-size: 16px !important;
+    line-height: 1.2 !important;
+}
+
+/* Shrink the 'TODAY' button */
+#calendar-container .reset-button {
+    font-size: 10px !important;
+    padding: 2px 6px !important;
+    margin: 0 !important;
+}
+
+/* Shrink the left and right arrows */
+#calendar-container .nav .right-arrow svg,
+#calendar-container .nav .left-arrow svg {
+    width: 14px !important;
+    height: 14px !important;
+}
+
+/* Tighten the gaps between the calendar cells */
+#calendar-container .calendar {
+    gap: 2px !important; /* Reduces the empty space between the rows and columns */
+    padding-bottom: 2px !important;
+}
+
+/* Shrink the week number column on the far left */
+#calendar-container .calendar .week-num {
+    font-size: 9px !important;
+    width: 14px !important; 
+    padding-right: 4px !important;
+}
+
+/* Ensure no extra margin is hiding outside the day cells */
+#calendar-container .calendar .day {
+    margin: 0px !important;
+}

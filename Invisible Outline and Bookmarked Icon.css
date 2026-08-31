@@ -1,0 +1,59 @@
+/* =========================================
+   INVISIBLE EMPTY HEADINGS (FOLD SPACERS)
+   (Bulletproofed to override Advanced Heading Tweaks)
+   ========================================= */
+
+/* LIVE PREVIEW: Strips backgrounds, borders, and padding */
+.cm-line.HyperMD-header:not(:has(.cm-header:not(.cm-formatting))) {
+    background-color: transparent !important;
+    border: none !important;
+    box-shadow: none !important;
+    padding: 0 !important; 
+    width: 100% !important; /* Overrides the 75% / 60% width on H2/H3 */
+}
+
+/* LIVE PREVIEW: Makes the actual hashtags (#) invisible */
+.cm-line.HyperMD-header:not(:has(.cm-header:not(.cm-formatting))) .cm-formatting {
+    color: transparent !important;
+}
+
+/* LIVE PREVIEW: Kills the dotted ::after line on empty H1s */
+.cm-line.HyperMD-header-1:not(:has(.cm-header:not(.cm-formatting)))::after {
+    display: none !important;
+    content: none !important;
+}
+
+/* READING VIEW: Strips everything from empty headers */
+.markdown-rendered h1:empty, .markdown-rendered h1:has(br),
+.markdown-rendered h2:empty, .markdown-rendered h2:has(br),
+.markdown-rendered h3:empty, .markdown-rendered h3:has(br),
+.markdown-rendered h4:empty, .markdown-rendered h4:has(br),
+.markdown-rendered h5:empty, .markdown-rendered h5:has(br),
+.markdown-rendered h6:empty, .markdown-rendered h6:has(br) {
+    background-color: transparent !important;
+    border: none !important;
+    box-shadow: none !important;
+    color: transparent !important;
+    padding: 0 !important;
+    width: auto !important; /* Overrides the H2/H3 width limits */
+    
+    /* Reset margins so they don't inherit the slider settings, but keep the whitespace */
+    margin-top: 0 !important;
+    margin-left: 0 !important;
+    margin-right: 0 !important;
+    margin-bottom: 2em !important; /* Your nice chunk of whitespace */
+}
+
+/* READING VIEW: Kills the dotted ::after line on empty H1s */
+.markdown-rendered h1:empty::after, 
+.markdown-rendered h1:has(br)::after {
+    display: none !important;
+    content: none !important;
+}
+
+/* Hides the bookmark status icon in the active tab header */
+.view-header-title-container .view-header-icon.is-bookmarked,
+.view-header .clickable-icon[aria-label*="Bookmark"] {
+    display: none !important;
+}
+

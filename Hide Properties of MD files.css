@@ -1,0 +1,15 @@
+/* === Hide Properties by default === */
+
+/* Collapse the Properties container */
+.metadata-container {
+  max-height: 0;
+  overflow: hidden;
+  opacity: 0;
+  transition: max-height 0.2s ease, opacity 0.15s ease;
+}
+
+/* Reveal Properties on hover */
+.metadata-container:hover {
+  max-height: 500px; /* safely large */
+  opacity: 1;
+}

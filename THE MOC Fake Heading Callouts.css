@@ -1,0 +1,1393 @@
+
+/* ==========================================================================
+   Base Shared Callout Styles (Structural Reset & Hovering Effect)
+   ========================================================================== */
+.callout[data-callout^="fake-heading"] {
+    background: transparent !important;
+    border: none !important;
+    box-shadow: none !important;
+    padding: 0 !important;
+    margin: 1em 0;
+    overflow: visible !important;
+}
+
+/* Use > to target ONLY the outer icon, title, and content. Prevents leaking into nested callouts! */
+.callout[data-callout^="fake-heading"] > .callout-icon {
+    display: none !important;
+}
+
+.callout[data-callout^="fake-heading"] > .callout-title {
+    position: relative;
+    z-index: 2;
+    padding: 4px;
+    box-shadow: -5px 5px 1px black, 7px 7px 0px white;
+}
+
+.callout[data-callout^="fake-heading"] > .callout-title > .callout-title-inner {
+    font-weight: bold;
+    text-align: center;
+    width: 100%;
+}
+
+.callout[data-callout^="fake-heading"] > .callout-content {
+    position: relative;
+    z-index: 1;
+    margin: -4px 20px 25px 20px !important;
+    border-radius: 0 !important;
+    padding: 30px 20px 20px 20px !important;
+    box-shadow: -5px 5px 0px black, -10px 10px 0px #ffb3ff, 10px 9px 0px #b3e6ff !important;
+}
+
+
+/* ==========================================================================
+   Variant 1: Original / Default (`fake-heading`)
+   ========================================================================== */
+.callout[data-callout="fake-heading"] > .callout-title {
+    background-color: bisque;
+    border: 4px double black !important;
+    padding: 1px;
+}
+.callout[data-callout="fake-heading"] > .callout-title > .callout-title-inner {
+    font-size: 1.5em;
+    color: white;
+    text-shadow: -3px 3px 0px green, -6px 6px 0px orange, -9px 9px 0px papayawhip, -12px 12px 0px rgba(255, 113, 206, 0.1);
+}
+.callout[data-callout="fake-heading"] > .callout-title .callout-fold { color: black; }
+.callout[data-callout="fake-heading"] > .callout-content {
+    background-color: #f0f4ff !important;
+    color: #111 !important;
+    border: 3px solid black !important;
+}
+
+
+/* ==========================================================================
+   Variant 2: Lavender (`fake-heading-lavender`)
+   ========================================================================== */
+.callout[data-callout="fake-heading-lavender"] > .callout-title {
+    background-color: #d8bfd8;
+    border: 4px double #4b0082 !important;
+}
+.callout[data-callout="fake-heading-lavender"] > .callout-title > .callout-title-inner {
+    font-size: 1.3rem;
+    color: #4b0082;
+    text-shadow: -2px 2px 0px white, -4px 4px 0px rgba(75, 0, 130, 0.2);
+}
+.callout[data-callout="fake-heading-lavender"] > .callout-title .callout-fold { color: #4b0082; }
+.callout[data-callout="fake-heading-lavender"] > .callout-content {
+    background-color: #fcf4fc !important;
+    color: #111 !important;
+    border: 3px solid #4b0082 !important;
+}
+
+
+/* ==========================================================================
+   Variant 3: Terminal (`fake-heading-terminal`)
+   ========================================================================== */
+.callout[data-callout="fake-heading-terminal"] > .callout-title {
+    background-color: #000000;
+    border: 2px solid #00ff00 !important;
+    padding: 6px;
+}
+.callout[data-callout="fake-heading-terminal"] > .callout-title > .callout-title-inner {
+    font-family: monospace;
+    font-size: 1.1rem;
+    color: #00ff00;
+    text-align: left;
+    text-indent: 10px;
+    text-shadow: 0px 0px 8px #00ff00;
+}
+.callout[data-callout="fake-heading-terminal"] > .callout-title .callout-fold { color: #00ff00; }
+.callout[data-callout="fake-heading-terminal"] > .callout-content {
+    background-color: #050f05 !important;
+    color: #00ff00 !important;
+    border: 2px solid #00ff00 !important;
+    margin-top: -2px !important;
+}
+
+
+/* ==========================================================================
+   Variant 4: Sunset (`fake-heading-sunset`)
+   ========================================================================== */
+.callout[data-callout="fake-heading-sunset"] > .callout-title {
+    background-color: #ff7f50;
+    border: 4px double #ffffff !important;
+    padding: 2px;
+}
+.callout[data-callout="fake-heading-sunset"] > .callout-title > .callout-title-inner {
+    font-size: 1.4em;
+    color: #ffffff;
+    text-shadow: -2px 2px 0px #8b0000, -4px 4px 0px #ff4500, -6px 6px 0px rgba(0, 0, 0, 0.5);
+}
+.callout[data-callout="fake-heading-sunset"] > .callout-title .callout-fold { color: #ffffff; }
+.callout[data-callout="fake-heading-sunset"] > .callout-content {
+    background-color: #fff8f0 !important;
+    color: #111 !important;
+    border: 3px solid #8b0000 !important;
+}
+
+
+/* ==========================================================================
+   Variant 5: Mint (`fake-heading-mint`)
+   ========================================================================== */
+.callout[data-callout="fake-heading-mint"] > .callout-title {
+    background-color: #e0f8ea;
+    border: 3px dashed #2e8b57 !important;
+    padding: 5px;
+}
+.callout[data-callout="fake-heading-mint"] > .callout-title > .callout-title-inner {
+    font-size: 1.2rem;
+    color: #2e8b57;
+    text-shadow: 1px 1px 0px #a3e4d7, 2px 2px 0px #ffffff;
+}
+.callout[data-callout="fake-heading-mint"] > .callout-title .callout-fold { color: #2e8b57; }
+.callout[data-callout="fake-heading-mint"] > .callout-content {
+    background-color: #f4fcf7 !important;
+    color: #111 !important;
+    border: 2px dashed #2e8b57 !important;
+}
+
+
+/* ==========================================================================
+   Variant 6: Neon Blue (`fake-heading-neon-blue`)
+   ========================================================================== */
+.callout[data-callout="fake-heading-neon-blue"] > .callout-title {
+    background-color: #0b0c10;
+    border: 4px solid #66fcf1 !important;
+}
+.callout[data-callout="fake-heading-neon-blue"] > .callout-title > .callout-title-inner {
+    font-size: 1.3em;
+    color: #66fcf1;
+    text-shadow: -2px 2px 0px #45a29e, -4px 4px 0px rgba(102, 252, 241, 0.4);
+}
+.callout[data-callout="fake-heading-neon-blue"] > .callout-title .callout-fold { color: #66fcf1; }
+.callout[data-callout="fake-heading-neon-blue"] > .callout-content {
+    background-color: #12161a !important;
+    color: #c5c6c7 !important;
+    border: 3px solid #45a29e !important;
+}
+
+
+/* ==========================================================================
+   Variant 7: Obsidian Gold (`fake-heading-obsidian-gold`)
+   ========================================================================== */
+.callout[data-callout="fake-heading-obsidian-gold"] > .callout-title {
+    background-color: #2c221e;
+    border: 4px double #d4af37 !important;
+    padding: 2px;
+}
+.callout[data-callout="fake-heading-obsidian-gold"] > .callout-title > .callout-title-inner {
+    font-size: 1.3rem;
+    color: #f3e5ab;
+    text-shadow: -2px 2px 0px #d4af37, -4px 4px 0px rgba(0, 0, 0, 0.9);
+}
+.callout[data-callout="fake-heading-obsidian-gold"] > .callout-title .callout-fold { color: #f3e5ab; }
+.callout[data-callout="fake-heading-obsidian-gold"] > .callout-content {
+    background-color: #201815 !important;
+    color: #f3e5ab !important;
+    border: 3px solid #d4af37 !important;
+}
+
+
+/* ==========================================================================
+   Variant 8: Retro Amber (`fake-heading-retro-amber`)
+   ========================================================================== */
+.callout[data-callout="fake-heading-retro-amber"] > .callout-title {
+    background-color: #1a0f00;
+    border: 3px solid #ffb000 !important;
+    padding: 3px;
+}
+.callout[data-callout="fake-heading-retro-amber"] > .callout-title > .callout-title-inner {
+    font-family: monospace;
+    font-size: 1.2rem;
+    color: #ffb000;
+    text-shadow: 0px 0px 6px #ffb000, -2px 2px 0px #552b00;
+}
+.callout[data-callout="fake-heading-retro-amber"] > .callout-title .callout-fold { color: #ffb000; }
+.callout[data-callout="fake-heading-retro-amber"] > .callout-content {
+    background-color: #120a00 !important;
+    color: #ffb000 !important;
+    border: 2px solid #ffb000 !important;
+    margin-top: -3px !important;
+}
+
+
+/* ==========================================================================
+   Variant 9: Crimson Void (`fake-heading-crimson-void`)
+   ========================================================================== */
+.callout[data-callout="fake-heading-crimson-void"] > .callout-title {
+    background-color: #3d0c11;
+    border: 4px double #ff6b6b !important;
+    padding: 2px;
+}
+.callout[data-callout="fake-heading-crimson-void"] > .callout-title > .callout-title-inner {
+    font-size: 1.4em;
+    color: #ffe3e3;
+    text-shadow: -3px 3px 0px #ff2a2a, -6px 6px 0px rgba(0, 0, 0, 0.8);
+}
+.callout[data-callout="fake-heading-crimson-void"] > .callout-title .callout-fold { color: #ffe3e3; }
+.callout[data-callout="fake-heading-crimson-void"] > .callout-content {
+    background-color: #26070b !important;
+    color: #ffe3e3 !important;
+    border: 3px solid #ff6b6b !important;
+}
+
+
+/* ==========================================================================
+   Variant 10: Cyber Yellow (`fake-heading-cyber-yellow`)
+   ========================================================================== */
+.callout[data-callout="fake-heading-cyber-yellow"] > .callout-title {
+    background-color: #ffeb3b;
+    border: 4px solid black !important;
+    padding: 2px;
+}
+.callout[data-callout="fake-heading-cyber-yellow"] > .callout-title > .callout-title-inner {
+    font-size: 1.3rem;
+    color: #000000;
+    text-shadow: 2px 2px 0px #ffffff, -2px -2px 0px rgba(255, 87, 34, 0.4);
+}
+.callout[data-callout="fake-heading-cyber-yellow"] > .callout-title .callout-fold { color: #000000; }
+.callout[data-callout="fake-heading-cyber-yellow"] > .callout-content {
+    background-color: #fffde6 !important;
+    color: #111 !important;
+    border: 3px solid black !important;
+}
+
+
+/* ==========================================================================
+   Variant 11: Deep Indigo (`fake-heading-deep-indigo`)
+   ========================================================================== */
+.callout[data-callout="fake-heading-deep-indigo"] > .callout-title {
+    background-color: #1b1b2f;
+    border: 4px double #e43f5a !important;
+    padding: 2px;
+}
+.callout[data-callout="fake-heading-deep-indigo"] > .callout-title > .callout-title-inner {
+    font-size: 1.3em;
+    color: #e43f5a;
+    text-shadow: -2px 2px 0px #1f4068, -4px 4px 0px rgba(228, 63, 90, 0.3);
+}
+.callout[data-callout="fake-heading-deep-indigo"] > .callout-title .callout-fold { color: #e43f5a; }
+.callout[data-callout="fake-heading-deep-indigo"] > .callout-content {
+    background-color: #12121d !important;
+    color: #e43f5a !important;
+    border: 3px solid #e43f5a !important;
+}
+
+
+/* ==========================================================================
+   Variant 12: Salmon (`fake-heading-salmon`)
+   ========================================================================== */
+.callout[data-callout="fake-heading-salmon"] > .callout-title {
+    background-color: lightcoral;
+    border: 4px double black !important;
+    padding: 1px;
+}
+.callout[data-callout="fake-heading-salmon"] > .callout-title > .callout-title-inner {
+    color: white;
+    text-shadow: -1.5px 1.5px 0px lightcyan, -1.5px 1.5px 0px lightcyan, -1.9px 1.9px 0px rgba(0, 0, 0, 0.9), -2.7px 2.7px 0px rgba(0,0,0, 0.981);
+}
+.callout[data-callout="fake-heading-salmon"] > .callout-title .callout-fold { color: white; }
+.callout[data-callout="fake-heading-salmon"] > .callout-content {
+    background-color: #fff0f0 !important;
+    color: #111 !important;
+    border: 3px solid black !important;
+}
+
+
+/* ==========================================================================
+   Variant 13: Salmon 2 (`fake-heading-salmon-2`)
+   ========================================================================== */
+.callout[data-callout="fake-heading-salmon-2"] > .callout-title {
+    background-color: mediumseagreen;
+    border: 5px double black !important;
+    padding: 1px;
+}
+.callout[data-callout="fake-heading-salmon-2"] > .callout-title > .callout-title-inner {
+    font-family: unifont;
+    font-size: .95em;
+    color: white;
+    text-shadow: 1px -1px 0px black, -1px .5px 0px black, -1.5px 1.5px 0px lightcyan, -1.9px 1.9px 0px rgba(0, 0, 0, 0.9), -2.7px 2.7px 0px rgba(0,0,0, 0.981);
+}
+.callout[data-callout="fake-heading-salmon-2"] > .callout-title .callout-fold { color: white; }
+.callout[data-callout="fake-heading-salmon-2"] > .callout-content {
+    background-color: #f0f8f4 !important;
+    color: #111 !important;
+    border: 3px solid black !important;
+}
+
+
+/* ==========================================================================
+   Variant 14: Cactus (`fake-heading-cactus`)
+   ========================================================================== */
+.callout[data-callout="fake-heading-cactus"] > .callout-title {
+    background-color: mediumaquamarine;
+    border: 4px double black !important;
+    padding: 1px;
+}
+.callout[data-callout="fake-heading-cactus"] > .callout-title > .callout-title-inner {
+    font-size: .9rem;
+    color: black;
+    text-shadow: -3px 3px 0px slategrey, -6px 6px 0px grey, -9px 9px 0px rgba(255, 113, 206, 0.3), -12px 12px 0px rgba(255, 113, 206, 0.1);
+}
+.callout[data-callout="fake-heading-cactus"] > .callout-title .callout-fold { color: black; }
+.callout[data-callout="fake-heading-cactus"] > .callout-content {
+    background-color: #f0f9f6 !important;
+    color: #111 !important;
+    border: 3px solid black !important;
+}
+
+
+/* ==========================================================================
+   Variant 15: Teal (`fake-heading-teal`)
+   ========================================================================== */
+.callout[data-callout="fake-heading-teal"] > .callout-title {
+    background-color: #f3e8ff;
+    border: 4px solid #a8e6cf !important;
+    padding: 15px;
+}
+.callout[data-callout="fake-heading-teal"] > .callout-title > .callout-title-inner {
+    color: #3d2c5e;
+    text-shadow: -3px 3px 0px rgba(168, 230, 207, 0.9), -6px 6px 0px rgba(168, 230, 207, 0.6), -9px 9px 0px rgba(168, 230, 207, 0.3), -12px 12px 0px rgba(168, 230, 207, 0.1);
+}
+.callout[data-callout="fake-heading-teal"] > .callout-title .callout-fold { color: #3d2c5e; }
+.callout[data-callout="fake-heading-teal"] > .callout-content {
+    background-color: #faf5ff !important;
+    color: #3d2c5e !important;
+    border: 3px solid #a8e6cf !important;
+}
+
+
+/* ==========================================================================
+   Variant 16: Pink (`fake-heading-pink`)
+   ========================================================================== */
+.callout[data-callout="fake-heading-pink"] > .callout-title {
+    background-color: pink;
+    border: 4px double black !important;
+    padding: 1px;
+}
+.callout[data-callout="fake-heading-pink"] > .callout-title > .callout-title-inner {
+    font-size: 1.5em;
+    color: white;
+    text-shadow: -3px 3px 0px rgba(255, 113, 206, 0.9), -6px 6px 0px rgba(255, 113, 206, 0.6), -9px 9px 0px rgba(255, 113, 206, 0.3), -12px 12px 0px rgba(255, 113, 206, 0.1);
+}
+.callout[data-callout="fake-heading-pink"] > .callout-title .callout-fold { color: white; }
+.callout[data-callout="fake-heading-pink"] > .callout-content {
+    background-color: #fff0f5 !important;
+    color: #111 !important;
+    border: 3px solid black !important;
+}
+
+
+/* ==========================================================================
+   Variant 17: Pink Smaller (`fake-heading-pink-smaller`)
+   ========================================================================== */
+.callout[data-callout="fake-heading-pink-smaller"] > .callout-title {
+    background-color: pink;
+    border: 4px double white !important;
+    padding: 1px;
+}
+.callout[data-callout="fake-heading-pink-smaller"] > .callout-title > .callout-title-inner {
+    font-size: 1.3rem;
+    color: white;
+    text-shadow: -3px 3px 0px rgba(255, 113, 206, 0.9), -6px 6px 0px rgba(255, 113, 206, 0.6), -9px 9px 0px rgba(255, 113, 206, 0.3), -12px 12px 0px rgba(255, 113, 206, 0.1);
+}
+.callout[data-callout="fake-heading-pink-smaller"] > .callout-title .callout-fold { color: white; }
+.callout[data-callout="fake-heading-pink-smaller"] > .callout-content {
+    background-color: #fff0f5 !important;
+    color: #111 !important;
+    border: 3px solid white !important;
+}
+
+
+/* ==========================================================================
+   Variant 18: White Pink (`fake-heading-white-pink`)
+   ========================================================================== */
+.callout[data-callout="fake-heading-white-pink"] > .callout-title {
+    background-color: #f3e8ff;
+    border: 4px solid #a8e6cf !important;
+    padding: 15px;
+    box-shadow: 10px 10px 0px #ffb7b2;
+}
+.callout[data-callout="fake-heading-white-pink"] > .callout-title > .callout-title-inner {
+    color: #3d2c5e;
+    text-shadow: -3px 3px 0px rgba(168, 230, 207, 0.9), -6px 6px 0px rgba(168, 230, 207, 0.6), -9px 9px 0px rgba(168, 230, 207, 0.3), -12px 12px 0px rgba(168, 230, 207, 0.1);
+}
+.callout[data-callout="fake-heading-white-pink"] > .callout-title .callout-fold { color: #3d2c5e; }
+.callout[data-callout="fake-heading-white-pink"] > .callout-content {
+    background-color: #faf5ff !important;
+    color: #3d2c5e !important;
+    border: 3px solid #a8e6cf !important;
+    box-shadow: 10px 10px 0px #ffb7b2 !important;
+}
+
+
+/* ==========================================================================
+   Variant 19: Purple (`fake-heading-purple`)
+   ========================================================================== */
+.callout[data-callout="fake-heading-purple"] > .callout-title {
+    background-color: #2b1055;
+    border: 4px double black !important;
+    padding: 1px;
+    box-shadow: 4px 4px 15px rgba(0, 0, 0, .99);
+}
+.callout[data-callout="fake-heading-purple"] > .callout-title > .callout-title-inner {
+    color: white;
+    text-shadow: -3px 3px 0px rgba(255, 113, 206, 0.9), -6px 6px 0px rgba(255, 113, 206, 0.6), -9px 9px 0px rgba(255, 113, 206, 0.3), -12px 12px 0px rgba(255, 113, 206, 0.1);
+}
+.callout[data-callout="fake-heading-purple"] > .callout-title .callout-fold { color: white; }
+.callout[data-callout="fake-heading-purple"] > .callout-content {
+    background-color: #1a0a33 !important;
+    color: white !important;
+    border: 3px solid black !important;
+    box-shadow: 4px 4px 15px rgba(0, 0, 0, .99) !important;
+}
+
+
+/* ==========================================================================
+   Variant 20: Gray (`fake-heading-gray`)
+   ========================================================================== */
+.callout[data-callout="fake-heading-gray"] > .callout-title {
+    background: slategray;
+    border: 4px double beige;
+    padding: 4px;
+    box-shadow: 3px 3px 0px black;
+}
+.callout[data-callout="fake-heading-gray"] > .callout-title > .callout-title-inner {
+    font-family: unifont;
+    font-size: 1.5em;
+    color: white;
+    text-shadow: 2px 2px 0px black, 2px 2px 0px mediumaquamarine;
+}
+.callout[data-callout="fake-heading-gray"] > .callout-title .callout-fold { color: white; }
+.callout[data-callout="fake-heading-gray"] > .callout-content {
+    background-color: #2f3e4e !important;
+    color: white !important;
+    border: 3px solid beige !important;
+    box-shadow: 3px 3px 0px black !important;
+}
+
+
+/* ==========================================================================
+   Variant 21: Black (`fake-heading-black`)
+   ========================================================================== */
+.callout[data-callout="fake-heading-black"] > .callout-title {
+    background-color: Black;
+    border: 4px double white !important;
+    padding: 1px;
+    box-shadow: 4px 4px 2px rgba(0, 0, 0, .99);
+}
+.callout[data-callout="fake-heading-black"] > .callout-title > .callout-title-inner {
+    font-size: 1.3rem;
+    color: white;
+    text-shadow: -3px 3px 0px rgba(255, 113, 206, 0.9), -6px 6px 0px rgba(255, 113, 206, 0.6), -9px 9px 0px rgba(255, 113, 206, 0.3), -12px 12px 0px rgba(255, 113, 206, 0.1);
+}
+.callout[data-callout="fake-heading-black"] > .callout-title .callout-fold { color: white; }
+.callout[data-callout="fake-heading-black"] > .callout-content {
+    background-color: #111111 !important;
+    color: white !important;
+    border: 3px solid white !important;
+    box-shadow: 4px 4px 2px rgba(0, 0, 0, .99) !important;
+}
+
+/* ==========================================================================
+   NESTED CALLOUT FIX (The "Invisible Bleach" Kill-Switch)
+   Forces Obsidian to stop using mix-blend-mode on nested callouts
+   ========================================================================== */
+.callout[data-callout^="fake-heading"] .callout {
+    mix-blend-mode: normal !important;
+}
+
+/* ==========================================================================
+   CALLOUT MODIFIERS (Descriptive Size & Width via Metadata)
+   Usage: > [!fake-heading-color|modifier1 modifier2]
+   Modifiers available: smallfont, bigfont, thinpaper, widepaper, extrawidepaper
+   ========================================================================== */
+
+/* --- TITLE BOX / FONT SIZES --- */
+
+/* Small Font & Title Box */
+.callout[data-callout-metadata*="smallfont"] > .callout-title > .callout-title-inner {
+    font-size: 1rem !important;
+}
+.callout[data-callout-metadata*="smallfont"] > .callout-title {
+    padding: 1px !important;
+}
+
+/* Big Font & Title Box */
+.callout[data-callout-metadata*="bigfont"] > .callout-title > .callout-title-inner {
+    font-size: 2.2rem !important;
+}
+.callout[data-callout-metadata*="bigfont"] > .callout-title {
+    padding: 12px !important;
+}
+
+/* --- PAPER WIDTHS --- */
+
+/* Thinner Paper (increases the indent on both sides) */
+.callout[data-callout-metadata*="thinpaper"] > .callout-content {
+    margin-left: 60px !important;
+    margin-right: 60px !important;
+}
+
+/* Wider Paper (stretches out to align exactly with the title edges) */
+.callout[data-callout-metadata*="widepaper"] > .callout-content {
+    margin-left: 0px !important;
+    margin-right: 0px !important;
+}
+
+/* Extra Wide Paper (pushes the paper out past the title edges to the vault margins) */
+.callout[data-callout-metadata*="extrawidepaper"] > .callout-content {
+    margin-left: -15px !important;
+    margin-right: -15px !important;
+}
+
+/* ==========================================================================
+   CALLOUT MODIFIERS (Link Buttons)
+   Usage: > [!fake-heading-color|buttonlinks]
+   ========================================================================== */
+
+/* Turns standard text links into sharp light blue buttons */
+.callout[data-callout-metadata*="buttonlinks"] > .callout-content a {
+    background-color: #d8f0aa !important; /* Light sharp blue */
+    color: #474747 !important; 
+    /* Dark blue text */
+    border: 2px double black!important; 
+    /* Sharp box */
+    border-radius: 0px !important; 
+    /* No rounded corners */
+    /*padding: 4px 10px !important;
+    margin: 4px 2px !important;*/
+    display: inline-block !important;
+    font-weight: bold !important;
+    text-decoration: none !important;
+    box-shadow: 2px 2px 0px #000000 !important; /* Hard shadow to match the paper style */
+    transition: all 0.1s ease-in-out !important;
+}
+
+/* Hover effect to make the button feel tactile and clickable */
+.callout[data-callout-metadata*="buttonlinks"] > .callout-content a:hover {
+    background-color: #005bb5 !important; /* Inverts to dark blue */
+    color: #ffffff !important; /* Text turns white */
+    transform: translate(2px, 2px) !important; /* Pushes the button down */
+    box-shadow: 1px 1px 0px #005bb5 !important; /* Shrinks the shadow */
+}
+
+
+
+
+/* ==========================================================================
+   THE FINAL BOSS: DESKTOP READING MODE TEXT FIX
+   (Bypasses Obsidian's variables by creating a unique un-hijackable variable)
+   ========================================================================== */
+
+/* Default fallback for the light paper ones (Dark Text) */
+.callout[data-callout^="fake-heading"] > .callout-content {
+    --custom-paper-text: #111111;
+}
+
+/* White Text Group (Dark Papers) */
+.callout[data-callout="fake-heading-purple"] > .callout-content,
+.callout[data-callout="fake-heading-gray"] > .callout-content,
+.callout[data-callout="fake-heading-black"] > .callout-content,
+.callout[data-callout="fake-heading-crimson-void"] > .callout-content,
+.callout[data-callout="fake-heading-deep-indigo"] > .callout-content {
+    --custom-paper-text: #ffffff !important;
+}
+
+/* Teal / White-Pink Group (Dark Purple Text) */
+.callout[data-callout="fake-heading-teal"] > .callout-content,
+.callout[data-callout="fake-heading-white-pink"] > .callout-content {
+    --custom-paper-text: #3d2c5e !important;
+}
+
+/* Custom Color Group */
+.callout[data-callout="fake-heading-terminal"] > .callout-content { --custom-paper-text: #00ff00 !important; }
+.callout[data-callout="fake-heading-neon-blue"] > .callout-content { --custom-paper-text: #c5c6c7 !important; }
+.callout[data-callout="fake-heading-obsidian-gold"] > .callout-content { --custom-paper-text: #f3e5ab !important; }
+.callout[data-callout="fake-heading-retro-amber"] > .callout-content { --custom-paper-text: #ffb000 !important; }
+
+/* Forcibly apply this unique variable to the paragraph/list tags Reading Mode generates */
+.markdown-rendered .callout[data-callout^="fake-heading"] > .callout-content p,
+.markdown-rendered .callout[data-callout^="fake-heading"] > .callout-content ul,
+.markdown-rendered .callout[data-callout^="fake-heading"] > .callout-content ol,
+.markdown-rendered .callout[data-callout^="fake-heading"] > .callout-content li,
+.markdown-rendered .callout[data-callout^="fake-heading"] > .callout-content div {
+    color: var(--custom-paper-text) !important;
+}
+
+/* Save nested standard callouts from being painted over */
+.markdown-rendered .callout[data-callout^="fake-heading"] > .callout-content .callout p,
+.markdown-rendered .callout[data-callout^="fake-heading"] > .callout-content .callout ul,
+.markdown-rendered .callout[data-callout^="fake-heading"] > .callout-content .callout ol,
+.markdown-rendered .callout[data-callout^="fake-heading"] > .callout-content .callout li,
+.markdown-rendered .callout[data-callout^="fake-heading"] > .callout-content .callout div {
+    color: var(--text-normal) !important;
+}
+
+
+
+
+
+
+
+/* ==========================================================================
+   CALLOUT MODIFIERS (Text Alignment, Spacing, & Font Size)
+   Modifiers: centerbody, justifybody, centertitle, singlespace, smallfontbody, notitlebreak
+   ========================================================================== */
+
+/* --- 1 & 2. BODY TEXT ALIGNMENT --- */
+
+/* Center Body */
+.callout[data-callout-metadata*="centerbody"] > .callout-content,
+.callout[data-callout-metadata*="centerbody"] > .callout-content p {
+    text-align: center !important;
+}
+
+/* Justify Body */
+.callout[data-callout-metadata*="justifybody"] > .callout-content,
+.callout[data-callout-metadata*="justifybody"] > .callout-content p {
+    text-align: justify !important;
+}
+
+/* Combo: Justify + Center (Justifies the text, but centers the last line) */
+.callout[data-callout-metadata*="justifybody"][data-callout-metadata*="centerbody"] > .callout-content,
+.callout[data-callout-metadata*="justifybody"][data-callout-metadata*="centerbody"] > .callout-content p {
+    text-align: justify !important;
+    text-align-last: center !important; 
+}
+
+/* --- 3. CENTER TITLE --- */
+/* (Forces the title to the middle, which is especially useful for the Terminal variant which defaults to left-aligned) */
+.callout[data-callout-metadata*="centertitle"] > .callout-title > .callout-title-inner {
+    text-align: center !important;
+    text-indent: 0px !important;
+}
+
+/* --- 4. SINGLE SPACE TEXT --- */
+.callout[data-callout-metadata*="singlespace"] > .callout-content,
+.callout[data-callout-metadata*="singlespace"] > .callout-content p {
+    line-height: 1.2 !important; /* Tightens line spacing */
+    margin-bottom: 0.5em !important; /* Shrinks the gap between paragraph breaks */
+}
+
+/* --- 5. SMALL FONT BODY --- */
+.callout[data-callout-metadata*="smallfontbody"] > .callout-content,
+.callout[data-callout-metadata*="smallfontbody"] > .callout-content p,
+.callout[data-callout-metadata*="smallfontbody"] > .callout-content ul,
+.callout[data-callout-metadata*="smallfontbody"] > .callout-content ol {
+    font-size: 0.85em !important;
+}
+
+/* --- 6. REDUCE TITLE BREAK GAP --- */
+/* Cuts the top padding of the paper so the text sits directly beneath the title box */
+.callout[data-callout-metadata*="notitlebreak"] > .callout-content {
+    padding-top: 10px !important; /* Overrides the default 30px */
+}
+
+/* ==========================================================================
+   CALLOUT MODIFIERS (Stretch Buttons for Hubs)
+   Usage: > [!fake-heading-color|buttonlinks stretchbuttons]
+   ========================================================================== */
+
+/* 1. Turns the paragraph holding the links into a flexible container */
+.callout[data-callout-metadata*="stretchbuttons"] > .callout-content p {
+    display: flex !important;
+    flex-wrap: wrap !important;
+    gap: 8px !important; /* Clean, uniform spacing between the buttons */
+}
+
+/* 2. Forces the links/buttons to expand and eat up all the dead white space */
+.callout[data-callout-metadata*="stretchbuttons"] > .callout-content a {
+    flex: 1 1 auto !important; /* Tells the button it is allowed to grow to fill space */
+    min-width: 120px !important; /* Stops the buttons from getting too squished on mobile screens */
+    text-align: center !important;
+    margin: 0 !important; /* Overrides the static margin from the standard buttonlinks snippet */
+}
+
+/* Optional: If you want to center regular text that happens to sit inside a stretchbuttons hub */
+.callout[data-callout-metadata*="stretchbuttons"] > .callout-content {
+    text-align: center !important;
+}
+
+
+
+
+
+/* ==========================================================================
+   CALLOUT MODIFIERS (Button Squishing & Kerning)
+   Modifiers: smallfontbuttons, smallkernbuttons
+   ========================================================================== */
+
+/* 1. Small Font Buttons (Shrinks text, tightens padding, removes width limits) */
+.callout[data-callout-metadata*="smallfontbuttons"] > .callout-content a {
+    font-size: 0.8em !important; /* Drops the font size */
+    padding: 2px 5px !important; /* Removes the bulky padding inside the button */
+    min-width: 40px !important; /* Overrides the 120px limit from stretchbuttons */
+}
+
+/* 2. Small Kern Buttons (Tightens the literal space between letters) */
+.callout[data-callout-metadata*="smallkernbuttons"] > .callout-content a {
+    letter-spacing: -0.5px !important; /* Squishes the letters closer together */
+}
+
+
+
+
+
+
+/* ==========================================================================
+   CALLOUT MODIFIERS (Button Heights)
+   Modifiers: tallbuttons, extratallbuttons
+   ========================================================================== */
+
+/* 1. Tall Buttons (Increases the top and bottom padding) */
+.callout[data-callout-metadata*="tallbuttons"] > .callout-content a {
+    padding-top: 12px !important;
+    padding-bottom: 12px !important;
+    display: inline-flex !important; /* Required to center text vertically */
+    align-items: center !important;
+    justify-content: center !important;
+}
+
+/* 2. Extra Tall Buttons (Massive vertical stretch for chunky interface buttons) */
+.callout[data-callout-metadata*="extratallbuttons"] > .callout-content a {
+    padding-top: 24px !important;
+    padding-bottom: 24px !important;
+    display: inline-flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+}
+
+
+
+/* ==========================================================================
+   THE "NUKE THE UGLY ICONS" FIX
+   Kills the default pencil icon, the fold arrow, and the external link icons
+   ========================================================================== */
+
+/* 1. Kill the Pencil Icon */
+.callout[data-callout^="fake-heading"] > .callout-title > .callout-icon,
+.callout[data-callout^="fake-heading"] .callout-icon {
+    display: none !important;
+}
+
+/* 2. Kill the Drop-Down (Fold) Arrow */
+.callout[data-callout^="fake-heading"] > .callout-title > .callout-fold,
+.callout[data-callout^="fake-heading"] .callout-fold {
+    display: none !important;
+}
+
+/* 3. Kill the External Link Icons inside the callouts */
+.callout[data-callout^="fake-heading"] a.external-link {
+    background-image: none !important; /* Removes the standard Obsidian external icon */
+    padding-right: 0 !important; /* Removes the dead space Obsidian leaves for the icon */
+}
+
+/* Kills the newer SVG-based link icons used by some themes/updates */
+.callout[data-callout^="fake-heading"] a.external-link::after {
+    display: none !important;
+}
+
+
+
+/* ==========================================================================
+   CALLOUT MODIFIERS (Shrink-to-Fit & Narrow Columns)
+   Modifiers: autowidth, narrowbox
+   ========================================================================== */
+
+/* 1. Auto-Width (Shrinks the entire callout box to perfectly fit the text) */
+.callout[data-callout-metadata*="autowidth"] {
+    width: fit-content !important;
+    margin-left: auto !important;
+    margin-right: auto !important; /* Centers the shrunken box in the middle of the page */
+}
+
+/* 2. Narrow Box (Forces a skinny column limit, making long text wrap automatically) */
+.callout[data-callout-metadata*="narrowbox"] {
+    max-width: 350px !important;
+    margin-left: auto !important;
+    margin-right: auto !important; /* Centers the narrow column */
+}
+
+
+/* Custom Break Line Callout */
+.callout[data-callout="break"],
+.callout[data-callout="invisible"] {
+    background-color: transparent;
+    border: none;
+    box-shadow: none;
+    padding: 0;
+    margin: 1.5em 0; /* Adjust vertical spacing as needed */
+}
+
+/* Hide the icon and the fold arrow */
+.callout[data-callout="break"] .callout-icon,
+.callout[data-callout="invisible"] .callout-icon,
+.callout[data-callout="break"] .callout-fold,
+.callout[data-callout="invisible"] .callout-fold {
+    display: none;
+}
+
+/* Center the title content and remove default bolding */
+.callout[data-callout="break"] .callout-title,
+.callout[data-callout="invisible"] .callout-title {
+    display: flex;
+    justify-content: center;
+    color: var(--text-muted); /* Makes the break line slightly subdued */
+    font-weight: normal;
+    padding: 0;
+}
+
+/* Ensure any content placed on a new line inside is also centered */
+.callout[data-callout="break"] .callout-content,
+.callout[data-callout="invisible"] .callout-content {
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    background-color: transparent;
+}
+
+/* ==========================================================================
+   CALLOUT MODIFIERS (Crisp Text Shadow)
+   Usage: > [!fake-heading-color|crispshadow]
+   ========================================================================== */
+.callout[data-callout-metadata*="crispshadow"] > .callout-title > .callout-title-inner,
+.callout[data-callout-metadata*="crispshadow"] > .callout-content,
+.callout[data-callout-metadata*="crispshadow"] > .callout-content p {
+    text-shadow: 9px 9px 0px rgba(0, 0, 0, 0.4) !important;
+}
+/* ==========================================================================
+   GLASS CALLOUT (iOS Frosted Pill)
+   Usage: > [!glass]
+   ========================================================================== */
+.callout[data-callout="glass"] {
+    background: rgba(255, 255, 255, 0.08) !important; /* Very subtle white tint */
+    backdrop-filter: blur(12px) !important; /* Frosted glass blur effect */
+    -webkit-backdrop-filter: blur(12px) !important; /* Safari compatibility */
+    border: 1px solid rgba(255, 255, 255, 0.2) !important; /* Soft light rim */
+    box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.3) !important; /* Soft floating shadow */
+    border-radius: 50px !important; /* Extreme rounding for the pill shape */
+    padding: 8px 24px !important; /* Pill proportions */
+    
+    /* Auto-width and center alignment */
+    width: fit-content !important;
+    margin-left: auto !important;
+    margin-right: auto !important;
+}
+
+/* Hide default icons and fold arrows */
+.callout[data-callout="glass"] > .callout-title > .callout-icon,
+.callout[data-callout="glass"] > .callout-title > .callout-fold {
+    display: none !important;
+}
+
+/* Center and clean up the text */
+.callout[data-callout="glass"] > .callout-title {
+    display: flex;
+    justify-content: center;
+    padding: 0 !important;
+}
+
+.callout[data-callout="glass"] > .callout-title > .callout-title-inner {
+    font-weight: normal !important; /* Removes default callout bolding */
+    text-align: center !important;
+}
+
+.callout[data-callout="glass"] > .callout-content {
+    display: none !important; /* Hides the body text area to maintain the tight pill shape */
+}
+
+/* ==========================================================================
+   FULL PAGE BACKGROUND: LOFI COZY RAIN
+   Usage: Add `cssclasses: lofi-rain` to a note's properties
+   ========================================================================== */
+
+/* Targets the specific note and injects the GIF */
+.lofi-rain .markdown-reading-view, 
+.lofi-rain .markdown-source-view {
+    /* The linear gradient applies a dark tint so the text is still readable over the GIF */
+    background-image: 
+        linear-gradient(rgba(15, 15, 20, 0.8), rgba(15, 15, 20, 0.85)), 
+        url("https://i.gifer.com/origin/98/981f2f195e7b896be152327f2965e721_w200.gif") !important;
+    background-size: cover !important;
+    background-position: center !important;
+    background-attachment: fixed !important;
+}
+
+/* Erases Obsidian's default opaque backgrounds on the text layer so the GIF shows through */
+.lofi-rain .markdown-preview-view,
+.lofi-rain .cm-scroller {
+    background-color: transparent !important;
+}
+
+/* Optional: Gives the text a slight glowing haze to fit the lofi vibe */
+.lofi-rain {
+    --text-normal: #e0d8d8;
+    text-shadow: 0px 0px 4px rgba(0, 0, 0, 0.9);
+}
+/* ==========================================================================
+   FULL PAGE BACKGROUND: LOFI COZY RAIN
+   Usage: Add `cssclasses: lofi-rain` to a note's properties
+   ========================================================================== */
+
+/* Targets the specific note and injects the GIF */
+.lofi-rain .markdown-reading-view, 
+.lofi-rain .markdown-source-view {
+    /* The linear gradient applies a dark tint so the text is still readable over the GIF */
+    background-image: 
+        linear-gradient(rgba(15, 15, 20, 0.8), rgba(15, 15, 20, 0.85)), 
+        url("https://i.gifer.com/origin/98/981f2f195e7b896be152327f2965e721_w200.gif") !important;
+    background-size: cover !important;
+    background-position: center !important;
+    background-attachment: fixed !important;
+}
+
+/* Erases Obsidian's default opaque backgrounds on the text layer so the GIF shows through */
+.lofi-rain .markdown-preview-view,
+.lofi-rain .cm-scroller {
+    background-color: transparent !important;
+}
+
+/* Optional: Gives the text a slight glowing haze to fit the lofi vibe */
+.lofi-rain {
+    --text-normal: #e0d8d8;
+    text-shadow: 0px 0px 4px rgba(0, 0, 0, 0.9);
+}
+
+
+
+
+
+
+
+
+
+
+
+/* ==========================================================================
+   THE DISPLAY CALLOUT (Fixed & Bulletproof)
+   Usage: > [!display] ¯\_(ツ)_/¯
+   ========================================================================== */
+.callout[data-callout="display"] {
+    background-color: transparent !important;
+    border: none !important;
+    box-shadow: none !important;
+    padding: 0 !important;
+    margin: 2em 0 !important;
+    mix-blend-mode: normal !important; /* Kills the bleaching bug */
+}
+
+/* Hide the icon and the fold arrow */
+.callout[data-callout="display"] .callout-icon,
+.callout[data-callout="display"] .callout-fold {
+    display: none !important;
+}
+
+/* Center the title row */
+.callout[data-callout="display"] .callout-title {
+    display: block !important;
+    text-align: center !important;
+    padding: 0 !important;
+    background-color: transparent !important;
+}
+
+/* The Scaling Text Magic (Now targets BOTH title and body text) */
+.callout[data-callout="display"] .callout-title-inner,
+.callout[data-callout="display"] .callout-content,
+.callout[data-callout="display"] .callout-content p {
+    font-size: clamp(3rem, 10vw, 8rem) !important; 
+    line-height: 1.2 !important;
+    font-weight: normal !important;
+    text-align: center !important;
+    color: var(--text-normal, #ffffff) !important;
+    background-color: transparent !important;
+    border: none !important;
+    box-shadow: none !important;
+    
+    /* Default soft cinematic shadow */
+    text-shadow: 0px 10px 30px rgba(0, 0, 0, 0.8), 0px 0px 20px rgba(255, 255, 255, 0.1) !important;
+}
+
+/* ==========================================================================
+   BONUS MODIFIER: CYBER GLITCH
+   Usage: > [!display|cyberglitch]
+   ========================================================================== */
+.callout[data-callout-metadata*="cyberglitch"] .callout-title-inner,
+.callout[data-callout-metadata*="cyberglitch"] .callout-content,
+.callout[data-callout-metadata*="cyberglitch"] .callout-content p {
+    color: #f4f4f4 !important;
+    text-shadow: 4px 0px 0px rgba(255, 0, 85, 0.8), -4px 0px 0px rgba(0, 255, 255, 0.8) !important;
+}
+
+/* ==========================================================================
+   CALLOUT MODIFIERS (Crisp Text Shadow FIX)
+   Usage: > [!fake-heading-color|crispshadow]
+   ========================================================================== */
+/* Added "html" at the front to aggressively increase specificity and force it to win */
+html .callout[data-callout-metadata*="crispshadow"] .callout-title-inner,
+html .callout[data-callout-metadata*="crispshadow"] .callout-content,
+html .callout[data-callout-metadata*="crispshadow"] .callout-content p {
+    text-shadow: 9px 9px 0px rgba(0, 0, 0, 0.6) !important;
+}
+
+
+/* ==========================================================================
+   BONUS MODIFIER: CYBER GLITCH
+   Usage: > [!display|cyberglitch]
+   ========================================================================== */
+.callout[data-callout-metadata*="cyberglitch"] > .callout-title > .callout-title-inner {
+    color: #f4f4f4 !important;
+    /* Red offset left, Cyan offset right */
+    text-shadow: 
+        4px 0px 0px rgba(255, 0, 85, 0.8), 
+        -4px 0px 0px rgba(0, 255, 255, 0.8) !important;
+}
+
+
+
+/* ==========================================================================
+   CALLOUT MODIFIERS (Text Colors)
+   Modifiers: txtblack, txtwhite, txtteal, txtmint, txteigengrau
+   ========================================================================== */
+
+/* 1. Define the specific color variables */
+html .callout[data-callout-metadata*="txtblack"] { --override-color: #2b2c30 !important; } /* Soft rich ink */
+html .callout[data-callout-metadata*="txtwhite"] { --override-color: #f0f0f4 !important; } /* Soft paper white */
+html .callout[data-callout-metadata*="txtteal"]  { --override-color: #8fd4c1 !important; } /* Pastel teal */
+html .callout[data-callout-metadata*="txtmint"]  { --override-color: #5cf2aa !important; } /* 16-bit SNES mint */
+html .callout[data-callout-metadata*="txteigengrau"] { --override-color: #16161d !important; } /* Intrinsic dark gray */
+
+/* 2. Apply them with maximum authority to the title, body, and reading mode tags */
+html .callout[data-callout-metadata*="txt"] .callout-title-inner,
+html .callout[data-callout-metadata*="txt"] .callout-content,
+html .callout[data-callout-metadata*="txt"] .callout-content p,
+html .callout[data-callout-metadata*="txt"] .callout-content ul,
+html .callout[data-callout-metadata*="txt"] .callout-content ol,
+html .callout[data-callout-metadata*="txt"] .callout-content li,
+html .callout[data-callout-metadata*="txt"] .callout-content div {
+    color: var(--override-color) !important;
+    --custom-paper-text: var(--override-color) !important; /* Overrides the Desktop Reading Mode fix */
+    --text-normal: var(--override-color) !important; /* Overrides Obsidian defaults */
+}
+
+
+
+
+
+
+
+
+
+/* ==========================================================================
+   CALLOUT MODIFIERS (Inline / Side-by-Side Blocks - WRAPPER FIX)
+   Usage: > [!fake-heading-color|inline]- TITLE
+   ========================================================================== */
+
+/* 1. Targets the invisible wrapper block Obsidian generates and forces it to shrink and sit side-by-side */
+.markdown-rendered div:has(> .callout.is-collapsed[data-callout-metadata*="inline"]) {
+    display: inline-block !important; 
+    width: fit-content !important;
+    vertical-align: top !important; /* Keeps them aligned at the top if heights differ */
+    margin-right: 12px !important; /* The spacing between the inline callouts */
+    margin-bottom: 8px !important;
+}
+
+/* 2. Ensures the callout strictly conforms to the newly shrunk wrapper */
+.markdown-rendered .callout.is-collapsed[data-callout-metadata*="inline"] {
+    width: fit-content !important;
+    margin: 0 !important; /* Lets the wrapper handle the spacing */
+}
+
+
+
+
+
+
+
+
+/* 1. STRIPED BACKGROUND OVERLAY */
+.callout[data-callout-metadata*="striped"] {
+    background-image: repeating-linear-gradient(
+        45deg,
+        rgba(0, 0, 0, 0.15),
+        rgba(0, 0, 0, 0.15) 10px,
+        transparent 10px,
+        transparent 20px
+    ) !important;
+}
+
+
+
+
+
+
+/* ==========================================================================
+   2. TRUE INLINE (FIXED: Restores the folding mechanism)
+   ========================================================================== */
+
+/* 1. Force the hidden wrapper OF THE PARAGRAPH BEFORE to be inline */
+.markdown-rendered div:has(+ div > .callout[data-callout-metadata*="trueinline"]),
+.markdown-rendered div:has(+ div > .callout[data-callout-metadata*="trueinline"]) > p {
+    display: inline !important;
+}
+
+/* 2. Force the hidden wrapper OF THE CALLOUT ITSELF to be inline */
+.markdown-rendered div:has(> .callout[data-callout-metadata*="trueinline"]) {
+    display: inline !important;
+}
+
+/* 3. Force the hidden wrapper OF THE PARAGRAPH AFTER to be inline */
+.markdown-rendered div:has(> .callout[data-callout-metadata*="trueinline"]) + div,
+.markdown-rendered div:has(> .callout[data-callout-metadata*="trueinline"]) + div > p {
+    display: inline !important;
+}
+
+/* 4. Flatten the callout core pieces (Title and Container) */
+.markdown-rendered .callout[data-callout-metadata*="trueinline"],
+.markdown-rendered .callout[data-callout-metadata*="trueinline"] .callout-title,
+.markdown-rendered .callout[data-callout-metadata*="trueinline"] .callout-title-inner {
+    display: inline !important;
+    width: auto !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    box-shadow: none !important;
+    border: none !important;
+    background: transparent !important;
+}
+
+/* 5. ONLY force the content to be inline when EXPANDED (Leaves collapsed hidden) */
+.markdown-rendered .callout[data-callout-metadata*="trueinline"]:not(.is-collapsed) .callout-content,
+.markdown-rendered .callout[data-callout-metadata*="trueinline"]:not(.is-collapsed) .callout-content p {
+    display: inline !important;
+    width: auto !important;
+    margin: 0 !important;
+    padding: 0 !important;
+}
+
+/* Ensure Obsidian's native hiding mechanism works when folded */
+.markdown-rendered .callout[data-callout-metadata*="trueinline"].is-collapsed .callout-content {
+    display: none !important;
+}
+
+/* 6. Force icons and fold arrows to hide */
+.markdown-rendered .callout[data-callout-metadata*="trueinline"] .callout-icon,
+.markdown-rendered .callout[data-callout-metadata*="trueinline"] .callout-fold {
+    display: none !important;
+}
+
+/* 7. Styling the clickable pill and the expanded text */
+.markdown-rendered .callout[data-callout-metadata*="trueinline"] .callout-title {
+    background-color: rgba(150, 150, 150, 0.15) !important;
+    padding: 0px 6px !important;
+    border-radius: 6px !important;
+    margin: 0 4px !important;
+}
+
+.markdown-rendered .callout[data-callout-metadata*="trueinline"]:not(.is-collapsed) .callout-content p::before {
+    content: " " !important;
+}
+
+.markdown-rendered .callout[data-callout-metadata*="trueinline"]:not(.is-collapsed) .callout-content p {
+    color: var(--text-muted) !important;
+}
+
+/* ==========================================================================
+   2. TRUE INLINE (FIXED: Restores the folding mechanism)
+   ========================================================================== */
+
+/* 1. Force the hidden wrapper OF THE PARAGRAPH BEFORE to be inline */
+.markdown-rendered div:has(+ div > .callout[data-callout-metadata*="trueinline"]),
+.markdown-rendered div:has(+ div > .callout[data-callout-metadata*="trueinline"]) > p {
+    display: inline !important;
+}
+
+/* 2. Force the hidden wrapper OF THE CALLOUT ITSELF to be inline */
+.markdown-rendered div:has(> .callout[data-callout-metadata*="trueinline"]) {
+    display: inline !important;
+}
+
+/* 3. Force the hidden wrapper OF THE PARAGRAPH AFTER to be inline */
+.markdown-rendered div:has(> .callout[data-callout-metadata*="trueinline"]) + div,
+.markdown-rendered div:has(> .callout[data-callout-metadata*="trueinline"]) + div > p {
+    display: inline !important;
+}
+
+/* 4. Flatten the callout core pieces (Title and Container) */
+.markdown-rendered .callout[data-callout-metadata*="trueinline"],
+.markdown-rendered .callout[data-callout-metadata*="trueinline"] .callout-title,
+.markdown-rendered .callout[data-callout-metadata*="trueinline"] .callout-title-inner {
+    display: inline !important;
+    width: auto !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    box-shadow: none !important;
+    border: none !important;
+    background: transparent !important;
+}
+
+/* 5. ONLY force the content to be inline when EXPANDED (Leaves collapsed hidden) */
+.markdown-rendered .callout[data-callout-metadata*="trueinline"]:not(.is-collapsed) .callout-content,
+.markdown-rendered .callout[data-callout-metadata*="trueinline"]:not(.is-collapsed) .callout-content p {
+    display: inline !important;
+    width: auto !important;
+    margin: 0 !important;
+    padding: 0 !important;
+}
+
+/* Ensure Obsidian's native hiding mechanism works when folded */
+.markdown-rendered .callout[data-callout-metadata*="trueinline"].is-collapsed .callout-content {
+    display: none !important;
+}
+
+/* 6. Force icons and fold arrows to hide */
+.markdown-rendered .callout[data-callout-metadata*="trueinline"] .callout-icon,
+.markdown-rendered .callout[data-callout-metadata*="trueinline"] .callout-fold {
+    display: none !important;
+}
+
+/* 7. Styling the clickable pill and the expanded text */
+.markdown-rendered .callout[data-callout-metadata*="trueinline"] .callout-title {
+    background-color: rgba(150, 150, 150, 0.15) !important;
+    padding: 0px 6px !important;
+    border-radius: 6px !important;
+    margin: 0 4px !important;
+}
+
+.markdown-rendered .callout[data-callout-metadata*="trueinline"]:not(.is-collapsed) .callout-content p::before {
+    content: " " !important;
+}
+
+.markdown-rendered .callout[data-callout-metadata*="trueinline"]:not(.is-collapsed) .callout-content p {
+    color: var(--text-muted) !important;
+}
+
+
+
+
+
+
+
+/* ==========================================================================
+   DASHBOARD ROW WRAPPER (Flexbox Engine - FIXED)
+   Usage: > [!dashboard|centerboxes] OR > [!dashboard|justifyboxes]
+   ========================================================================== */
+
+/* 1. Strip the dashboard wrapper of all standard callout styling */
+.callout[data-callout="dashboard"] {
+    background: transparent !important;
+    border: none !important;
+    box-shadow: none !important;
+    padding: 0 !important;
+    margin: 0 !important;
+}
+
+/* 2. Hide the title line so it acts purely as an invisible folder */
+.callout[data-callout="dashboard"] > .callout-title {
+    display: none !important;
+}
+
+/* 3. The true Flexbox Engine: applies to the dashboard body itself */
+.callout[data-callout="dashboard"] > .callout-content {
+    display: flex !important;
+    flex-wrap: wrap !important;
+    width: 100% !important;
+    gap: 15px !important; 
+    align-items: flex-start !important; 
+    padding: 0 !important;
+}
+
+/* 4. MODIFIER: Center the boxes */
+.callout[data-callout-metadata*="centerboxes"] > .callout-content {
+    justify-content: center !important;
+}
+
+/* 5. MODIFIER: Justify the boxes */
+.callout[data-callout-metadata*="justifyboxes"] > .callout-content {
+    justify-content: space-evenly !important; 
+}
+
+/* 6. CRUCIAL FIX: Force Obsidian's invisible child wrappers to shrink-wrap 
+   so the Flexbox engine can properly align them side-by-side */
+.callout[data-callout="dashboard"] > .callout-content > div,
+.callout[data-callout="dashboard"] > .callout-content > p {
+    width: fit-content !important;
+    margin: 0 !important;
+}
+
+
+
+
+
+
+
+
+
+
+
+/* ==========================================================================
+   1. THE BUTTON ROW WRAPPER (Flawless Centering & Alignment)
+   Usage: > [!button-row]
+   ========================================================================== */
+.callout[data-callout="button-row"] {
+    background: transparent !important;
+    border: none !important;
+    box-shadow: none !important;
+    padding: 0 !important;
+    margin: 1.5em 0 !important;
+}
+
+/* Hide the wrapper's title so it remains completely invisible */
+.callout[data-callout="button-row"] > .callout-title {
+    display: none !important;
+}
+
+/* The Flex Engine: Centers and aligns the row */
+.callout[data-callout="button-row"] > .callout-content {
+    display: flex !important;
+    flex-wrap: wrap !important;
+    justify-content: center !important; /* Centers the whole row horizontally */
+    align-items: center !important; /* Perfectly aligns them vertically (Fixes the bumpy row!) */
+    gap: 15px !important;
+    padding: 0 !important;
+}
+
+/* 🎯 THE MAGIC BULLET: Pierce Obsidian's invisible Reading Mode wrappers */
+.callout[data-callout="button-row"] > .callout-content > div {
+    display: flex !important;
+    width: max-content !important;
+    margin: 0 !important;
+}
+
+
+
+
+/* ==========================================================================
+   2. BUTTON STYLING (The "Flex Column" Centering Fix)
+   ========================================================================== */
+/* 1. Turn the entire callout into a vertical flexbox to force everything to center-align */
+.callout[data-callout-metadata*="autowidth"] {
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: center !important; /* 🎯 THIS is the magic lock! It forces the title and paper to share a center axis */
+    width: fit-content !important;
+    max-width: 100%;
+    margin: 0 auto !important; /* Centers the whole block in your note */
+}
+
+/* 2. Keep the title box tight around its text */
+.callout[data-callout-metadata*="autowidth"] > .callout-title {
+    display: flex !important;
+    justify-content: center !important; 
+    width: fit-content !important; /* Shrink-wraps the border around the text */
+    margin: 0 !important; /* Kills any lingering default Obsidian margins that push it left */
+    z-index: 2 !important; /* Keeps it layered above your custom paper shadows */
+}
+
+/* 3. Center the text perfectly within the button */
+.callout[data-callout-metadata*="autowidth"] > .callout-title > .callout-title-inner {
+    text-align: center !important;
+    margin: 0 auto !important; 
+}
+
+
+

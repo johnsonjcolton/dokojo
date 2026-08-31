@@ -1,0 +1,178 @@
+/* =================================================================v
+   CYBERPUNK TARGETED CALLOUTS SNIPPET
+   Only affects specific callout tags. Your default callouts stay safe.
+   ================================================================ */
+
+/* 1. THE TERMINAL / SYSTEM LOG (> [!terminal] or > [!code]) */
+.markdown-rendered .callout[data-callout="terminal"],
+.is-live-preview .callout[data-callout="terminal"],
+.markdown-rendered .callout[data-callout="code"],
+.is-live-preview .callout[data-callout="code"] {
+  background-color: rgba(2, 10, 5, 0.9) !important;
+  border: 1px solid rgba(0, 255, 102, 0.25) !important;
+  border-left-width: 4px !important;
+  border-left-color: #00ff66 !important;
+  border-radius: 2px !important;
+  box-shadow: inset 0 0 15px rgba(0, 255, 102, 0.03), 0 0 8px rgba(0, 255, 102, 0.1);
+}
+.markdown-rendered .callout[data-callout="terminal"] .callout-title,
+.is-live-preview .callout[data-callout="terminal"] .callout-title,
+.markdown-rendered .callout[data-callout="code"] .callout-title,
+.is-live-preview .callout[data-callout="code"] .callout-title {
+  font-family: var(--font-monospace, monospace);
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  color: #00ff66 !important;
+  background-color: rgba(0, 255, 102, 0.06);
+  border-bottom: 1px solid rgba(0, 255, 102, 0.2);
+  padding: 6px 10px;
+}
+
+/* 2. THE ICE ALERT / WARNING (> [!ice] or > [!warning-cyber]) */
+.markdown-rendered .callout[data-callout="ice"],
+.is-live-preview .callout[data-callout="ice"],
+.markdown-rendered .callout[data-callout="warning-cyber"],
+.is-live-preview .callout[data-callout="warning-cyber"] {
+  background-color: rgba(12, 2, 5, 0.9) !important;
+  border: 1px solid rgba(255, 0, 85, 0.3) !important;
+  border-left-width: 4px !important;
+  border-left-color: #ff0055 !important;
+  border-radius: 2px !important;
+  box-shadow: inset 0 0 15px rgba(255, 0, 85, 0.05), 0 0 10px rgba(255, 0, 85, 0.15);
+}
+.markdown-rendered .callout[data-callout="ice"] .callout-title,
+.is-live-preview .callout[data-callout="ice"] .callout-title,
+.markdown-rendered .callout[data-callout="warning-cyber"] .callout-title,
+.is-live-preview .callout[data-callout="warning-cyber"] .callout-title {
+  font-family: var(--font-monospace, monospace);
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  color: #ff0055 !important;
+  background-color: rgba(255, 0, 85, 0.08);
+  border-bottom: 1px solid rgba(255, 0, 85, 0.25);
+  padding: 6px 10px;
+}
+
+/* 3. THE MANIFESTO / INTEL (> [!intel] or > [!manifesto]) */
+.markdown-rendered .callout[data-callout="intel"],
+.is-live-preview .callout[data-callout="intel"],
+.markdown-rendered .callout[data-callout="manifesto"],
+.is-live-preview .callout[data-callout="manifesto"] {
+  background-color: rgba(10, 10, 2, 0.9) !important;
+  border: 1px solid rgba(255, 230, 0, 0.25) !important;
+  border-left-width: 4px !important;
+  border-left-color: #ffe600 !important;
+  border-radius: 2px !important;
+  box-shadow: inset 0 0 15px rgba(255, 230, 0, 0.03), 0 0 8px rgba(255, 230, 0, 0.1);
+}
+.markdown-rendered .callout[data-callout="intel"] .callout-title,
+.is-live-preview .callout[data-callout="intel"] .callout-title,
+.markdown-rendered .callout[data-callout="manifesto"] .callout-title,
+.is-live-preview .callout[data-callout="manifesto"] .callout-title {
+  font-family: var(--font-monospace, monospace);
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  color: #ffe600 !important;
+  background-color: rgba(255, 230, 0, 0.06);
+  border-bottom: 1px solid rgba(255, 230, 0, 0.2);
+  padding: 6px 10px;
+}
+
+/* 4. THE CORPO / SECURE DROP (> [!corpo] or > [!secure]) */
+.markdown-rendered .callout[data-callout="corpo"],
+.is-live-preview .callout[data-callout="corpo"],
+.markdown-rendered .callout[data-callout="secure"],
+.is-live-preview .callout[data-callout="secure"] {
+  background-color: rgba(8, 2, 12, 0.9) !important;
+  border: 1px solid rgba(157, 0, 255, 0.25) !important;
+  border-left-width: 4px !important;
+  border-left-color: #9d00ff !important;
+  border-radius: 2px !important;
+  box-shadow: inset 0 0 15px rgba(157, 0, 255, 0.03), 0 0 8px rgba(157, 0, 255, 0.1);
+}
+.markdown-rendered .callout[data-callout="corpo"] .callout-title,
+.is-live-preview .callout[data-callout="corpo"] .callout-title,
+.markdown-rendered .callout[data-callout="secure"] .callout-title,
+.is-live-preview .callout[data-callout="secure"] .callout-title {
+  font-family: var(--font-monospace, monospace);
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  color: #bf40ff !important;
+  background-color: rgba(157, 0, 255, 0.06);
+  border-bottom: 1px solid rgba(157, 0, 255, 0.2);
+  padding: 6px 10px;
+}
+
+/* Shared content padding and font safety for these specific callouts */
+.markdown-rendered .callout[data-callout="terminal"] .callout-content,
+.markdown-rendered .callout[data-callout="code"] .callout-content,
+.markdown-rendered .callout[data-callout="ice"] .callout-content,
+.markdown-rendered .callout[data-callout="warning-cyber"] .callout-content,
+.markdown-rendered .callout[data-callout="intel"] .callout-content,
+.markdown-rendered .callout[data-callout="manifesto"] .callout-content,
+.markdown-rendered .callout[data-callout="corpo"] .callout-content,
+.markdown-rendered .callout[data-callout="secure"] .callout-content {
+  color: #d0d0d8;
+  padding: 10px 12px;
+}
+/* =================================================================v
+   ULTRA-LEAN MICRO-CYBER CALLOUT (DASHBOARD COMPACT)
+   Triggered via: > [!cyber] or > [!cyber]- or > [!cyber]+
+   ================================================================ */
+
+.markdown-rendered .callout[data-callout="cyber"],
+.is-live-preview .callout[data-callout="cyber"] {
+  background-color: #030306 !important;
+  background-image: linear-gradient(rgba(0, 240, 255, 0.03) 1px, transparent 1px) !important;
+  background-size: 100% 4px !important;
+  border: 1px solid #00f0ff !important;
+  border-left-width: 3px !important;
+  border-left-color: #00f0ff !important;
+  border-radius: 0px !important;
+  box-shadow: 0 0 6px rgba(0, 240, 255, 0.2);
+  margin: 2px 0 !important;
+  padding: 0 !important;
+}
+
+/* Micro Header */
+.markdown-rendered .callout[data-callout="cyber"] .callout-title,
+.is-live-preview .callout[data-callout="cyber"] .callout-title {
+  font-family: var(--font-monospace, monospace) !important;
+  font-weight: 700 !important;
+  font-size: 0.8em !important;
+  letter-spacing: 0.05em !important;
+  text-transform: uppercase !important;
+  color: #030306 !important;
+  background-color: #00f0ff !important;
+  border-bottom: 1px solid #00f0ff !important;
+  padding: 2px 6px !important;
+  min-height: unset !important;
+  line-height: 1.2 !important;
+}
+
+/* Eradicate default icons */
+.markdown-rendered .callout[data-callout="cyber"] .callout-title .callout-icon,
+.is-live-preview .callout[data-callout="cyber"] .callout-title .callout-icon {
+  display: none !important;
+}
+
+/* Tighten collapse caret */
+.markdown-rendered .callout[data-callout="cyber"] .callout-fold,
+.is-live-preview .callout[data-callout="cyber"] .callout-fold {
+  color: #030306 !important;
+  display: flex !important;
+  align-items: center;
+  justify-content: center;
+  padding: 0 2px !important;
+}
+
+/* Micro Content Area */
+.markdown-rendered .callout[data-callout="cyber"] .callout-content,
+.is-live-preview .callout[data-callout="cyber"] .callout-content {
+  font-family: var(--font-text) !important;
+  font-size: 0.9em !important;
+  color: #f0f0f5 !important;
+  padding: 4px 6px !important;
+  margin: 0 !important;
+  line-height: 1.25 !important;
+}

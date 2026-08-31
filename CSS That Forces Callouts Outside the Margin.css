@@ -1,0 +1,56 @@
+/* === FIXED: Float Left/Right Callouts with Cursor Fix === */
+
+/* Target the callout wrapper */
+.markdown-source-view.mod-cm6 .cm-callout[data-callout="summary"],
+.markdown-source-view.mod-cm6 .cm-callout[data-callout="note-to-self"],
+.markdown-source-view.mod-cm6 .cm-callout[data-callout="sidenote"],
+.markdown-source-view.mod-cm6 .cm-callout[data-callout="comment"] {
+  /* Prevent the container itself from trapping the cursor */
+  pointer-events: none; 
+}
+
+/* Re-enable interaction for the actual content inside */
+.markdown-source-view.mod-cm6 .cm-callout[data-callout="summary"] *,
+.markdown-source-view.mod-cm6 .cm-callout[data-callout="note-to-self"] *,
+.markdown-source-view.mod-cm6 .cm-callout[data-callout="sidenote"] *,
+.markdown-source-view.mod-cm6 .cm-callout[data-callout="comment"] * {
+  pointer-events: auto;
+}
+
+/* === FLOAT LEFT: summary callouts === */
+.markdown-reading-view .callout[data-callout="summary"],
+.markdown-source-view.mod-cm6 .cm-callout[data-callout="summary"] {
+  float: left !important;
+  width: 250px;
+  margin-left: -300px !important;
+  margin-right: 1.5em;
+  background-color: #e8f5e9;
+  border-left: 4px solid #388e3c;
+  padding: 10px;
+  box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.1);
+  shape-outside: margin-box;
+  display: block;S
+  position: relative;
+  z-index: 1;
+}
+
+/* === FLOAT RIGHT: note-to-self, sidenote, comment === */
+.markdown-reading-view .callout[data-callout="note-to-self"],
+.markdown-reading-view .callout[data-callout="sidenote"],
+.markdown-reading-view .callout[data-callout="comment"],
+.markdown-source-view.mod-cm6 .cm-callout[data-callout="note-to-self"],
+.markdown-source-view.mod-cm6 .cm-callout[data-callout="sidenote"],
+.markdown-source-view.mod-cm6 .cm-callout[data-callout="comment"] {
+  float: right !important;
+  width: 250px;
+  margin-left: 1.5em;
+  margin-right: -300px !important;
+  background-color: var(--background-secondary-alt);
+  border-left: 4px solid var(--interactive-accent);
+  padding: 10px;
+  box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.1);
+  shape-outside: margin-box;
+  display: block;
+  position: relative;
+  z-index: 1;
+}S

@@ -1,0 +1,119 @@
+/* 1. Erases properties block */
+.markdown-reading-view:has(.moc-board) .metadata-container,
+.markdown-source-view:has(.moc-board) .metadata-container {
+    display: none !important;
+}
+
+/* 2. Erases inline title */
+.markdown-reading-view:has(.moc-board) .inline-title,
+.markdown-source-view:has(.moc-board) .inline-title {
+    display: none !important;
+}
+
+/* 3. Blocks mobile OS magnifying glass and native context menus */
+.markdown-reading-view:has(.moc-board),
+.markdown-source-view:has(.moc-board) {
+    -webkit-user-select: none !important;
+    user-select: none !important;
+    -webkit-touch-callout: none !important;
+}
+
+/* 4. THE SHIELD: Disables tapping on empty space and text */
+.markdown-reading-view:has(.moc-board) .markdown-preview-section,
+.markdown-source-view:has(.moc-board) .cm-content {
+    pointer-events: none !important;
+}
+
+/* 5. PUNCHING HOLES: Re-enables tapping specifically for interactive elements */
+/* Reading View elements */
+.markdown-reading-view:has(.moc-board) a.internal-link,
+.markdown-reading-view:has(.moc-board) a.external-link,
+.markdown-reading-view:has(.moc-board) .tag,
+.markdown-reading-view:has(.moc-board) .task-list-item-checkbox,
+.markdown-reading-view:has(.moc-board) .collapse-indicator,
+.markdown-reading-view:has(.moc-board) .callout-title,
+/* Live Preview elements */
+.markdown-source-view:has(.moc-board) .cm-hmd-internal-link,
+.markdown-source-view:has(.moc-board) .cm-link,
+.markdown-source-view:has(.moc-board) .cm-url,
+.markdown-source-view:has(.moc-board) .cm-hashtag,
+.markdown-source-view:has(.moc-board) input[type="checkbox"],
+.markdown-source-view:has(.moc-board) .cm-fold-indicator,
+.markdown-source-view:has(.moc-board) .callout-title,
+.markdown-source-view:has(.moc-board) a.internal-link,
+.markdown-source-view:has(.moc-board) a.external-link {
+    pointer-events: auto !important;
+    cursor: pointer;
+}
+
+/* --------------------------------------
+   6. CENTER & STYLE HEADINGS 
+   (Split to protect Live Preview math)
+--------------------------------------- */
+
+/* Reading View: Margins are safe here */
+.markdown-reading-view:has(.moc-board) h1,
+.markdown-reading-view:has(.moc-board) h2,
+.markdown-reading-view:has(.moc-board) h3,
+.markdown-reading-view:has(.moc-board) h4,
+.markdown-reading-view:has(.moc-board) h5,
+.markdown-reading-view:has(.moc-board) h6 {
+    text-align: center !important;
+    padding-left: -1.75em !important; 
+    padding-right: -1.75em !important; 
+    margin: 1em 0 !important; 
+}
+
+/* Live Preview: MARGINS WILL CRASH THE VIEWPORT. Use padding instead. */
+.markdown-source-view:has(.moc-board) .cm-line.HyperMD-header {
+    text-align: center !important;
+    padding-left: 3em !important; 
+    padding-right: 3em !important; 
+    padding-top: 1em !important; 
+    padding-bottom: 1em !important; 
+}
+
+/* --------------------------------------
+   7. THE INVISIBLE BUTTON HACK 
+--------------------------------------- */
+
+/* --- READING VIEW HACK --- */
+/* 1. Trap the arrow inside the actual Obsidian DOM elements */
+.markdown-reading-view:has(.moc-board) .el-h1,
+.markdown-reading-view:has(.moc-board) .el-h2,
+.markdown-reading-view:has(.moc-board) .el-h3,
+.markdown-reading-view:has(.moc-board) .el-h4,
+.markdown-reading-view:has(.moc-board) .el-h5,
+.markdown-reading-view:has(.moc-board) .el-h6 {
+    position: relative !important;
+}
+
+/* 2. Stretch the arrow, make it invisible, and push it to the top */
+.markdown-reading-view:has(.moc-board) .collapse-indicator {
+    position: absolute !important;
+    top: 0 !important;
+    left: 0 !important;
+    width: 100% !important;
+    height: 100% !important;
+    opacity: 0 !important; 
+    z-index: 10 !important; 
+}
+
+
+/* --- LIVE PREVIEW HACK --- */
+/* 1. Anchor the gutter element for the specific line */
+.markdown-source-view:has(.moc-board) .cm-foldGutter .cm-gutterElement {
+    position: relative !important;
+}
+
+/* 2. Stretch the gutter's folding arrow to the right, overlaying the editor text */
+.markdown-source-view:has(.moc-board) .cm-fold-indicator {
+    position: absolute !important;
+    top: 0 !important;
+    left: 0 !important;
+    width: 2000px !important; /* Forces the hit-box to stretch across the screen */
+    height: 100% !important;
+    opacity: 0 !important; 
+    z-index: 10 !important; 
+    cursor: pointer !important;
+}

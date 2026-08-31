@@ -1,0 +1,539 @@
+/* @settings
+name: 12 Domains Callouts
+id: domains-12
+settings:
+  - id: global-width
+    title: Global Callout Width (%)
+    description: Shrink or inflate the overall width of the callouts (100 = full width).
+    type: variable-number-slider
+    default: 50
+    min: 20
+    max: 100
+  - id: global-padding
+    title: Global Callout Padding (px)
+    description: Adjust the internal spacing/padding inside the callouts.
+    type: variable-number-slider
+    default: 4
+    min: 0
+    max: 50
+  - id: global-saturation
+    title: Global Callout Saturation (%)
+    description: Adjusts color intensity for all 12 domain callouts.
+    type: variable-number-slider
+    default: 100
+    min: 0
+    max: 200
+  - id: global-brightness
+    title: Global Callout Brightness (%)
+    description: Adjusts lightness/darkness for all 12 domain callouts.
+    type: variable-number-slider
+    default: 100
+    min: 50
+    max: 150
+  - id: heading-physics
+    title: 1. Physics (Cyan)
+    type: heading
+    level: 2
+  - id: physics-icon
+    title: Icon
+    type: variable-text
+    default: lucide-orbit
+  - id: physics-color
+    title: Color
+    type: variable-color
+    format: rgb-split
+    default: '#99FFFF'
+  - id: heading-chem
+    title: 2. Chem/EarthSci (Mint/Pine)
+    type: heading
+    level: 2
+  - id: chem-icon
+    title: Icon
+    type: variable-text
+    default: lucide-hexagon
+  - id: chem-color
+    title: Color
+    type: variable-color
+    format: rgb-split
+    default: '#99FFCC'
+  - id: heading-biology
+    title: 3. Biology/LifeSci (Green)
+    type: heading
+    level: 2
+  - id: biology-icon
+    title: Icon
+    type: variable-text
+    default: lucide-dna
+  - id: biology-color
+    title: Color
+    type: variable-color
+    format: rgb-split
+    default: '#99FF99'
+  - id: heading-medicine
+    title: 4. Medicine (Sprout)
+    type: heading
+    level: 2
+  - id: medicine-icon
+    title: Icon
+    type: variable-text
+    default: lucide-activity
+  - id: medicine-color
+    title: Color
+    type: variable-color
+    format: rgb-split
+    default: '#CCFF99'
+  - id: heading-psych
+    title: 5. Psych/CogniSci (Yellow)
+    type: heading
+    level: 2
+  - id: psych-icon
+    title: Icon
+    type: variable-text
+    default: lucide-brain-circuit
+  - id: psych-color
+    title: Color
+    type: variable-color
+    format: rgb-split
+    default: '#FFFF99'
+  - id: heading-sociology
+    title: 6. Sociology/Culture (Orange)
+    type: heading
+    level: 2
+  - id: sociology-icon
+    title: Icon
+    type: variable-text
+    default: lucide-network
+  - id: sociology-color
+    title: Color
+    type: variable-color
+    format: rgb-split
+    default: '#FFCC99'
+  - id: heading-history
+    title: 7. History (Red)
+    type: heading
+    level: 2
+  - id: history-icon
+    title: Icon
+    type: variable-text
+    default: lucide-hourglass
+  - id: history-color
+    title: Color
+    type: variable-color
+    format: rgb-split
+    default: '#FF9999'
+  - id: heading-law
+    title: 8. Econ/Rlg/Pol/Law (Pink)
+    type: heading
+    level: 2
+  - id: law-icon
+    title: Icon
+    type: variable-text
+    default: lucide-scale
+  - id: law-color
+    title: Color
+    type: variable-color
+    format: rgb-split
+    default: '#FF99CC'
+  - id: heading-tech
+    title: 9. Tech/Engineering (Magenta)
+    type: heading
+    level: 2
+  - id: tech-icon
+    title: Icon
+    type: variable-text
+    default: lucide-cpu
+  - id: tech-color
+    title: Color
+    type: variable-color
+    format: rgb-split
+    default: '#FF99FF'
+  - id: heading-art
+    title: 10. Art/Humanities (Purple)
+    type: heading
+    level: 2
+  - id: art-icon
+    title: Icon
+    type: variable-text
+    default: lucide-sparkles
+  - id: art-color
+    title: Color
+    type: variable-color
+    format: rgb-split
+    default: '#CC99FF'
+  - id: heading-philosophy
+    title: 11. Philosophy/Logic (Deep Blue)
+    type: heading
+    level: 2
+  - id: philosophy-icon
+    title: Icon
+    type: variable-text
+    default: lucide-compass
+  - id: philosophy-color
+    title: Color
+    type: variable-color
+    format: rgb-split
+    default: '#9999FF'
+  - id: heading-math
+    title: 12. Math (Aqua/Azure)
+    type: heading
+    level: 2
+  - id: math-icon
+    title: Icon
+    type: variable-text
+    default: lucide-sigma
+  - id: math-color
+    title: Color
+    type: variable-color
+    format: rgb-split
+    default: '#99CCFF'
+  - id: heading-void
+    title: N/A. Outside / Void
+    type: heading
+    level: 2
+  - id: void-icon
+    title: Icon
+    type: variable-text
+    default: lucide-ghost
+  - id: void-color
+    title: Color
+    type: variable-color
+    format: rgb-split
+    default: '#CCCCCC'
+  - id: global-background-opacity
+    title: Background Opacity (%)
+    description: Controls the opacity of the domain color gradients.
+    type: variable-number-slider
+    default: 40
+    min: 0
+    max: 100
+
+  - id: global-rainbow-opacity
+    title: Rainbow Overlay Opacity (%)
+    description: Controls how visible the rainbow overlay is.
+    type: variable-number-slider
+    default: 15
+    min: 0
+    max: 100
+*/
+
+/* --------------------------------------------------------- */
+/* Global Structure, High Opacity Gradients, Glow & Rainbow  */
+/* --------------------------------------------------------- */
+.callout[data-callout="physics"],
+.callout[data-callout="chem"],
+.callout[data-callout="biology"],
+.callout[data-callout="medicine"],
+.callout[data-callout="psych"],
+.callout[data-callout="sociology"],
+.callout[data-callout="history"],
+.callout[data-callout="law"],
+.callout[data-callout="tech"],
+.callout[data-callout="art"],
+.callout[data-callout="philosophy"],
+.callout[data-callout="math"],
+.callout[data-callout="void"] {
+
+    filter: saturate(calc(var(--domains-12-global-saturation, 100) * 1%))
+            brightness(calc(var(--domains-12-global-brightness, 100) * 1%));
+
+    --domain-opacity: calc(var(--domains-12-global-background-opacity, 40) / 100);
+    --domain-opacity-light: calc(var(--domain-opacity) * 0.54);
+    --rainbow-opacity: calc(var(--domains-12-global-rainbow-opacity, 15) / 100);
+
+    margin-bottom: 1rem;
+    background-color: transparent !important;
+    /* Layer 1: High opacity domain color gradient. Layer 2: Subtle horizontal pastel rainbow */
+
+  background-image:
+    linear-gradient(
+        135deg,
+        rgba(var(--callout-color), var(--domain-opacity)) 0%,
+        rgba(var(--callout-color), var(--domain-opacity-light)) 100%
+    ),
+    linear-gradient(
+        to right,
+        rgba(255,153,153,var(--rainbow-opacity)),
+        rgba(255,204,153,var(--rainbow-opacity)),
+        rgba(255,255,153,var(--rainbow-opacity)),
+        rgba(153,255,153,var(--rainbow-opacity)),
+        rgba(153,255,255,var(--rainbow-opacity)),
+        rgba(153,153,255,var(--rainbow-opacity)),
+        rgba(204,153,255,var(--rainbow-opacity)),
+        rgba(255,153,204,var(--rainbow-opacity))
+    );
+
+    box-shadow: 0 0 15px rgba(var(--callout-color), 0.5);
+    color: var(--text-normal);
+}
+
+/* Title centered, justified, def.color, text shadow, AND STRIPPED PADDING */
+  .callout[data-callout="physics"] .callout-title,
+  .callout[data-callout="chem"] .callout-title,
+  .callout[data-callout="biology"] .callout-title,
+  .callout[data-callout="medicine"] .callout-title,
+  .callout[data-callout="psych"] .callout-title,
+  .callout[data-callout="sociology"] .callout-title,
+  .callout[data-callout="history"] .callout-title,
+  .callout[data-callout="law"] .callout-title,
+  .callout[data-callout="tech"] .callout-title,
+  .callout[data-callout="art"] .callout-title,
+  .callout[data-callout="philosophy"] .callout-title,
+  .callout[data-callout="math"] .callout-title,
+  .callout[data-callout="void"] .callout-title 
+  {
+    justify-content: center;
+    text-align: center;
+    color: var(--text-normal);
+    text-shadow: 0px 1px 2px rgba(0,0,0,0.1);
+    
+    /* Strips the default Obsidian fatness */
+    padding: 0 !important; 
+    margin: 0 !important;
+    line-height: normal;
+  }
+
+/* Center Flexbox Inner Container */
+.callout[data-callout="physics"] .callout-title-inner,
+.callout[data-callout="chem"] .callout-title-inner,
+.callout[data-callout="biology"] .callout-title-inner,
+.callout[data-callout="medicine"] .callout-title-inner,
+.callout[data-callout="psych"] .callout-title-inner,
+.callout[data-callout="sociology"] .callout-title-inner,
+.callout[data-callout="history"] .callout-title-inner,
+.callout[data-callout="law"] .callout-title-inner,
+.callout[data-callout="tech"] .callout-title-inner,
+.callout[data-callout="art"] .callout-title-inner,
+.callout[data-callout="philosophy"] .callout-title-inner,
+.callout[data-callout="math"] .callout-title-inner,
+.callout[data-callout="void"] .callout-title-inner {
+    display: flex;
+    align-items: center;
+    gap: 0.4rem;
+}
+
+/* --------------------------------------------------------- */
+/* Global Structure: Rainbow Gradient */
+/* --------------------------------------------------------- */
+.callout[data-callout="physics"],
+.callout[data-callout="math"],
+.callout[data-callout="art"],
+.callout[data-callout="chem"],
+.callout[data-callout="biology"],
+.callout[data-callout="psych"],
+.callout[data-callout="sociology"],
+.callout[data-callout="law"],
+.callout[data-callout="tech"],
+.callout[data-callout="philosophy"],
+.callout[data-callout="history"],
+.callout[data-callout="medicine"],
+.callout[data-callout="void"] 
+{
+    filter: saturate(calc(var(--domains-12-global-saturation, 100) * 1%))
+            brightness(calc(var(--domains-12-global-brightness, 100) * 1%));
+
+    --domain-opacity: calc(var(--domains-12-global-background-opacity, 40) / 100);
+    --rainbow-opacity: calc(var(--domains-12-global-rainbow-opacity, 15) / 100);
+
+    /* --- ADJUSTABLE SIZING & PADDING VIA STYLE SETTINGS --- */
+    margin-bottom: 0rem;
+    width: calc(var(--domains-12-global-width, 50) * 1%);
+    margin-left: auto; /* Centers the reduced width */
+    margin-right: auto;
+    
+    /* Aggressively shrunk default padding */
+    padding: calc(var(--domains-12-global-padding, 4) * 1px) !important;
+    
+    background-color: transparent !important;
+
+    /* Rainbow is the FIRST layer (bottom), Domain color is the SECOND layer (top) */
+    background-image:
+    linear-gradient(
+        to right,
+        rgba(255,153,153,var(--rainbow-opacity)),
+        rgba(255,204,153,var(--rainbow-opacity)),
+        rgba(255,255,153,var(--rainbow-opacity)),
+        rgba(153,255,153,var(--rainbow-opacity)),
+        rgba(153,255,255,var(--rainbow-opacity)),
+        rgba(153,153,255,var(--rainbow-opacity)),
+        rgba(204,153,255,var(--rainbow-opacity)),
+        rgba(255,153,204,var(--rainbow-opacity))
+    ),
+    linear-gradient(
+        135deg,
+        rgba(var(--callout-color), var(--domain-opacity)) 0%,
+        rgba(var(--callout-color), calc(var(--domain-opacity) * 0.5)) 100%
+    );
+
+    box-shadow: 0 0 15px rgba(var(--callout-color), 0.3);
+    color: var(--text-normal);
+}
+
+/* --------------------------------------------------------- */
+/* Individual Domains: Core Vars (Pastels), Borders & Glows  */
+/* --------------------------------------------------------- */
+
+/* 1. Physics - Pastel Cyan (180°) */
+.callout[data-callout="physics"] 
+  {
+    --callout-color: var(--domains-12-physics-color, 153, 255, 255);
+    --callout-icon: var(--domains-12-physics-icon, lucide-orbit);
+    border: 1px solid rgba(var(--callout-color), 0.8);
+    box-shadow: 0 0 15px rgba(var(--callout-color), 0.5), 
+    inset 0 0 8px rgba(var(--callout-color), 0.3);
+    border-radius: 12px;
+  }
+
+/* 2. Chem/EarthSci - Pastel Mint/Pine (150°) */
+.callout[data-callout="chem"] {
+    --callout-color: var(--domains-12-chem-color, 153, 255, 204);
+    --callout-icon: var(--domains-12-chem-icon, lucide-hexagon);
+    border: 0px dashed rgba(var(--callout-color), 0.8);
+    border-radius: 6px;
+}
+
+/* 3. Biology/LifeSci - Pastel Green (120°) */
+.callout[data-callout="biology"] {
+    --callout-color: var(--domains-12-biology-color, 153, 255, 153);
+    --callout-icon: var(--domains-12-biology-icon, lucide-dna);
+    border: 0px solid rgba(var(--callout-color), 0.7);
+    border-radius: 18px 2px 18px 2px;
+}
+
+/* 4. Medicine - Pastel Sprout/Chartreuse (90°) */
+.callout[data-callout="medicine"] {
+    --callout-color: var(--domains-12-medicine-color, 204, 255, 153);
+    --callout-icon: var(--domains-12-medicine-icon, lucide-activity);
+    border: 2px double rgba(var(--callout-color), 0.8);
+    border-radius: 0px;
+}
+
+/* 5. Psych/CogniSci - Pastel Yellow (60°) */
+.callout[data-callout="psych"] {
+    --callout-color: var(--domains-12-psych-color, 255, 255, 153);
+    --callout-icon: var(--domains-12-psych-icon, lucide-brain-circuit);
+    border: 0px dotted rgba(var(--callout-color), 0.9);
+    border-radius: 20px;
+}
+
+/* 6. Sociology/Culture - Pastel Orange (30°) */
+.callout[data-callout="sociology"] {
+    --callout-color: var(--domains-12-sociology-color, 255, 204, 153);
+    --callout-icon: var(--domains-12-sociology-icon, lucide-network);
+    border-top: 1px solid rgba(var(--callout-color), 0.4);
+    border-bottom: 1px solid rgba(var(--callout-color), 0.4);
+    border-left: 0px solid rgba(var(--callout-color), 1);
+    border-right: 0px solid rgba(var(--callout-color), 1);
+    border-radius: 0px;
+}
+
+/* 7. History - Pastel Red (0°) */
+.callout[data-callout="history"] {
+    --callout-color: var(--domains-12-history-color, 255, 153, 153);
+    --callout-icon: var(--domains-12-history-icon, lucide-hourglass);
+    border: 0px groove rgba(var(--callout-color), 0.9);
+    border-radius: 0;
+}
+
+/* 8. Law - Pastel Pink (330°) */
+.callout[data-callout="law"] {
+    --callout-color: var(--domains-12-law-color, 255, 153, 204);
+    --callout-icon: var(--domains-12-law-icon, lucide-scale);
+    border: 3px ridge rgba(var(--callout-color), 0.9);
+    border-radius: 4px;
+}
+
+/* 9. Tech/Engineering - Pastel Magenta (300°) */
+.callout[data-callout="tech"] {
+    --callout-color: var(--domains-12-tech-color, 255, 153, 255);
+    --callout-icon: var(--domains-12-tech-icon, lucide-cpu);
+    border: 1px solid rgba(var(--callout-color), 1);
+    border-radius: 0;
+    box-shadow: 4px 4px 0px rgba(var(--callout-color), 0.6), 0 0 15px rgba(var(--callout-color), 0.5);
+}
+
+/* 10. Art/Humanities - Pastel Purple (270°) */
+.callout[data-callout="art"] {
+    --callout-color: var(--domains-12-art-color, 204, 153, 255);
+    --callout-icon: var(--domains-12-art-icon, lucide-sparkles);
+    border: 2px solid rgba(var(--callout-color), 0.8);
+    border-radius: 24px 6px 24px 6px;
+}
+
+/* 11. Philosophy/Logic - Pastel Deep Blue (240°) */
+.callout[data-callout="philosophy"] {
+    --callout-color: var(--domains-12-philosophy-color, 153, 153, 255);
+    --callout-icon: var(--domains-12-philosophy-icon, lucide-compass);
+    border-top: 1px solid rgba(var(--callout-color), 0.5);
+    border-bottom: 1px solid rgba(var(--callout-color), 0.5);
+    border-radius: 0;
+}
+
+/* 12. Math - Pastel Aqua/Azure (210°) & Layered Graph Paper */
+.callout[data-callout="math"] {
+    --callout-color: var(--domains-12-math-color, 153, 204, 255);
+    --callout-icon: var(--domains-12-math-icon, lucide-sigma);
+    border: 1px solid rgba(var(--callout-color), 0.8);
+    border-radius: 4px;
+    background-image: 
+        linear-gradient(rgba(var(--callout-color), 0.25) 1px, transparent 1px), 
+        linear-gradient(90deg, rgba(var(--callout-color), 0.25) 1px, transparent 1px),
+        linear-gradient(135deg, rgba(var(--callout-color), 0.65) 0%, rgba(var(--callout-color), 0.35) 100%),
+        linear-gradient(to right, rgba(255,153,153,var(--rainbow-opacity)), rgba(255,204,153,var(--rainbow-opacity)), rgba(255,255,153,var(--rainbow-opacity)), rgba(153,255,153,var(--rainbow-opacity)), rgba(153,255,255,var(--rainbow-opacity)), rgba(153,153,255,var(--rainbow-opacity)), rgba(204,153,255,var(--rainbow-opacity)), rgba(255,153,204,var(--rainbow-opacity)));
+    background-size: 15px 15px, 15px 15px, auto, auto;
+}
+
+/* N/A. Outside/Void - Pastel Grey (Inner + Outer Glow) */
+.callout[data-callout="void"] {
+    --callout-color: var(--domains-12-void-color, 204, 204, 204);
+    --callout-icon: var(--domains-12-void-icon, lucide-ghost);
+    border: 1px solid rgba(var(--callout-color), 0.5);
+    border-radius: 8px;
+    box-shadow: 0 0 15px rgba(var(--callout-color), 0.3), inset 0 0 20px rgba(0, 0, 0, 0.2);
+}
+
+/* --------------------------------------------------------- */
+/* Permanent Hardcoded Overrides: Hide Symbols, Icons & Folds  */
+/* --------------------------------------------------------- */
+.callout[data-callout="physics"] .callout-title-inner::before, .callout[data-callout="physics"] .callout-title-inner::after,
+.callout[data-callout="chem"] .callout-title-inner::before, .callout[data-callout="chem"] .callout-title-inner::after,
+.callout[data-callout="biology"] .callout-title-inner::before, .callout[data-callout="biology"] .callout-title-inner::after,
+.callout[data-callout="medicine"] .callout-title-inner::before, .callout[data-callout="medicine"] .callout-title-inner::after,
+.callout[data-callout="psych"] .callout-title-inner::before, .callout[data-callout="psych"] .callout-title-inner::after,
+.callout[data-callout="sociology"] .callout-title-inner::before, .callout[data-callout="sociology"] .callout-title-inner::after,
+.callout[data-callout="history"] .callout-title-inner::before, .callout[data-callout="history"] .callout-title-inner::after,
+.callout[data-callout="law"] .callout-title-inner::before, .callout[data-callout="law"] .callout-title-inner::after,
+.callout[data-callout="tech"] .callout-title-inner::before, .callout[data-callout="tech"] .callout-title-inner::after,
+.callout[data-callout="art"] .callout-title-inner::before, .callout[data-callout="art"] .callout-title-inner::after,
+.callout[data-callout="philosophy"] .callout-title-inner::before, .callout[data-callout="philosophy"] .callout-title-inner::after,
+.callout[data-callout="math"] .callout-title-inner::before, .callout[data-callout="math"] .callout-title-inner::after,
+.callout[data-callout="void"] .callout-title-inner::before, .callout[data-callout="void"] .callout-title-inner::after,
+.callout[data-callout="physics"] .callout-icon,
+.callout[data-callout="chem"] .callout-icon,
+.callout[data-callout="biology"] .callout-icon,
+.callout[data-callout="medicine"] .callout-icon,
+.callout[data-callout="psych"] .callout-icon,
+.callout[data-callout="sociology"] .callout-icon,
+.callout[data-callout="history"] .callout-icon,
+.callout[data-callout="law"] .callout-icon,
+.callout[data-callout="tech"] .callout-icon,
+.callout[data-callout="art"] .callout-icon,
+.callout[data-callout="philosophy"] .callout-icon,
+.callout[data-callout="math"] .callout-icon,
+.callout[data-callout="void"] .callout-icon,
+.callout[data-callout="physics"] .callout-fold,
+.callout[data-callout="chem"] .callout-fold,
+.callout[data-callout="biology"] .callout-fold,
+.callout[data-callout="medicine"] .callout-fold,
+.callout[data-callout="psych"] .callout-fold,
+.callout[data-callout="sociology"] .callout-fold,
+.callout[data-callout="history"] .callout-fold,
+.callout[data-callout="law"] .callout-fold,
+.callout[data-callout="tech"] .callout-fold,
+.callout[data-callout="art"] .callout-fold,
+.callout[data-callout="philosophy"] .callout-fold,
+.callout[data-callout="math"] .callout-fold,
+.callout[data-callout="void"] .callout-fold {
+    display: none !important;
+    content: none !important;
+}
+

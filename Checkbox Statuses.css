@@ -1,0 +1,118 @@
+/* ==========================================================
+   1. System Override: Kill the Default Checkmark SVG
+   ========================================================== */
+.task-list-item-checkbox[data-task="/"]::after,
+.task-list-item-checkbox[data-task="-"]::after,
+.task-list-item-checkbox[data-task="1"]::after,
+.task-list-item-checkbox[data-task="2"]::after,
+.task-list-item-checkbox[data-task="3"]::after,
+.task-list-item-checkbox[data-task="?"]::after {
+    /* Destroys the default checkmark shape */
+    -webkit-mask-image: none !important; 
+    mask-image: none !important;
+    /* Clears the default checkmark color */
+    background-color: transparent !important; 
+    /* Stops Obsidian from rotating our custom text */
+    transform: none !important; 
+    position: static !important;
+}
+
+/* Flexbox magic to center your custom text perfectly */
+.task-list-item-checkbox[data-task="/"],
+.task-list-item-checkbox[data-task="-"],
+.task-list-item-checkbox[data-task="1"],
+.task-list-item-checkbox[data-task="2"],
+.task-list-item-checkbox[data-task="3"],
+.task-list-item-checkbox[data-task="?"] {
+    display: inline-flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+}
+
+/* ==========================================================
+   2. Tilde Box for In-Progress / Alternative Tasks ([/] or [-])
+   ========================================================== */
+.task-list-item-checkbox[data-task="/"],
+.task-list-item-checkbox[data-task="-"] {
+    background-color: rgba(136, 136, 136, 0.1) !important;
+    border-color: #888888 !important;
+}
+.task-list-item-checkbox[data-task="/"]::after,
+.task-list-item-checkbox[data-task="-"]::after {
+    content: "~" !important;
+    color: #888888 !important;
+    font-size: 19px !important;
+    font-weight: 900 !important;
+}
+
+/* ==========================================================
+   3. Fractional Progressive Tasks ([1], [2], [3], [x])
+   ========================================================== */
+
+/* --- 1/4 (Quarter) - Soft Orange --- */
+.task-list-item-checkbox[data-task="1"] 
+{
+    /* 25% solid fill, 75% faint track background */
+    background: linear-gradient(130deg, #fce8d5 25%, #8d5d30 85%) !important;
+    border-color: #702f00 !important;
+}
+.task-list-item-checkbox[data-task="1"]::after 
+{
+    content: "¼" !important;
+    color: #c2410c !important;
+    font-size: 13px !important; 
+    font-weight: 900 !important;
+}
+
+/* --- 2/4 or 1/2 (Half) - Soft Yellow --- */
+.task-list-item-checkbox[data-task="2"] {
+    /* 50% solid fill, 50% faint track background */
+    background: linear-gradient(130deg, #fef3c7 50%, #4b8e10 100%) !important;
+    border-color: #eab308 !important;
+}
+.task-list-item-checkbox[data-task="2"]::after {
+    content: "½" !important;
+    color: #a16207 !important;
+    font-size: 14px !important; 
+    font-weight: 900 !important;
+}
+
+/* --- 3/4 (Three Quarters) - Soft Green --- */
+.task-list-item-checkbox[data-task="3"] {
+    /* 75% solid fill, 25% faint track background */
+    background: linear-gradient(130deg, #d1fae5 75%, #51c88c 25%) !important;
+    border-color: #10b981 !important;
+}
+.task-list-item-checkbox[data-task="3"]::after 
+{
+    content: "¾" !important;
+    color: #047857 !important;
+    font-size: 14px !important; 
+    font-weight: 900 !important;
+}
+
+/* --- Fully Done [x] - Cool Soft Mint / Pine --- */
+.task-list-item-checkbox[data-task="x"],
+.task-list-item-checkbox[data-task="X"] {
+    background-color: #3e6a56 !important;
+    border-color: #0d3629 !important;
+}
+.task-list-item-checkbox[data-task="x"]::after,
+.task-list-item-checkbox[data-task="X"]::after 
+  {background-color: #548779 !important;}
+
+/* ==========================================================
+   4. Detective / Unknown Status ([?]) - Noir Interrobang
+   ========================================================== */
+.task-list-item-checkbox[data-task="?"] {
+    background-color: #d4d4d4 !important; /* Fog / Light Noir Grey */
+    border-color: #262626 !important;     /* Hard Charcoal Border */
+}
+.task-list-item-checkbox[data-task="?"]::after {
+    content: "‽" !important;              /* The Interrobang */
+    color: #171717 !important;            /* Pitch Noir Text */
+    font-size: 1.4em !important;           
+    font-weight: bolder !important;          
+    font-style: italic !important;        
+}
+

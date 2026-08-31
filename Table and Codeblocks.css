@@ -1,0 +1,208 @@
+/* Sticky Hub Panel */
+.sticky-hub-panel .cm-header,
+.sticky-hub-panel .hypermd-header,
+.sticky-hub-panel .markdown-rendered h1,
+.sticky-hub-panel .markdown-rendered h2,
+.sticky-hub-panel .markdown-rendered h3 {
+    position: sticky !important;
+    top: 0 !important;
+    z-index: 20 !important;
+    background-color: var(--background-primary) !important;
+    border-bottom: 2px solid var(--interactive-accent);
+}
+
+
+/* TableSettings.css */
+/*
+author: zamsyt
+source:discord 
+*/
+
+:is(.cm-table-widget, .markdown-preview-section > div):has(+ * .left-thead) th {
+  font-weight: unset;
+}
+
+:is(.cm-table-widget, .markdown-preview-section > div):has(+ * .left-thead)>table>*>tr> :first-child {
+  font-weight: var(--table-header-weight);
+  background-color: var(--background-secondary);
+}
+
+
+
+/*
+author: FireIsGood
+source: https://discord.com/channels/686053708261228577/702656734631821413/1112164539975340032
+*/
+
+:root table {
+  border-collapse: separate;
+  border-spacing: 0;
+}
+
+th:first-of-type {
+  border-top-left-radius: 8px;
+}
+
+th:last-of-type {
+  border-top-right-radius: 8px;
+}
+
+tr:last-of-type td:first-of-type {
+  border-bottom-left-radius: 8px;
+}
+
+tr:last-of-type td:last-of-type {
+  border-bottom-right-radius: 8px;
+}
+
+:root :is(td, th) {
+  border-width: 0 var(--table-border-width) var(--table-border-width) 0;
+}
+
+
+/* ========================================= */
+/* STANDOUT TABLE HEADERS                    */
+/* ========================================= */
+
+.markdown-rendered table th {
+    /* Changes the background to a slightly darker/offset shade */
+    background-color: var(--background-modifier-border) !important;
+    
+    /* Makes the text bolder */
+    font-weight: 900 !important;
+    
+    /* Optional: Changes the text color to your theme's accent color. 
+       Change this to var(--text-normal) if you prefer standard text color. */
+    color: var(--text-accent) !important;
+    
+    /* Adds a strong border directly under the header row */
+    border-bottom: 2px solid var(--text-normal) !important; 
+    
+    /* Adds a little extra breathing room around the text */
+    padding: 10px 15px !important;
+}
+
+
+
+/*Code Block*/
+/*
+MIT License
+
+Copyright (c) 2022 kneecaps
+
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all
+copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+SOFTWARE.
+*/
+
+/* ============================ */
+/*        READING MODE          */
+/* ============================ */
+
+.markdown-rendered pre {
+  border: solid var(--color-yellow);
+  border-radius: var(--radius-m);
+  box-shadow: var(--shadow-lm-only);
+  
+  /* Give the text a gutter from the left border */
+  padding-left: 20px !important;
+  
+  /* Cool soft pattern background */
+  background-color: var(--code-background);
+  background-image: repeating-linear-gradient(
+    -45deg,
+    transparent,
+    transparent 8px,
+    rgba(127, 127, 127, 0.05) 8px,
+    rgba(127, 127, 127, 0.05) 16px
+  );
+}
+
+/* Wrap lines cleanly and reduce font size in Reading Mode */
+.markdown-rendered pre > code {
+  white-space: pre-wrap !important;
+  word-break: break-word !important;
+  font-size: 0.8em !important; /* <-- Shrinks text to fit more per line */
+}
+
+/* ============================ */
+/*   LIVE PREVIEW     */
+/* ============================ */
+
+/* Give the Live Preview text a gutter and reduce font size */
+.cm-s-obsidian .cm-line.HyperMD-codeblock {
+  padding-left: 20px !important;
+  font-size: 0.8em !important; /* <-- Shrinks text to fit more per line */
+}
+
+/* Base soft pattern applied to all Live Preview code backgrounds */
+.cm-s-obsidian div.HyperMD-codeblock-begin-bg,
+.cm-s-obsidian div.HyperMD-codeblock-end-bg,
+.cm-s-obsidian div.HyperMD-codeblock-bg {
+  background-color: var(--code-background);
+  background-image: repeating-linear-gradient(
+    -45deg,
+    transparent,
+    transparent 8px,
+    rgba(127, 127, 127, 0.05) 8px,
+    rgba(127, 127, 127, 0.05) 16px
+  );
+}
+
+.cm-s-obsidian div.HyperMD-codeblock-begin-bg {
+  border-top: solid var(--color-yellow);
+  /* stylelint-disable-next-line declaration-no-important */
+  border-top-right-radius: 8px !important;
+  /* stylelint-disable-next-line declaration-no-important */
+  border-top-left-radius: 8px !important;
+  margin-top: 8px;
+}
+
+.cm-s-obsidian div.HyperMD-codeblock-end-bg {
+  border-bottom: solid var(--color-yellow);
+  border-bottom-right-radius: 8px;
+  border-bottom-left-radius: 8px;
+}
+
+.cm-s-obsidian div.HyperMD-codeblock-bg {
+  border-right: solid var(--color-yellow);
+  border-left: solid var(--color-yellow);
+}
+
+
+
+
+/* Target ONLY Hubs sitting inside the Right Sidebar */
+.mod-right-split .cm-header,
+.mod-right-split .hypermd-header,
+.mod-right-split .markdown-rendered h1,
+.mod-right-split .markdown-rendered h2,
+.mod-right-split .markdown-rendered h3 {
+    position: sticky !important;
+    top: 0 !important;
+    z-index: 20 !important;
+    background-color: var(--background-secondary-alt, var(--background-primary)) !important;
+    padding-top: 6px;
+    padding-bottom: 6px;
+    margin-top: 0 !important;
+    border-bottom: 2px solid var(--interactive-accent);
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+}
+
+/* Ensure smooth scrolling inside the sidebar leaf */
+.mod-right-split .view-content 
+	{overflow-y: auto !important;}

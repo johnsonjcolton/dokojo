@@ -1,0 +1,182 @@
+/* ========================================= */
+/* WRITER'S INLINE TEXT EFFECTS              */
+/* ========================================= */
+
+/* 1. The "Ancient Tome" Effect */
+.tome {
+    font-family: "Times New Roman", serif;
+    color: #b8860b; /* Dark Goldenrod */
+    font-size: 1.2em;
+    font-style: italic;
+}
+
+/* 2. The "Redacted" Secret Text Effect */
+.redacted {
+    background-color: #333;
+    color: #333; /* Text blends into the background */
+    border-radius: 3px;
+    padding: 0 4px;
+}
+/* This makes the redacted text appear only when you hover your mouse over it! */
+.redacted:hover {
+    color: #fff;
+}
+
+/* 3. The "Telepathy" Voice Effect */
+.telepathy {
+    color: #7d5fff; /* Purple */
+    letter-spacing: 2px;
+    text-shadow: 0px 0px 5px rgba(125, 95, 255, 0.5);
+}
+
+
+
+
+
+/* ================================================== */
+/* WRITER'S CUSTOM ASCII DIVIDERS                     */
+/* ================================================== */
+
+/* 1. THE SHARED SKELETON */
+/* This strips away the boring default line and centers our art */
+hr.sword, 
+hr.fairy, 
+hr.cyber, 
+hr.flourish {
+    border: none;             /* Hides the default Obsidian line */
+    text-align: center;       /* Centers the ASCII art */
+    height: 0px;              /* Collapses the invisible box */
+    margin: 2.5em 0;          /* Adds breathing room above and below */
+    overflow: visible;        /* Lets the art show up */
+}
+
+/* 2. THE UNIQUE DESIGNS */
+/* We use ::after to magically "inject" the text into the page */
+
+/* Variant A: The Fantasy Sword */
+hr.sword::after {
+    content: "O===[====================>";
+    font-family: monospace;
+    color: var(--text-muted); /* Uses Obsidian's faded text color */
+    font-size: 1.2em;
+    position: relative;
+    top: -12px; /* Nudges it perfectly into the center */
+}
+
+/* Variant B: The Fairy Dust */
+hr.fairy::after {
+    content: "⋆ ˚｡⋆୨୧˚ ˚୨୧⋆｡˚ ⋆";
+    color: #ffb86c; /* Soft orange/pink */
+    font-size: 1.5em;
+    letter-spacing: 4px;
+    position: relative;
+    top: -15px;
+}
+
+/* Variant C: The Sci-Fi Data Transfer */
+hr.cyber::after {
+    content: "▰▰▰▰▰▰▰▰▰▱▱▱▱▱▱▱▱▱";
+    color: #50fa7b; /* Neon green */
+    font-family: monospace;
+    font-size: 1.2em;
+    position: relative;
+    top: -12px;
+}
+
+/* Variant D: The Elegant Book Flourish (Line fading into a center star) */
+hr.flourish {
+    /* We give this one a custom gradient line! */
+    background-image: linear-gradient(to right, transparent, var(--text-accent), transparent);
+    height: 1px; 
+}
+hr.flourish::after {
+    content: "✧";
+    color: var(--text-accent); /* Uses your vault's main accent color */
+    background: var(--background-primary); /* Masks the line behind the star */
+    padding: 0 15px; /* Creates space around the star */
+    font-size: 1.5em;
+    position: relative;
+    top: -15px;
+}
+
+
+
+
+/* Update your CSS to target divs instead of hr */
+div.sword, 
+div.fairy, 
+div.cyber, 
+div.flourish {
+    border: none;
+    text-align: center;
+    margin: 2.5em 0;
+    /* We add this to make sure Live Preview sees the box */
+    display: block; 
+    width: 100%;
+}
+
+/* Everything else stays exactly the same! */
+div.sword::after { content: "O===[====================>"; ... }
+
+
+
+
+
+
+/* ================================================== */
+/* DIV-BASED DIVIDERS (Live Preview Friendly)         */
+/* ================================================== */
+
+/* 1. THE SHARED SKELETON */
+/* Using div instead of hr to guarantee Live Preview rendering */
+div.sword, 
+div.fairy, 
+div.cyber, 
+div.flourish,
+div.crystal,
+div.galaxy,
+div.rune {
+    border: none;
+    text-align: center;
+    width: 100%;
+    margin: 2.5em 0;
+    display: block;
+    height: 1.5em; /* Gives the div enough height to hold the art */
+}
+
+/* 2. THE DESIGNS */
+
+/* Variant A: The Fairy Dust */
+div.fairy::after {
+    content: "⋆ ˚｡⋆୨୧˚ ˚୨୧⋆｡˚ ⋆";
+    color: #ffb86c;
+    font-size: 1.5em;
+    letter-spacing: 4px;
+}
+
+/* Variant B: The Crystal Spark (New!) */
+div.crystal::after {
+    content: "◈  ◈  ◈  ◈  ◈";
+    color: #8be9fd;
+    font-size: 1.5em;
+    letter-spacing: 8px;
+    font-family: monospace;
+}
+
+/* Variant C: The Galaxy Swirl (New!) */
+div.galaxy::after {
+    content: "✵ ☄ ✵ ☄ ✵";
+    color: #bd93f9;
+    font-size: 1.5em;
+    letter-spacing: 10px;
+    font-family: monospace;
+}
+
+/* Variant D: The Ancient Rune (New!) */
+div.rune::after {
+    content: "᚛    ᛟ    ᚜";
+    color: #ff5555;
+    font-size: 1.8em;
+    letter-spacing: 12px;
+    font-family: monospace;
+}

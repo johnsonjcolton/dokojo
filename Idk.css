@@ -1,0 +1,26 @@
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* Shrinks the padding for all default Obsidian callouts */
+
+body .markdown-rendered .callout {
+    padding: 1.35rem 0.75rem; 
+          /* Adjust these values: 
+         Top/Bottom | Left/Right */ }
+
+/* Tightens the gap between the callout title and the body text */
+body .markdown-rendered .callout-content {
+    margin-top: 0.01rem; }

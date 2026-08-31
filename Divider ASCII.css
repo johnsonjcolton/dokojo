@@ -1,0 +1,57 @@
+/* Special Divider - Reading Mode */
+.markdown-rendered hr {
+    border: none !important;
+    background-color: transparent !important;
+    margin-block-start: .2em;
+    margin-block-end: .2em;
+}
+
+.markdown-rendered hr::after {
+    content: "༺☾═══════◈═══════☽༻" !important;
+    display: block !important;
+    text-align: center !important;
+    font-family: var(--font-monospace) !important;
+    color: var(--text-muted) !important;
+    font-size: 1.2em !important;
+}
+
+/* Special Divider - Live Preview (Native Element Injection) */
+.markdown-source-view.mod-cm6 hr {
+    border: none !important;
+    background-color: transparent !important;
+    margin-block-start: .2em !important;
+    margin-block-end: .2em !important;
+    display: block !important;
+    height: auto !important;
+}
+
+.markdown-source-view.mod-cm6 hr::after {
+    content: "༺☾═══════◈═══════☽༻" !important;
+    display: block !important;
+    text-align: center !important;
+    font-family: var(--font-monospace) !important;
+    color: var(--text-muted) !important;
+    /* Scales dynamically: 4vw on mobile, maxes out at 1.2rem on tablets/desktop */
+    font-size: clamp(0.6rem, 4vw, 1.2rem) !important; 
+    white-space: nowrap !important;
+    overflow: hidden !important;
+}
+
+/* Fallback: Live Preview (Legacy Span Targeting for older Obsidian builds) */
+.markdown-source-view.mod-cm6 .cm-line:not(.cm-active) .cm-formatting-hr {
+    color: transparent !important;
+    display: block !important;
+    text-align: center !important;
+}
+
+.markdown-source-view.mod-cm6 .cm-line:not(.cm-active) .cm-formatting-hr::after {
+    content: "༺☾═══════◈═══════☽༻" !important;
+    color: var(--text-muted) !important;
+    display: block !important;
+    text-align: center !important;
+    font-family: var(--font-monospace) !important;
+    font-size: clamp(0.6rem, 4vw, 1.2rem) !important;
+    visibility: visible !important;
+    white-space: nowrap !important;
+    overflow: hidden !important;
+}

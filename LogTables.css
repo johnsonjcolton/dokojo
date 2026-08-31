@@ -1,0 +1,49 @@
+/* Target ONLY tables that contain the #log tag */
+table:has(.tag[href="#log"]) {
+    border: none !important;
+    width: 100%;
+}
+
+/* 1. Pull the table into the left margin to give the text more room */
+table:has(.tag[href="#log"]) {
+    border: none !important;
+    width: 105%; /* Makes the table wider than the normal reading view */
+    margin-left: -6.5%; /* Pulls the extra width out into the left margin */
+}
+
+/* Hide the table header completely */
+table:has(.tag[href="#log"]) thead {
+    display: none;
+}
+
+/* Remove borders, backgrounds, and align text to the top */
+table:has(.tag[href="#log"]) td {
+    border: none !important;
+    background-color: transparent !important;
+    vertical-align: top;
+    padding: 6px 0px;
+}
+
+/* Style the FIRST column (The Timestamp) */
+table:has(.tag[href="#log"]) td:first-child 
+    {
+    white-space: nowrap; 
+    /*font-style: strong;*/
+    width: min-content; /* Hugs the text horizontally as tight as possible */
+    padding-left: 0px !important; /* Removes Obsidian's default left padding */
+    padding-right: 0px !important; /* Adjust this to change the gap between the time and the text */
+    color: var(--text-muted);
+    letter-spacing: -0.98px; /* Pulls the characters closer together horizontally */
+    /*font-size: 0.85em; /* Shrinks the timestamp text */
+    }
+
+/* Style the SECOND column (The Log Entry) */
+table:has(.tag[href="#log"]) td:nth-child(2) {
+    width: 99%; 
+    font-style: italic;
+    padding-left: 0px !important;
+    padding-right: 0px !important;
+    line-height: 1.35;
+}
+
+

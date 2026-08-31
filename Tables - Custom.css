@@ -1,0 +1,88 @@
+/* ========================================================== */
+/* COMBINED TABLE SNIPPET: #nomargin, #shrink, and #nolines   */
+/* ========================================================== */
+
+/* -------------------------------------- */
+/* 1. Hide Header Row for All Tags        */
+/* -------------------------------------- */
+.cm-table-widget:has(th a.tag[href="#nomargin"]) thead,
+.markdown-rendered table:has(th a.tag[href="#nomargin"]) thead,
+.cm-table-widget:has(th a.tag[href="#shrink"]) thead,
+.markdown-rendered table:has(th a.tag[href="#shrink"]) thead,
+.cm-table-widget:has(th a.tag[href="#nolines"]) thead,
+.markdown-rendered table:has(th a.tag[href="#nolines"]) thead {
+    display: none !important;
+}
+
+/* -------------------------------------- */
+/* 2. #nomargin - Expand table past margins */
+/* -------------------------------------- */
+.cm-table-widget:has(th a.tag[href="#nomargin"]),
+.markdown-rendered table:has(th a.tag[href="#nomargin"]) {
+    width: max-content !important;
+    max-width: max-content !important;
+    margin-left: 50% !important;
+    transform: translateX(-50%) !important;
+}
+
+.cm-table-widget:has(th a.tag[href="#nomargin"]) .cm-table-widget-inner {
+    width: 100% !important;
+    max-width: none !important;
+}
+
+/* -------------------------------------- */
+/* 3. #shrink - Dynamically scale to fit  */
+/* -------------------------------------- */
+.cm-table-widget:has(th a.tag[href="#shrink"]),
+.markdown-rendered table:has(th a.tag[href="#shrink"]) {
+    width: 100% !important;
+    max-width: 100% !important;
+    table-layout: fixed !important;
+}
+
+.cm-table-widget:has(th a.tag[href="#shrink"]) .cm-table-widget-inner {
+    width: 100% !important;
+    max-width: 100% !important;
+    overflow-x: hidden !important;
+}
+
+.cm-table-widget:has(th a.tag[href="#shrink"]) td,
+.markdown-rendered table:has(th a.tag[href="#shrink"]) td {
+    font-size: clamp(0.55em, 1.2vw, 0.85em) !important; 
+    padding: clamp(1px, 0.3vw, 3px) clamp(2px, 0.5vw, 5px) !important; 
+    letter-spacing: -0.06em !important; 
+    white-space: normal !important; 
+    word-wrap: break-word !important;
+    overflow-wrap: break-word !important;
+    hyphens: auto !important;
+}
+
+/* -------------------------------------- */
+/* 4. #nolines - Remove all borders       */
+/* -------------------------------------- */
+.cm-table-widget:has(th a.tag[href="#nolines"]),
+.cm-table-widget:has(th a.tag[href="#nolines"]) .cm-table-widget-inner,
+.cm-table-widget:has(th a.tag[href="#nolines"]) table,
+.cm-table-widget:has(th a.tag[href="#nolines"]) tr,
+.cm-table-widget:has(th a.tag[href="#nolines"]) th,
+.cm-table-widget:has(th a.tag[href="#nolines"]) td,
+.markdown-rendered table:has(th a.tag[href="#nolines"]),
+.markdown-rendered table:has(th a.tag[href="#nolines"]) table,
+.markdown-rendered table:has(th a.tag[href="#nolines"]) tr,
+.markdown-rendered table:has(th a.tag[href="#nolines"]) th,
+.markdown-rendered table:has(th a.tag[href="#nolines"]) td {
+    border: none !important;
+    box-shadow: none !important; 
+}
+
+/* -------------------------------------- */
+/* 5. Transparent Backgrounds             */
+/* -------------------------------------- */
+:is(.cm-table-widget, .markdown-rendered table):has(th a.tag[href="#nomargin"], th a.tag[href="#shrink"], th a.tag[href="#nolines"]) :is(table, tr, td, th, .cm-table-widget-inner) {
+    background-color: transparent !important;
+    background: none !important;
+}
+:is(.cm-table-widget, .markdown-rendered table):has(th a.tag[href="#nomargin"], th a.tag[href="#shrink"], th a.tag[href="#nolines"]) {
+    background-color: transparent !important;
+    background: none !important;
+}

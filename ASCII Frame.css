@@ -1,0 +1,64 @@
+/* Apply this class to any <pre> block in your markdown */
+.ascii-art-container {
+  /* Forces the art to stay exactly as typed */
+  white-space: pre;
+  font-family: 'Courier New', 'Monaco', 'Consolas', monospace;
+  
+  /* The magic scaling logic */
+  /* This scales the art between 50% and 100% of the screen width */
+  width: 100%;
+  overflow-x: auto;
+  
+  /* This shrinks the font size dynamically based on screen width (vw = viewport width) */
+  font-size: clamp(0.5rem, 2vw, 1rem);
+  
+  /* Ensures line spacing remains rigid for ASCII alignment */
+  line-height: 1.2;
+  
+  /* Visual styling */
+  background: var(--background-primary);
+  padding: 10px;
+  border-radius: 5px;
+}
+
+.ascii-fit-container {
+  /* Center the container horizontally */
+  margin: 0 auto;
+  
+  /* Ensure the art itself doesn't wrap */
+  white-space: pre;
+  
+  /* Use a container that respects the parent width */
+  width: 100%;
+  
+  /* The scaling magic */
+  /* We use a CSS variable to calculate the scale based on width */
+  transform-origin: left center;
+  
+  /* Adjust this width (800px) to match the original width of your ASCII art */
+  --art-width: 800px; 
+  
+  /* Scales the container to fit the available space */
+  transform: scale(min(1, calc(100% / var(--art-width))));
+  
+  /* Necessary to prevent the scaled element from pushing other content */
+  display: block;
+}
+
+.ascii-auto-fit {
+  /* This makes the container only as wide as the art inside it */
+  display: table; 
+  
+  /* Centers the table-like container horizontally */
+  margin: 0 auto;
+  
+  /* Prevents line wrapping */
+  white-space: pre;
+  
+  /* Ensures it doesn't spill off the screen */
+  max-width: 100%;
+  
+  /* This makes it zoom down if it's too wide */
+  transform-origin: center;
+  transform: scale(min(1, calc(100vw / var(--art-width, 800px))));
+}

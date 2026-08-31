@@ -1,0 +1,35 @@
+/* Force [!summary] to float left and override global callout rules */
+.markdown-reading-view .callout[data-callout="summary"],
+.markdown-source-view.mod-cm6 .cm-callout[data-callout="summary"] {
+  float: left !important;
+  clear: left;
+  width: 250px;
+  margin-left: -280px !important;
+  margin-right: 1.5em;
+  background-color: #e8f5e9;
+  border-left: 4px solid #388e3c;
+  padding: 10px;
+  font-size: 0.85em;
+  box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.1);
+  shape-outside: margin-box;
+  display: block;
+  position: relative;
+  z-index: 1;
+}
+
+/* Title styling for summary */
+.callout[data-callout="summary"] .callout-title,
+.cm-callout[data-callout="summary"] .callout-title {
+  font-size: 0.7em;
+  font-weight: bold;
+  text-align: center;
+  text-transform: uppercase;
+  margin-bottom: 0.3em;
+  padding-left: 0;
+}
+
+/* Hide summary icon */
+.callout[data-callout="summary"] .callout-icon,
+.cm-callout[data-callout="summary"] .callout-icon {
+  display: none;
+}

@@ -1,0 +1,5 @@
+.cm-active.cm-line h1,
+.cm-active.cm-line h2,
+.cm-active.cm-line h3 {
+  text-shadow: 0 0 8px var(--text-accent);
+}

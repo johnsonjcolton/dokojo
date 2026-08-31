@@ -1,0 +1,198 @@
+/* Colorize specific panes to look like a sidebar */
+.workspace-leaf-content[data-type="file-explorer"],
+.workspace-leaf-content[data-type="outline"],
+.workspace-leaf-content[data-type="tag"],
+.workspace-leaf-content[data-type="search"],
+.workspace-leaf-content[data-type="bookmarks"] {
+    background-color: var(--background-secondary) !important;
+}
+
+
+/* Colorize EVERYTHING that is not a standard note, canvas, or empty pane */
+.workspace-leaf-content:not([data-type="markdown"]):not([data-type="canvas"]):not([data-type="empty"]) {
+    --background-primary: var(--background-secondary);
+    --background-primary-alt: var(--background-secondary);
+}
+/*
+*/
+/* =========================================
+   CUSTOM HEX COLOR PALETTE FOR PANES
+   Type the class name into the 'cssclasses' property
+   ========================================= */
+
+/* 1. Deep Midnight Blue */
+.workspace-leaf:has(.bg-midnight) .workspace-leaf-content,
+.workspace-leaf:has(.bg-midnight) .view-header {
+    --background-primary: #111b2b !important;
+    --background-primary-alt: #111b2b !important;
+}
+
+/* 2. Muted Forest Green */
+.workspace-leaf:has(.bg-forest) .workspace-leaf-content,
+.workspace-leaf:has(.bg-forest) .view-header {
+    --background-primary: #14241a !important;
+    --background-primary-alt: #14241a !important;
+}
+
+/* 3. Dark Plum / Purple */
+.workspace-leaf:has(.bg-plum) .workspace-leaf-content,
+.workspace-leaf:has(.bg-plum) .view-header {
+    --background-primary: #221526 !important;
+    --background-primary-alt: #221526 !important;
+}
+
+/* 4. Burnt Orange / Rust */
+.workspace-leaf:has(.bg-rust) .workspace-leaf-content,
+.workspace-leaf:has(.bg-rust) .view-header {
+    --background-primary: #2b170e !important;
+    --background-primary-alt: #2b170e !important;
+}
+
+/* 5. Slate Grey */
+.workspace-leaf:has(.bg-slate) .workspace-leaf-content,
+.workspace-leaf:has(.bg-slate) .view-header {
+    --background-primary: #1e2124 !important;
+    --background-primary-alt: #1e2124 !important;
+}
+/* =========================================
+   MUTED & DESATURATED PANE COLOR PALETTE
+   Type the class name into the 'cssclasses' property
+   ========================================= */
+
+/* 1. Ash Blue (Very subtle cool grey-blue) */
+.workspace-leaf:has(.bg-ash-blue) .workspace-leaf-content,
+.workspace-leaf:has(.bg-ash-blue) .view-header {
+    --background-primary: #1e2226 !important;
+    --background-primary-alt: #1e2226 !important;
+}
+
+/* 2. Dusty Rose (Faded, greyish dark pink/red) */
+.workspace-leaf:has(.bg-dusty-rose) .workspace-leaf-content,
+.workspace-leaf:has(.bg-dusty-rose) .view-header {
+    --background-primary: #261e20 !important;
+    --background-primary-alt: #261e20 !important;
+}
+
+/* 3. Muted Sage (Desaturated earthy green) */
+.workspace-leaf:has(.bg-muted-sage) .workspace-leaf-content,
+.workspace-leaf:has(.bg-muted-sage) .view-header {
+    --background-primary: #1c221e !important;
+    --background-primary-alt: #1c221e !important;
+}
+
+/* 4. Withered Violet (Dim, grey-heavy purple) */
+.workspace-leaf:has(.bg-withered-violet) .workspace-leaf-content,
+.workspace-leaf:has(.bg-withered-violet) .view-header {
+    --background-primary: #221e26 !important;
+    --background-primary-alt: #221e26 !important;
+}
+
+/* 5. Mocha / Faded Sepia (Warm, dusty brown-grey) */
+.workspace-leaf:has(.bg-mocha) .workspace-leaf-content,
+.workspace-leaf:has(.bg-mocha) .view-header {
+    --background-primary: #24201c !important;
+    --background-primary-alt: #24201c !important;
+}
+
+/* 6. Faded Navy (Deep, desaturated ocean) */
+.workspace-leaf:has(.bg-faded-navy) .workspace-leaf-content,
+.workspace-leaf:has(.bg-faded-navy) .view-header {
+    --background-primary: #1b2028 !important;
+    --background-primary-alt: #1b2028 !important;
+}
+
+/* 7. Dusty Teal (Dim cyan blended heavily with grey) */
+.workspace-leaf:has(.bg-dusty-teal) .workspace-leaf-content,
+.workspace-leaf:has(.bg-dusty-teal) .view-header {
+    --background-primary: #1a2324 !important;
+    --background-primary-alt: #1a2324 !important;
+}
+
+/* 8. Faded Olive (Grey-yellow/green) */
+.workspace-leaf:has(.bg-faded-olive) .workspace-leaf-content,
+.workspace-leaf:has(.bg-faded-olive) .view-header {
+    --background-primary: #22231d !important;
+    --background-primary-alt: #22231d !important;
+}
+
+/* 9. Pewter (True cool grey with almost zero color) */
+.workspace-leaf:has(.bg-pewter) .workspace-leaf-content,
+.workspace-leaf:has(.bg-pewter) .view-header {
+    --background-primary: #202124 !important;
+    --background-primary-alt: #202124 !important;
+}
+
+/* 10. Deep Charcoal (Near-black, very neutral) */
+.workspace-leaf:has(.bg-charcoal) .workspace-leaf-content,
+.workspace-leaf:has(.bg-charcoal) .view-header {
+    --background-primary: #141414 !important;
+    --background-primary-alt: #141414 !important;
+}
+/* =========================================
+   LIGHT & DESATURATED PANE COLOR PALETTE
+   (Includes text color override for readability)
+   ========================================= */
+
+/* 1. Linen (Warm, natural off-white) */
+.workspace-leaf:has(.bg-linen) .workspace-leaf-content,
+.workspace-leaf:has(.bg-linen) .view-header {
+    --background-primary: #f2efe9 !important;
+    --background-primary-alt: #f2efe9 !important;
+    --text-normal: #2c2c2c !important; 
+}
+
+/* 2. Fog (Pale, misty grey-blue) */
+.workspace-leaf:has(.bg-fog) .workspace-leaf-content,
+.workspace-leaf:has(.bg-fog) .view-header {
+    --background-primary: #e6ebf0 !important;
+    --background-primary-alt: #e6ebf0 !important;
+    --text-normal: #2c2c2c !important;
+}
+
+/* 3. Dusty Mint (Extremely pale, desaturated green) */
+.workspace-leaf:has(.bg-dusty-mint) .workspace-leaf-content,
+.workspace-leaf:has(.bg-dusty-mint) .view-header {
+    --background-primary: #e6ebe7 !important;
+    --background-primary-alt: #e6ebe7 !important;
+    --text-normal: #2c2c2c !important;
+}
+
+/* 4. Shell (Pale, dusty pink) */
+.workspace-leaf:has(.bg-shell) .workspace-leaf-content,
+.workspace-leaf:has(.bg-shell) .view-header {
+    --background-primary: #f0e6e6 !important;
+    --background-primary-alt: #f0e6e6 !important;
+    --text-normal: #2c2c2c !important;
+}
+
+/* 5. Parchment (Aged, muted paper tone) */
+.workspace-leaf:has(.bg-parchment) .workspace-leaf-content,
+.workspace-leaf:has(.bg-parchment) .view-header {
+    --background-primary: #f0ecdf !important;
+    --background-primary-alt: #f0ecdf !important;
+    --text-normal: #2c2c2c !important;
+}
+
+/* 6. Lavender Ash (Pale grey with a hint of purple) */
+.workspace-leaf:has(.bg-lavender-ash) .workspace-leaf-content,
+.workspace-leaf:has(.bg-lavender-ash) .view-header {
+    --background-primary: #ebe8f0 !important;
+    --background-primary-alt: #ebe8f0 !important;
+    --text-normal: #2c2c2c !important;
+}
+
+/* 7. Alabaster (Cool, flat light grey) */
+.workspace-leaf:has(.bg-alabaster) .workspace-leaf-content,
+.workspace-leaf:has(.bg-alabaster) .view-header {
+    --background-primary: #e8e8e8 !important;
+    --background-primary-alt: #e8e8e8 !important;
+    --text-normal: #2c2c2c !important;
+}
+
+/* 8. Clay (Very light, desaturated terra cotta) */
+.workspace-leaf:has(.bg-clay) .workspace-leaf-content,
+.workspace-leaf:has(.bg-clay) .view-header {
+    --background-primary: #ede6e1 !important;
+    --background-primary-alt: #ede6e1 !important;
+    --text-normal: #2c2c2c !important;
+}

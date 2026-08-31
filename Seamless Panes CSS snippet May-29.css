@@ -1,0 +1,40 @@
+/* Hide the physical 1px line Obsidian secretly draws */
+.workspace-leaf-resize-handle::before,
+.workspace-leaf-resize-handle::after {
+    display: none !important;
+}
+
+/* Make the grab area completely invisible normally */
+.workspace-leaf-resize-handle {
+    background-color: transparent !important;
+}
+
+/* Add the transparent pill effect only when your mouse is over it */
+.workspace-leaf-resize-handle:hover {
+    background-color: rgba(128, 128, 128, 0.25) !important;
+    border-radius: 10px !important;
+    transition: background-color 0.2s ease-in-out;
+}
+
+/* Hide the scrollbar background track completely */
+::-webkit-scrollbar-track {
+    background-color: transparent !important;
+    border: none !important;
+}
+
+/* Make the scrollbar thumb invisible by default */
+::-webkit-scrollbar-thumb {
+    background-color: transparent !important;
+    border: none !important;
+}
+
+/* Fade the scrollbar thumb in when your mouse is over the pane */
+.workspace-leaf-content:hover ::-webkit-scrollbar-thumb {
+    background-color: rgba(128, 128, 128, 0.25) !important;
+    border-radius: 8px !important;
+}
+
+/* Make it slightly darker when you hover directly on the scrollbar */
+::-webkit-scrollbar-thumb:hover {
+    background-color: rgba(128, 128, 128, 0.5) !important;
+}

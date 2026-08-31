@@ -1,0 +1,34 @@
+/* Apply to notes with `cssclass: romance-arc` */
+
+.romance-arc img.couple-photo {
+  float: right;
+  width: 220px;
+  margin: 0 0 1em 1.5em;
+  border-radius: 8px;
+  box-shadow: 0 0 8px rgba(0,0,0,0.1);
+  object-fit: cover;
+}
+
+.romance-arc .romance-summary {
+  background: #fff7fa;
+  border-left: 4px solid #e91e63;
+  padding: 0.5em 1em;
+  margin-bottom: 1em;
+  max-width: 60ch;
+  font-size: 0.95em;
+}
+
+.romance-arc .romance-gallery {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5em;
+  margin: 1em 0;
+}
+
+.romance-arc .romance-gallery img {
+  width: 100px;
+  height: 100px;
+  object-fit: cover;
+  border-radius: 6px;
+  box-shadow: 0 0 4px rgba(0,0,0,0.1);
+}

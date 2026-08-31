@@ -1,0 +1,154 @@
+/* === Clean Embed Styling for Origami Theme === */
+/* Transparent, seamless layout with hover dot click zone */
+
+.markdown-embed {
+  background-color: transparent;
+  border: none;
+  box-shadow: none;
+  padding: 0 !important;
+  margin: 0 !important;
+  position: relative;
+}
+
+/* Remove inner spacing from content */
+.markdown-embed-content {
+  padding: 0 !important;
+  margin: 0 !important;
+}
+
+/* Hide the Obsidian-generated embed title bar */
+.markdown-embed-title,
+.markdown-embed-header {
+  display: none !important;
+}
+
+.markdown-embed .markdown-embed-content > :is(h1, h2, h3, h4, h5, h6):first-child {
+  display: none !important;
+}
+
+
+/* Hide actual SVG icon inside the default </> link */
+.markdown-embed .file-embed-link svg {
+  display: none !important;
+}
+
+/* Keep the default embed link clickable, but invisible */
+.markdown-embed .file-embed-link {
+  background: none !important;
+  border: none !important;
+  width: 16px;
+  height: 16px;
+  position: absolute;
+  top: 6px;
+  right: 6px;
+  z-index: 10;
+  cursor: pointer;
+  color: transparent !important;
+}
+
+/* Add a faint dot that appears only on hover in place of the icon */
+.markdown-embed:hover .file-embed-link::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 8px;
+  height: 8px;
+  background-color: var(--text-accent);
+  opacity: 0.2;
+  border-radius: 50%;
+}
+/* FINAL fix: hide first heading inside embedded file */
+.markdown-embed .markdown-embed-content > :is(h1, h2, h3, h4, h5, h6):first-child {
+  display: none !important;
+}
+/* Rock-solid fix: hide the first heading inside embedded content */
+.markdown-embed-content :is(h1, h2, h3, h4, h5, h6):first-of-type {
+  display: none !important;
+}
+/* Completely hide Obsidian's section-title bar in embedded headings */
+.markdown-embed-title,
+.markdown-embed-link,
+.markdown-embed-header {
+  display: none !important;
+}
+.markdown-embed .markdown-embed-title,
+.markdown-embed .obsidian-embed-title,
+.markdown-embed .markdown-embed-heading,
+.markdown-embed .internal-embed-header {
+  display: none !important;
+  height: 0 !important;
+  margin: 0 !important;
+  padding: 0 !important;
+}
+/* 💣 Kill all embedded file auto-titles (from ![[File#Heading]] syntax) */
+.markdown-embed-title,
+.markdown-embed .markdown-embed-title,
+.markdown-embed .obsidian-embed-title,
+.markdown-embed .internal-embed-header,
+.markdown-embed-heading,
+.internal-embed-header {
+  display: none !important;
+  height: 0 !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  border: none !important;
+  box-shadow: none !important;
+}
+/* 🔥 Obsidian Embed Title Nuker */
+/* Remove the auto-injected heading shown in ![[File#Heading]] embeds */
+
+.markdown-embed .markdown-embed-title,
+.markdown-embed .markdown-embed-heading,
+.markdown-embed .internal-embed-header,
+.markdown-embed-title,
+.markdown-embed-heading,
+.internal-embed-header {
+  display: none !important;
+  visibility: hidden !important;
+  height: 0 !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  line-height: 0 !important;
+  font-size: 0 !important;
+  border: none !important;
+  box-shadow: none !important;
+}
+/* Cover the auto-title with a transparent box */
+.markdown-embed-title {
+  position: relative;
+  color: transparent !important;
+  background-color: transparent !important;
+  height: 0 !important;
+  overflow: hidden !important;
+  font-size: 0 !important;
+}
+.markdown-embed .file-embed-link svg {
+  display: none !important;
+}
+
+.markdown-embed .file-embed-link {
+  background: none !important;
+  border: none !important;
+  width: 16px;
+  height: 16px;
+  position: absolute;
+  top: 6px;
+  right: 6px;
+  z-index: 10;
+  cursor: pointer;
+  color: transparent !important;
+}
+
+/* Re-enable hover dot */
+.markdown-embed:hover .file-embed-link::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 8px;
+  height: 8px;
+  background-color: var(--text-accent);
+  opacity: 0.2;
+  border-radius: 50%;
+}

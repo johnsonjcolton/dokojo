@@ -1,0 +1,1777 @@
+/* --- GOOGLE FONTS IMPORT --- */ /*region*/
+/* Must remain at the top of the CSS file */
+@import url('https://fonts.googleapis.com/css2?family=Creepster&family=Rubik+Glitch&family=Special+Elite&display=swap');
+/*endregion*/
+
+/* 
+88 88b           d88 88888888888 ad88888ba   ad88888ba        db        ,ad8888ba,  88888888888
+"" 888b         d888 88         d8"     "8b d8"     "8b      d88b      d8"'    `"8b 88
+   88`8b       d8'88 88         Y8,         Y8,             d8'`8b    d8'           88
+88 88 `8b     d8' 88 88aaaaa    `Y8aaaaa,   `Y8aaaaa,      d8'  `8b   88            88aaaaa
+88 88  `8b   d8'  88 88"""""      `"""""8b,   `"""""8b,   d8YaaaaY8b  88      88888 88"""""
+88 88   `8b d8'   88 88                 `8b         `8b  d8""""""""8b Y8,        88 88
+88 88    `888'    88 88         Y8a     a8P Y8a     a8P d8'        `8b Y8a.    .a88 88
+88 88     `8'     88 88888888888 "Y88888P"   "Y88888P" d8'          `8b `"Y88888P"  88888888888
+*/
+/*region*/
+
+
+/* Main container for the whole chat */
+.MessageThread {
+  display: flex;
+  flex-direction: column;
+  gap: 20px; /* Space between different people talking */
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  max-width: 400px;
+  margin: 0 auto;
+  padding: 20px;
+  background-color: #ffffff;
+}
+
+/* Grouping bubbles from the same sender */
+.SentMessage,
+.ReceivedMessage {
+  display: flex;
+  flex-direction: column;
+  gap: 4px; /* Small gap between bubbles in the same block */
+}
+
+/* Align sent messages to the right */
+.SentMessage {
+  align-items: flex-end; 
+}
+
+/* Align received messages to the left */
+.ReceivedMessage {
+  align-items: flex-start; 
+}
+
+/* Base styling for all individual bubbles */
+.SentMessage p,
+.ReceivedMessage p {
+  margin: 0;
+  padding: 10px 15px;
+  border-radius: 20px;
+  max-width: 75%;
+  line-height: 1.4;
+  font-size: 16px;
+}
+
+/* Specific colors and tail-corners for Sent messages */
+.SentMessage p {
+  background-color: #007aff; /* Classic blue */
+  color: white;
+  border-bottom-right-radius: 4px;
+  border-top-right-radius: 4px;
+}
+
+/* Rounds out the very top and bottom right corners for the sent stack */
+.SentMessage p:first-child {
+  border-top-right-radius: 20px;
+}
+.SentMessage p:last-child {
+  border-bottom-right-radius: 20px;
+}
+
+/* Specific colors and tail-corners for Received messages */
+.ReceivedMessage p {
+  background-color: #e5e5ea; /* Classic gray */
+  color: black;
+  border-bottom-left-radius: 4px;
+  border-top-left-radius: 4px;
+}
+
+/* Rounds out the very top and bottom left corners for the received stack */
+.ReceivedMessage p:first-child {
+  border-top-left-radius: 20px;
+}
+.ReceivedMessage p:last-child {
+  border-bottom-left-radius: 20px;
+}
+/* Hide the default callout title and icon */
+.callout[data-callout="SentMessage" i] .callout-title,
+.callout[data-callout="ReceivedMessage" i] .callout-title {
+  display: none;
+}
+
+/* Remove default callout background and borders */
+.callout[data-callout="SentMessage" i],
+.callout[data-callout="ReceivedMessage" i] {
+  background: transparent;
+  border: none;
+  padding: 0;
+  margin: 10px 0;
+  display: flex;
+  flex-direction: column;
+  box-shadow: none;
+}
+
+/* Align Sent to the right, Received to the left */
+.callout[data-callout="SentMessage" i] .callout-content {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 4px;
+}
+
+.callout[data-callout="ReceivedMessage" i] .callout-content {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 4px;
+}
+
+/* Base styling for all individual bubbles */
+.callout[data-callout="SentMessage" i] .callout-content p,
+.callout[data-callout="ReceivedMessage" i] .callout-content p {
+  margin: 0;
+  padding: 10px 15px;
+  border-radius: 20px;
+  max-width: 75%;
+  line-height: 1.4;
+  font-size: 16px;
+}
+
+/* Specific colors and tail-corners for Sent messages */
+.callout[data-callout="SentMessage" i] .callout-content p {
+  background-color: #007aff; /* Classic blue */
+  color: white;
+  border-bottom-right-radius: 4px;
+  border-top-right-radius: 4px;
+}
+
+/* Specific colors and tail-corners for Received messages */
+.callout[data-callout="ReceivedMessage" i] .callout-content p {
+  background-color: #e5e5ea; /* Classic gray */
+  color: black;
+  border-bottom-left-radius: 4px;
+  border-top-left-radius: 4px;
+}
+
+/* Corners for stacking */
+.callout[data-callout="SentMessage" i] .callout-content p:first-child { 
+  border-top-right-radius: 20px; 
+}
+.callout[data-callout="SentMessage" i] .callout-content p:last-child { 
+  border-bottom-right-radius: 20px; 
+}
+.callout[data-callout="ReceivedMessage" i] .callout-content p:first-child { 
+  border-top-left-radius: 20px; 
+}
+.callout[data-callout="ReceivedMessage" i] .callout-content p:last-child { 
+  border-bottom-left-radius: 20px; 
+}
+/*endregion*/
+
+
+
+
+
+
+
+
+/* 
+88888888ba  88888888888 888888888888 88888888ba    ,ad8888ba,      8b           d8  ,ad8888ba,
+88      "8b 88               88      88      "8b  d8"'    `"8b     `8b         d8' d8"'    `"8b
+88      ,8P 88               88      88      ,8P d8'        `8b     `8b       d8' d8'
+88aaaaaa8P' 88aaaaa          88      88aaaaaa8P' 88          88      `8b     d8'  88
+88""""88'   88"""""          88      88""""88'   88          88       `8b   d8'   88      88888
+88    `8b   88               88      88    `8b   Y8,        ,8P        `8b d8'    Y8,        88
+88     `8b  88               88      88     `8b   Y8a.    .a8P          `888'      Y8a.    .a88
+88      `8b 88888888888      88      88      `8b   `"Y8888Y"'            `8'        `"Y88888P"
+*/
+/*region*/
+/* ==========================================
+   DONKEY KONG COUNTRY / RAREWARE 90s ERA
+   ========================================== */
+/* ==========================================
+   DONKEY KONG COUNTRY / RAREWARE 90s ERA
+   (Part 2: 16-Bit Environments)
+   ========================================== */
+
+/* --- TEMPLE RUINS STONE --- */
+/* Heavy, weathered stone blocks mimicking the Aztec/Ruins levels */
+.TempleRuinsStone {
+    font-family: "GNU Unifont", "Unifont", monospace !important;
+    color: #aebcb0;
+    text-shadow:
+        -1px -1px 0px #d8e5d8, /* Mossy highlight */
+        1px 1px 0px #798c7d,   /* Mid stone */
+        2px 2px 0px #526356,   /* Deep stone */
+        3px 3px 0px #344238,   /* Shadow extrusion */
+        4px 4px 0px #1a241d,   /* Darker extrusion */
+        5px 5px 0px #000000;   /* Hard black base */
+    letter-spacing: 2px;
+    font-weight: 900;
+    display: inline-block;
+    text-transform: uppercase;
+    transform: scaleY(1.1);
+}
+
+/* --- TOXIC FACTORY SLUDGE --- */
+/* Acidic green and yellow hazard from the Kremkroc Industries levels */
+.ToxicFactorySludge {
+    font-family: "GNU Unifont", "Unifont", monospace !important;
+    font-weight: 900;
+    /* Hard-stepped gradient to simulate limited SNES color depth */
+    background: linear-gradient(
+        180deg,
+        #ccff00 0%, #ccff00 33%,
+        #33cc00 33%, #33cc00 66%,
+        #006600 66%, #006600 100%
+    );
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    filter: drop-shadow(2px 2px 0px #003300) drop-shadow(4px 4px 0px #000000);
+    letter-spacing: 2px;
+    display: inline-block;
+    /* steps(4) prevents smooth interpolation for a retro feel */
+    animation: SludgeBubble 1.2s infinite steps(4, end);
+}
+
+@keyframes SludgeBubble {
+    0%, 100% { 
+        filter: drop-shadow(2px 2px 0px #003300) drop-shadow(4px 4px 0px #000000) brightness(1); 
+        transform: skewX(0deg); 
+    }
+    50% { 
+        filter: drop-shadow(3px 3px 0px #336600) drop-shadow(5px 5px 0px #000000) brightness(1.2); 
+        transform: skewX(-2deg) translateY(-1px); 
+    }
+}
+
+/* --- MINECART RUSTED IRON --- */
+/* Chunky, oxidized metal from the minecart carnage tracks */
+.MinecartIron {
+    font-family: "GNU Unifont", "Unifont", monospace !important;
+    color: #b56c42; /* Rust orange */
+    text-shadow:
+        0px 2px 0px #8b4a25,
+        0px 4px 0px #5c2f15,
+        0px 6px 0px #2e1508,
+        2px 8px 0px #000000;
+    background-color: #2b2b2b;
+    padding: 4px 12px;
+    box-shadow: 
+        inset 0px 4px 0px #4d4d4d,
+        inset 0px -4px 0px #1a1a1a,
+        4px 4px 0px #000000;
+    border-radius: 4px;
+    letter-spacing: 1px;
+    font-weight: 900;
+    display: inline-block;
+    text-transform: uppercase;
+}
+
+/* --- KREMLING SCALES --- */
+/* Heavy, reptilian pattern simulating King K. Rool's forces */
+.KremlingScales {
+    font-family: "GNU Unifont", "Unifont", monospace !important;
+    font-weight: 900;
+    background: repeating-linear-gradient(
+        45deg,
+        #1e5927 0px, #1e5927 4px,
+        #2e803a 4px, #2e803a 8px,
+        #17401d 8px, #17401d 12px
+    );
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    filter: drop-shadow(-1px -1px 0px #63d176) drop-shadow(3px 3px 0px #0b1f0e) drop-shadow(5px 5px 0px #000000);
+    letter-spacing: 3px;
+    display: inline-block;
+    transform: scale(1.1) rotate(-1deg);
+}
+
+
+/* ==========================================
+   DONKEY KONG COUNTRY / RAREWARE 90s ERA
+   (16-Bit Unifont SNES Aesthetic)
+   ========================================== */
+
+/* --- RAREWARE SGI 3D (CHUNKY PIXEL) --- */
+/* A pixelated approximation of early pre-rendered 3D text using hard stacked shadows */
+.Rareware3D {
+    font-family: "GNU Unifont", "Unifont", monospace !important;
+    color: #cc0000; /* Diddy Kong Red */
+    text-shadow:
+        1px 1px 0px #ff6666, /* Hard top-left highlight */
+        2px 2px 0px #990000, /* Mid-shadow 1 */
+        3px 3px 0px #660000, /* Mid-shadow 2 */
+        4px 4px 0px #330000, /* Deep shadow */
+        5px 5px 0px #000000; /* Flat black outline base */
+    letter-spacing: 2px;
+    font-weight: 900;
+    display: inline-block;
+    transform: scaleY(1.2); /* Chunky vertical stretch */
+}
+
+/* --- KONG BARREL WOOD (16-BIT) --- */
+/* Rigid, boxy barrel texture with hard pixel borders instead of smooth shading */
+.KongBarrelWood {
+    font-family: "GNU Unifont", "Unifont", monospace !important;
+    font-weight: 900;
+    color: #e6c280; /* Light wood interior */
+    background-color: #5c3a21; /* Dark wood base */
+    padding: 4px 10px;
+    /* Simulates pixel-art beveling without actual blurring */
+    box-shadow: 
+        inset 2px 2px 0px #8a5a33,
+        inset -2px -2px 0px #2e1d10,
+        4px 4px 0px #000000;
+    border-left: 4px solid #8899a6; /* Steel band left */
+    border-right: 4px solid #8899a6; /* Steel band right */
+    border-top: none;
+    border-bottom: none;
+    text-transform: uppercase;
+    display: inline-block;
+    letter-spacing: 1px;
+}
+
+/* --- BANANA HOARD GOLD (PALETTE SWAP) --- */
+/* Uses a hard-stepped gradient to simulate limited 16-bit SNES color palettes */
+.BananaHoardGold {
+    font-family: "GNU Unifont", "Unifont", monospace !important;
+    font-weight: 900;
+    background: linear-gradient(
+        180deg, 
+        #ffffaa 0%, #ffffaa 25%, 
+        #ffcc00 25%, #ffcc00 50%, 
+        #ff9900 50%, #ff9900 75%, 
+        #aa5500 75%, #aa5500 100%
+    );
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    filter: drop-shadow(2px 2px 0px #3d2300) drop-shadow(4px 4px 0px #000000);
+    letter-spacing: 2px;
+    display: inline-block;
+    /* steps(3) forces the animation to snap jarringly rather than transition smoothly */
+    animation: SnesGoldGleam 1.5s infinite steps(3, end);
+}
+
+@keyframes SnesGoldGleam {
+    0%, 100% { 
+        filter: drop-shadow(2px 2px 0px #3d2300) drop-shadow(4px 4px 0px #000000) brightness(1); 
+    }
+    50% { 
+        filter: drop-shadow(2px 2px 0px #3d2300) drop-shadow(4px 4px 0px #000000) brightness(1.4); 
+    }
+}
+
+
+
+
+
+
+
+
+
+
+/* --- RUBIK GLITCH ANOMALY --- */
+/* Utilizes a heavy, displaced block font that appears corrupted */
+.RubikGlitchAnomaly {
+    font-family: 'Rubik Glitch', system-ui;
+    white-space: pre-wrap;
+    color: #ff3333;
+    font-size: 1.5em;
+    letter-spacing: 2px;
+    text-shadow: 2px 2px 0px rgba(100, 0, 0, 0.8);
+    line-height: 1.3;
+}
+
+/* --- CREEPSTER SLUDGE --- */
+/* A dripping, chunky typeface with a slow, dark shadow pulse */
+.CreepsterSludge {
+    white-space: pre-wrap;
+    color: #88cc88;
+    font-size: 1.4em;
+    letter-spacing: 3px;
+    animation: SludgePulse 6s infinite alternate ease-in-out;
+    line-height: 1.4;
+}
+
+@keyframes SludgePulse {
+    0% { filter: drop-shadow(0 5px 2px rgba(0, 50, 0, 0.4)); transform: translateY(0px); }
+    100% { filter: drop-shadow(0 10px 5px rgba(0, 30, 0, 0.8)); transform: translateY(2px); }
+}
+
+/* --- SPECIAL ELITE DOSSIER --- */
+/* A grungy, uneven typewriter font imitating degraded physical documents */
+.SpecialEliteDossier {
+    white-space: pre-wrap;
+    color: #b0b0b0;
+    font-size: 1.1em;
+    background-color: #111111;
+    padding: 20px;
+    border: 1px solid #333333;
+    box-shadow: inset 0 0 15px #000000;
+    line-height: 1.6;
+}
+
+/* --- CHUNKY RETRO 3D --- */
+.chunky-3d {
+    font-family: 'Unifont', monospace;
+    color: #dfdfdf;
+    text-shadow:
+        1px 1px 0px #555555,
+        2px 2px 0px #444444,
+        3px 3px 0px #333333,
+        4px 4px 0px #222222,
+        5px 5px 0px #111111,
+        6px 6px 0px #000000;
+    letter-spacing: 2px;
+    font-weight: bold;
+}
+/*endregion*/
+
+
+
+
+
+
+
+/* ======================================================================
+8b           d8 88        88  ad88888ba
+`8b         d8' 88        88 d8"     "8b
+ `8b       d8'  88        88 Y8,
+  `8b     d8'   88aaaaaaaa88 `Y8aaaaa,
+   `8b   d8'    88""""""""88   `"""""8b,
+    `8b d8'     88        88         `8b
+     `888'      88        88 Y8a     a8P
+      `8'       88        88  "Y88888P"
+
+
+  ,ad8888ba, 8b        d8 88888888ba  88888888888 88888888ba
+ d8"'    `"8b Y8,    ,8P  88      "8b 88          88      "8b
+d8'            Y8,  ,8P   88      ,8P 88          88      ,8P
+88              "8aa8"    88aaaaaa8P' 88aaaaa     88aaaaaa8P'
+88               `88'     88""""""8b, 88"""""     88""""88'
+Y8,               88      88      `8b 88          88    `8b
+ Y8a.    .a8P     88      88      a8P 88          88     `8b
+  `"Y8888Y"'      88      88888888P"  88888888888 88      `8b
+
+
+88888888ba  88        88 888b      88 88      a8P
+88      "8b 88        88 8888b     88 88    ,88'
+88      ,8P 88        88 88 `8b    88 88  ,88"
+88aaaaaa8P' 88        88 88  `8b   88 88,d88'
+88""""""'   88        88 88   `8b  88 8888"88,
+88          88        88 88    `8b 88 88P   Y8b
+88          Y8a.    .a8P 88     `8888 88     "88,
+88           `"Y8888Y"'  88      `888 88       Y8b
+=========================================================================
+
+*/
+/*region*/
+
+
+/* --- EERIE NEON GLOW --- */
+.eerie-neon {
+    font-family: 'Unifont', monospace;
+    color: #c8ffc8; /* Pale sickly green */
+    text-shadow:
+        0 0 5px rgba(50, 255, 50, 0.4),
+        0 0 10px rgba(0, 150, 0, 0.3),
+        0 0 20px rgba(0, 50, 0, 0.8);
+    animation: slow-breathe 5s ease-in-out infinite alternate;
+}
+
+@keyframes slow-breathe {
+    0% { 
+        opacity: 0.85; 
+        text-shadow: 0 0 4px rgba(50, 255, 50, 0.3), 0 0 12px rgba(0, 50, 0, 0.7); 
+    }
+    100% { 
+        opacity: 1; 
+        text-shadow: 0 0 8px rgba(50, 255, 50, 0.6), 0 0 25px rgba(0, 150, 0, 0.9); 
+    }
+}
+
+/* --- STATIC PARALLAX / SAFE GLITCH --- */
+/* Creates a chromatic aberration separation without rapid movement */
+.static-parallax {
+    font-family: 'Unifont', monospace;
+    position: relative;
+    display: inline-block;
+    color: #bbbbbb;
+    letter-spacing: 1px;
+}
+
+.static-parallax::before, 
+.static-parallax::after {
+    content: attr(data-text);
+    position: absolute;
+    top: 0;
+    left: 0;
+    opacity: 0.6;
+    pointer-events: none;
+}
+
+.static-parallax::before {
+    left: 2px;
+    top: -1px;
+    color: #ff003c; /* Deep red channel */
+    z-index: -1;
+    mix-blend-mode: screen;
+}
+
+.static-parallax::after {
+    left: -2px;
+    top: 1px;
+    color: #00e5ff; /* Cyan channel */
+    z-index: -2;
+    mix-blend-mode: screen;
+}
+
+/* --- VOID SHADOW --- */
+/* Text that appears to sink into the background */
+.void-shadow {
+    font-family: 'Unifont', monospace;
+    color: transparent;
+    text-shadow: 0px 0px 2px rgba(255, 255, 255, 0.5);
+    background-color: #000000;
+    padding: 2px 5px;
+    box-shadow: inset 0 0 10px #000000;
+}
+
+
+
+
+/* --- AMBER CRT SCANLINE --- */
+/* Simulates an old, degraded amber terminal monitor */
+.crt-scanline {
+    font-family: 'Unifont', monospace;
+    color: #ffb000; 
+    position: relative;
+    display: inline-block;
+    padding: 2px 4px;
+    background-color: #110d00;
+}
+
+.crt-scanline::after {
+    content: " ";
+    display: block;
+    position: absolute;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    background: linear-gradient(rgba(18, 16, 16, 0) 50%, rgba(0, 0, 0, 0.4) 50%);
+    z-index: 2;
+    background-size: 100% 4px;
+    pointer-events: none;
+}
+
+/* --- THE WHISPER (HOVER FOCUS) --- */
+/* Text remains blurred and indistinct until the cursor hovers over it */
+.whisper-text {
+    font-family: 'Unifont', monospace;
+    color: #555555;
+    filter: blur(1.5px);
+    transition: filter 2.5s ease, color 2.5s ease;
+    letter-spacing: 3px;
+}
+
+.whisper-text:hover {
+    filter: blur(0px);
+    color: #dfdfdf;
+}
+
+/* --- DEEP RED SLOW PULSE --- */
+/* A heavy, low-frequency glowing effect */
+.slow-pulse {
+    font-family: 'Unifont', monospace;
+    color: #550000; 
+    animation: slow-throb 6s infinite ease-in-out;
+    font-weight: bold;
+    letter-spacing: 1px;
+}
+
+@keyframes slow-throb {
+    0%, 100% { 
+        text-shadow: 0 0 2px #cc0000, 0 0 4px #550000; 
+        color: #550000; 
+    }
+    50% { 
+        text-shadow: 0 0 10px #ff0000, 0 0 20px #880000; 
+        color: #aa0000; 
+    }
+}
+
+/* --- DARK MATTER CORRUPTION --- */
+/* Heavy background masking to simulate corrupted text blocks */
+.dark-matter {
+    font-family: 'Unifont', monospace;
+    color: #8a8a8a;
+    background-color: #0f0f0f;
+    padding: 3px 6px;
+    box-shadow: 
+        0 0 15px rgba(0, 0, 0, 0.9) inset,
+        0 0 3px rgba(80, 0, 80, 0.5);
+    border: 1px solid #220022;
+    text-decoration: line-through;
+    text-decoration-color: #444444;
+}
+
+
+/* --- SYNTHWAVE CHROME --- */
+/* Simulates the classic 80s chrome text reflecting a neon sunset */
+.SynthwaveChrome {
+    font-family: 'Unifont', monospace;
+    background: linear-gradient(to bottom, #00d2ff 0%, #3a7bd5 40%, #ff007c 50%, #f9c449 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    font-weight: bold;
+    letter-spacing: 2px;
+    filter: drop-shadow(0px 2px 2px rgba(255, 0, 124, 0.4));
+}
+
+/* --- CYBER DECK TERMINAL --- */
+/* A chunky, high-contrast block terminal with an idle cursor */
+.CyberDeckTerminal {
+    font-family: 'Unifont', monospace;
+    color: #00ff00;
+    background-color: #001100;
+    border: 2px solid #005500;
+    padding: 4px 8px;
+    box-shadow: 4px 4px 0px #003300;
+    text-transform: uppercase;
+}
+
+.CyberDeckTerminal::after {
+    content: '\2588'; /* Solid block cursor character */
+    animation: SlowBlink 2s steps(2, start) infinite;
+    margin-left: 5px;
+    color: #00ff00;
+}
+
+@keyframes SlowBlink {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0; }
+}
+
+/* --- DEGRADED VHS TRACKING --- */
+/* Warped text with a subtle cyan and magenta color bleed */
+.VhsTracking {
+    font-family: 'Unifont', monospace;
+    color: #e0e0e0;
+    text-shadow: 
+        2px 0 1px rgba(0, 255, 255, 0.5),
+        -2px 0 1px rgba(255, 0, 255, 0.5);
+    display: inline-block;
+    transform: skewX(-10deg);
+    letter-spacing: 1px;
+}
+
+/* --- NEON OVERDRIVE --- */
+/* A heavy pink laser glow that under-lights the text */
+.NeonOverdrive {
+    font-family: 'Unifont', monospace;
+    color: #ffffff;
+    text-shadow:
+        0 0 5px #ff007c,
+        0 0 10px #ff007c,
+        0 0 20px #ff007c,
+        0 0 40px #ff007c;
+    border-bottom: 2px solid #ff007c;
+    padding-bottom: 2px;
+    box-shadow: 0 4px 4px -2px rgba(255, 0, 124, 0.5);
+}
+
+
+
+/* --- CYAN NEON TUBE --- */
+/* A standard, high-intensity cyan glow that slowly breathes */
+.CyanNeonTube {
+    font-family: 'Unifont', monospace;
+    color: #e0ffff;
+    text-shadow:
+        0 0 4px rgba(0, 255, 255, 0.4),
+        0 0 10px rgba(0, 255, 255, 0.6),
+        0 0 20px rgba(0, 200, 255, 0.8);
+    animation: SlowCyanBreathe 4s ease-in-out infinite alternate;
+}
+
+@keyframes SlowCyanBreathe {
+    0% { 
+        opacity: 0.8; 
+        text-shadow: 0 0 2px rgba(0, 255, 255, 0.3), 0 0 8px rgba(0, 150, 200, 0.5); 
+    }
+    100% { 
+        opacity: 1; 
+        text-shadow: 0 0 6px rgba(0, 255, 255, 0.7), 0 0 15px rgba(0, 255, 255, 1); 
+    }
+}
+
+/* --- HOLOGRAPHIC FRAGMENT --- */
+/* Cyan text laid over a faint, repeating scanline background */
+.HolographicFragment {
+    font-family: 'Unifont', monospace;
+    color: #00ffff;
+    background: repeating-linear-gradient(
+        0deg,
+        rgba(0, 40, 60, 0.8) 0px,
+        rgba(0, 40, 60, 0.8) 2px,
+        rgba(0, 0, 0, 0) 2px,
+        rgba(0, 0, 0, 0) 4px
+    );
+    padding: 2px 6px;
+    border-left: 3px solid #00ffff;
+    letter-spacing: 1px;
+}
+
+/* --- DEEP WATER TERMINAL --- */
+/* Subdued cyan that flares into a bright, offset glow only when focused/hovered */
+.DeepWaterTerminal {
+    font-family: 'Unifont', monospace;
+    color: #0088aa;
+    text-shadow: 2px 2px 0px rgba(0, 255, 255, 0.1);
+    transition: color 3s ease, text-shadow 3s ease;
+}
+
+.DeepWaterTerminal:hover {
+    color: #00ffff;
+    text-shadow: 
+        0 0 8px rgba(0, 255, 255, 0.6),
+        4px 4px 0px rgba(0, 100, 150, 0.4);
+}
+
+/* --- CYAN ICE BLOCK --- */
+/* A thick, 3D structure that resembles a glowing console unit */
+.CyanIceBlock {
+    font-family: 'Unifont', monospace;
+    color: #ffffff;
+    background-color: #001a1a;
+    text-shadow: 0px 0px 4px #00ffff;
+    box-shadow: 
+        inset 0 0 10px rgba(0, 255, 255, 0.5),
+        2px 2px 0px #005555,
+        4px 4px 0px #003333;
+    padding: 4px 8px;
+    font-weight: bold;
+    letter-spacing: 2px;
+}
+
+/* --- GLASS TUBE NEON --- */
+/* Simulates physical glass tubing with a bright core, outer gas glow, and a drop shadow for the tube itself */
+.GlassTubeNeon {
+    font-family: 'Unifont', monospace;
+    color: #fff4f4;
+    text-shadow:
+        0 0 1px #ffffff,
+        0 0 3px #ffaaee,
+        0 0 6px #ff44cc,
+        0 0 12px #ff00aa,
+        2px 2px 2px rgba(0, 0, 0, 0.9); 
+    font-weight: bold;
+    letter-spacing: 2px;
+}
+
+/* --- FAULTY BALLAST FLICKER --- */
+/* A long power cycle with a brief, subtle dimming event to simulate failing hardware */
+.FaultyBallastFlicker {
+    font-family: 'Unifont', monospace;
+    color: #ffd000;
+    text-shadow:
+        0 0 4px rgba(255, 200, 0, 0.8),
+        0 0 10px rgba(255, 100, 0, 0.6);
+    animation: SlowFlicker 8s infinite;
+}
+
+@keyframes SlowFlicker {
+    0%, 94%, 96%, 98%, 100% { 
+        opacity: 1; 
+        text-shadow: 0 0 4px rgba(255, 200, 0, 0.8), 0 0 10px rgba(255, 100, 0, 0.6); 
+    }
+    95% { 
+        opacity: 0.6; 
+        text-shadow: 0 0 1px rgba(255, 200, 0, 0.3); 
+    }
+    97% { 
+        opacity: 0.8; 
+        text-shadow: 0 0 2px rgba(255, 200, 0, 0.4); 
+    }
+}
+
+/* --- AMBIENT GAS PULSE --- */
+/* A deep, heavy violet glow that takes several seconds to warm up and cool down */
+.AmbientGasPulse {
+    font-family: 'Unifont', monospace;
+    color: #e6ccff;
+    animation: GasWarmup 6s ease-in-out infinite alternate;
+    letter-spacing: 1px;
+}
+
+@keyframes GasWarmup {
+    0% {
+        text-shadow: 0 0 2px #9900ff, 0 0 5px #440099;
+        color: #cc99ff;
+    }
+    100% {
+        text-shadow: 0 0 5px #cc66ff, 0 0 15px #9900ff, 0 0 30px #6600cc;
+        color: #ffffff;
+    }
+}
+
+/* --- DEAD TUBE (OFF STATE) --- */
+/* Unlit glass, highly useful for simulating broken letters in a larger neon sign */
+.DeadTube {
+    font-family: 'Unifont', monospace;
+    color: #2a2a2a;
+    text-shadow:
+        1px 1px 0px rgba(255, 255, 255, 0.1),
+        -1px -1px 0px rgba(0, 0, 0, 0.8);
+}
+
+
+/* --- DEEP ISOMETRIC --- */
+/* A chunky, heavy 3D block text that casts a long, angled shadow */
+.DeepIsometric {
+    font-family: 'Unifont', monospace;
+    color: #d0d0d0;
+    text-shadow:
+        -1px 1px 0 #555555,
+        -2px 2px 0 #444444,
+        -3px 3px 0 #333333,
+        -4px 4px 0 #222222,
+        -5px 5px 0 #111111,
+        -6px 6px 0 #000000;
+    letter-spacing: 2px;
+    transform: skewX(-5deg);
+    display: inline-block;
+    font-weight: bold;
+}
+
+/* --- ANAGLYPH SHIFT --- */
+/* Simulates old red/cyan 3D glasses offset on a dark background */
+.AnaglyphShift {
+    font-family: 'Unifont', monospace;
+    color: #222222; 
+    text-shadow: 
+        -2px 0 0 rgba(255, 0, 0, 0.8),
+        2px 0 0 rgba(0, 255, 255, 0.8);
+    letter-spacing: 3px;
+    background-color: #050505;
+    padding: 2px 6px;
+}
+
+/* --- HOVER PARALLAX GHOST --- */
+/* Text that separates into distinct depth layers moving at different speeds when the cursor hovers over it */
+.HoverParallaxGhost {
+    font-family: 'Unifont', monospace;
+    position: relative;
+    display: inline-block;
+    color: #aaaaaa;
+    cursor: crosshair;
+}
+
+.HoverParallaxGhost::before,
+.HoverParallaxGhost::after {
+    content: attr(data-text);
+    position: absolute;
+    top: 0;
+    left: 0;
+    opacity: 0;
+    transition: transform 1.5s ease, opacity 1.5s ease;
+    pointer-events: none;
+}
+
+.HoverParallaxGhost::before {
+    color: #555555;
+    z-index: -1;
+}
+
+.HoverParallaxGhost::after {
+    color: #333333;
+    z-index: -2;
+}
+
+.HoverParallaxGhost:hover::before {
+    transform: translate(-4px, -4px);
+    opacity: 0.8;
+}
+
+.HoverParallaxGhost:hover::after {
+    transform: translate(-8px, -8px);
+    opacity: 0.5;
+}
+
+/* --- FLOATING MONOLITH --- */
+/* A 3D object that slowly bobs along the Y-axis, altering its shadow to simulate depth */
+.FloatingMonolith {
+    font-family: 'Unifont', monospace;
+    color: #ffffff;
+    background-color: #1a1a1a;
+    padding: 4px 10px;
+    border: 1px solid #444444;
+    display: inline-block;
+    animation: SlowLevitate 6s ease-in-out infinite alternate;
+}
+
+@keyframes SlowLevitate {
+    0% {
+        transform: translateY(0px);
+        box-shadow: 0px 5px 0px #000000, 0px 10px 15px rgba(0,0,0,0.5);
+    }
+    100% {
+        transform: translateY(-5px);
+        box-shadow: 0px 10px 0px #000000, 0px 20px 25px rgba(0,0,0,0.8);
+    }
+}
+
+
+/* --- UNIVERSAL HIDDEN TOGGLE --- */
+/* This class hides the physical checkbox, leaving only the label visible for interaction */
+.HiddenToggle {
+    display: none;
+}
+
+/* --- NEON COLD BOOT --- */
+/* A dead tube that surges to life with a steady cyan glow when tapped */
+.NeonColdBoot {
+    font-family: 'Unifont', monospace;
+    color: #333333;
+    cursor: pointer;
+    transition: color 2s ease, text-shadow 2s ease;
+    letter-spacing: 2px;
+}
+
+.HiddenToggle:checked + .NeonColdBoot {
+    color: #e0ffff;
+    text-shadow:
+        0 0 4px rgba(0, 255, 255, 0.4),
+        0 0 10px rgba(0, 255, 255, 0.8),
+        0 0 20px rgba(0, 200, 255, 1);
+}
+
+/* --- TACTILE DECK BUTTON --- */
+/* A chunky, isometric 3D block that physically depresses along the Y-axis when activated */
+.TactileDeckButton {
+    font-family: 'Unifont', monospace;
+    color: #888888;
+    background-color: #111111;
+    border: 2px solid #333333;
+    padding: 6px 12px;
+    display: inline-block;
+    cursor: pointer;
+    box-shadow: 0px 6px 0px #000000;
+    transition: transform 0.1s ease, box-shadow 0.1s ease, color 0.5s ease;
+    text-transform: uppercase;
+}
+
+.HiddenToggle:checked + .TactileDeckButton {
+    transform: translateY(6px);
+    box-shadow: 0px 0px 0px #000000;
+    color: #00ff00;
+    border-color: #005500;
+}
+
+/* --- RED SECTOR CONTAINMENT --- */
+/* A dormant text block that, upon interaction, activates a slow, heavy red pulse associated with color G */
+.RedSectorContainment {
+    font-family: 'Unifont', monospace;
+    color: #440000;
+    border: 1px solid transparent;
+    padding: 4px 8px;
+    cursor: pointer;
+    transition: all 1.5s ease;
+}
+
+.HiddenToggle:checked + .RedSectorContainment {
+    color: #ff0000;
+    border: 1px solid #660000;
+    background-color: #1a0000;
+    box-shadow: inset 0 0 15px rgba(255, 0, 0, 0.2);
+    animation: SlowRedPulse 4s infinite alternate;
+}
+
+@keyframes SlowRedPulse {
+    0% { text-shadow: 0 0 2px #550000; }
+    100% { text-shadow: 0 0 10px #ff0000, 0 0 20px #cc0000; }
+}
+
+/* --- CRYPTOGRAPHIC DECRYPTION --- */
+/* Text that appears heavily corrupted and compressed, expanding and clarifying when tapped */
+.CryptographicDecryption {
+    font-family: 'Unifont', monospace;
+    color: #555555;
+    letter-spacing: -3px;
+    filter: blur(2px);
+    cursor: pointer;
+    transition: letter-spacing 3s ease, filter 3s ease, color 3s ease;
+    user-select: none;
+}
+
+.HiddenToggle:checked + .CryptographicDecryption {
+    letter-spacing: 2px;
+    filter: blur(0px);
+    color: #ffffff;
+    text-shadow: 0 0 5px rgba(255, 255, 255, 0.5);
+}
+/*endregion*/
+
+
+
+
+
+
+
+/* 
+88888888ba 888888888888        88
+88      "8b     88           ,d88
+88      ,8P     88         888888
+88aaaaaa8P'     88             88
+88""""""'       88             88
+88              88             88
+88              88  888        88
+88              88  888        88
+
+
+ ad88888ba    ,ad8888ba,  88888888ba    ,ad8888ba,   88          88
+d8"     "8b  d8"'    `"8b 88      "8b  d8"'    `"8b  88          88
+Y8,         d8'           88      ,8P d8'        `8b 88          88
+`Y8aaaaa,   88            88aaaaaa8P' 88          88 88          88
+  `"""""8b, 88            88""""88'   88          88 88          88
+        `8b Y8,           88    `8b   Y8,        ,8P 88          88
+Y8a     a8P  Y8a.    .a8P 88     `8b   Y8a.    .a8P  88          88
+ "Y88888P"    `"Y8888Y"'  88      `8b   `"Y8888Y"'   88888888888 88888888888
+
+
+ */
+/*region*/
+
+/* --- SCROLL FOCUS ANOMALY --- */
+/* Text is highly blurred and translucent, becoming crystal clear only when in the center of the screen */
+.ScrollFocusAnomaly {
+    font-family: 'Unifont', monospace;
+    color: #e0e0e0;
+    text-shadow: 0 0 10px rgba(255, 255, 255, 0.3);
+    animation: ScrollFocus linear both;
+    animation-timeline: view();
+    animation-range: cover 0% cover 100%;
+    display: inline-block;
+}
+
+@keyframes ScrollFocus {
+    0% { filter: blur(8px); opacity: 0; transform: scale(0.9); }
+    40%, 60% { filter: blur(0px); opacity: 1; transform: scale(1); }
+    100% { filter: blur(8px); opacity: 0; transform: scale(1.1); }
+}
+
+/* --- SCROLL SPECTRAL SHIFT --- */
+/* Text that warps its spacing, shadow depth, and color spectrum as it moves up or down the page */
+.ScrollSpectralShift {
+    font-family: 'Unifont', monospace;
+    font-weight: bold;
+    animation: SpectralShift linear both;
+    animation-timeline: view();
+    animation-range: entry 0% exit 100%;
+    display: inline-block;
+}
+
+@keyframes SpectralShift {
+    0% { 
+        color: #330000; 
+        text-shadow: 2px 2px 0px #000000; 
+        letter-spacing: -2px; 
+    }
+    50% { 
+        color: #00ffcc; 
+        text-shadow: -4px -4px 0px #005555; 
+        letter-spacing: 5px; 
+    }
+    100% { 
+        color: #330033; 
+        text-shadow: 2px -2px 0px #000000; 
+        letter-spacing: -2px; 
+    }
+}
+
+/* --- SCROLL DEPTH DECAY --- */
+/* Text that lies flat at the edges of the screen but extrudes into a heavy 3D block in the center */
+.ScrollDepthDecay {
+    font-family: 'Unifont', monospace;
+    color: #aaaaaa;
+    animation: DepthDecay linear both;
+    animation-timeline: view();
+    animation-range: entry 10% exit 90%;
+    display: inline-block;
+}
+
+@keyframes DepthDecay {
+    0% { 
+        text-shadow: 0px 0px 0 #000000; 
+        transform: translateY(0); 
+    }
+    50% { 
+        text-shadow: 
+            -1px 1px 0 #555555, 
+            -2px 2px 0 #444444, 
+            -3px 3px 0 #333333, 
+            -4px 4px 0 #222222, 
+            -5px 5px 0 #111111,
+            -6px 6px 0 #000000; 
+        transform: translateY(-6px); 
+        color: #ffffff;
+    }
+    100% { 
+        text-shadow: 0px 0px 0 #000000; 
+        transform: translateY(0); 
+    }
+}
+
+/* --- SCROLL CHRONO GLITCH --- */
+/* Applies a fixed gradient background to the text that shifts hue and position based on scroll velocity and location */
+.ScrollChronoGlitch {
+    font-family: 'Unifont', monospace;
+    color: transparent;
+    background: repeating-linear-gradient(
+        0deg,
+        #ff0055 0%,
+        #00ffff 50%,
+        #ff0055 100%
+    );
+    background-size: 100% 400%;
+    -webkit-background-clip: text;
+    animation: BackgroundScrollShift linear both;
+    animation-timeline: view();
+    animation-range: cover 0% cover 100%;
+    display: inline-block;
+    font-weight: bold;
+}
+
+@keyframes BackgroundScrollShift {
+    0% { background-position: 0% 0%; filter: hue-rotate(0deg); }
+    100% { background-position: 0% 100%; filter: hue-rotate(360deg); }
+}
+
+
+
+
+/* --- SCROLL REVEAL DARKNESS --- */
+/* The paragraph remains cloaked in shadow at the edges of the screen, illuminating only when dead center */
+.ScrollRevealDarkness {
+    font-family: 'Unifont', monospace;
+    color: #dfdfdf;
+    background-color: #050505;
+    padding: 15px 20px;
+    border-left: 4px solid #333333;
+    animation: RevealFromDarkness linear both;
+    animation-timeline: view();
+    animation-range: cover 10% cover 90%;
+    line-height: 1.6;
+}
+
+@keyframes RevealFromDarkness {
+    0% { 
+        color: #111111; 
+        text-shadow: 0 0 10px #000000; 
+        border-color: #050505; 
+        filter: blur(2px);
+    }
+    50% { 
+        color: #dfdfdf; 
+        text-shadow: 0 0 5px rgba(255, 255, 255, 0.4); 
+        border-color: #ffffff; 
+        filter: blur(0px);
+    }
+    100% { 
+        color: #111111; 
+        text-shadow: 0 0 10px #000000; 
+        border-color: #050505; 
+        filter: blur(2px);
+    }
+}
+
+/* --- RED SECTOR DATA BLOCK --- */
+/* A heavy, contained block that shifts its internal glow based on scroll position, simulating a scanning laser */
+.RedSectorDataBlock {
+    font-family: 'Unifont', monospace;
+    color: #ccaaaa;
+    background-color: #1a0505;
+    padding: 20px;
+    border: 1px solid #440000;
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.9);
+    animation: RedSectorScan linear both;
+    animation-timeline: view();
+    animation-range: cover 0% cover 100%;
+    line-height: 1.5;
+    text-align: justify;
+}
+
+@keyframes RedSectorScan {
+    0% { 
+        background: linear-gradient(180deg, #330000 0%, #1a0505 20%, #1a0505 100%);
+        border-top-color: #ff0000;
+        border-bottom-color: #440000;
+    }
+    50% { 
+        background: linear-gradient(180deg, #1a0505 40%, #440000 50%, #1a0505 60%);
+        border-top-color: #440000;
+        border-bottom-color: #440000;
+    }
+    100% { 
+        background: linear-gradient(180deg, #1a0505 0%, #1a0505 80%, #330000 100%);
+        border-top-color: #440000;
+        border-bottom-color: #ff0000;
+    }
+}
+
+/* --- DEEP INSET TERMINAL --- */
+/* Simulates a physical recess in the screen. The shadows shift as the scrollbar moves, mimicking a change in perspective */
+.DeepInsetTerminal {
+    font-family: 'Unifont', monospace;
+    color: #889988;
+    background-color: #0a0e0a;
+    padding: 25px;
+    margin: 20px 0;
+    animation: InsetPerspectiveShift linear both;
+    animation-timeline: view();
+    animation-range: cover 10% cover 90%;
+    line-height: 1.6;
+}
+
+@keyframes InsetPerspectiveShift {
+    0% { 
+        box-shadow: inset 0px 30px 20px -15px rgba(0, 20, 0, 0.8), inset 0px -5px 10px rgba(0,0,0,0.9); 
+        transform: scale(0.98) translateY(-5px);
+    }
+    50% { 
+        box-shadow: inset 0px 0px 25px 5px rgba(0, 30, 0, 0.5); 
+        transform: scale(1) translateY(0px);
+    }
+    100% { 
+        box-shadow: inset 0px -30px 20px -15px rgba(0, 20, 0, 0.8), inset 0px 5px 10px rgba(0,0,0,0.9); 
+        transform: scale(0.98) translateY(5px);
+    }
+}
+
+/* --- DEGRADED PARAGRAPH MATRIX --- */
+/* Text that suffers from severe chromatic aberration and structural decay at the viewport edges, stabilizing in the middle */
+.DegradedParagraphMatrix {
+    font-family: 'Unifont', monospace;
+    color: #bbbbbb;
+    padding: 15px;
+    border-left: 2px dashed #555555;
+    animation: MatrixStabilization linear both;
+    animation-timeline: view();
+    animation-range: cover 0% cover 100%;
+    line-height: 1.4;
+    letter-spacing: 1px;
+}
+
+@keyframes MatrixStabilization {
+    0% {
+        text-shadow: 4px 0 0 rgba(255, 0, 0, 0.7), -4px 0 0 rgba(0, 255, 255, 0.7);
+        opacity: 0.4;
+        transform: skewX(-5deg);
+    }
+    40%, 60% {
+        text-shadow: 1px 0 0 rgba(255, 0, 0, 0.3), -1px 0 0 rgba(0, 255, 255, 0.3);
+        opacity: 1;
+        transform: skewX(0deg);
+    }
+    100% {
+        text-shadow: -4px 0 0 rgba(255, 0, 0, 0.7), 4px 0 0 rgba(0, 255, 255, 0.7);
+        opacity: 0.4;
+        transform: skewX(5deg);
+    }
+}
+
+
+
+/* --- CYAN CRT TERMINAL --- */
+/* Simulates a curved CRT monitor with a dark cyan background, heavy text glow, and a static scanline overlay */
+.CyanCrtTerminal {
+    font-family: 'Unifont', monospace;
+    color: #00ffff;
+    background-color: #001111;
+    padding: 25px;
+    position: relative;
+    border-radius: 12px;
+    box-shadow: inset 0 0 25px #004444, 0 0 15px rgba(0, 0, 0, 0.8);
+    text-shadow: 0 0 4px #00ffff;
+    line-height: 1.6;
+    overflow: hidden;
+}
+
+/* The physical scanline filter */
+.CyanCrtTerminal::after {
+    content: "";
+    position: absolute;
+    top: 0; left: 0; right: 0; bottom: 0;
+    background: repeating-linear-gradient(
+        0deg,
+        rgba(0, 0, 0, 0.2) 0px,
+        rgba(0, 0, 0, 0.2) 2px,
+        transparent 2px,
+        transparent 4px
+    );
+    pointer-events: none;
+    border-radius: 12px;
+    z-index: 2;
+}
+/*endregion*/
+
+
+
+
+
+
+
+
+
+/*
+ ad88888ba    ,ad8888ba,  88888888ba    ,ad8888ba,   88          88
+d8"     "8b  d8"'    `"8b 88      "8b  d8"'    `"8b  88          88
+Y8,         d8'           88      ,8P d8'        `8b 88          88
+`Y8aaaaa,   88            88aaaaaa8P' 88          88 88          88
+  `"""""8b, 88            88""""88'   88          88 88          88
+        `8b Y8,           88    `8b   Y8,        ,8P 88          88
+Y8a     a8P  Y8a.    .a8P 88     `8b   Y8a.    .a8P  88          88
+ "Y88888P"    `"Y8888Y"'  88      `8b   `"Y8888Y"'   88888888888 88888888888
+*/
+/*region*/
+
+/* --- PHOSPHOR GHOST SCROLL --- */
+/* A scroll-driven effect where the text leaves a glowing, lagging vertical trail simulating phosphor burn-in on an old screen */
+.PhosphorGhostScroll {
+    font-family: 'Unifont', monospace;
+    color: #bbf7f7;
+    background-color: #000808;
+    padding: 20px;
+    border: 1px solid #004444;
+    animation: GhostBurnIn linear both;
+    animation-timeline: view();
+    animation-range: entry 0% exit 100%;
+    line-height: 1.5;
+}
+@keyframes GhostBurnIn {
+    0% { 
+        text-shadow: 0 -20px 15px rgba(0, 255, 255, 0.3), 0 0 2px #00ffff; 
+        opacity: 0.6; 
+    }
+    50% { 
+        text-shadow: 0 0 8px rgba(0, 255, 255, 0.9), 0 0 2px #00ffff; 
+        opacity: 1; 
+    }
+    100% { 
+        text-shadow: 0 20px 15px rgba(0, 255, 255, 0.3), 0 0 2px #00ffff; 
+        opacity: 0.6; 
+    }
+}
+/* --- DEEP CYAN MAINFRAME --- */
+/* A heavy, structural data block with a solid cyan border that brightens significantly when the mouse hovers over the block */
+.DeepCyanMainframe {
+    font-family: 'Unifont', monospace;
+    color: #66bbbb;
+    background-color: #00151a;
+    padding: 20px 25px;
+    border-left: 6px solid #008888;
+    box-shadow: -5px 0 20px -5px rgba(0, 255, 255, 0.2);
+    transition: color 3s ease, text-shadow 3s ease, border-color 3s ease, box-shadow 3s ease;
+    line-height: 1.6;}
+.DeepCyanMainframe:hover {
+    color: #ffffff;
+    border-left: 6px solid #00ffff;
+    text-shadow: 0 0 8px #00ffff, 0 0 15px #00aaaa;
+    box-shadow: -5px 0 20px -5px rgba(0, 255, 255, 0.8);
+}
+
+/* --- SUBMERGED DATA FEED --- */
+/* Text that constantly cycles between a blurred, out-of-focus state and sharp clarity, simulating a faulty data connection */
+.SubmergedDataFeed {
+    font-family: 'Unifont', monospace;
+    color: rgba(0, 255, 255, 0.5);
+    background-color: #000a0a;
+    padding: 20px;
+    border: 1px dashed #005555;
+    animation: SubmergedBreathe 7s ease-in-out infinite alternate;
+    line-height: 1.5;
+}
+@keyframes SubmergedBreathe {
+    0% { 
+        filter: blur(1.5px); 
+        color: rgba(0, 200, 255, 0.4); 
+        text-shadow: 0 0 15px rgba(0, 100, 150, 0.8); 
+    }
+    100% { 
+        filter: blur(0px); 
+        color: rgba(0, 255, 255, 0.95); 
+        text-shadow: 0 0 5px #00ffff; 
+    }
+}
+/* --- IRIDESCENT OIL SPILL --- */
+/* Text that cycles slowly through muted, eerie spectrums over a dark background */
+.IridescentOilSpill {
+    font-family: 'Unifont', monospace;
+    white-space: pre-wrap; 
+    color: transparent;
+    background: linear-gradient(90deg, #554455, #445555, #555544, #554455);
+    background-size: 300% 100%;
+    -webkit-background-clip: text;
+    background-clip: text;
+    animation: SlowIridescence 12s ease-in-out infinite alternate;
+    font-weight: bold;
+    background-color: #0a0a0a;
+    padding: 20px;
+    border: 1px solid #222222;
+    line-height: 1.5;
+}
+
+@keyframes SlowIridescence {
+    0% { background-position: 0% 50%; filter: drop-shadow(0 0 2px rgba(85, 68, 85, 0.5)); }
+    100% { background-position: 100% 50%; filter: drop-shadow(0 0 6px rgba(68, 85, 85, 0.8)); }
+}
+
+/* --- TRANSLUCENT VEIL --- */
+/* A frosted glass effect using a backdrop filter. Text is barely visible until focused by a cursor hover */
+.TranslucentVeil {
+    font-family: 'Unifont', monospace;
+    white-space: pre-wrap;
+    color: rgba(220, 220, 220, 0.3);
+    background-color: rgba(15, 15, 15, 0.4);
+    backdrop-filter: blur(6px);
+    -webkit-backdrop-filter: blur(6px);
+    padding: 20px;
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    box-shadow: inset 0 0 20px rgba(0, 0, 0, 0.8);
+    transition: color 4s ease, background-color 4s ease;
+    line-height: 1.6;
+}
+
+.TranslucentVeil:hover {
+    color: rgba(220, 220, 220, 0.9);
+    background-color: rgba(15, 15, 15, 0.7);
+}
+
+/* --- OPAQUE MONOLITH --- */
+/* A completely dense, light-absorbing block that casts a stark, pitch-black geometric shadow */
+.OpaqueMonolith {
+    font-family: 'Unifont', monospace;
+    white-space: pre-wrap;
+    color: #999999;
+    background-color: #030303;
+    padding: 25px;
+    border-top: 4px solid #333333;
+    border-left: 4px solid #222222;
+    box-shadow: 12px 12px 0px #000000;
+    text-shadow: 1px 1px 0px #000000;
+    line-height: 1.6;
+}
+
+/* --- PEARLESCENT DECAY --- */
+/* A semi-opaque block with text that faintly shifts between pale sickly green and pale magenta */
+.PearlescentDecay {
+    font-family: 'Unifont', monospace;
+    white-space: pre-wrap;
+    background-color: rgba(5, 5, 5, 0.85);
+    padding: 20px;
+    border: 1px solid rgba(200, 220, 200, 0.1);
+    color: #d8d8d8;
+    text-shadow: 
+        0 0 4px rgba(200, 255, 200, 0.3), 
+        0 0 8px rgba(255, 200, 255, 0.2);
+    animation: PearlBreathe 8s ease-in-out infinite alternate;
+    line-height: 1.5;
+}
+
+@keyframes PearlBreathe {
+    0% {
+        text-shadow: 0 0 4px rgba(200, 255, 200, 0.3), 0 0 8px rgba(255, 200, 255, 0.2);
+        box-shadow: inset 0 0 10px rgba(20, 40, 20, 0.4);
+    }
+    100% {
+        text-shadow: 0 0 6px rgba(200, 255, 255, 0.4), 0 0 12px rgba(255, 255, 200, 0.3);
+        box-shadow: inset 0 0 30px rgba(40, 20, 40, 0.6);
+    }
+}
+
+/* --- GHOST IRIDESCENCE --- */
+/* Text that cycles slowly through an iridescent gradient using background-clip, without an actual background box */
+.GhostIridescence {
+    font-family: 'Unifont', monospace;
+    white-space: pre-wrap;
+    color: transparent;
+    background: linear-gradient(90deg, #556677, #8899aa, #aabbcc, #556677);
+    background-size: 300% 100%;
+    -webkit-background-clip: text;
+    background-clip: text;
+    animation: SlowTextIridescence 10s ease-in-out infinite alternate;
+    text-shadow: 0 0 10px rgba(136, 153, 170, 0.1);
+    line-height: 1.6;
+}
+
+@keyframes SlowTextIridescence {
+    0% { background-position: 0% 50%; filter: drop-shadow(0 0 1px rgba(85, 102, 119, 0.3)); }
+    100% { background-position: 100% 50%; filter: drop-shadow(0 0 4px rgba(170, 187, 204, 0.6)); }
+}
+
+/* --- FROSTED GLASS TEXT --- */
+/* Text that is highly translucent and low-contrast, stepping into sharp focus only when hovered over */
+.FrostedGlassText {
+    font-family: 'Unifont', monospace;
+    white-space: pre-wrap;
+    color: rgba(200, 200, 200, 0.15);
+    text-shadow:
+        1px 1px 0px rgba(0, 0, 0, 0.4),
+        0 0 8px rgba(255, 255, 255, 0.05);
+    transition: color 4s ease, text-shadow 4s ease;
+    line-height: 1.6;
+}
+
+.FrostedGlassText:hover {
+    color: rgba(220, 220, 220, 0.85);
+    text-shadow:
+        1px 1px 0px rgba(0, 0, 0, 0.9),
+        0 0 12px rgba(255, 255, 255, 0.3);
+}
+
+/* --- VOID OPAQUE TEXT --- */
+/* Ultra-dense, dark text that creates the illusion of a physical void or hole cut out of the page */
+.VoidOpaqueText {
+    font-family: 'Unifont', monospace;
+    white-space: pre-wrap;
+    color: #070707;
+    text-shadow:
+        -1px -1px 0 rgba(255, 255, 255, 0.1),
+        1px 1px 0 #000000,
+        2px 2px 3px rgba(0, 0, 0, 0.9);
+    font-weight: bold;
+    letter-spacing: 1px;
+    line-height: 1.6;
+}
+
+/* --- ETHEREAL SHIMMER --- */
+/* A phantom text block that slowly breathes in and out of the environment, shifting its blur and opacity */
+.EtherealShimmer {
+    font-family: 'Unifont', monospace;
+    white-space: pre-wrap;
+    color: #cceebb; /* Pale sickly bioluminescent green */
+    animation: EtherealBreathe 9s ease-in-out infinite alternate;
+    line-height: 1.6;
+}
+
+@keyframes EtherealBreathe {
+    0% {
+        opacity: 0.25;
+        filter: blur(2px);
+        text-shadow: 0 0 2px rgba(204, 238, 187, 0.1);
+    }
+    100% {
+        opacity: 0.9;
+        filter: blur(0px);
+        text-shadow: 0 0 8px rgba(204, 238, 187, 0.5), 0 0 15px rgba(150, 200, 120, 0.3);
+    }
+}
+/*endregion*/
+
+
+
+
+/*
+  ,ad8888ba,  88        88 88888888ba   ad88888ba  88
+ d8"'    `"8b 88        88 88      "8b d8"     "8b 88
+d8'           88        88 88      ,8P Y8,         88
+88            88        88 88aaaaaa8P' `Y8aaaaa,   88
+88            88        88 88""""88'     `"""""8b, 88
+Y8,           88        88 88    `8b           `8b 88
+ Y8a.    .a8P Y8a.    .a8P 88     `8b  Y8a     a8P 88
+  `"Y8888Y"'   `"Y8888Y"'  88      `8b  "Y88888P"  88
+
+*/
+/*region*/
+
+
+/* --- RANSOM NOTE SERIF --- */
+/* A stark, high-contrast serif block that sits at an unnatural angle, simulating a cutout pasted onto the page */
+.RansomNoteSerif {
+    font-family: 'Times New Roman', Times, serif;
+    white-space: pre-wrap;
+    color: #dfdfdf;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    font-size: 1.1em;
+    text-shadow: 
+        2px 2px 0px #000000, 
+        -1px -1px 0px rgba(0, 0, 0, 0.8);
+    filter: drop-shadow(4px 4px 3px rgba(0, 0, 0, 0.6));
+    transform: rotate(-0.5deg);
+    line-height: 1.4;
+}
+
+/* --- DISTRESSED TYPEWRITER --- */
+/* Monospace serif mimicking faded, bleeding ink from an old typewriter ribbon that slowly shifts in clarity */
+.DistressedTypewriter {
+    font-family: 'Courier New', Courier, monospace;
+    white-space: pre-wrap;
+    color: rgba(190, 190, 190, 0.75);
+    text-shadow: 
+        0 0 1px rgba(200, 200, 200, 0.4), 
+        1px 1px 2px rgba(0, 0, 0, 0.9);
+    animation: RibbonFlicker 7s infinite alternate ease-in-out;
+    line-height: 1.5;
+}
+
+@keyframes RibbonFlicker {
+    0% { opacity: 0.65; filter: blur(0px); text-shadow: 0 0 1px rgba(190, 190, 190, 0.3); }
+    50% { opacity: 0.9; filter: blur(0.6px); text-shadow: 0 0 3px rgba(190, 190, 190, 0.6); }
+    100% { opacity: 0.5; filter: blur(1.2px); text-shadow: 0 0 1px rgba(190, 190, 190, 0.2); }
+}
+
+/* --- VICTORIAN BROADSHEET --- */
+/* Heavy, formal serif text mimicking an old 1800s newspaper with dark ink that bleeds slowly into the page */
+.VictorianBroadsheet {
+    font-family: 'Georgia', 'Times New Roman', serif;
+    white-space: pre-wrap;
+    color: #c4b5a2; /* Aged paper/ink hybrid color */
+    letter-spacing: -0.5px;
+    line-height: 1.2;
+    animation: InkBleed 10s infinite alternate;
+}
+
+@keyframes InkBleed {
+    0% { 
+        text-shadow: 0 0 2px rgba(196, 181, 162, 0.3), 1px 1px 1px #000000; 
+    }
+    100% { 
+        text-shadow: 0 0 5px rgba(196, 181, 162, 0.5), 0 0 15px rgba(0, 0, 0, 0.9); 
+    }
+}
+
+/* --- COLLAGE CUTOUT SHIFT --- */
+/* Uses CSS pseudo-elements to force the first letter and first line of a paragraph into entirely different fonts, creating a chaotic ransom note collage effect automatically */
+.CollageCutoutShift {
+    font-family: 'Times New Roman', Times, serif;
+    white-space: pre-wrap;
+    color: #cccccc;
+    line-height: 1.6;
+    text-shadow: 2px 2px 4px #000000;
+}
+
+.CollageCutoutShift::first-letter {
+    font-family: 'Courier New', monospace;
+    font-size: 2.5em;
+    color: #990000;
+    float: left;
+    padding-right: 6px;
+    line-height: 0.8;
+    text-shadow: 3px 3px 0px #110000;
+    transform: rotate(6deg);
+}
+
+.CollageCutoutShift::first-line {
+    font-family: 'Arial Black', Impact, sans-serif;
+    font-size: 1.05em;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    color: #999999;
+}
+/* --- MASS COLLAGE BLOCK (COMPLETE) --- */
+.MassCollageBlock {
+    position: relative;
+    background-color: #dcd6c8;
+    background-image: url('data:image/svg+xml;utf8,<svg width="10" height="10" xmlns="http://www.w3.org/2000/svg"><rect width="10" height="10" fill="rgba(0,0,0,0.05)"/></svg>');
+    padding: 25px;
+    border: 1px solid #c0b59b;
+    box-shadow: 4px 4px 5px rgba(0,0,0,0.2);
+    transform: rotate(-0.5deg);
+    font-family: 'Courier New', 'Times New Roman', serif;
+    font-weight: bold;
+    color: #1a1a1a;
+    line-height: 1.5;
+    white-space: pre-wrap;
+    margin: 20px 0;
+}
+
+.MassCollageBlock::before {
+    content: " ";
+    position: absolute;
+    top: -8px;
+    left: 40%;
+    width: 70px;
+    height: 18px;
+    background: rgba(255, 255, 255, 0.5);
+    box-shadow: 1px 1px 2px rgba(0,0,0,0.2);
+    transform: rotate(2deg);
+    pointer-events: none;
+}
+/*endregion*/
+
+
+
+
+
+
+/*
+88          ,ad8888ba,        db        88888888ba,   88 888b      88   ,ad8888ba,
+88         d8"'    `"8b      d88b       88      `"8b  88 8888b     88  d8"'    `"8b
+88        d8'        `8b    d8'`8b      88        `8b 88 88 `8b    88 d8'
+88        88          88   d8'  `8b     88         88 88 88  `8b   88 88
+88        88          88  d8YaaaaY8b    88         88 88 88   `8b  88 88      88888
+88        Y8,        ,8P d8""""""""8b   88         8P 88 88    `8b 88 Y8,        88
+88         Y8a.    .a8P d8'        `8b  88      .a8P  88 88     `8888  Y8a.    .a88
+88888888888 `"Y8888Y"' d8'          `8b 88888888Y"'   88 88      `888   `"Y88888P"
+*/
+/* =========================================
+   Loading Wave Text Effect
+========================================= */
+/*region*/
+
+:root {
+    --LoadingBounceHeight: -6px; /* Increased height for more movement */
+    --LoadingSpeed: 3.5s; /* Longer duration creates the pause at the end */
+}
+
+/* Include font override for the new class */
+.LoadingWaveText,
+.LoadingWaveText span {
+    font-family: "GNU Unifont", "Unifont", monospace !important;
+}
+
+.LoadingWaveText {
+    display: inline-block;
+    white-space: pre; 
+}
+
+.LoadingWaveText span {
+    display: inline-block;
+    animation: LoadingBounce var(--LoadingSpeed) infinite ease-in-out;
+}
+
+/* 
+   Squishing the jump into the first 12% of the animation creates 
+   a ~0.42s jump window. The rest of the time (12% to 100%) is the wait.
+*/
+@keyframes LoadingBounce {
+    0%, 12%, 100% { transform: translateY(0); }
+    6% { transform: translateY(var(--LoadingBounceHeight)); }
+}
+
+/* 
+   Positive delays ensure the letters fire sequentially.
+   The wave finishes around 2.3s, leaving a clean pause before looping.
+*/
+.LoadingWaveText span:nth-child(1) { animation-delay: 0.0s; }
+.LoadingWaveText span:nth-child(2) { animation-delay: 0.1s; }
+.LoadingWaveText span:nth-child(3) { animation-delay: 0.2s; }
+.LoadingWaveText span:nth-child(4) { animation-delay: 0.3s; }
+.LoadingWaveText span:nth-child(5) { animation-delay: 0.4s; }
+.LoadingWaveText span:nth-child(6) { animation-delay: 0.5s; }
+.LoadingWaveText span:nth-child(7) { animation-delay: 0.6s; }
+.LoadingWaveText span:nth-child(8) { animation-delay: 0.7s; }
+.LoadingWaveText span:nth-child(9) { animation-delay: 0.8s; }
+.LoadingWaveText span:nth-child(10) { animation-delay: 0.9s; }
+.LoadingWaveText span:nth-child(11) { animation-delay: 1.0s; }
+.LoadingWaveText span:nth-child(12) { animation-delay: 1.1s; }
+.LoadingWaveText span:nth-child(13) { animation-delay: 1.2s; }
+.LoadingWaveText span:nth-child(14) { animation-delay: 1.3s; }
+.LoadingWaveText span:nth-child(15) { animation-delay: 1.4s; }
+.LoadingWaveText span:nth-child(16) { animation-delay: 1.5s; }
+.LoadingWaveText span:nth-child(17) { animation-delay: 1.6s; }
+.LoadingWaveText span:nth-child(18) { animation-delay: 1.7s; }
+.LoadingWaveText span:nth-child(19) { animation-delay: 1.8s; }
+.LoadingWaveText span:nth-child(20) { animation-delay: 1.9s; }
+/*endregion*/
