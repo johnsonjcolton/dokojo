@@ -5,24 +5,25 @@
 test - test
 
 
-> [!fake-heading-white-pink|autowidth centerbody]+ Test Callout
-> Ain't this cool?
+> [!button-row]
+> > [!fake-heading-white-pink|autowidth centerbody]- Test Callout
+> > Ain't this cool?
+> > 
+> > ---
+> > 
+> > 
 > 
-> ---
 > 
+> > [!ascii-monument|centerbody autowidth]- Another Test
+> > ```test
+> > ok,
+> > This should show cool stuff.
+> > It should have striped codeblock
+> > backgrounds. Neat-o, eh?
+> > ```
 > 
-
-
-> [!ascii-monument|centerbody autowidth]+ Another Test
-> ```test
-> ok,
-> This should show cool stuff.
-> It should have striped codeblock
-> backgrounds. Neat-o, eh?
-> ```
-
-
-
+> > [!ascii-calligraph]- Embed test
+> > 
 <div class="transclusion internal-embed is-loaded"><div class="markdown-embed">
 
 <div class="markdown-embed-title">
@@ -47,6 +48,8 @@ Test..? Yeah, it works!
 Idk. 
 
 </div></div>
+
+
 
 
 ok…
