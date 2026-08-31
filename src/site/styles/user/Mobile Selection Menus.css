@@ -1,0 +1,11 @@
+/* Only affects the mobile app */
+.is-mobile .suggestion-item {
+    padding-top: 10px;
+    padding-bottom: 10px;
+    font-size: 13px;
+    border-bottom: 1px solid var(--background-modifier-border);
+}
+
+.is-mobile .suggestion-item-content {
+    white-space: normal; /* Allows long list names to wrap instead of cutting off */
+}

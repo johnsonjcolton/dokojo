@@ -1,0 +1,60 @@
+
+/* Primary margin comment callout */
+.callout[data-callout="margin"] {
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  background: none;
+  border: none;
+  padding: 0;
+  margin: 0;
+  overflow: visible;
+}
+
+.callout[data-callout="margin"] > .callout-title {
+  display: none; /* hide header bar */
+}
+
+.callout[data-callout="margin"] > .callout-content {
+  margin-left: 1em;
+  margin-right: -260px; /* pushes content out into margin space */
+  width: 240px;
+  background-color: #f7f7f7;
+  border-left: 2px solid #ccc;
+  padding: 8px;
+  font-size: 0.85em;
+  font-style: italic;
+  color: #444;
+  box-shadow: 1px 1px 4px rgba(0, 0, 0, 0.1);
+  border-radius: 4px;
+}
+
+/* Secondary reviewer margin comment callout */
+.callout[data-callout="margin2"] {
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  background: none;
+  border: none;
+  padding: 0;
+  margin: 0;
+  overflow: visible;
+}
+
+.callout[data-callout="margin2"] > .callout-title {
+  display: none; /* hide header bar */
+}
+
+.callout[data-callout="margin2"] > .callout-content {
+  margin-left: 1em;
+  margin-right: -260px; /* pushes content out into margin space */
+  width: 240px;
+  background-color: #eaf5ff;
+  border-left: 2px solid #3399cc;
+  padding: 8px;
+  font-size: 0.85em;
+  font-style: italic;
+  color: #225577;
+  box-shadow: 1px 1px 4px rgba(0, 0, 0, 0.1);
+  border-radius: 4px;
+}

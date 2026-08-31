@@ -1,0 +1,59 @@
+/* Brutalist / Glitch Location Callout for Obsidian */
+.callout[data-callout="location"] {
+  /* Sharp rebel red for the glitch shadow */
+  --callout-color: 255, 0, 60; 
+  /* Using a crosshair or terminal prompt icon instead of a standard map */
+  --callout-icon: lucide-crosshair; 
+  
+  background-color: #050505; 
+  color: #00ff41; /* Terminal matrix green */
+  border: 3px solid #00ff41;
+  border-radius: 0px; /* Zero curves allowed */
+  
+  /* Chonky offset shadow */
+  box-shadow: 6px 6px 0px rgb(var(--callout-color));
+  
+  font-family: "Unifont", monospace;
+  text-transform: uppercase;
+  position: relative;
+  margin: 2em 0;
+  transition: all 0.1s steps(2, end);
+}
+
+/* Hover glitch effect */
+.callout[data-callout="location"]:hover {
+  transform: translate(-2px, -2px);
+  box-shadow: 8px 8px 0px rgb(var(--callout-color));
+  border-color: #fff;
+  color: #fff;
+}
+
+.callout[data-callout="location"] .callout-title {
+  font-weight: 800;
+  font-size: 1.1em;
+  letter-spacing: 0.1em;
+  border-bottom: 3px dashed rgb(var(--callout-color));
+  padding-bottom: 8px;
+}
+
+.callout[data-callout="location"] .callout-content {
+  font-family: "Unifont", monospace;
+  font-size: 1em;
+  color: #e0e0e0;
+  padding-top: 12px;
+  line-height: 1.4;
+}
+
+/* ASCII styling for links inside the callout */
+.callout[data-callout="location"] .callout-content a {
+  color: #00ff41;
+  text-decoration: none;
+  background-color: rgba(0, 255, 65, 0.1);
+  border: 1px solid #00ff41;
+  padding: 0 4px;
+}
+
+.callout[data-callout="location"] .callout-content a:hover {
+  background-color: #00ff41;
+  color: #050505;
+}
